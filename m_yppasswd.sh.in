@@ -22,10 +22,10 @@
 #
 # $Id$
 
-YPCAT=@YPCAT@
-
 m_yppasswd_query()
 {
+    YPCAT=@YPCAT@
+
     if [ -x "$YPCAT" ]	#check for ypcat
     then
 	f_user="`echo \"$@\" | sed -e 's/@.*//'`"

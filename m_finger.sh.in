@@ -20,10 +20,10 @@
 
 # $Id$
 
-FINGER=@FINGER@
-
 m_finger_query()
 {
+    FINGER=@FINGER@
+
     if [ -x "$FINGER" ]		# check whether finger in installed
     then
 
