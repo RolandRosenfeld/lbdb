@@ -2,10 +2,23 @@
 #
 # -*-sh-mode-*-
 #
-# This code is (c) Utz-Uwe Haus <haus@uuhaus.de> 2001
+#     Copyright (c) 2001  Utz-Uwe Haus <haus@uuhaus.de> 2001
+#     Copyright (c) 2003  Aaron Kaplan <kaplan@cs.rochester.edu> 
 #
-# It is donated to the lbdb code to be placed under the GPL
-# if included with the distribution.
+#     This program is free software; you can redistribute it and/or modify
+#     it under the terms of the GNU General Public License as published by
+#     the Free Software Foundation; either version 2 of the License, or
+#     (at your option) any later version.
+# 
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+# 
+#     You should have received a copy of the GNU General Public
+#     License along with this program; if not, write to the Free
+#     Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+#     MA 02111-1307 USA
 #
 # $Id$
 
@@ -17,20 +30,36 @@ m_bbdb_query()
 {
     if [ -f ${LBDB_BBDB_SCRIPT:=$libdir/lbdb_bbdb_query.el} ]
     then
-	if [ -z "$EMACS" ]
+	form="(progn (require (quote lbdb-bbdb-query) 
+		              \"$LBDB_BBDB_SCRIPT\") 
+                     (lbdb-bbdb-query \"$@\"))"
+	if [ -z "$GNUCLIENT" ]
 	then
-	    if type emacs >/dev/null 2>&1; then
-		EMACS=emacs
-	    elif type xemacs >/dev/null 2>&1; then
-		EMACS=xemacs
+	    if type gnuclient >/dev/null 2>&1; then
+		GNUCLIENT=gnuclient
 	    fi
+        fi
+	if [ $GNUCLIENT == "no" ]; then
+	    GNUCLIENT=
 	fi
-	if [ -n "$EMACS" ]
-	then
-	    $EMACS -nw --no-site-file --no-init-file -batch \
-		--load $LBDB_BBDB_SCRIPT \
-		--eval '(lbdb-bbdb-query "'"$@"'")' 2>/dev/null \
-	    | grep -v '^$'
+	if [ -n "$GNUCLIENT" ] ; then
+	    $GNUCLIENT -batch -eval "t" > /dev/null 2>&1 || GNUCLIENT=
+	fi
+	if [ -n "$GNUCLIENT" ] ; then
+	    $GNUCLIENT -batch -eval "$form" 2> /dev/null  | grep -v '^$'
+        else
+	    if [ -z "$EMACS" ]
+	        then
+		if type emacs >/dev/null 2>&1; then
+		    EMACS=emacs
+		elif type xemacs >/dev/null 2>&1; then
+		    EMACS=xemacs
+		fi
+	    fi
+	    if [ -n "$EMACS" ] ; then
+	        $EMACS -nw --no-site-file --no-init-file -batch \
+	            --eval "$form"  2>/dev/null | grep -v '^$'
+	    fi
 	fi
     fi
 }

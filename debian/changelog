@@ -10,8 +10,10 @@ lbdb (0.28.1) unstable; urgency=low
     (Closes: #188085).
   * Allow sorting the output by "comment" field (column 3) by setting
     SORT_OUTPUT=comment (Closes: #225104).
+  * Add gnuclient support to m_bbdb module.  Thanks to Aaron Kaplan
+    <kaplan@cs.rochester.edu> for providing this patch.
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 18 Jan 2004 14:50:08 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 18 Jan 2004 14:59:38 +0100
 
 lbdb (0.28) unstable; urgency=low
 

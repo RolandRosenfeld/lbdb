@@ -13,16 +13,24 @@ email fields in lbdb-usable format, i.e.
 <email-address>[TAB]<Full Name>[TAB]<comment>
 where <comment> is BBDB:timestamp."
   (let ((matches
-	 (bbdb-search (bbdb-records) string string string nil nil)))
+	 (bbdb-search (bbdb-records) string string string nil nil))
+	(result ""))
     (mapcar 
      (lambda (record) 
        (let ((name (bbdb-record-name record))
 	     (timestamp (bbdb-record-getprop record 'timestamp)))
 	 (mapcar
 	  (lambda (this-email)
-	    (princ (format "%s\t%s\tBBDB:%s\n" this-email name timestamp)))
+	    (setq result
+		  (concat result 
+			  (format "%s\t%s\tBBDB:%s\n" this-email name timestamp))))
 	  (bbdb-record-net record))))
-     matches)))
+     matches)
+    (princ result)))
+;; the princ is for for emacs and xemacs, return value is for gnuclient
+
+(provide 'lbdb-bbdb-query)
+
 
 ; use like:
 ;(lbdb-bbdb-query "grae")
