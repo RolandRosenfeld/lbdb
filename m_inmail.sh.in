@@ -20,13 +20,13 @@
 
 prefix=@prefix@
 exec_prefix=@exec_prefix@
-bindir=@bindir@
+libdir=@libdir@
 
 m_inmail_db=$HOME/.lbdb/m_inmail.list
 
 m_inmail_query()
 {
-	$bindir/lbdb-munge
+	$lib/lbdb-munge
 	test -f $m_inmail_db  || return
 	grep -i "$1." $m_inmail_db
 }

@@ -45,13 +45,12 @@ install: all
 	$(INSTALL) -m 755 fetchaddr $(libdir)
 	$(INSTALL) -m 755 lbdbq $(bindir)
 	$(INSTALL) -m 755 lbdb-fetchaddr $(bindir)
-	$(INSTALL) -m 755 lbdb-munge $(bindir)
+	$(INSTALL) -m 755 lbdb-munge $(libdir)
 	$(INSTALL) -m 755 lbdb_lib $(libdir)
 	$(INSTALL) -m 755 munge $(libdir)
 	for i in $(MODULES) ; do $(INSTALL) -m 755 $$i $(libdir) ; done
 	$(INSTALL) -m 644 lbdbq.man $(mandir)/man1/lbdbq.1
 	$(INSTALL) -m 644 lbdb-fetchaddr.man $(mandir)/man1/lbdb-fetchaddr.1
-	$(INSTALL) -m 644 lbdb-munge.man $(mandir)/man1/lbdb-munge.1
 	$(INSTALL) -m 644 lbdb.rc $(sysconfdir)/lbdb.rc
 	if [ "@DOTLOCK_TARGET@" != "" ]; then \
 		$(INSTALL) -m 755 lbdb_dotlock $(bindir); \

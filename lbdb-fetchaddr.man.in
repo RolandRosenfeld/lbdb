@@ -21,8 +21,6 @@ lbdb-fetchaddr \- grab addresses from mails add append them to lbdb database
 .SH SYNOPSIS
 .B lbdb-fetchaddr
 .BI [ 'dateformat' ]
-
-
 .SH DESCRIPTION
 .B lbdb-fetchaddr
 is a shell script which reads a mail on stdin. It extracts 
@@ -39,7 +37,7 @@ For performance issues
 .B lbdb-fetchaddr
 appends new addresses to this file without removing duplicates. To get
 rid of duplicates, the program
-.BR lbdb-munge (1)
+.B lbdb-munge
 exists, which is run by
 .B m_inmail
 if needed and removes duplicates.
@@ -62,28 +60,20 @@ as parameter of lbdb-fetchaddr command like
      | lbdb-fetchaddr "%y-%m-%d"
 .fi
 which results in e.g. "99-04-29".
-
-
 .SH FILES
 .I $HOME/.lbdb/m_inmail.list
 .br
 .I @libdir@/fetchaddr
-
-
 .SH "SEE ALSO"
 .BR ldbdq (1),
 .BR @dotlock@ (1),
 .BR procmail (1),
 .BR procmailrc (5).
-
-
 .SH CREDITS
 Most of the really interesting code of this program (namely, the RFC
 822 address parser used by lbdb-fetchaddr) was stolen from Michael
 Elkins' mutt mail user agent. Additional credits go to Brandon Long
 for putting the query functionality into mutt.
-
-
 .SH AUTHOR
 The lbdb package was written by Thomas Roessler <roessler@guug.de> and
 is now maintained and extended by Roland Rosenfeld
