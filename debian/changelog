@@ -3,8 +3,10 @@ lbdb (0.18.1) unstable; urgency=low
   * Always build Debian binary with m_pgp2, m_pgp5 and m_gpg (ignoring
     whether the different PGP binaries are installed).
   * Merged in changes from Mutt's dotlock (CVS as of 1999-08-01).
+  * Use "$@" instead of $1 in m_* files to allow `lbdb First Last' without 
+    quotes around "First Last" (Closes: #42417).
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Wed,  4 Aug 1999 00:44:58 +0200
 
 lbdb (0.18) unstable; urgency=low
 

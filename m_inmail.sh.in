@@ -28,5 +28,5 @@ m_inmail_query()
 {
 	$libdir/lbdb-munge
 	test -f $m_inmail_db  || return
-	grep -i "$1." $m_inmail_db
+	grep -i "$@." $m_inmail_db
 }

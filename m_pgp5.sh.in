@@ -23,7 +23,7 @@
 
 m_pgp5_query()
 {
-    @PGPK@ +language=en -l $1 2>/dev/null \
+    @PGPK@ +language=en -l "$@" 2>/dev/null \
     | grep '^uid  ...* <[^<>@:/ ]*@[^<>@ ]*>[^<>@]*$' \
     | sed -e 's/^uid  \(.*\) <\(.*\)>.*$/\2	\1	(PGP5)/' \
     | sed -e 's/	\([^	]\{27,27\}\)[^	]*	/	\1...	/'
