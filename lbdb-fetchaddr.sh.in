@@ -45,7 +45,10 @@ if [ ! -f $db ]; then
   fi
 fi
 
-if ! $dotlock -r 10 -f $db ; then
+if $dotlock -r 10 -f $db
+then
+  : # okay, do nothing
+else
   echo "Can't lock $db [dotlock returned $rv]." >&2
   exit 1
 fi

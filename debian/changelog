@@ -2,10 +2,10 @@ lbdb (0.18.2) unstable; urgency=low
 
   * Added HP-UX support (by David Ellement <ellement@sdd.hp.com>): 
     - Try awk (in addition to mawk, gawk, nawk).
-    - Use "test ... != ..." instead of "! test ... = ...", which works
-      with ksh.
+    - Don't use "if ! ..." in shell scripts, because ksh in HP-UX doesn't
+      support this.
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 22 Aug 1999 23:05:07 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 24 Aug 1999 13:16:17 +0200
 
 lbdb (0.18.1) unstable; urgency=low
 
