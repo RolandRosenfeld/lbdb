@@ -1,4 +1,4 @@
-lbdb (0.18.6) unstable; urgency=low
+lbdb (0.19) unstable; urgency=low
 
   * Upgrade to standards version 3.1.1: Add Build-Depends.
   * Hardcode finger and mutt_dotlock in debian/rules, to avoid additional
@@ -24,7 +24,7 @@ lbdb (0.18.6) unstable; urgency=low
     order, so the most recent addresses from m_inmail.list will be shown
     first.  Thanks to Andrew Over <aover@uq.net.au> for this idea.
 
- -- Roland Rosenfeld <roland@debian.org>  Mon,  8 May 2000 19:16:09 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Mon,  8 May 2000 19:23:16 +0200
 
 lbdb (0.18.5) unstable; urgency=low
 
