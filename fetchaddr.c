@@ -129,7 +129,7 @@ int main(int argc, char* argv[])
 	datefmt = argv[++i];
       } else if (!strcmp (argv[i], "-x") && i+1 < argc) {
 	headerlist = argv[++i];
-      } else if (!strcmp (argv[i], "-a") {
+      } else if (!strcmp (argv[i], "-a")) {
 	create_real_name = 1;
       } else {
 	fprintf (stderr, "%s: `%s' wrong parameter\n", argv[0], argv[i]);
