@@ -1,8 +1,17 @@
+lbdb (0.18.1) unstable; urgency=low
+
+  * Always build Debian binary with m_pgp2, m_pgp5 and m_gpg (ignoring
+    whether the different PGP binaries are installed).
+
+ --
+
 lbdb (0.18) unstable; urgency=low
 
   * Splited lbdb-fetchaddr.man off from lbdbq.man.
   * Moved lbdb-fetchaddr from $bindir to $libdir.
   * Added Fido module m_fido and nodelist2lbdb.
+  * Get rid of "function" keyword in sh-scripts, which is a bashism.
+    (Closes: #36851).
 
  -- Roland Rosenfeld <roland@debian.org>  Wed, 23 Jun 1999 18:22:53 +0200
 

@@ -10,8 +10,9 @@ build: build-stamp
 build-stamp:
 	dh_testdir
 
-	./configure --prefix=/usr --libdir='$${prefix}/lib/lbdb' \
-		--sysconfdir=/etc
+	env PGP=/usr/bin/pgp PGPK=/usr/bin/pgpk GPG=/usr/bin/gpg \
+		./configure --prefix=/usr --libdir='$${prefix}/lib/lbdb' \
+			--sysconfdir=/etc
 	$(MAKE) CFLAGS="-O2 -g -Wall"
 
 	touch build-stamp
