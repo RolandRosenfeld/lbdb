@@ -4,8 +4,11 @@ lbdb (0.28.2) unstable; urgency=low
   * Add homepage URL to the package description.
   * Quote $GNUCLIENT in m_bbdb to avoid error message when this variable
     is not defined (Closes: #231061).
+  * mutt_ldap_query: Apply patch from Max Kutny <mkut@umc.ua>, which
+    allows to override config file settings via command line options
+    (Closes: #231261).
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Sat,  7 Feb 2004 14:00:12 +0100
 
 lbdb (0.28.1) unstable; urgency=low
 

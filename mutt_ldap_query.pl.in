@@ -61,24 +61,6 @@ our %ldap_server_db = (
 );
 #------8<------8<------8<------8<---cut here--->8------>8------>8------>8------
 
-GetOptions (
-  'config_file|c=s'		=> \$config_file,
-  'server|ls=s'			=> \$ldap_server,
-  'search_base|sb=s'		=> \$search_base,
-  'search_fields|sf=s'		=> \$ldap_search_fields,
-  'expected_answers|ea=s'	=> \$ldap_expected_answers,
-  'format_email|fe=s'		=> \$ldap_result_email,
-  'format_realname|fr=s'	=> \$ldap_result_realname,
-  'format_comment|fc=s'		=> \$ldap_result_comment,
-  'nickname|n=s'		=> \$ldap_server_nickname,
-  'debug'			=> sub { $DEBUG = 1 },
-  'help|?|h'			=> \$help,
-  'man|m'			=> \$man,
-  'ignorant|i'			=> \$ignorant,
-  'lbdb_output|l'		=> \$lbdb_output,
-  'version|v'			=> \$version
-);
-
 # Return version string from CVS tag
 sub versionstring {
   my $ver = ' $Name$ ';
@@ -109,7 +91,35 @@ sub process_file {
   }
 }
 
-die pod2usage(1) if (! $ARGV[0] || $help || $version);
+# first we need to apply defaults
+process_file("@sysconfdir@/lbdb_ldap.rc",
+             "@sysconfdir@/mutt_ldap_query.rc",
+             "$ENV{HOME}/.lbdb/ldap.rc",
+	     "$ENV{HOME}/.mutt_ldap_query.rc");
+
+
+# Parse command line options. They override system defaults.
+GetOptions (
+  'config_file|c=s'		=> \$config_file,
+  'server|ls=s'			=> \$ldap_server,
+  'search_base|sb:s'		=> \$search_base,
+  'search_fields|sf:s'		=> \$ldap_search_fields,
+  'expected_answers|ea:s'	=> \$ldap_expected_answers,
+  'format_email|fe:s'		=> \$ldap_result_email,
+  'format_realname|fr:s'	=> \$ldap_result_realname,
+  'format_comment|fc:s'		=> \$ldap_result_comment,
+  'nickname|n=s'		=> \$ldap_server_nickname,
+  'debug'			=> sub { $DEBUG = 1 },
+  'help|?|h'			=> \$help,
+  'man|m'			=> \$man,
+  'ignorant|i'			=> \$ignorant,
+  'lbdb_output|l'		=> \$lbdb_output,
+  'version|v'			=> \$version
+);
+
+#
+# print usage and help info before we process config files
+#
 pod2usage(1) if $help;
 pod2usage(-verbose => 2) if $man;
 
@@ -119,15 +129,15 @@ if ($version) {
   exit(0);
 }
 
+# command-line config file take precedence over command-line options
 if ($config_file) {
   process_file($config_file);
 }
-else {
-  process_file("@sysconfdir@/lbdb_ldap.rc",
-	       "@sysconfdir@/mutt_ldap_query.rc",
-	       "$ENV{HOME}/.lbdb/ldap.rc",
-	       "$ENV{HOME}/.mutt_ldap_query.rc")
-}
+
+
+# after we've done with GetOptions $ARGV[0] should present the rest
+# (i.e. mandatory search pattern)
+die pod2usage(1) if (! $ARGV[0] );
 
 if ($ldap_server_nickname) {
   my $option_array = $ldap_server_db{$ldap_server_nickname};
@@ -144,7 +154,8 @@ if ($ldap_server_nickname) {
   }
 }
 
-print "DEBUG: ldap_server=$ldap_server search_base=$search_base\n" if ($DEBUG);
+print "DEBUG: ldap_server='$ldap_server' search_base='$search_base' search_fields='$ldap_search_fields'\
+       expected_answer='$ldap_expected_answers' format_email='$ldap_result_email' format_realname='$ldap_result_realname'\n" if ($DEBUG);
 
 my @fields = split / /, $ldap_search_fields;
 my @results;
@@ -165,12 +176,12 @@ foreach my $askfor ( @ARGV ) {
   my $ldap = Net::LDAP->new($ldap_server, DN => "", Password => "", Port => 389, Debug => 3,) or die $@;
   $ldap->bind;
   my $mesg = $ldap->search( base => $search_base, filter => $query ) or die $@;
-  $mesg->code && die $mesg->error;
+  $mesg->code && die "Search failed. LDAP server returned an error : ", $mesg->code, ", description: ", $mesg->error;
   my @entries = $mesg->entries;
   map { $_->dump } $mesg->all_entries if ($DEBUG);
   my $entry;
   foreach $entry (@entries) {
-    print "DEBUG processing $entry->dn\n" if ($DEBUG);
+    print "DEBUG: processing $entry->dn\n" if ($DEBUG);
 # prepare the results
     my $email = $ldap_result_email;
     my $realname = $ldap_result_realname;
