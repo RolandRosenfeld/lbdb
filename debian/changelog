@@ -5,8 +5,10 @@ lbdb (0.22) unstable; urgency=low
     <toje@nightingale.ms.sub.org>.
   * Some optimizations on m_addr_email to handle city name correct and to
     junk entries without email address.
+  * Update lbdb.el to version 1.5 which fixes the problem with spaces in
+    query strings (Closes: #74818).
 
- -- Roland Rosenfeld <roland@debian.org>  Mon,  9 Oct 2000 15:24:46 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Mon, 16 Oct 2000 00:15:30 +0200
 
 lbdb (0.21.1) unstable; urgency=low
 

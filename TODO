@@ -1,7 +1,9 @@
 $Id$
 
 - Add new modules:
-    - Add m_ldap for LDAP access.
+    - Add m_ldap for LDAP access (Marc de Courville
+      <Marc.de.Courville@crm.mot.com>, the author of
+      mutt_lbdb_query.pl, is working on this).
     - Add m_pgp6 for PGP 6.5.1.
 
 - lbdb_dotlock: Have a deep look into the locking mechanism.  Over NFS
@@ -34,6 +36,9 @@ $Id$
   chosen).  It may be a good idea to make the combination of mail
   address and real name the key.
 
+- replace m_passwd and m_yppasswd by m_getent, if getent(1) is
+  supported by all UNIXes.  Otherwise we need some autoconf magic to
+  do the right thing...
 
 Roland Rosenfeld <roland@spinnaker.de>
 $Id$

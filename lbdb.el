@@ -152,14 +152,11 @@ current buffer."
 
 (defun lbdb-generate-format-string (results)
   "Generate a `format' string for displaying RESULTS."
-  (let ((email-len 0)
-        (name-len 0))
-    (loop for line in results
-          do (progn
-               (setq email-len (max email-len (length (lbdb-email line))))
-               (setq name-len  (max name-len  (length (lbdb-name  line))))))
-    (format "%%-%ds %%-%ds %%s" name-len email-len)))
-
+  (loop for line in results
+        for email-len = (length (lbdb-email line)) then (max email-len (length (lbdb-email line)))
+        for name-len  = (length (lbdb-name  line)) then (max name-len  (length (lbdb-name  line)))
+        finally return (format "%%-%ds %%-%ds %%s" name-len email-len)))
+  
 (defun lbdb-line-as-list ()
   "Split the current line into its component parts.
 
@@ -233,11 +230,16 @@ The type of sort is controlled by `lbdb-sort-display'."
       (error "No matches found in the Little Brother's Database"))))
 
 (defun lbdbq (query &optional interactive)
-  "Query the Little Brother's Database and return a list of results."
+  "Query the Little Brother's Database and return a list of results.
+
+QUERY is the text to search for.
+
+If INTERACTIVE is non-nil the message area will be updated with the progress
+of the function. This parameter is optional and the deafult is nil."
   (with-temp-buffer
     (when interactive
       (message "Querying the Little Brother's Database..."))
-    (call-process lbdb-query-command nil (current-buffer) nil (format "\"%s\"" query))
+    (call-process lbdb-query-command nil (current-buffer) nil query)
     (prog1
         (lbdb-sort (lbdb-buffer-to-list))
       (when interactive
