@@ -30,6 +30,7 @@ bindir=@bindir@
 srcdir=@srcdir@
 libdir=@libdir@
 mandir=@mandir@
+sysconfdir=@sysconfdir@
 
 ALL=lbdbq lbdb_lib lbdb-fetchaddr fetchaddr munge lbdbq.man $(MODULES)
 
@@ -46,6 +47,7 @@ install: all
 	for i in $(MODULES) ; do $(INSTALL) -m 755 $$i $(libdir) ; done
 	$(INSTALL) -m 644 lbdbq.man $(mandir)/man1/lbdbq.1
 	$(INSTALL) -m 644 lbdb-fetchaddr.man $(mandir)/man1/lbdb-fetchaddr.1
+	$(INSTALL) -m 644 lbdb.rc $(sysconfdir)/lbdb.rc
 
 fetchaddr: $(srcdir)/fetchaddr.o $(srcdir)/rfc822.o $(srcdir)/helpers.o  \
 	$(srcdir)/rfc2047.o
@@ -57,7 +59,8 @@ query: $(srcdir)/query.sh
 lbdb-query: $(srcdir)/lbdb-query.sh
 
 lbdbq.man: $(srcdir)/lbdbq.man.in
-	sed -e 's%@''libdir@%${libdir}%' $< > $@
+	sed -e 's%@''libdir@%${libdir}%' \
+	    -e 's%@''sysconfdir@%${sysconfdir}%' $< > $@
 
 clean:
 	-rm -f *.o *~ $(ALL) munge.awk

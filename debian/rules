@@ -10,7 +10,8 @@ build: build-stamp
 build-stamp:
 	dh_testdir
 
-	./configure --prefix=/usr --libdir='$${prefix}/lib/lbdb'
+	./configure --prefix=/usr --libdir='$${prefix}/lib/lbdb' \
+		--sysconfdir=/etc
 	$(MAKE) CFLAGS="-O2 -g -Wall"
 
 	touch build-stamp
@@ -31,8 +32,8 @@ install-stamp: build-stamp
 	dh_clean -k
 	dh_installdirs
 
-	$(MAKE) install prefix=`pwd`/debian/tmp/usr
-	install -m 644 debian/lbdb.rc `pwd`/debian/tmp/etc/lbdb.rc
+	$(MAKE) prefix=`pwd`/debian/tmp/usr sysconfdir=`pwd`/debian/tmp/etc \
+		install
 
 	touch install-stamp
 
