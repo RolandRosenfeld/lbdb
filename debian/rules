@@ -49,7 +49,7 @@ install-stamp: build-stamp
 
 	$(MAKE) prefix=$(DROOT)/usr sysconfdir=$(DROOT)/etc install
 	install -m644 -oroot -groot lbdb.el \
-		$(DROOT)/usr/share/emacs/site-lisp/lbdb.el
+		$(DROOT)/usr/share/emacs/site-lisp/lbdb/lbdb.el
 
 	touch install-stamp
 
