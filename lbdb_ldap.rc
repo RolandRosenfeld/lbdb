@@ -49,7 +49,7 @@
 		       'commonName gn sn cn uid',
 		       'gn sn preferredRfc822Recipient ou c telephonenumber',
 		       '${preferredRfc822Recipient}', '${gn} ${sn}',
-		       '(${telephonenumber}) ${ou} ${c}' ];
+		       '(${telephonenumber}) ${ou} ${c}' ]
 );
 
 # hostname of your ldap server

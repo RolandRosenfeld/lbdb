@@ -101,9 +101,9 @@ sub process_file {
 	warn "couldn't run $file" unless $return;
       }
     }
-    else {
-      warn "either $file doesn't exist or is not readable by me!\n";
-    }
+#    else {
+#      warn "either $file doesn't exist or is not readable by me!\n";
+#    }
   }
 }
 
@@ -212,7 +212,8 @@ mutt_ldap_query.pl [options] <name_to_query> [[<other_name_to_query>] ...]
 
 specify an alternate ressource file other than the system ones
 (F<@sysconfdir@/lbdb_ldap.rc> or F<@sysconfdir@/mutt_ldap_query.rc>)
-or default personal ones (F<$HOME/.lbdb/ldap.rc> F<$HOME/.mutt_ldap_query.rc>).
+or default personal ones (F<$HOME/.lbdb/ldap.rc> or
+F<$HOME/.mutt_ldap_query.rc>).
 
 =item B<--server=ldap_server> or B<-ls ldap_server>
 
