@@ -1,0 +1,16 @@
+Source: lbdb
+Section: mail
+Priority: optional
+Maintainer: Roland Rosenfeld <roland@debian.org>
+Standards-Version: 2.4.0.0
+
+Package: lbdb
+Architecture: any
+Depends: ${shlibs:Depends}, mawk, mutt (>= 0.94.10) | mutt-i (>= 0.94.10i)
+Recommends: netstd 
+Suggests: procmail
+Description: The little brother's database for the mutt mail reader
+ This package consists of a set of small tools, which collect mail
+ addresses from mails you received and then offer these addresses as
+ well as data received using the finger command using mutt's external
+ query feature.

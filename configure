@@ -1023,43 +1023,85 @@ fi
 		
 
 
+DOTLOCK="no"
 # Extract the first word of "mutt.dotlock", so it can be a program name with args.
 set dummy mutt.dotlock; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1030: checking for $ac_word" >&5
-if eval "test \"`echo '$''{'ac_cv_path_DOTLOCK'+set}'`\" = set"; then
+echo "configure:1031: checking for $ac_word" >&5
+if eval "test \"`echo '$''{'ac_cv_path_DOTLOCKDOT'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
-  case "$DOTLOCK" in
+  case "$DOTLOCKDOT" in
   /*)
-  ac_cv_path_DOTLOCK="$DOTLOCK" # Let the user override the test with a path.
+  ac_cv_path_DOTLOCKDOT="$DOTLOCKDOT" # Let the user override the test with a path.
   ;;
   *)
   IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
   for ac_dir in `echo $PATH | sed "s/:/ /g"` $ac_dummy; do
     test -z "$ac_dir" && ac_dir=.
     if test -f $ac_dir/$ac_word; then
-      ac_cv_path_DOTLOCK="$ac_dir/$ac_word"
+      ac_cv_path_DOTLOCKDOT="$ac_dir/$ac_word"
       break
     fi
   done
   IFS="$ac_save_ifs"
-  test -z "$ac_cv_path_DOTLOCK" && ac_cv_path_DOTLOCK="no"
+  test -z "$ac_cv_path_DOTLOCKDOT" && ac_cv_path_DOTLOCKDOT="no"
   ;;
 esac
 fi
-DOTLOCK="$ac_cv_path_DOTLOCK"
-if test -n "$DOTLOCK"; then
-  echo "$ac_t""$DOTLOCK" 1>&6
+DOTLOCKDOT="$ac_cv_path_DOTLOCKDOT"
+if test -n "$DOTLOCKDOT"; then
+  echo "$ac_t""$DOTLOCKDOT" 1>&6
 else
   echo "$ac_t""no" 1>&6
 fi
 
-if test x$ac_cv_path_DOTLOCK = xno ; then
-	echo "ERROR: mutt.dotlock is required to build this package." >&2
+if ! test "x$ac_cv_path_DOTLOCKDOT" = "xno" ; then
+	DOTLOCK="$ac_cv_path_DOTLOCKDOT"
+fi
+
+# Extract the first word of "mutt_dotlock", so it can be a program name with args.
+set dummy mutt_dotlock; ac_word=$2
+echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
+echo "configure:1067: checking for $ac_word" >&5
+if eval "test \"`echo '$''{'ac_cv_path_DOTLOCKUSCORE'+set}'`\" = set"; then
+  echo $ac_n "(cached) $ac_c" 1>&6
+else
+  case "$DOTLOCKUSCORE" in
+  /*)
+  ac_cv_path_DOTLOCKUSCORE="$DOTLOCKUSCORE" # Let the user override the test with a path.
+  ;;
+  *)
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  for ac_dir in `echo $PATH | sed "s/:/ /g"` $ac_dummy; do
+    test -z "$ac_dir" && ac_dir=.
+    if test -f $ac_dir/$ac_word; then
+      ac_cv_path_DOTLOCKUSCORE="$ac_dir/$ac_word"
+      break
+    fi
+  done
+  IFS="$ac_save_ifs"
+  test -z "$ac_cv_path_DOTLOCKUSCORE" && ac_cv_path_DOTLOCKUSCORE="no"
+  ;;
+esac
+fi
+DOTLOCKUSCORE="$ac_cv_path_DOTLOCKUSCORE"
+if test -n "$DOTLOCKUSCORE"; then
+  echo "$ac_t""$DOTLOCKUSCORE" 1>&6
+else
+  echo "$ac_t""no" 1>&6
+fi
+
+if ! test "x$ac_cv_path_DOTLOCKUSCORE" = "xno" ; then
+	DOTLOCK="$ac_cv_path_DOTLOCKUSCORE"
+fi
+
+if test "x$DOTLOCK" = "xno" ; then
+	echo "ERROR: mutt.dotlock or mutt_dotlock is required to build this package." >&2
 	echo "ERROR: You can get it from the mutt package's source code." >&2
 	exit 1
 fi
+
 cat >> confdefs.h <<EOF
 #define DOTLOCK "$ac_cv_path_DOTLOCK"
 EOF
@@ -1075,7 +1117,7 @@ MODULES="m_inmail"
 # Extract the first word of "finger", so it can be a program name with args.
 set dummy finger; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1079: checking for $ac_word" >&5
+echo "configure:1121: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_path_FINGER'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1272,6 +1314,8 @@ s%@MAWK@%$MAWK%g
 s%@GAWK@%$GAWK%g
 s%@NAWK@%$NAWK%g
 s%@AWK@%$AWK%g
+s%@DOTLOCKDOT@%$DOTLOCKDOT%g
+s%@DOTLOCKUSCORE@%$DOTLOCKUSCORE%g
 s%@DOTLOCK@%$DOTLOCK%g
 s%@path_fetchaddr@%$path_fetchaddr%g
 s%@FINGER@%$FINGER%g

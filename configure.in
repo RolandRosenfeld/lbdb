@@ -74,12 +74,23 @@ fi
 		
 AC_SUBST(AWK)
 
-AC_PATH_PROG(DOTLOCK, mutt.dotlock, no, `echo $PATH | sed "s/:/ /g"` )
-if test x$ac_cv_path_DOTLOCK = xno ; then
-	echo "ERROR: mutt.dotlock is required to build this package." >&2
+DOTLOCK="no"
+AC_PATH_PROG(DOTLOCKDOT, mutt.dotlock, no, `echo $PATH | sed "s/:/ /g"` )
+if ! test "x$ac_cv_path_DOTLOCKDOT" = "xno" ; then
+	DOTLOCK="$ac_cv_path_DOTLOCKDOT"
+fi
+
+AC_PATH_PROG(DOTLOCKUSCORE, mutt_dotlock, no, `echo $PATH | sed "s/:/ /g"` )
+if ! test "x$ac_cv_path_DOTLOCKUSCORE" = "xno" ; then
+	DOTLOCK="$ac_cv_path_DOTLOCKUSCORE"
+fi
+
+if test "x$DOTLOCK" = "xno" ; then
+	echo "ERROR: mutt.dotlock or mutt_dotlock is required to build this package." >&2
 	echo "ERROR: You can get it from the mutt package's source code." >&2
 	exit 1
 fi
+
 AC_DEFINE_UNQUOTED(DOTLOCK, "$ac_cv_path_DOTLOCK")
 AC_SUBST(DOTLOCK)
 

@@ -18,7 +18,7 @@
 
 # $Id$
 
-m_inmail_db=$HOME/.lbdb/m_inmail
+m_inmail_db=$HOME/.lbdb/m_inmail.list
 
 m_inmail_query()
 {
