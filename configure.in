@@ -76,6 +76,10 @@ fi
 		
 AC_SUBST(AWK)
 
+AC_ARG_ENABLE(lbdb_dotlock,
+	[  --enable-lbdb-dotlock   Force use of lbdb_dotlock program],
+        [lbdb_cv_lbdb_dotlock="$enableval"])
+
 AC_PATH_PROG(DOTLOCK_OLD, mutt.dotlock, no)
 if test x$ac_cv_path_DOTLOCK_OLD = xno ; then
 	AC_PATH_PROG(DOTLOCK, mutt_dotlock, no)
@@ -83,7 +87,8 @@ else
 	ac_cv_path_DOTLOCK=$ac_cv_path_DOTLOCK_OLD
 fi
 
-if test x$ac_cv_path_DOTLOCK = xno ; then
+if test x$ac_cv_path_DOTLOCK = xno || test x$lbdb_cv_lbdb_dotlock = xyes
+then
 	DOTLOCK_TARGET="lbdb_dotlock"
 	AC_SUBST(DOTLOCK_TARGET)
 	DOTLOCK="$bindir"/lbdb_dotlock

@@ -9,8 +9,11 @@ lbdb (0.18.6) unstable; urgency=low
     <rcampbel@us.oracle.com>.
   * Add NIS support based on an idea by Ross Campbell
     <rcampbel@us.oracle.com>.
+  * Add --enable-lbdb-dotlock to configure options to force using of
+    lbdb_dotlock (instead of using mutt_dotlock) and use this option for
+    the Debian package (Closes: #58188).
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 30 Apr 2000 11:25:57 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 30 Apr 2000 15:58:55 +0200
 
 lbdb (0.18.5) unstable; urgency=low
 

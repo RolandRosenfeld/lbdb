@@ -14,7 +14,8 @@ build-stamp:
 		FINGER=/usr/bin/finger ABOOK=/usr/bin/abook \
 		YPCAT=/usr/bin/ypcat DOTLOCK=/usr/bin/mutt_dotlock \
 		./configure --prefix=/usr --libdir='$${prefix}/lib/lbdb' \
-			--mandir='$${prefix}/share/man' --sysconfdir=/etc
+			--mandir='$${prefix}/share/man' --sysconfdir=/etc \
+			--enable-lbdb-dotlock
 	$(MAKE) CFLAGS="-O2 -g -Wall"
 
 	touch build-stamp
