@@ -1,3 +1,10 @@
+lbdb (0.25.3) unstable; urgency=low
+
+  * m_finger: Suppress lines where real name is '???' (some versions of
+    finger seem to use this for non existing users) (Closes: #112127).
+
+ --
+
 lbdb (0.25.2) unstable; urgency=low
 
   * New version (1.10) of lbdb.el by Dave Pearson <davep@davep.org>:
