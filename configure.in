@@ -126,7 +126,7 @@ fi
 
 AC_PATH_PROG(ADDR_EMAIL, addr-email, "no")
 if test "x$ADDR_EMAIL" != xno ; then
-	MODULES="$MODULES m_abdr_emailook"
+	MODULES="$MODULES m_addr_email"
 	AC_SUBST(ADDR_EMAIL)
 fi
 

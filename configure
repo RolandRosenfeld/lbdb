@@ -1524,7 +1524,7 @@ else
 fi
 
 if test "x$ADDR_EMAIL" != xno ; then
-	MODULES="$MODULES m_abdr_emailook"
+	MODULES="$MODULES m_addr_email"
 	
 fi
 
