@@ -2,6 +2,7 @@
 #
 #     palm_lsaddr - Palm address database helper utility for lbdb
 #     Copyright (C) 2000 Dave Pearson <davep@davep.org>
+#               (C) 2003 Nikolaus Rath <Nikolaus@rath.org>
 #
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -43,26 +44,17 @@ if ( $#ARGV > -1 )
 
             if ( length( $name ) > 0 )
             {
-                my $phone;
+                my $entry;
 
-                # Any of the phone fields could contain an email address.
-                foreach $phone ( $record->{fields}{phone1},
-                                 $record->{fields}{phone2},
-                                 $record->{fields}{phone3},
-                                 $record->{fields}{phone4},
-                                 $record->{fields}{phone5} )
+                # Find fields containing e-mail addresses
+                for($entry=1; $entry <= 5; $entry++)
                 {
-                    # A phone field can also contain multiple lines.
-                    foreach $contact ( split( /\n/, $phone ) )
-                    {
-                        # Does it look like an email address?
-                        # (simply looking for an "@" is a bit lame but it's a
-                        # start, feel free to offer a better method of doing
-                        # the test)
-                        if ( $contact =~ /\@/ )
-                        {
-                            print "$contact\t$name\t(Palm)\n";
-                        }
+                    # 0 = Work, 1 = Home, 2 = Fax, 3 = Other, 4 = email,
+                    # 5 = Main, 6 = Pager, 7 = Mobile
+                    if($record->{phoneLabel}{"phone${entry}"} == 4) {
+                        # A field can also contain multiple lines.
+                        print map "$_\t$name\t(Palm)\n",
+                            split(/\n/, $record->{fields}{"phone${entry}"});
                     }
                 }
             }
