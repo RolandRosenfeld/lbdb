@@ -16,8 +16,9 @@ lbdb (0.23) unstable; urgency=low
     <rnspayne@adelphia.net>.
   * Remove dh_suidregister from debian/rules.
   * Update Debian package description.
+  * Upgrade lbdb.el to version 1.9 (Thanks Dave!).
 
- -- Roland Rosenfeld <roland@debian.org>  Tue, 23 Jan 2001 18:28:07 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 23 Jan 2001 18:33:45 +0100
 
 lbdb (0.22) unstable; urgency=low
 

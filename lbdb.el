@@ -12,20 +12,26 @@
 ;;
 ;; A number of commands are provided, they are:
 ;;
-;; `lbdb' : Perform an interactive LBDB query.
-;;
-;; `lbdb-region' : Query the LBDB for the content of the current region.
-;;
-;; `lbdb-maybe-region' : If a mark is active, search for the content of the
-;; region in the LBDB, otherwise perform an interactive query.
-;;
-;; `lbdb-last' : Recall and work with the results of the last query you
-;; performed.
+;; +-------------------+---------------------------------------------+
+;; |Function           |Description                                  |
+;; +-------------------+---------------------------------------------+
+;; | lbdb              |Perform an interactive query. You will be    |
+;; |                   |prompted for the text to search for.         |
+;; +-------------------+---------------------------------------------+
+;; | lbdb-region       |Perform a lbdb query using the content of the|
+;; |                   |currently marked region as the text to search|
+;; |                   |for.                                         |
+;; +-------------------+---------------------------------------------+
+;; | lbdb-maybe-region |If a mark is active do lbdb-region, if no    |
+;; |                   |mark is active do lbdb.                      |
+;; +-------------------+---------------------------------------------+
+;; | lbdb-last         |Recall and work with the results of the last |
+;; |                   |query you performed.                         |
+;; +-------------------+---------------------------------------------+
 ;;
 ;; The latest lbdb.el is always available from:
 ;;
-;;   <URL:http://www.hagbard.demon.co.uk/archives/lbdb.el>
-;;   <URL:http://www.acemake.com/hagbard/archives/lbdb.el>
+;;   <URL:http://www.davep.org/emacs/lbdb.el>
 
 ;;; BUGS:
 ;;
