@@ -6,7 +6,7 @@ ftp://riemann.iam.uni-bonn.de/pub/users/roessler/lbdb-0.11.tgz
 
 At the moment upstream version and Debian version are identical and
 can be found at
-http://www.spinnaker.de/debian/#lbdb
+http://www.spinnaker.de/lbdb/
 
 Upstream Author: Thomas Roessler <roessler@guug.de>
 Upstream Maintainer: Roland Rosenfeld <roland@spinnaker.de>
