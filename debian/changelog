@@ -1,3 +1,9 @@
+lbdb (0.13) unstable; urgency=low
+
+  * Upgraded lbdb.sl supplied by Thomas Roessler <roessler@guug.de>
+
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 17 Nov 1998 14:59:27 +0100
+
 lbdb (0.12) unstable; urgency=low
 
   * Debian maintainer took over the maintenance of the upstream packet.
