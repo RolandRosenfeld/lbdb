@@ -23,6 +23,7 @@
 # - m_pgp2	search your PGP 2.* keyring
 # - m_pgp5	search your PGP 5.* keyring
 # - m_gpg	search your GnuPG keyring
+# - m_fido	search the Fido nodelist converted by nodelist2lbdb(1)
 
 METHODS="m_inmail m_passwd m_finger"
 
