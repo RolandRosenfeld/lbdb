@@ -1,7 +1,5 @@
 dnl $Id$
 
-AC_REVISON($Revision$)dnl
-
 AC_INIT(fetchaddr.c)
 
 AC_MSG_CHECKING(for prefix)
