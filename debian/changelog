@@ -13,8 +13,11 @@ lbdb (0.25) unstable; urgency=low
     domain.
   * Change Build-Dependency to debhelper >=2.0.103, which is needed for
     dh_installlogrotate (Closes: #94471).
+  * Replace dh_testversion by versioned build-depends.
+  * Upgrade to Standards-Version 3.5.2 (no changes).
+  * Depend on mawk | awk to give apt a default.
 
- -- Roland Rosenfeld <roland@debian.org>  Thu, 19 Apr 2001 18:25:45 +0200
+ --
 
 lbdb (0.24) unstable; urgency=low
 
