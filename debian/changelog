@@ -1,3 +1,10 @@
+lbdb (0.20.1) unstable; urgency=low
+
+  * Fix name conflicts (m_palm_lsaddr now completely renamed to
+    palm_lsaddr).
+
+ -- Roland Rosenfeld <roland@debian.org>  Thu, 24 Aug 2000 04:14:05 +0200
+
 lbdb (0.20) unstable; urgency=low
 
   * Add emacs interface lbdb.el 1.2 by Dave Pearson <davep@davep.org> and
