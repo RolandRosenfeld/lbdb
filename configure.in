@@ -157,4 +157,4 @@ AC_SUBST(LBDB_VERSION)
 
 AC_SUBST(MODULES)
 AC_OUTPUT(Makefile lbdbq.sh munge.awk lbdb-fetchaddr.sh lbdb-munge.sh \
-	lbdb_lib.sh nodelist2lbdb.pl $MODULES_SH)
+	lbdb_lib.sh nodelist2lbdb.pl lbdb.spec $MODULES_SH)

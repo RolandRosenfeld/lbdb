@@ -1,13 +1,8 @@
 $Id$
 
 - Add new modules:
-    - extend m_passwd for NIS access (or create a separate module).
     - Add m_ldap for LDAP access.
     - Add m_pgp6 for PGP 6.5.1.
-
-- Make AWK=/usr/bin/awk the default for Debian (instead of
-  /usr/bin/mawk), because /usr/bin/awk is handled by the alternates
-  mechanism.
 
 - Have a deep look into the locking mechanism.  Over NFS dotlocking
   may not be enough, it should be combined with fcntl() (this should
@@ -17,7 +12,8 @@ $Id$
 
 - Find out why fetchaddr sometimes runs forever on Solaris 2.6.
 
-- Add manpage for configuration file lbdbrc(5) or something like this.
+- Add man page for configuration file lbdbrc(5) or something like
+  this.
 
 
 Roland Rosenfeld <roland@spinnaker.de>

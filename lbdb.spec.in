@@ -1,0 +1,88 @@
+%define ver      @LBDB_VERSION@
+%define rel      1
+%define prefix   /usr
+
+Summary: The Little Brother's Database
+Name: lbdb
+Version: %ver
+Release: %rel
+Copyright: GNU General Public Licence
+URL: http://www.spinnaker.de/lbdb/
+Packager: Horms <horms@vergenet.net>
+Vendor: Horms
+Group: Applications/Databases
+Source: http://www.spinnaker.de/debian/lbdb_%{ver}.tar.gz
+BuildRoot: /var/tmp/lbdb-%{PACKAGE_VERSION}-root
+Patch: lbdb-0.18.5.makefile.patch
+Docdir: %{prefix}/doc
+
+%description
+This package was inspired by the Big Brother Database package available for
+various Emacs mailers, and by Brandon Long's "external query" patch for the
+Mutt mail user agent. (Note that this patch has been incorporated into the
+main-line mutt versions as of mutt 0.93.)
+
+The package doesn't use any formal database libraries or languages,
+although it should be quite easy to extend it to use, e.g., an installed
+PostgreSQL server as it's back end.
+
+%prep
+%setup -n lbdb-%{ver}
+%patch -p1
+
+%build
+%configure
+
+#Funky NPROC code to speed things up courtesy of Red Hat's kernel rpm
+if [ -x /usr/bin/getconf ] ; then
+    NRPROC=$(/usr/bin/getconf _NPROCESSORS_ONLN)
+    if [ $NRPROC -eq 0 ] ; then
+        NRPROC=1
+    fi
+else
+    NRPROC=1
+fi
+NRPROC=`expr $NRPROC + $NRPROC`
+
+make -j $NRPROC
+
+%install
+rm -rf $RPM_BUILD_ROOT
+mkdir -p ${RPM_BUILD_ROOT}/%{prefix}/etc
+BUILD_ROOT=${RPM_BUILD_ROOT} make install
+
+#File finding code thanks to Samuel Flory of VA Linux Systems
+cd ${RPM_BUILD_ROOT}
+# Directories
+find . -type d | fgrep -v /doc/ | \
+  sed '1,2d;s,^\.,\%attr(-\,root\,root) \%dir ,' \
+  > ${RPM_BUILD_DIR}/lbdb-%{ver}-%{rel}.files
+# Files
+find . -type f | fgrep -v /doc/ | \
+  sed 's,^\.,\%attr(-\,root\,root) ,' \
+  >> ${RPM_BUILD_DIR}/lbdb-%{ver}-%{rel}.files
+# Symbolic links
+find . -type l | fgrep -v /doc/ | \
+  sed 's,^\.,\%attr(-\,root\,root) ,' \
+  >> ${RPM_BUILD_DIR}/lbdb-%{ver}-%{rel}.files
+
+
+
+%clean
+rm -rf ${RPM_BUILD_DIR}/lbdb-%{ver}
+rm -rf ${RPM_BUILD_ROOT}
+rm ${RPM_BUILD_DIR}/lbdb-%{ver}-%{rel}.files
+
+%post
+
+%postun
+
+%preun
+
+%files -f ../lbdb-%{ver}-%{rel}.files
+%doc README COPYING
+
+
+%changelog
+* Mon Apr 10 2000 Horms <horms@vergenet.net>
+- created for version 0.18.5
