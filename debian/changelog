@@ -1,3 +1,10 @@
+lbdb (0.12) unstable; urgency=low
+
+  * Debian maintainer took over the maintenance of the upstream packet.
+  * lbdbq manpage moved to main packet.
+
+ -- Roland Rosenfeld <roland@debian.org>  Wed, 11 Nov 1998 17:34:01 +0100
+
 lbdb (0.11-3) unstable; urgency=low
 
   * Fixed /tmp security problem (mkdir -p returns 0 on existing dir)
@@ -25,8 +32,3 @@ lbdb (0.10-1) unstable; urgency=low
   * m_inmail database renamed.
 
  -- Roland Rosenfeld <roland@debian.org>  Mon, 12 Oct 1998 01:31:38 +0200
-
-Local variables:
-mode: debian-changelog
-add-log-mailing-address: "roland@debian.org"
-End:

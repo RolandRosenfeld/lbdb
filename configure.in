@@ -3,7 +3,7 @@ dnl -*-sh-mode-*-
 
 AC_INIT(fetchaddr.c)
 VERSION="0"
-SUBVERSION="11"
+SUBVERSION="12"
 
 AC_SUBST(VERSION)
 AC_SUBST(SUBVERSION)
