@@ -21,7 +21,7 @@
 
 m_wanderlust_query()
 {
-    $addresses=${HOME}/.addresses
+    addresses=${HOME}/.addresses
 
     if [ -f $addesses ]
     then
