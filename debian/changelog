@@ -5,8 +5,7 @@ lbdb (0.25) unstable; urgency=low
   * Add m_ldap and mutt_ldap_query provided by Marc de Courville,
     <marc@courville.org>.
   * lbdb-munge didn't honor SORT_OUTPUT when called from m_inmail, so
-    export this variable in m_inmail.  Thanks to Andrew Over <ajo@acm.org>
-    for porting and fixing this bug.
+    export this variable in m_inmail (Closes: #92767).
 
  -- Roland Rosenfeld <roland@debian.org>  Wed,  4 Apr 2001 18:40:22 +0200
 
