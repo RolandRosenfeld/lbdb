@@ -7,8 +7,10 @@ lbdb (0.23) unstable; urgency=low
     <rick@rickster.com>.
   * Always use /bin/sh as the shell on Debian systems, because Debian
     guarantees, that /bin/sh is a posix shell (Closes: #75475).
+  * Move /usr/share/doc/lbdb/override.Lintian to
+    /usr/share/lintian/overrides/lbdb.
 
- -- Roland Rosenfeld <roland@debian.org>  Tue, 24 Oct 2000 14:11:50 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Fri, 24 Nov 2000 21:13:43 +0100
 
 lbdb (0.22) unstable; urgency=low
 
