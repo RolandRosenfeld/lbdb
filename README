@@ -87,8 +87,8 @@ m_abook
        (http://www.linuxstart.com/~jheinonen/abook/), a text based
        address book application to search for addresses.
 
-Feel free to create your own modules to query LDAP servers, YP maps,
-and the like. m_finger should be a good example of how to do it.
+Feel free to create your own modules to query LDAP servers and the
+like.  m_finger should be a good example of how to do it.
 
 If you create your own modules or have other changes and feel that
 they could be helpful for others, don't hesitate to submit them to me
