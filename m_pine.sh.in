@@ -19,7 +19,7 @@
 #     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111, USA.
 #
 
-# m_pine v0.6 for lbdb by Gabor Fleischer <flocsy@mtesz.hu>
+# m_pine v0.7 for lbdb by Gabor Fleischer <flocsy@mtesz.hu>
 #
 # Two variabled can be set in lbdbrc: PINERC, PINE_ADDRESSBOOKS
 # Here comes the explanation what are they for:
@@ -33,8 +33,12 @@
 # 5. Make the query in the listed addressbooks
 #
 # Changelog:
+# 0.7: Fixed bugs:
+#	* Search was case sensitive. Now it's insensitive.
+#	* Lines with missing fields (i.e."nick<tab><tab>addr") were broken.
+#	* Default didn't work if address-books in pinercs were "".
 # 0.6: The .addressbook format's multi-line addresses are supported.
-# 0.5: Initial release
+# 0.5: Initial release.
 #
 
 m_pine_query()
@@ -52,48 +56,61 @@ m_pine_query()
 		addressbook=`\
 		    $AWK 'BEGIN {SPACE="";} \
 		    /^(global-)?address-book[ 	]*=/ { \
-			gsub("^(global-)?address-book[ 	]*=",""); \
+			sub("^(global-)?address-book[ 	]*=",""); \
 			while (/[ 	]*[^ 	]+[ 	]+([^ ,	]+)[ 	]*,/) { \
-			    gsub("[ 	]*[^ 	]+[ 	]+",""); \
-			    gsub("[ ,	].*",""); \
+			    sub("[ 	]*[^ 	]+[ 	]+",""); \
+			    sub("[ ,	].*",""); \
 			    printf("%s%s",SPACE,$0); \
 			    SPACE=" "; \
 			    getline; \
 			} \
-			gsub("[ 	]*[^ 	]+[ 	]+",""); \
-			gsub("[ 	].*",""); \
+			sub("[ 	]*[^ 	]+[ 	]+",""); \
+			sub("[ 	].*",""); \
 			printf("%s%s",SPACE,$0); \
 			SPACE=" "; \
 		    }' < $pinerc`
 	    fi
-	    addressbooks="$addressbook ${addressbooks# }"
+	    addressbooks="${addressbook# } ${addressbooks# }"
         done
     fi
-
     addressbooks="${PINE_ADDRESSBOOKS} ${addressbooks# }"
     addressbooks=${addressbooks# }
-    for file in ${addressbooks:-/etc/addressbook .addressbook} ; do
+    for file in ${addressbooks:=/etc/addressbook .addressbook} ; do
 	if [ $file = ${file#/} ] ; then
 	    file=$HOME/$file
 	fi
 	if [ -f $file ]
 	then
-	    $AWK -v find="$@" 'function out() { \
-		if (match(line,find)) {
-		    split(line,A,/	/); \
-		    if (A[5]=="") {CB=CE=""} else {CB=" [";CE="]"}; \
-		    printf "%s	%s	%s%s%s%s (pine)\n",A[3],A[2],A[1],CB,A[5],CE; \
+	    $AWK -v find="$@" '\
+	    function out() { \
+		if (match(tolower(line),low_find)) {
+		    #order: nick full addr fcc comm \
+		    R[1] = "^[^	]*"; \
+		    R[2] = "^[^	]*	[^	]*"; \
+		    R[3] = "^[^	]*	[^	]*	\(?[^	]*\)?"; \
+		    R[4] = "^[^	]*	[^	]*	[^	]*	[^	]*"; \
+		    R[5] = "^[^	]*	[^	]*	[^	]*	[^	]*	[^	]*"; \
+		    beg = 1; \
+		    for (i=1;i<=5;i++) { \
+			match(line,R[i]); \
+			A[i] = substr(line,beg,RLENGTH-beg+1); \
+			beg = RLENGTH+2; \
+		    } \
+		    if (match(A[3],/\(.*\)/)) {A[3] = substr(A[3],2,length(A[3])-2)} \
+		    if (A[5] != "") {A[5] = " [" A[5] "]"} \
+		    printf "%s	%s	%s%s (pine)\n",A[3],A[2],A[1],A[5]; \
 		} \
 	    } \
 	    BEGIN { \
 		FS="	"; \
+		low_find = tolower(find); \
 		getline; \
 		while (/^#DELETED/) {getline} ; \
 		line = $0 \
 	    } \
 	    $0 !~ /^#DELETED/ { \
-		if (/^[ ][ ][ ]/) { \
-		    gsub("[ ][ ][ ]",""); \
+		if (/^   /) { \
+		    gsub("   ",""); \
 		    line = line $0; \
 		} else { \
 		    out(); \
