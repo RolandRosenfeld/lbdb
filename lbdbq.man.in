@@ -63,7 +63,7 @@ Note that there
 defaults, so you should most
 probably modify these variables using constructs like this:
 .nf
-       MODULE_PATH="MODULE_PATH $HOME/lbdb_modules"
+       MODULE_PATH="$MODULE_PATH $HOME/lbdb_modules"
 .fi
 .PP
 Additionally, modules may have configuration variables of
