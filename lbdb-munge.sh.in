@@ -50,8 +50,14 @@ else
   exit 1
 fi
 
-$munge < $db > $db.$$.tmp
-mv -f $db.$$.tmp $db
-rm -f $db.dirty
+if $munge < $db > $db.$$.tmp 2>/dev/null
+then
+    # only move, if munge successful:
+    mv -f $db.$$.tmp $db
+    rm -f $db.dirty
+else
+    rm -f $db.$$.tmp
+    # maybe write a debug log here...
+fi
 
 $dotlock -u $db

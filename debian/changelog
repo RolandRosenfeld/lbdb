@@ -11,8 +11,9 @@ lbdb (0.22) unstable; urgency=low
       content of the current region.
   * Use sort without -u option, because duplicates are already removed by
     munge before.
+  * Do not overwrite m_inmail.list on munging, if file system is full.
 
- -- Roland Rosenfeld <roland@debian.org>  Tue, 17 Oct 2000 14:47:09 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 17 Oct 2000 17:32:58 +0200
 
 lbdb (0.21.1) unstable; urgency=low
 

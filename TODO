@@ -22,10 +22,6 @@ $Id$
   work as usual and the error messages (and debug informations) are
   written to the logfile (maybe ~/.lbdb/debug).
 
-- lbdb-fetchaddr/m_inmail: Add some mechanism to avoid to remove
-  m_inmail.list when the home partition is full or if you are over
-  quota.
-
 - lbdb-fetchaddr/m_inmail: Make the database file configurable.  This
   can be realized in lbdb-fetchaddr via a new option, while m_inmail
   needs a new lbdbrc-variable for this.
