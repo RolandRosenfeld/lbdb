@@ -19,8 +19,8 @@
 #     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111, USA.
 #
 
-# m_pine for lbdb v0.5 by Gabor Fleischer <flocsy@mtesz.hu>
-# Depends: grep sed awk
+# m_pine for lbdb v0.6 by Gabor Fleischer <flocsy@mtesz.hu>
+# Depends: awk
 #
 # Two variabled can be set in lbdbrc: PINERC, PINE_ADDRESSBOOKS
 # Here comes the explanation what are they for:
@@ -33,13 +33,14 @@
 #    PINE_ADDRESSBOOKS="/etc/addressbook .addressbook"
 # 5. Make the query in the listed addressbooks
 #
-# Known BUGS:
-# The .addressbook format has multi-line addresses. These are not supported
-# yet. Coming soon!
+# Changelog:
+# 0.6: The .addressbook format's multi-line addresses are supported.
+# 0.5: Initial release
+#
 
 m_pine_query()
 {
-    (which awk && which sed && which grep)>/dev/null || exit 1
+    which awk >/dev/null || exit 1
 #    echo "Searching pine-style addressbooks"
     addressbooks=
     if [ x$PINERC != xno ] ; then
@@ -76,9 +77,31 @@ m_pine_query()
 	fi
 	if [ -f $file ]
 	then
-	    grep -i "$@" $file \
-	    | grep -v '^(#DELETED|   )' \
-	    | sed 's/\([^	]*\)	\([^	]*\)	\([^	]*\)/\3	\2	alias \1 (pine)/'
+	    awk <$file -v find="$@" 'function out() { \
+		if (match(line,find)) {
+		    split(line,A,/	/); \
+		    if (A[5]=="") {CB=CE=""} else {CB=" [";CE="]"}; \
+		    printf "%s	%s	%s%s%s%s (pine)\n",A[3],A[2],A[1],CB,A[5],CE; \
+		} \
+	    } \
+	    BEGIN { \
+		FS="	"; \
+		getline; \
+		while (/^#DELETED/) {getline} ; \
+		line = $0 \
+	    } \
+	    $0 !~ /^#DELETED/ { \
+		if (/^[ ][ ][ ]/) { \
+		    gsub("[ ][ ][ ]",""); \
+		    line = line $0; \
+		} else { \
+		    out(); \
+		    line = $0; \
+		} \
+	    } \
+	    END { \
+		out() \
+	    }'
 	fi
     done
 }
