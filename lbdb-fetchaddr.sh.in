@@ -32,13 +32,9 @@ if ! $dotlock -r 10 -f $db ; then
   exit 1
 fi
 
-# horrible hack alert - maybe, it's time to switch to perl
-
-$fetchaddr | while read line ; do
-  addr=`echo "$line" | cut -f1 -d '	'`
-  grep -vi "^$addr	" $db > $db.tmp 2> /dev/null || true
-  echo "$line" >> $db.tmp
-  mv -f $db.tmp $db
-done
+if $fetchaddr >> $db ; then
+  @libdir@/munge < $db > $db.$$.tmp
+  mv -f $db.$$.tmp $db
+fi
 
 $dotlock -u $db
