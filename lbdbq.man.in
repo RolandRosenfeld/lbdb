@@ -108,7 +108,6 @@ file. It evaluates the local machine mail domain in the same way
 .B m_yppasswd
 This module searches for matching entries in the NIS password database
 using the command ``ypcat passwd''.
-.TP
 .B m_finger
 does.
 .TP
