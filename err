@@ -1,0 +1,155 @@
+Reading header line:
+  From 3umoelle@informatik.uni-hamburg.de Sat Aug 22 15:11:51 1998
+Checking against tag: `to:' No match!
+Checking against tag: `from:' No match!
+Checking against tag: `cc:' No match!
+Checking against tag: `resent-from:' No match!
+Checking against tag: `resent-to:' No match!
+Reading header line:
+  Return-Path: <3umoelle@informatik.uni-hamburg.de>
+Checking against tag: `to:' No match!
+Checking against tag: `from:' No match!
+Checking against tag: `cc:' No match!
+Checking against tag: `resent-from:' No match!
+Checking against tag: `resent-to:' No match!
+Reading header line:
+  Received: from sobolev.rhein.de (roessler@sobolev.rhein.de [193.175.27.50])
+Checking against tag: `to:' No match!
+Checking against tag: `from:' No match!
+Checking against tag: `cc:' No match!
+Checking against tag: `resent-from:' No match!
+Checking against tag: `resent-to:' No match!
+Reading header line:
+  Received: from sigtrap.guug.de
+Checking against tag: `to:' No match!
+Checking against tag: `from:' No match!
+Checking against tag: `cc:' No match!
+Checking against tag: `resent-from:' No match!
+Checking against tag: `resent-to:' No match!
+Reading header line:
+  Received: from public.uni-hamburg.de (public.rrz.uni-hamburg.de [134.100.32.55])
+Checking against tag: `to:' No match!
+Checking against tag: `from:' No match!
+Checking against tag: `cc:' No match!
+Checking against tag: `resent-from:' No match!
+Checking against tag: `resent-to:' No match!
+Reading header line:
+  Received: from paris.public.uni-hamburg.de (max1-050.public.uni-hamburg.de [134.100.43.50])
+Checking against tag: `to:' No match!
+Checking against tag: `from:' No match!
+Checking against tag: `cc:' No match!
+Checking against tag: `resent-from:' No match!
+Checking against tag: `resent-to:' No match!
+Reading header line:
+  Received: by ulf.mali.sub.org (Smail3.1.28.1 #1)
+Checking against tag: `to:' No match!
+Checking against tag: `from:' No match!
+Checking against tag: `cc:' No match!
+Checking against tag: `resent-from:' No match!
+Checking against tag: `resent-to:' No match!
+Reading header line:
+  Message-Id: <m0z9rgI-0003beC@ulf.mali.sub.org>
+Checking against tag: `to:' No match!
+Checking against tag: `from:' No match!
+Checking against tag: `cc:' No match!
+Checking against tag: `resent-from:' No match!
+Checking against tag: `resent-to:' No match!
+Reading header line:
+  Subject: Re: =?iso-8859-1?Q?DuD_11=2F98:_Thema_Anonymit=E4t?=
+Checking against tag: `to:' No match!
+Checking against tag: `from:' No match!
+Checking against tag: `cc:' No match!
+Checking against tag: `resent-from:' No match!
+Checking against tag: `resent-to:' No match!
+Reading header line:
+  To: roessler@guug.de (Thomas Roessler)
+Checking against tag: `to:' Match!
+Reading header line:
+  Date: Fri, 21 Aug 1998 15:56:41 +0200 (+0200)
+Checking against tag: `to:' No match!
+Checking against tag: `from:' No match!
+Checking against tag: `cc:' No match!
+Checking against tag: `resent-from:' No match!
+Checking against tag: `resent-to:' No match!
+Reading header line:
+  Cc: lutz@iks-jena.de
+Checking against tag: `to:' No match!
+Checking against tag: `from:' No match!
+Checking against tag: `cc:' Match!
+Reading header line:
+  In-Reply-To: <19980820225611.A10705@sobolev.rhein.de> from "Thomas Roessler" at Aug 20, 98 10:56:11 pm
+Checking against tag: `to:' No match!
+Checking against tag: `from:' No match!
+Checking against tag: `cc:' No match!
+Checking against tag: `resent-from:' No match!
+Checking against tag: `resent-to:' No match!
+Reading header line:
+  From: 3umoelle@informatik.uni-hamburg.de (Ulf =?iso-8859-1?Q?M=F6ller?=)
+Checking against tag: `to:' No match!
+Checking against tag: `from:' Match!
+Reading header line:
+  X-Mailer: PGP-ELM [version 2.4 PL23]
+Checking against tag: `to:' No match!
+Checking against tag: `from:' No match!
+Checking against tag: `cc:' No match!
+Checking against tag: `resent-from:' No match!
+Checking against tag: `resent-to:' No match!
+Reading header line:
+  MIME-Version: 1.0
+Checking against tag: `to:' No match!
+Checking against tag: `from:' No match!
+Checking against tag: `cc:' No match!
+Checking against tag: `resent-from:' No match!
+Checking against tag: `resent-to:' No match!
+Reading header line:
+  Content-Type: text/plain; charset=US-ASCII
+Checking against tag: `to:' No match!
+Checking against tag: `from:' No match!
+Checking against tag: `cc:' No match!
+Checking against tag: `resent-from:' No match!
+Checking against tag: `resent-to:' No match!
+Reading header line:
+  Content-Transfer-Encoding: 7bit
+Checking against tag: `to:' No match!
+Checking against tag: `from:' No match!
+Checking against tag: `cc:' No match!
+Checking against tag: `resent-from:' No match!
+Checking against tag: `resent-to:' No match!
+Reading header line:
+  X-UIDL: 287e59c2fdf311e4880120eb9712b81c
+Checking against tag: `to:' No match!
+Checking against tag: `from:' No match!
+Checking against tag: `cc:' No match!
+Checking against tag: `resent-from:' No match!
+Checking against tag: `resent-to:' No match!
+Reading header line:
+  Status: RO
+Checking against tag: `to:' No match!
+Checking against tag: `from:' No match!
+Checking against tag: `cc:' No match!
+Checking against tag: `resent-from:' No match!
+Checking against tag: `resent-to:' No match!
+Reading header line:
+  Content-Length: 456
+Checking against tag: `to:' No match!
+Checking against tag: `from:' No match!
+Checking against tag: `cc:' No match!
+Checking against tag: `resent-from:' No match!
+Checking against tag: `resent-to:' No match!
+Reading header line:
+  Lines: 12
+Checking against tag: `to:' No match!
+Checking against tag: `from:' No match!
+Checking against tag: `cc:' No match!
+Checking against tag: `resent-from:' No match!
+Checking against tag: `resent-to:' No match!
+Checking header: `to:'
+Value: ` roessler@guug.de (Thomas Roessler)'
+Checking header: `from:'
+Value: ` 3umoelle@informatik.uni-hamburg.de (Ulf =?iso-8859-1?Q?M=F6ller?=)'
+Checking header: `cc:'
+Value: ` lutz@iks-jena.de'
+Checking header: `resent-from:'
+Value: `(null)'
+Checking header: `resent-to:'
+Value: `(null)'
