@@ -110,7 +110,7 @@ AC_SUBST(DOTLOCKBASE)
 path_fetchaddr="$libdir/fetchaddr"
 AC_SUBST(path_fetchaddr)
 
-MODULES="m_inmail m_passwd"
+MODULES="m_inmail m_passwd m_muttalias"
 
 AC_PATH_PROG(FINGER, finger, "no")
 if test "x$FINGER" != xno ; then

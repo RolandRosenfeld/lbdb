@@ -87,6 +87,14 @@ m_abook
        (http://www.linuxstart.com/~jheinonen/abook/), a text based
        address book application to search for addresses.
 
+m_muttalias
+       This module searches the variable MUTTALIAS_FILES (a space
+       separated list) of files in MUTT_DIRECTORY that contain mutt
+       aliases.  File names without leading slash will have
+       MUTT_DIRECTORY (defaults to $HOME/.mutt or $HOME, if
+       $HOME/.mutt does not exist) prepended before the file name.
+       Absolute file names (beginning with /) will be taken direct.
+
 Feel free to create your own modules to query LDAP servers and the
 like.  m_finger should be a good example of how to do it.
 

@@ -1,3 +1,10 @@
+lbdb (0.19.3) unstable; urgency=low
+
+  * Add new module m_muttalias, provided by Brian Salter-Duke
+    <b_duke@lacebark.ntu.edu.au> to search mutt alias files for aliases.
+
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 27 May 2000 14:47:17 +0200
+
 lbdb (0.19.2) unstable; urgency=low
 
   * Give the dateformat to fetchaddr(1) using the -d option (instead of

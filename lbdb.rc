@@ -26,6 +26,7 @@
 # - m_gpg	search your GnuPG keyring
 # - m_fido	search the Fido nodelist converted by nodelist2lbdb(1)
 # - m_abook	query abook(1), the text based address book application.
+# - m_muttalias search $MUTTALIAS_FILES for aliases.
 
 METHODS="m_inmail m_passwd m_finger"
 
@@ -35,6 +36,17 @@ METHODS="m_inmail m_passwd m_finger"
 # (a space separated list):
 #
 #M_FINGER_HOSTS="master.debian.org va.debian.org localhost"
+
+
+# - m_muttalias      query set of mutt alias files.
+#
+# Set MUTTALIAS_FILES below to list of files in MUTT_DIRECTORY that
+# contain mutt aliases. File names without leading slash will have
+# $MUTT_DIRECTORY (defaults to $HOME/.mutt or $HOME, if ~/.mutt does
+# not exist) prepended before the file name. Absolute file names
+# (beginning with /) will be taken direct.
+#MUTT_DIRECTORY="$HOME/.mutt"
+#MUTTALIAS_FILES=".muttrc .mail_aliases muttrc aliases"
 
 
 #

@@ -130,6 +130,24 @@ created by
 This module uses the program
 .BR abook (1),
 a text based address book application to search for addresses.
+.TP
+.BR m_muttalias
+This module searches the variable
+.B MUTTALIAS_FILES
+(a space separated list) of files in 
+.B MUTT_DIRECTORY
+that contain mutt aliases.  File names without leading slash will have
+.B MUTT_DIRECTORY
+(defaults to 
+.BI $HOME /.mutt
+or
+.BR $HOME ,
+if
+.BI $HOME /.mutt
+does not exist) prepended before the file name.  Absolute file names
+(beginning with 
+.IR / )
+will be taken direct.
 .PP
 Feel free to create your own modules to query LDAP servers, YP maps,
 and the like. 
@@ -175,7 +193,8 @@ Print short help of lbdbq.
 .BR mutt (1),
 .BR lbdb-fetchaddr (1),
 .BR nodelist2lbdb (1),
-.BR abook (1).
+.BR abook (1),
+.BR mutt (1).
 .SH CREDITS
 Most of the really interesting code of this program (namely, the RFC
 822 address parser used by lbdb-fetchaddr) was stolen from Michael
