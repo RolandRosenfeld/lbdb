@@ -27,6 +27,7 @@ clean:
 	rm -f build-stamp install-stamp
 
 	-$(MAKE) distclean
+	rm -f lbdb.spec
 
 	dh_clean
 
