@@ -76,6 +76,15 @@ fi
 		
 AC_SUBST(AWK)
 
+AC_PATH_PROG(TAC, tac, NONE)
+if test "x$TAC" = "xNONE"; then
+	TACTARGET="tac"
+	AC_SUBST(TACTARGET)
+	TACAWK="tac.awk"
+	TAC="$libdir/tac"
+fi	
+AC_SUBST(TAC)
+
 AC_ARG_ENABLE(lbdb_dotlock,
 	[  --enable-lbdb-dotlock   Force use of lbdb_dotlock program],
         [lbdb_cv_lbdb_dotlock="$enableval"])
@@ -156,5 +165,6 @@ LBDB_VERSION=`sed -e '2,10000d;s/^.*(\(.*\)).*$/\1/' < debian/changelog`
 AC_SUBST(LBDB_VERSION)
 
 AC_SUBST(MODULES)
-AC_OUTPUT(Makefile lbdbq.sh munge.awk lbdb-fetchaddr.sh lbdb-munge.sh \
-	lbdb_lib.sh nodelist2lbdb.pl lbdb.spec $MODULES_SH)
+AC_OUTPUT(Makefile lbdbq.sh munge.awk munge-keeporder.awk lbdb-fetchaddr.sh \
+	lbdb-munge.sh lbdb_lib.sh nodelist2lbdb.pl lbdb.spec $MODULES_SH \
+	$TACAWK lbdb.spec)

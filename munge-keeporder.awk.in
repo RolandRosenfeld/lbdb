@@ -1,8 +1,9 @@
-#! @SH@
+#! @AWK@
 #
-# -*-sh-*-
+# -*-awk-*-
 #
-#     Copyright (C) 1999-2000  Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 1998-2000  Thomas Roessler <roessler@guug.de>
+#                        2000  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -20,38 +21,21 @@
 #
 # $Id$
 
-LBDB_VERSION=@LBDB_VERSION@
+BEGIN {
+    FS = "\t";
+    i = 0;
+}
 
-umask 077
+{
+    line[$1] = $0;
+    pos[$1] = i;
+    idx[i++] = $1;
+}
 
-prefix=@prefix@
-exec_prefix=@exec_prefix@
-dotlock=@DOTLOCK@
-fetchaddr=@libdir@/fetchaddr
-db=$HOME/.lbdb/m_inmail.list
-
-if [ "$SORT_OUTPUT" = "false" -o "$SORT_OUTPUT" = "no" ]
-then
-    munge=@libdir@/munge
-else
-    munge=@libdir@/munge-keeporder
-fi
-
-if [ ! -f $db.dirty ]; then
-    # Nothing to do
-    exit 0
-fi
-
-if $dotlock -r 10 -f $db
-then
-  : # okay, do nothing
-else
-  echo "Can't lock $db [dotlock returned $rv]." >&2
-  exit 1
-fi
-
-$munge < $db > $db.$$.tmp
-mv -f $db.$$.tmp $db
-rm -f $db.dirty
-
-$dotlock -u $db
+END {
+    for (j = 0; j < i; j++) {
+	if (pos[idx[j]] == j) {
+	    print line[idx[j]];
+	}
+    }
+}

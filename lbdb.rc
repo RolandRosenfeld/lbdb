@@ -42,3 +42,12 @@ METHODS="m_inmail m_passwd m_finger"
 # (a space separated list):
 #
 #MODULES_PATH="/usr/lib/lbdb $HOME/.lbdb/modules"
+
+
+#
+# Do you want the output to be sorted by mail addresses?
+# If you set this to "false" or "no", lbdbq won't sort the addresses 
+# alphabetically by email address but returns them in reverse order (which 
+# means that the most recent address in m_inmail database is first):
+#
+#SORT_OUTPUT=false

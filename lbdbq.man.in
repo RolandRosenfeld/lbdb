@@ -15,7 +15,7 @@
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc.,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 .\"
-.TH LBDBQ 1 "April 2000" "Unix" "User Manuals"
+.TH LBDBQ 1 "May 2000" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -55,8 +55,17 @@ a space separated list of directories, where
 .B lbdbq
 should look for modules.
 .TP
-.B  METHODS
+.B METHODS
 a space separated list of the modules to use.
+.TP
+.B SORT_OUTPUT
+If you set this to 
+.I false
+or 
+.IR no ,
+lbdbq won't sort the addresses alphabetically by email address but
+returns them in reverse order (which means that the most recent
+address in m_inmail database is first).
 .PP
 Note that there 
 .I are

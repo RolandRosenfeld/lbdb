@@ -26,6 +26,7 @@ INSTALL=@INSTALL@
 MODULES=@MODULES@
 DOTLOCKBASE=@DOTLOCKBASE@
 DOTLOCK_TARGET=@DOTLOCK_TARGET@
+TACTARGET=@TACTARGET@
 PERL=@PERL@
 
 prefix=@prefix@
@@ -37,8 +38,8 @@ mandir=@mandir@
 sysconfdir=@sysconfdir@
 
 ALL=Makefile lbdbq lbdb_lib lbdb-fetchaddr lbdb-munge fetchaddr munge \
-	nodelist2lbdb lbdbq.man lbdb-fetchaddr.man nodelist2lbdb.man \
-	$(MODULES) $(DOTLOCK_TARGET)
+	munge-keeporder	nodelist2lbdb lbdbq.man lbdb-fetchaddr.man \
+	nodelist2lbdb.man $(MODULES) $(DOTLOCK_TARGET) $(TACTARGET)
 
 all: $(ALL)
 
@@ -53,6 +54,7 @@ install: all
 	$(INSTALL) -m 755 lbdb-munge $(libdir)
 	$(INSTALL) -m 755 lbdb_lib $(libdir)
 	$(INSTALL) -m 755 munge $(libdir)
+	$(INSTALL) -m 755 munge-keeporder $(libdir)
 	if [ "$(PERL)" != "no" ]; then \
 		$(INSTALL) -m 755 nodelist2lbdb $(bindir); \
 		$(INSTALL) -m 644 nodelist2lbdb.man \
@@ -65,6 +67,9 @@ install: all
 	if [ "$(DOTLOCK_TARGET)" != "" ]; then \
 		$(INSTALL) -m 755 lbdb_dotlock $(bindir); \
 		$(INSTALL) -m 644 dotlock.man $(mandir)/man1/lbdb_dotlock.1; \
+	fi
+	if [ "$(TACTARGET)" != "" ]; then \
+		$(INSTALL) -m 755 tac $(libdir)/tac; \
 	fi
 
 fetchaddr: $(srcdir)/fetchaddr.o $(srcdir)/rfc822.o $(srcdir)/helpers.o  \
@@ -85,12 +90,21 @@ lbdb_dotlock: $(srcdir)/dotlock.o $(srcdir)/helpers.o
 
 dotlock.o: $(srcdir)/dotlock.h $(srcdir)/dotlock.c
 
-munge: munge.awk
+tac: $(srcdir)/tac.awk
+	cat tac.awk > $@
+	chmod a+x $@
+
+munge: $(srcdir)/munge.awk
 	cat munge.awk > $@
 	chmod a+x $@
 
+munge-keeporder: $(srcdir)/munge-keeporder.awk
+	cat munge-keeporder.awk > $@
+	chmod a+x $@
+
 clean:
-	-rm -f *.o *~ $(ALL) munge.awk nodelist2lbdb.pl lbdb_dotlock
+	-rm -f *.o *~ $(ALL) munge.awk munge-keeporder.awk tac.awk \
+		nodelist2lbdb.pl lbdb_dotlock
 
 distclean: clean
 	-rm -f config.status config.cache config.log Makefile

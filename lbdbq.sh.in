@@ -1,6 +1,6 @@
 #! @SH@
-
-#     Copyright (C) 1998  Thomas Roessler <roessler@guug.de>
+#
+#     Copyright (C) 1998-2000  Thomas Roessler <roessler@guug.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 #     You should have received a copy of the GNU General Public License
 #     along with this program; if not, write to the Free Software
 #     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111, USA.
-
+#
 # $Id$
 
 LBDB_VERSION=@LBDB_VERSION@
@@ -29,6 +29,7 @@ sysconfdir=@sysconfdir@
 
 METHODS="@MODULES@"
 MODULES_PATH=@libdir@
+TAC=@TAC@
 
 case "$1" in
     -v) echo "lbdbq version $LBDB_VERSION"
@@ -71,4 +72,10 @@ for method in $METHODS ; do
 done
 
 echo
-$libdir/munge $collection | sort -uf
+
+if [ "$SORT_OUTPUT" = "false" -o "$SORT_OUTPUT" = "no" ]
+then
+    $libdir/munge $collection | sort -uf
+else
+    $libdir/munge-keeporder $collection | $TAC
+fi

@@ -1,8 +1,8 @@
-#! @SH@
+#! @AWK@
 #
-# -*-sh-*-
+# -*-awk-*-
 #
-#     Copyright (C) 1999-2000  Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 2000  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -19,39 +19,19 @@
 #     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111, USA.
 #
 # $Id$
+#
+# Output file in reverse order 
 
-LBDB_VERSION=@LBDB_VERSION@
+BEGIN {
+    i = 0;
+}
 
-umask 077
+{
+    line[i++] = $0;
+}
 
-prefix=@prefix@
-exec_prefix=@exec_prefix@
-dotlock=@DOTLOCK@
-fetchaddr=@libdir@/fetchaddr
-db=$HOME/.lbdb/m_inmail.list
-
-if [ "$SORT_OUTPUT" = "false" -o "$SORT_OUTPUT" = "no" ]
-then
-    munge=@libdir@/munge
-else
-    munge=@libdir@/munge-keeporder
-fi
-
-if [ ! -f $db.dirty ]; then
-    # Nothing to do
-    exit 0
-fi
-
-if $dotlock -r 10 -f $db
-then
-  : # okay, do nothing
-else
-  echo "Can't lock $db [dotlock returned $rv]." >&2
-  exit 1
-fi
-
-$munge < $db > $db.$$.tmp
-mv -f $db.$$.tmp $db
-rm -f $db.dirty
-
-$dotlock -u $db
+END {
+    for (i-- ; i>=0; i--) {
+	print line[i];
+    }
+}
