@@ -1,4 +1,4 @@
-lbdb (0.20) unstable; urgency=low
+lbdb (0.19.1) unstable; urgency=low
 
   * Correct dependencies:
     - No longer depend on mutt (only suggest it), we use lbdb_dotlock now,
