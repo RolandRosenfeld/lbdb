@@ -80,7 +80,7 @@ lbdb-query: $(srcdir)/lbdb-query.sh
 nodelist2lbdb: $(srcdir)/nodelist2lbdb.pl
 	cat nodelist2lbdb.pl > $@
 
-lbdb_dotlock: $(srcdir)/dotlock.o
+lbdb_dotlock: $(srcdir)/dotlock.o $(srcdir)/helpers.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $? -o $@
 
 dotlock.o: $(srcdir)/dotlock.h $(srcdir)/dotlock.c
