@@ -1,9 +1,11 @@
 lbdb (0.19.5) unstable; urgency=low
 
+  * Remove "-f" option from configure @AWK@ variable and manually add it,
+    where it is needed, otherwise @AWK@ cannot be used for inline scripts.
   * Add new module m_pine, provided by Gabor FLEISCHER <flocsy@mtesz.hu>
     to search pine address books.
 
- -- Roland Rosenfeld <roland@debian.org>  Thu, 22 Jun 2000 12:33:35 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Thu, 22 Jun 2000 12:38:47 +0200
 
 lbdb (0.19.4) unstable; urgency=low
 
