@@ -78,6 +78,7 @@ query: $(srcdir)/query.sh
 lbdb-query: $(srcdir)/lbdb-query.sh
 
 nodelist2lbdb: $(srcdir)/nodelist2lbdb.pl
+	cat nodelist2lbdb.pl > $@
 
 lbdb_dotlock: $(srcdir)/dotlock.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $? -o $@
