@@ -1,3 +1,13 @@
+lbdb (0.15) unstable; urgency=low
+
+  * Added new modules:
+    - m_passwd: looks into /etc/passwd for addresses
+    - m_pgp2:   scans your PGP 2.* keyring for addresses
+    - m_pgp5:   scans your PGP 5.* keyring for addresses
+    - m_gpg:    scans your GnuPG keyring for addresses   
+
+ -- Roland Rosenfeld <roland@debian.org>  Mon, 15 Feb 1999 13:47:46 +0100
+
 lbdb (0.14.1) frozen unstable; urgency=low
 
   * Fixed wrong mawk path (/usr/bin//mawk instead of /usr/bin/mawk)
