@@ -175,6 +175,13 @@ if test "x$PERL" != xno ; then
 	AC_SUBST(PERL)
 fi
 
+AC_PATH_PROG(PBXBUILD, pbxbuild, "no")
+if test "x$PBXBUILD" != xno ; then
+	# m_osx_addressbook builds only on OS X with the Developer tools installed
+	MODULES="$MODULES m_osx_addressbook"
+	AC_SUBST(PBXBUILD)
+fi
+
 MODULES_SH=""
 for i in $MODULES ; do
 	MODULES_SH="$MODULES_SH $i.sh"
@@ -186,4 +193,4 @@ AC_SUBST(LBDB_VERSION)
 AC_SUBST(MODULES)
 AC_OUTPUT(Makefile lbdbq.sh munge.awk munge-keeporder.awk lbdb-fetchaddr.sh \
 	lbdb-munge.sh lbdb_lib.sh nodelist2lbdb.pl palm_lsaddr.pl \
-	mutt_ldap_query.pl lbdb.spec $MODULES_SH $TACAWK lbdb.spec lbdb.rc)
+	mutt_ldap_query.pl $MODULES_SH $TACAWK lbdb.spec lbdb.rc)

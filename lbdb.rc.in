@@ -36,6 +36,7 @@
 # - m_bbdb	 search your BBDB (big brother database).
 # - m_ldap       query an LDAP server 
 # - m_wanderlust search your wanderlust ~/.addresses file.
+# - m_osx_addressbook  search the OS X addressbook (only available on OS X).
 
 METHODS="m_inmail m_passwd m_finger"
 

@@ -158,7 +158,10 @@ m_wanderlust
        This module searches for addresses stored in your
        $WANDERLUST_ADDRESSES (or by default in $HOME/.addresses) file,
        an addressbook of WanderLust.
-       
+
+m_osx_addressbook
+       This module queries the OS X AddressBook.  It is only available
+       on OS X systems.
 
 Feel free to create your own modules to query other kinds of
 databases.  m_finger should be a good example of how to do it.
@@ -184,6 +187,7 @@ for putting the query functionality into mutt.
 Many thanks to the authors of the several modules and extensions:
 - Ross Campbell <rcampbel@us.oracle.com>           (m_abook, m_yppasswd)
 - Marc de Courville <marc@courville.org>           (m_ldap, mutt_ldap_query)
+- Brendan Cully <brendan@kublai.com>		   (m_osx_addressbook)
 - Gabor Fleischer <flocsy@mtesz.hu>                (m_pine)
 - Rick Frankel <rick@rickster.com>		   (m_gnomecard)
 - Utz-Uwe Haus <haus@uuhaus.de>			   (m_bbdb, m_nispasswd)

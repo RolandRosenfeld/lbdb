@@ -17,7 +17,7 @@
 .\"
 .\" $Id$
 .\"
-.TH LBDBQ 1 "February 2003" "Unix" "User Manuals"
+.TH LBDBQ 1 "March 2003" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -271,6 +271,10 @@ This module searches for addresses stored in your
 .IR $HOME/.addresses )
 file, an addressbook of
 .BR WanderLust .
+.TP
+.BR m_osx_addressbook
+This module queries the OS X AddressBook.  It is only available on OS
+X systems.
 .PP
 Feel free to create your own modules to query other database resources,
 YP maps, and the like.
@@ -338,6 +342,7 @@ for putting the query functionality into mutt.
 Many thanks to the authors of the several modules and extensions:
 Ross Campbell <rcampbel@us.oracle.com> (m_abook, m_yppasswd),
 Marc de Courville <marc@courville.org> (m_ldap, mutt_ldap_query),
+Brendan Cully <brendan@kublai.com> (m_osx_addressbook),
 Gabor Fleischer <flocsy@mtesz.hu> (m_pine),
 Rick Frankel <rick@rickster.com> (m_gnomecard),
 Utz-Uwe Haus <haus@uuhaus.de> (m_bbdb, m_nispasswd),
