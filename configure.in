@@ -22,7 +22,7 @@ dnl If we are runnin bash right now, BASH is set.
 unset BASH
 
 if test "x$SH" = xNONE ; then
-	AC_PATH_PROG(BASH, bash, NONE, `echo $PATH | sed "s/:/ /g"`)
+	AC_PATH_PROG(BASH, bash, NONE)
 	if test ! "x$BASH" = xNONE ; then
 		if $BASH -posix -c true ; then
 			SH="$BASH -posix"
@@ -34,7 +34,7 @@ if test "x$SH" = xNONE ; then
 fi
 
 if test "x$SH" = xNONE ; then
-	AC_PATH_PROG(KSH, ksh, NONE, `echo $PATH | sed "s/:/ /g"`)
+	AC_PATH_PROG(KSH, ksh, NONE)
 	if test ! "x$KSH" = xNONE ; then
 		SH="$KSH"
 		echo "Using $SH".
@@ -42,7 +42,7 @@ if test "x$SH" = xNONE ; then
 fi
 
 if test "x$SH" = xNONE ; then
-	AC_PATH_PROG(BINSH, sh, NONE, `echo $PATH | sed "s/:/ /g"`)
+	AC_PATH_PROG(BINSH, sh, NONE)
 	if test "x$BINSH" = xNONE; then
 		echo "ERROR: Can't find sh." >&2
 		exit 1
@@ -53,9 +53,9 @@ fi
 
 AC_SUBST(SH)
 
-AC_PATH_PROG(MAWK, mawk, NONE, `echo $PATH | sed "s/:/ /g"`)
-AC_PATH_PROG(GAWK, gawk, NONE, `echo $PATH | sed "s/:/ /g"`)
-AC_PATH_PROG(NAWK, nawk, NONE, `echo $PATH | sed "s/:/ /g"`)
+AC_PATH_PROG(MAWK, mawk, NONE)
+AC_PATH_PROG(GAWK, gawk, NONE)
+AC_PATH_PROG(NAWK, nawk, NONE)
 
 if test "x$NAWK" != "xNONE" ; then
 	AWK="$NAWK -f"
@@ -71,9 +71,9 @@ fi
 		
 AC_SUBST(AWK)
 
-AC_PATH_PROG(DOTLOCK_OLD, mutt.dotlock, no, `echo $PATH | sed "s/:/ /g"` )
+AC_PATH_PROG(DOTLOCK_OLD, mutt.dotlock, no)
 if test x$ac_cv_path_DOTLOCK_OLD = xno ; then
-	AC_PATH_PROG(DOTLOCK, mutt_dotlock, no, `echo $PATH | sed "s/:/ /g"`)
+	AC_PATH_PROG(DOTLOCK, mutt_dotlock, no)
 else
 	ac_cv_path_DOTLOCK=$ac_cv_path_DOTLOCK_OLD
 fi
@@ -94,25 +94,25 @@ AC_SUBST(path_fetchaddr)
 MODULES="m_inmail m_passwd"
 
 
-AC_PATH_PROG(FINGER, finger, "no", `echo $PATH | sed "s/:/ /g"`)
+AC_PATH_PROG(FINGER, finger, "no")
 if test "x$FINGER" != xno ; then
 	MODULES="$MODULES m_finger"
 	AC_SUBST(FINGER)
 fi
 
-AC_PATH_PROG(GPG, gpg, "no", `echo $PATH | sed "s/:/ /g"`)
+AC_PATH_PROG(GPG, gpg, "no")
 if test "x$GPG" != xno ; then
 	MODULES="$MODULES m_gpg"
 	AC_SUBST(GPG)
 fi
 
-AC_PATH_PROG(PGPK, pgpk, "no", `echo $PATH | sed "s/:/ /g"`)
+AC_PATH_PROG(PGPK, pgpk, "no")
 if test "x$PGPK" != xno ; then
 	MODULES="$MODULES m_pgp5"
 	AC_SUBST(PGPK)
 fi
 
-AC_PATH_PROG(PGP, pgp, "no", `echo $PATH | sed "s/:/ /g"`)
+AC_PATH_PROG(PGP, pgp, "no")
 if test "x$PGP" != xno ; then
 	MODULES="$MODULES m_pgp2"
 	AC_SUBST(PGP)

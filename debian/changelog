@@ -1,10 +1,12 @@
 lbdb (0.17.1) unstable; urgency=low
 
   * Upgraded autoconf from 2.12 to 2.13.
+    Get rid of `echo $PATH | sed "s/:/ /g"` in AC_PATH_PROC() macro,
+    because this isn't needed and doesn't work with autoconf 2.13.
   * Removed word boundary check in m_inmail, because this is only
     available in GNU grep.
 
- -- Roland Rosenfeld <roland@debian.org>  Tue, 25 May 1999 15:40:33 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 25 May 1999 15:53:53 +0200
 
 lbdb (0.17) unstable; urgency=low
 
