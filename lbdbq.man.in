@@ -43,7 +43,7 @@ The behavior is configurable: Upon startup,
 .B lbdbq
 will source the shell scripts:
 .RS
-.I /etc/lbdb.rc
+.I @sysconfdir@/lbdb.rc
 .br
 .I $HOME/.lbdbrc
 .br
@@ -74,7 +74,7 @@ probably modify these variables using constructs like this:
 Additionally, modules may have configuration variables of
 their own.
 .SH MODULES
-Currently, two modules are supplied with lbdb:
+Currently, the following modules are supplied with lbdb:
 .TP
 .B m_finger
 This module will use finger to find out something more about a person.
@@ -108,6 +108,21 @@ small C program which grabs that message's "From:" header.
 will then construct an address list out of these data. This list is
 stored under 
 .IR $HOME/.lbdb/m_inmail.list .
+.TP
+.B m_passwd
+This module searches for matching entries in your local /etc/passwd
+file. It evaluates the local machine mail domain in the same way 
+.B m_finger
+does.
+.TP
+.BR m_pgp2 ", " m_pgp5 ", " m_gpg
+These modules scan your PGP 2.*, PGP 5.* or GnuPG public key ring for
+data. They use the programs
+.BR pgp (1),
+.BR pgpk (1),
+or
+.BR gpg (1)
+to get the data.
 .PP
 Feel free to create your own modules to query LDAP servers, YP maps,
 and the like. 
@@ -126,7 +141,7 @@ from mutt, add the following line to your
         set query_command="lbdbq '%s'"
 .fi
 .SH FILES
-.I /etc/lbdb.rc
+.I @sysconfdir@/lbdb.rc
 .br
 .I $HOME/.lbdbrc
 .br
@@ -139,6 +154,9 @@ from mutt, add the following line to your
 .I $HOME/.lbdb/m_inmail.list
 .SH "SEE ALSO"
 .BR finger (1),
+.BR pgp (1),
+.BR pgpk (1),
+.BR gpg (1),
 .BR mutt (1),
 .BR procmail (1),
 .BR procmailrc (5)
