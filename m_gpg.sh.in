@@ -23,7 +23,7 @@
 
 m_gpg_query()
 {
-    @GPG@ --list-keys 2>/dev/null \
+    @GPG@ --list-keys --no-greeting \
     | grep '<.*@.*>' \
-    | sed -e 's/^.\{30,30\}\(.*\) <\([^:]*\)>/\2	\1	GnuPG/'
+    | sed -e 's/^.\{30,30\}\(.*\) <\([^:]*\)>.*$/\2	\1	GnuPG/'
 }
