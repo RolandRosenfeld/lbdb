@@ -1,3 +1,13 @@
+lbdb (0.19.2) unstable; urgency=low
+
+  * Give the dateformat to fetchaddr(1) using the -d option (instead of
+    simply using argv[1]).
+  * Give the dateformat to lbdb-fetchaddr(1) using the -d option.  If
+    there is only one parameter, this is used as dateformat for backward
+    compatibility.  Manpage adapted to this.
+
+ -- Roland Rosenfeld <roland@debian.org>  Wed, 10 May 2000 16:56:19 +0200
+
 lbdb (0.19.1) unstable; urgency=low
 
   * Correct dependencies:

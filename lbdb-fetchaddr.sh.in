@@ -1,7 +1,8 @@
 #! @SH@
-# -*-sh-mode-*-
-#     Copyright (C) 1998  Thomas Roessler <roessler@guug.de>
-#                   1999  Roland Rosenfeld <roland@spinnaker.de>
+#
+# -*-sh-*-
+#     Copyright (C) 1998-2000  Thomas Roessler <roessler@guug.de>
+#                   1999-2000  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -16,7 +17,7 @@
 #     You should have received a copy of the GNU General Public License
 #     along with this program; if not, write to the Free Software
 #     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111, USA.
-
+#
 # $Id$
 
 LBDB_VERSION=@LBDB_VERSION@
@@ -29,18 +30,50 @@ dotlock=@DOTLOCK@
 fetchaddr=@libdir@/fetchaddr
 db=$HOME/.lbdb/m_inmail.list
 
-datefmt=${*:-'%Y-%m-%d %H:%M'}
+datefmt='%Y-%m-%d %H:%M'
 
-case "$1" in
-    -v) echo "lbdb-fetchaddr version $LBDB_VERSION"
+usage() {
+    echo "Usage: $0 [OPTIONS]"
+    echo "       dig addresses from stdin with formatted timestamp"
+    echo "Options:"
+    echo "       -v                 print version of lbdbq"
+    echo "       -h                 this short help"
+    echo "       -d 'dateformat'    select date format using strftime(3)"
+}
+
+while [ $# -gt 0 ]
+do
+    case "$1" in
+    -v) 
+	echo "lbdb-fetchaddr version $LBDB_VERSION"
 	exit 0
 	break;;
-    -h) echo "Usage: $0 ['dateformat']  dig addresses with formatted timestamp"
-	echo "       $0 -v              print version of lbdbq"
-	echo "       $0 -h              this short help"
+    -h) 
+	usage
 	exit 0
 	break;;
-esac
+    -d)
+	if [ $# -gt 1 ]
+	then
+	    shift
+	    datefmt="$1"
+	fi
+	break;;
+    *)
+	if [ $# -eq 1 ]
+	then
+	    # backward compatibility:
+	    # only one parameter means, that this is the selected datefmt
+	    datefmt="$1"
+	else
+	    echo "Wrong number of parameters!"
+	    usage
+	    exit 1
+	fi
+	break;;
+    esac
+    shift
+done
 
 if [ ! -f $db ]; then
   dbdir=`dirname $db`
@@ -66,7 +99,7 @@ else
   exit 1
 fi
 
-if $fetchaddr "$datefmt" >> $db ; then
+if $fetchaddr -d "$datefmt" >> $db ; then
   touch $db.dirty
 fi
 

@@ -101,7 +101,23 @@ int main(int argc, char* argv[])
   int i, rv;
   int partial = 0;
   struct header *cur_hdr = NULL;
-  char* datefmt;
+  char* datefmt = NULL;
+
+  /* process command line arguments: */
+  if (argc > 1) {
+    i = 1;
+    while (i < argc) {
+      if (!strcmp (argv[i], "-d") && i+1 < argc) {
+	datefmt = argv[++i];
+      } else {
+	fprintf (stderr, "%s: `%s' wrong parameter\n", argv[0], argv[i]);
+      }
+      i++;
+    }
+  }
+
+  if (!datefmt) 
+    datefmt = safe_strdup("%Y-%m-%d %H:%M");
 
   while(fgets(buff, sizeof(buff), stdin))
   {
@@ -144,12 +160,6 @@ int main(int argc, char* argv[])
       partial = 1;
     else
       partial = 0;
-  }
-
-  if (argc == 1) {
-    datefmt = safe_strdup("%Y-%m-%d %H:%M");
-  } else {
-    datefmt = argv[1];
   }
 
   for(rv = 0, i = 0; hdr[i].tag; i++)
