@@ -33,12 +33,15 @@ MODULES_PATH=@libdir@
 TAC=@TAC@
 
 case "$1" in
-    -v) echo "lbdbq version $LBDB_VERSION"
+    -v|--version)
+	echo "lbdbq version $LBDB_VERSION"
 	exit 0
 	break;;
-    -h) echo "Usage: $0 'something'    search addresses matching 'something'"
-	echo "       $0 -v             print version of lbdbq"
-	echo "       $0 -h             this short help"
+    -h|--help)
+	PROG=`basename $0`
+	echo "Usage: $PROG 'something'   search addresses matching 'something'"
+	echo "       $PROG -v|--version  print version of lbdbq"
+	echo "       $PROG -h|--help     this short help"
 	exit 0
 	break;;
 esac

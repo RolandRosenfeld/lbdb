@@ -17,7 +17,7 @@
 .\"
 .\" $Id$
 .\"
-.TH LBDBQ 1 "February 2002" "Unix" "User Manuals"
+.TH LBDBQ 1 "April 2002" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -25,7 +25,7 @@ lbdbq \- query program for the little brother's database
 .I something
 .br
 .B lbdbq
-.RB [ -v | -h ]
+.RB [ -v | --version | -h | --help ]
 .SH DESCRIPTION
 .B lbdbq
 is the client program for the little brother's database. It will
@@ -284,9 +284,9 @@ from mutt, add the following line to your
     set query_command="lbdbq '%s'"
 .fi
 .SH OPTIONS
-.IP -v
+.IP "-v | --version"
 Print version number of lbdbq.
-.IP -h
+.IP "-h | --help"
 Print short help of lbdbq.
 .SH FILES
 .I @sysconfdir@/lbdb.rc
@@ -342,6 +342,6 @@ Gergely Nagy <algernon@debian.org> (m_wanderlust),
 Dave Pearson <davep@davep.org> (m_palm, lbdb.el), and
 Brian Salter-Duke <b_duke@lacebark.ntu.edu.au> (m_muttalias).
 .SH AUTHOR
-The lbdb package was written by Thomas Roessler <roessler@guug.de> and
-is now maintained and extended by Roland Rosenfeld
-<roland@spinnaker.de>.
+The lbdb package was initially written by Thomas Roessler
+<roessler@guug.de> and is now maintained and heavily extended by
+Roland Rosenfeld <roland@spinnaker.de>.

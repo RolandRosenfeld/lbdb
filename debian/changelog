@@ -1,8 +1,9 @@
 lbdb (0.26.1) unstable; urgency=low
 
   * Rebuild configure with autoconf 2.52.
+  * Add long options --version and --help to ldbdq and man page.
 
- -- Roland Rosenfeld <roland@spinnaker.de>  Wed, 13 Feb 2002 21:12:31 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 30 Apr 2002 14:32:53 +0200
 
 lbdb (0.26) unstable; urgency=low
 
