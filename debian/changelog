@@ -4,8 +4,10 @@ lbdb (0.19.5) unstable; urgency=low
     where it is needed, otherwise @AWK@ cannot be used for inline scripts.
   * Add new module m_pine, provided by Gabor FLEISCHER <flocsy@mtesz.hu>
     to search pine address books.
+  * Fixed m_muttalias to additionally accept "foo@bar (Foo Bar)" style
+    addresses and to ignore group aliases.
 
- -- Roland Rosenfeld <roland@debian.org>  Thu, 22 Jun 2000 12:38:47 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Fri, 23 Jun 2000 12:09:32 +0200
 
 lbdb (0.19.4) unstable; urgency=low
 

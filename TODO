@@ -15,6 +15,12 @@ $Id$
 - Add man page for configuration file lbdbrc(5) or something like
   this.
 
+- lbdbq: write some information about lbdbq and/or the used databases
+  into the header line (at the moment this line is left empty).
+
+- lbdbq should abort with non-zero exist code and a one line error
+  messsage, if nothing matches (at the moment it returns 0).
+
 
 Roland Rosenfeld <roland@spinnaker.de>
 
