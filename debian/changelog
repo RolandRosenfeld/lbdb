@@ -1,4 +1,4 @@
-lbdb (0.16) unstable; urgency=low
+lbdb (0.15.1) unstable; urgency=low
 
   * m_passwd: give UID in comment field.
   * m_gpg: now only return addresses which match query. Closes #33672.
