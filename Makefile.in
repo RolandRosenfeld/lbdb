@@ -68,7 +68,7 @@ install: all
 		$(INSTALL) -m 644 mutt_ldap_query.man \
 			$(install_prefix)$(mandir)/man1/mutt_ldap_query.1; \
 		$(INSTALL) -m 644 lbdb_ldap.rc \
-			$(install_prefix)$(sysconfdir)/lbdb_ldap.rc
+			$(install_prefix)$(sysconfdir)/lbdb_ldap.rc; \
 	fi
 	for i in $(MODULES); do \
 		$(INSTALL) -m 755 $$i $(install_prefix)$(libdir); \
