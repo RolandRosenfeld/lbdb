@@ -24,6 +24,6 @@
 m_passwd_query()
 {
     HOST="`lbdb_hostname`"
-    sed -e "s/^\([^:]*\):[^:]*:[^:]*:[^:]*:\([^:,]*\)[,:].*\$/\1@$HOST	\2	passwd/" /etc/passwd \
+    sed -e "s/^\([^:]*\):[^:]*:[^:]*:[^:]*:\([^:,]*\)[,:].*\$/\1@$HOST	\2	(passwd)/" /etc/passwd \
     | grep -i "$1"
 }
