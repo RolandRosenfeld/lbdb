@@ -131,7 +131,7 @@ int main(int argc, char* argv[])
     i = 0;
     while ( i < MAXHDRS-1 && (next = strchr (fieldname, ':'))) {
       hdr[i].tag = safe_malloc (next - fieldname + 2);
-      strfcpy (hdr[i].tag, fieldname, next - fieldname);
+      strncpy (hdr[i].tag, fieldname, next - fieldname);
       hdr[i].tag[next - fieldname] = ':';
       hdr[i].tag[next - fieldname + 1] = '\0';
       hdr[i].taglen = next - fieldname + 1;
@@ -141,7 +141,7 @@ int main(int argc, char* argv[])
     
     if (i < MAXHDRS-1 && *fieldname != '\0') {
       hdr[i].tag = safe_malloc (strlen (fieldname) + 2);
-      strfcpy (hdr[i].tag, fieldname, strlen (fieldname));
+      strncpy (hdr[i].tag, fieldname, strlen (fieldname));
       hdr[i].tag[strlen (fieldname)] = ':';
       hdr[i].tag[strlen (fieldname) + 1] = '\0';
       hdr[i].taglen = strlen (fieldname) + 1;
