@@ -45,7 +45,7 @@ m_gnomecard_query ()
 	fi
 	if [ -z "$GNOMECARD_FILES" ]
 	then
-	    GNOMECARD_FILES=".gnome/GnomeCard.gcrd"
+	    GNOMECARD_FILES="$HOME/.gnome/GnomeCard.gcrd"
 	fi
     fi
     
