@@ -9,7 +9,7 @@
 # This is the debhelper compatibility version to use.
 export DH_COMPAT=2
 
-DROOT=`pwd`/debian/bsmtpd
+DROOT=`pwd`/debian/lbdb
 
 DEBUGSYMS=
 ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
