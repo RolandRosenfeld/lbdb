@@ -15,4 +15,4 @@
                                                (symbol-name flavor)
                                                "/site-lisp/lbdb"))))
 
-(autoload 'lbdb "lbdb" "Query the little brother database" t)
+(autoload 'lbdb "lbdb" "Query the Little Brother's Database" t)

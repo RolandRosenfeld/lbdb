@@ -1,6 +1,6 @@
 lbdb (0.20) unstable; urgency=low
 
-  * Add emacs interface lbdb.el 1.1 by Dave Pearson <davep@davep.org> and
+  * Add emacs interface lbdb.el 1.2 by Dave Pearson <davep@davep.org> and
     install it on Debian systems.
   * Add m_palm module and palm_lsaddr by Dave Pearson <davep@davep.org>.
   * Update package description in debian/control file.
@@ -12,7 +12,7 @@ lbdb (0.20) unstable; urgency=low
     directory where it is placed itself for accessing some helper
     applications.
 
- -- Roland Rosenfeld <roland@debian.org>  Mon, 21 Aug 2000 14:51:41 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Mon, 21 Aug 2000 15:46:02 +0200
 
 lbdb (0.19.9) unstable; urgency=low
 

@@ -1,4 +1,4 @@
-;;; lbdb.el - Little brother database interface.
+;;; lbdb.el - Little Brother's Database interface.
 ;; Copyright 2000 by Dave Pearson <davep@davep.org>
 ;; $Revision$
 
@@ -7,8 +7,21 @@
 
 ;;; Commentary:
 ;;
-;; lbdb.el is an emacs interface to the little brother database. You can
-;; find out more about lbdb at <URL:http://www.spinnaker.de/lbdb/>.
+;; lbdb.el is an emacs interface to the Little Brother's Database. You can
+;; find out more about LBDB at <URL:http://www.spinnaker.de/lbdb/>.
+;;
+;; Two commands are provided, `lbdb' and `lbdb-last'. `lbdb' lets to perform
+;; an interactive query on the lbdb while `lbdb-last' allows you to recall
+;; and work with the results of the last query you performed.
+;;
+;; The latest lbdb.el is always available from:
+;;
+;;   <URL:http://www.hagbard.demon.co.uk/archives/lbdb.el>
+;;   <URL:http://www.acemake.com/hagbard/archives/lbdb.el>
+
+;;; BUGS:
+;;
+;; o Mouse selection doesn't work in XEmacs.
 
 ;;; INSTALLATION:
 ;;
@@ -17,7 +30,7 @@
 ;;
 ;; o Add the following autoload statement to your ~/.emacs file:
 ;;
-;;   (autoload 'lbdb "lbdb" "Query the little brother database" t)
+;;   (autoload 'lbdb "lbdb" "Query the Little Brother's Database" t)
 
 ;;; Code:
 
@@ -28,21 +41,30 @@
 
 ;; Attempt to handle older/other emacs.
 (eval-and-compile
+  
   ;; If customize isn't available just use defvar instead.
   (unless (fboundp 'defgroup)
     (defmacro defgroup  (&rest rest) nil)
     (defmacro defcustom (symbol init docstring &rest rest)
-      `(defvar ,symbol ,init ,docstring))))
+      `(defvar ,symbol ,init ,docstring)))
+
+  ;; If `line-end-position' isn't available provide one.
+  (unless (fboundp 'line-end-position)
+    (defun line-end-position ()
+      "Return the `point' of the end of the current line."
+      (save-excursion
+        (end-of-line)
+        (point)))))
 
 ;; Customize options.
 
 (defgroup lbdb nil
-  "Little brother database interface"
+  "Little Brother's Database interface"
   :group  'external
   :prefix "lbdb-")
 
 (defcustom lbdb-query-command "lbdbq"
-  "*Command for querying the little brother database."
+  "*Command for querying the Little Brother's Database."
   :type 'string
   :group 'lbdb)
 
@@ -80,10 +102,18 @@ current buffer."
   :type  'function
   :group 'lbdb)
 
+(defcustom lbdb-mouse-select-action 'lbdb-insert-full
+  "*Pointer to the function that is called when mouse-2 is pressed."
+  :type  '(choice
+           (const :tag "Insert the name/address combination" lbdb-insert-full)
+           (const :tag "Insert only the email address"       lbdb-insert-address)
+           (const :tag "Insert only the name"                lbdb-insert-name))
+  :group 'lbdb)
+
 ;; Constants.
 
 (defconst lbdb-buffer-name "*lbdb*"
-  "Name of the little brother database buffer.")
+  "Name of the Little Brother's Database buffer.")
 
 ;; Non-customize variables.
 
@@ -131,12 +161,7 @@ The return value is a list, the component parts of that list are:
 
 Where ADDRESS is the email address, NAME is the name associated with that
 email address and METHOD is the method lbdbq used to find that address."
-  (split-string (buffer-substring-no-properties
-                 (point)
-                 (save-excursion
-                   (end-of-line)
-                   (point)))
-                "\t"))
+  (split-string (buffer-substring-no-properties (point) (line-end-position)) "\t"))
 
 (defun lbdb-buffer-to-list ()
   "Convert the current buffer into a lbdb result list.
@@ -167,10 +192,19 @@ The type of sort is controlled by `lbdb-sort-display'."
 
 ;;;###autoload
 (defun lbdb (query)
-  "Interactively query the little brother database."
+  "Interactively query the Little Brother's Database."
   (interactive "sQuery: ")
-  (let* ((results (lbdbq query (interactive-p)))
-         (format  (lbdb-generate-format-string results)))
+  (lbdb-present-results (lbdbq query (interactive-p))))
+
+;;;###autoload
+(defun lbdb-last ()
+  "Recall and use the results of the last successful query."
+  (interactive)
+  (lbdb-present-results lbdb-results))
+
+(defun lbdb-present-results (results)
+  "Present the results in a buffer and allow the user to interact with them."
+  (let ((format (lbdb-generate-format-string results)))
     (if results
         (progn
           (setq lbdb-results results)
@@ -180,23 +214,25 @@ The type of sort is controlled by `lbdb-sort-display'."
           (let ((buffer-read-only nil))
             (setf (buffer-string) "")
             (loop for line in results
-                  do (insert
-                      (format format (lbdb-name line) (lbdb-email line) (lbdb-method line))
-                      "\n")))
+                  do (let ((start (point)))
+                       (insert
+                        (format format (lbdb-name line) (lbdb-email line) (lbdb-method line))
+                        "\n")
+                       (put-text-property start (1- (point)) 'mouse-face 'highlight))))
           (setf (point) (point-min))
           (lbdb-mode))
-      (error "No matches found in the little brother database"))))
+      (error "No matches found in the Little Brother's Database"))))
 
 (defun lbdbq (query &optional interactive)
-  "Query the little brother database and return a list of results."
+  "Query the Little Brother's Database and return a list of results."
   (with-temp-buffer
     (when interactive
-      (message "Querying the little brother database..."))
+      (message "Querying the Little Brother's Database..."))
     (call-process lbdb-query-command nil (current-buffer) nil (format "\"%s\"" query))
     (prog1
         (lbdb-sort (lbdb-buffer-to-list))
       (when interactive
-        (message "Querying the little brother database...done")))))
+        (message "Querying the Little Brother's Database...done")))))
 
 ;; lbdb mode.
 
@@ -208,6 +244,7 @@ The type of sort is controlled by `lbdb-sort-display'."
     (define-key map [return]      #'lbdb-insert-full)
     (define-key map "q"           #'lbdb-mode-quit)
     (define-key map [(control g)] #'lbdb-mode-quit)
+    (define-key map [mouse-2]     #'lbdb-mouse-select)
     (define-key map "?"           #'describe-mode)
     (setq lbdb-mode-map map)))
 
@@ -263,6 +300,12 @@ TYPE dictates what will be inserted, options are:
              ('full    (funcall lbdb-full-format-function line)))))
       (error "No details on that line"))
     line))
+
+(defun lbdb-mouse-select (event)
+  "Select the entry under the mouse click."
+  (interactive "e")
+  (setf (point) (posn-point (event-end event)))
+  (funcall lbdb-mouse-select-action))
 
 (defmacro lbdb-make-inserter (type)
   "Macro to make a key-response function for use in `lbdb-mode-map'."
