@@ -35,21 +35,21 @@ my $ldap_server_nickname = '';
 my $config_file = '';
 
 # hostname of your ldap server
-my $ldap_server = 'ldap.four11.com';
+our $ldap_server = 'ldap.four11.com';
 # ldap base search
-my $search_base = 'c=US';
+our $search_base = 'c=US';
 # list of the fields that will be used for the query
-my $ldap_search_fields = 'givenname sn cn';
+our $ldap_search_fields = 'givenname sn cn';
 # list of the fields that will be used for composing the answer
-my $ldap_expected_answers = 'givenname sn mail o';
+our $ldap_expected_answers = 'givenname sn mail o';
 # format of the email result based on the expected answers of the ldap query
-my $ldap_result_email = '${mail}';
+our $ldap_result_email = '${mail}';
 # format of the realname result based on the expected answers of the ldap query
-my $ldap_result_realname = '${givenname} ${sn}';
+our $ldap_result_realname = '${givenname} ${sn}';
 # format of the comment result based on the expected answers of the ldap query
-my $ldap_result_comment = '(${o})';
+our $ldap_result_comment = '(${o})';
 
-my %ldap_server_db = (
+our %ldap_server_db = (
   'four11'		=> ['ldap.four11.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
   'infospace'		=> ['ldap.infospace.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
   'whowhere'		=> ['ldap.whowhere.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
