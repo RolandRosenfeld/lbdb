@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 1996-8 Michael R. Elkins <me@cs.hmc.edu>
- * Copyright (C) 1998-9 Thomas Roessler <roessler@guug.de>
+ * Copyright (C) 1996-2000 Michael R. Elkins <me@cs.hmc.edu>
+ * Copyright (C) 1998-2000 Thomas Roessler <roessler@guug.de>
  * 
  *     This program is free software; you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -57,9 +57,9 @@ static int Retry = MAXLOCKATTEMPT;
 static char *Hostname;
 
 static int dotlock_deference_symlink (char *, size_t, const char *);
-static int dotlock_prepare (char *, size_t, const char *);
+static int dotlock_prepare (char *, size_t, const char *, int fd);
 static int dotlock_check_stats (struct stat *, struct stat *);
-static int dotlock_dispatch (const char *);
+static int dotlock_dispatch (const char *, int fd);
 
 static void usage (const char *);
 
@@ -116,11 +116,11 @@ int main (int argc, char **argv)
   if (optind == argc || Retry < 0)
     usage (argv[0]);
 
-  return dotlock_dispatch (argv[optind]);
+  return dotlock_dispatch (argv[optind], -1);
 }
 
 
-static int dotlock_dispatch (const char *f)
+static int dotlock_dispatch (const char *f, int fd)
 {
   char realpath[_POSIX_PATH_MAX];
 
@@ -135,7 +135,7 @@ static int dotlock_dispatch (const char *f)
    * lengthy comment below.
    */
 
-  if (dotlock_prepare (realpath, sizeof (realpath), f) != 0)
+  if (dotlock_prepare (realpath, sizeof (realpath), f, fd) != 0)
     return DL_EX_ERROR;
 
   /* Actually perform the locking operation. */
@@ -251,7 +251,7 @@ dotlock_check_stats (struct stat *fsb, struct stat *lsb)
 }
 
 static int
-dotlock_prepare (char *bn, size_t l, const char *f)
+dotlock_prepare (char *bn, size_t l, const char *f, int _fd)
 {
   struct stat fsb, lsb;
   char realpath[_POSIX_PATH_MAX];
@@ -282,12 +282,16 @@ dotlock_prepare (char *bn, size_t l, const char *f)
   
   if (chdir (dirname) == -1)
     return -1;
-  
-  if ((fd = open (basename, O_RDONLY)) == -1)
+
+  if (_fd != -1)
+    fd = _fd;
+  else if ((fd = open (basename, O_RDONLY)) == -1)
     return -1;
   
   r = fstat (fd, &fsb);
-  close (fd);
+  
+  if (_fd == -1)
+    close (fd);
   
   if (r == -1)
     return -1;
@@ -406,8 +410,9 @@ dotlock_lock (const char *realpath)
   struct stat sb;
   time_t t;
   
-  sprintf (nfslockfile, "%s.%s.%d", realpath, Hostname, (int) getpid ());
-  sprintf (lockfile, "%s.lock", realpath);
+  snprintf (nfslockfile, sizeof (nfslockfile), "%s.%s.%d",
+	   realpath, Hostname, (int) getpid ());
+  snprintf (lockfile, sizeof (lockfile), "%s.lock", realpath);
 
   
   unlink (nfslockfile);
@@ -487,7 +492,8 @@ dotlock_unlock (const char *realpath)
   char lockfile[_POSIX_PATH_MAX + LONG_STRING];
   int i;
 
-  sprintf (lockfile, "%s.lock", realpath);
+  snprintf (lockfile, sizeof (lockfile), "%s.lock",
+	   realpath);
   
   i = unlink (lockfile);
   
