@@ -44,7 +44,7 @@
 		       'cn mail sn fn uid',
 		       'cn fn sn mail business_group telephonenumber',
 		       '${mail}', '${fn} ${sn}',
-		       '(${telephonenumber}) ${business_group}' ,
+		       '(${telephonenumber}) ${business_group}' ],
   'motorola'       => ['ldap.mot.com', 'ou=employees, o=Motorola,c=US',
 		       'commonName gn sn cn uid',
 		       'gn sn preferredRfc822Recipient ou c telephonenumber',
