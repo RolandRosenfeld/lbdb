@@ -15,7 +15,7 @@
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc.,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 .\"
-.TH LBDBQ 1 "May 2000" "Unix" "User Manuals"
+.TH LBDBQ 1 "June 2000" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -148,6 +148,30 @@ does not exist) prepended before the file name.  Absolute file names
 (beginning with 
 .IR / )
 will be taken direct.
+.TP
+.BR m_pine
+This module searches
+.BR pine (1)
+addressbook files for aliases.  To realize this it first inspects the
+variable
+.BR PINERC .
+If it isn't set, the default 
+.RI ` "/etc/pine.conf /etc/pine.conf.fixed .pinerc" '
+is used.  To suppress inspecting the
+.B PINERC
+variable, set it to
+.IR no .
+It than takes all 
+.B address-book
+and
+.B global-address-book
+entries from these pinerc files and adds the contents of the variable
+.B PINE_ADDRESSBOOKS
+to the list, which defaults to
+.RI ` "/etc/addressbook .addressbook" '.
+Then these addressbooks are searched for aliases.  All filenames
+without leading slash are searched in
+.BR $HOME .
 .PP
 Feel free to create your own modules to query LDAP servers, YP maps,
 and the like. 
@@ -194,7 +218,8 @@ Print short help of lbdbq.
 .BR lbdb-fetchaddr (1),
 .BR nodelist2lbdb (1),
 .BR abook (1),
-.BR mutt (1).
+.BR mutt (1),
+.BR pine (1).
 .SH CREDITS
 Most of the really interesting code of this program (namely, the RFC
 822 address parser used by lbdb-fetchaddr) was stolen from Michael

@@ -95,6 +95,17 @@ m_muttalias
        $HOME/.mutt does not exist) prepended before the file name.
        Absolute file names (beginning with /) will be taken direct.
 
+m_pine This  module searches pine(1) addressbook files for
+       aliases. To realize this it first inspects the variable PINERC.
+       If it isn't set, the default `/etc/pine.conf
+       /etc/pine.conf.fixed .pinerc' is used. To suppress inspecting
+       the PINERC variable, set it to "no". It than takes all
+       address-book and global-address-book entries from these pinerc
+       files and adds the contents of the variable PINE_ADDRESSBOOKS
+       to the list, which defaults to `/etc/addressbook .addressbook'.
+       Then these addressbooks are searched for aliases. All filenames
+       without leading slash are searched in $HOME.
+
 Feel free to create your own modules to query LDAP servers and the
 like.  m_finger should be a good example of how to do it.
 
