@@ -1,4 +1,4 @@
-lbdb (0.14) frozen unstable; urgency=low
+lbdb (0.13.1) frozen unstable; urgency=low
 
   * Create ~/.lbdb/m_inmail.list in lbdb-fetchaddr if it does not exist.
   * Fix manpage lbdb-fetchaddr(1) to refer to the correct db filename.
