@@ -95,7 +95,7 @@ sub versionstring {
 sub process_file {
   foreach my $file (@_) {
     if (-r $file) {
-      eval `cat $filename`;
+      eval `cat $file`;
 #      unless (my $return = do $file) {
 #	warn "couldn't parse $file: $@" if $@;
 #	warn "couldn't do $file: $!" unless defined $return;
