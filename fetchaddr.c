@@ -61,7 +61,7 @@ int writeout(struct header *h)
   ADDRESS *addr, *p;
   time_t timep;
   char timebuf[16];
-  char *atchar;
+  char *c;
 
   if(!h->value)
     return 0;
@@ -77,8 +77,9 @@ int writeout(struct header *h)
       if(p->personal && strlen(p->personal) > 30)
 	strcpy(p->personal + 27, "...");
       
-      if((atchar=strchr(p->mailbox,'@')))
-	tolower(atchar);
+      c=strchr(p->mailbox,'@');
+      for(c++; c; c++)
+	*c=tolower(*c);
       
 #if 0
       printf("%s\t%s\t%s", p->mailbox, p->personal && *p->personal ? 
