@@ -1,0 +1,84 @@
+#! /bin/bash -posix
+#
+# -*-sh-*-
+#
+#     Copyright (C) 2000  Gabor Fleischer <flocsy@mtesz.hu>
+# 
+#     This program is free software; you can redistribute it and/or modify
+#     it under the terms of the GNU General Public License as published by
+#     the Free Software Foundation; either version 2 of the License, or
+#     (at your option) any later version.
+# 
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+# 
+#     You should have received a copy of the GNU General Public License
+#     along with this program; if not, write to the Free Software
+#     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111, USA.
+#
+
+# m_pine for lbdb v0.5 by Gabor Fleischer <flocsy@mtesz.hu>
+# Depends: grep sed awk
+#
+# Two variabled can be set in lbdbrc: PINERC, PINE_ADDRESSBOOKS
+# Here comes the explanation what are they for:
+# 1. First I look for $PINERC. If not set, then I use my defaults:
+#    PINERC="/etc/pine.conf /etc/pine.conf.fixed .pinerc"
+#    If you don't want me to look in the default PINERCs, then set PINERC=no
+# 2. I make a list of all the addressbooks in the PINERCs.
+# 3. Then the $PINE_ADDRESSBOOKS are added to this list.
+# 4. And if this list is still empty then add the default addressbooks:
+#    PINE_ADDRESSBOOKS="/etc/addressbook .addressbook"
+# 5. Make the query in the listed addressbooks
+#
+# Known BUGS:
+# The .addressbook format has multi-line addresses. These are not supported
+# yet. Coming soon!
+
+m_pine_query()
+{
+    (which awk && which sed && which grep)>/dev/null || exit 1
+#    echo "Searching pine-style addressbooks"
+    addressbooks=
+    if [ x$PINERC != xno ] ; then
+	for pinerc in ${PINERC:-/etc/pine.conf /etc/pine.conf.fixed .pinerc} ; do
+	    if [ $pinerc = ${pinerc#/} ] ; then
+	        pinerc=$HOME/$pinerc
+	    fi
+	    if [ -f $pinerc ] ; then
+		addressbook=`\
+		    awk 'BEGIN {SPACE="";} \
+		    /^(global-)?address-book[ 	]*=/ { \
+			gsub("^(global-)?address-book[ 	]*=",""); \
+			while (/[ 	]*[^ 	]+[ 	]+([^ ,	]+)[ 	]*,/) { \
+			    gsub("[ 	]*[^ 	]+[ 	]+",""); \
+			    gsub("[ ,	].*",""); \
+			    printf("%s%s",SPACE,$0); \
+			    SPACE=" "; \
+			    getline; \
+			} \
+			gsub("[ 	]*[^ 	]+[ 	]+",""); \
+			gsub("[ 	].*",""); \
+			printf("%s%s",SPACE,$0); \
+			SPACE=" "; \
+		    }' < $pinerc`
+	    fi
+	    addressbooks="$addressbook ${addressbooks# }"
+        done
+    fi
+    addressbooks="${PINE_ADDRESSBOOKS} ${addressbooks# }"
+    addressbooks=${addressbooks# }
+    for file in ${addressbooks:-/etc/addressbook .addressbook} ; do
+	if [ $file = ${file#/} ] ; then
+	    file=$HOME/$file
+	fi
+	if [ -f $file ]
+	then
+	    grep -i "$@" $file \
+	    | grep -v '^(#DELETED|   )' \
+	    | sed 's/\([^	]*\)	\([^	]*\)	\([^	]*\)/\3	\2	alias \1 (pine)/'
+	fi
+    done
+}
