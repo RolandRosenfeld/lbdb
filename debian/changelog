@@ -18,8 +18,9 @@ lbdb (0.18.6) unstable; urgency=low
   * Use /usr/bin/awk instead of /usr/bin/mawk in the Debian package
     (/usr/bin/awk is handled by alternates mechanism to point to the
     "optimal" awk replacement).
+  * Speed up munge (nearly two times as fast as previous version).
 
- -- Roland Rosenfeld <roland@debian.org>  Mon,  8 May 2000 17:07:55 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Mon,  8 May 2000 18:18:10 +0200
 
 lbdb (0.18.5) unstable; urgency=low
 
