@@ -1143,6 +1143,116 @@ if ! test "x$FINGER" = xno ; then
 	
 fi
 
+# Extract the first word of "gpg", so it can be a program name with args.
+set dummy gpg; ac_word=$2
+echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
+echo "configure:1150: checking for $ac_word" >&5
+if eval "test \"`echo '$''{'ac_cv_path_GPG'+set}'`\" = set"; then
+  echo $ac_n "(cached) $ac_c" 1>&6
+else
+  case "$GPG" in
+  /*)
+  ac_cv_path_GPG="$GPG" # Let the user override the test with a path.
+  ;;
+  *)
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  for ac_dir in `echo $PATH | sed "s/:/ /g"`$ac_dummy; do
+    test -z "$ac_dir" && ac_dir=.
+    if test -f $ac_dir/$ac_word; then
+      ac_cv_path_GPG="$ac_dir/$ac_word"
+      break
+    fi
+  done
+  IFS="$ac_save_ifs"
+  test -z "$ac_cv_path_GPG" && ac_cv_path_GPG=""no""
+  ;;
+esac
+fi
+GPG="$ac_cv_path_GPG"
+if test -n "$GPG"; then
+  echo "$ac_t""$GPG" 1>&6
+else
+  echo "$ac_t""no" 1>&6
+fi
+
+if ! test "x$GPG" = xno ; then
+	MODULES="$MODULES m_gpg"
+	
+fi
+
+# Extract the first word of "pgpk", so it can be a program name with args.
+set dummy pgpk; ac_word=$2
+echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
+echo "configure:1187: checking for $ac_word" >&5
+if eval "test \"`echo '$''{'ac_cv_path_PGPK'+set}'`\" = set"; then
+  echo $ac_n "(cached) $ac_c" 1>&6
+else
+  case "$PGPK" in
+  /*)
+  ac_cv_path_PGPK="$PGPK" # Let the user override the test with a path.
+  ;;
+  *)
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  for ac_dir in `echo $PATH | sed "s/:/ /g"`$ac_dummy; do
+    test -z "$ac_dir" && ac_dir=.
+    if test -f $ac_dir/$ac_word; then
+      ac_cv_path_PGPK="$ac_dir/$ac_word"
+      break
+    fi
+  done
+  IFS="$ac_save_ifs"
+  test -z "$ac_cv_path_PGPK" && ac_cv_path_PGPK=""no""
+  ;;
+esac
+fi
+PGPK="$ac_cv_path_PGPK"
+if test -n "$PGPK"; then
+  echo "$ac_t""$PGPK" 1>&6
+else
+  echo "$ac_t""no" 1>&6
+fi
+
+if ! test "x$PGPK" = xno ; then
+	MODULES="$MODULES m_pgp5"
+	
+fi
+
+# Extract the first word of "pgp", so it can be a program name with args.
+set dummy pgp; ac_word=$2
+echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
+echo "configure:1224: checking for $ac_word" >&5
+if eval "test \"`echo '$''{'ac_cv_path_PGP'+set}'`\" = set"; then
+  echo $ac_n "(cached) $ac_c" 1>&6
+else
+  case "$PGP" in
+  /*)
+  ac_cv_path_PGP="$PGP" # Let the user override the test with a path.
+  ;;
+  *)
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  for ac_dir in `echo $PATH | sed "s/:/ /g"`$ac_dummy; do
+    test -z "$ac_dir" && ac_dir=.
+    if test -f $ac_dir/$ac_word; then
+      ac_cv_path_PGP="$ac_dir/$ac_word"
+      break
+    fi
+  done
+  IFS="$ac_save_ifs"
+  test -z "$ac_cv_path_PGP" && ac_cv_path_PGP=""no""
+  ;;
+esac
+fi
+PGP="$ac_cv_path_PGP"
+if test -n "$PGP"; then
+  echo "$ac_t""$PGP" 1>&6
+else
+  echo "$ac_t""no" 1>&6
+fi
+
+if ! test "x$PGP" = xno ; then
+	MODULES="$MODULES m_pgp2"
+	
+fi
 
 MODULES_SH=""
 for i in $MODULES ; do
@@ -1308,6 +1418,9 @@ s%@DOTLOCK_OLD@%$DOTLOCK_OLD%g
 s%@DOTLOCK@%$DOTLOCK%g
 s%@path_fetchaddr@%$path_fetchaddr%g
 s%@FINGER@%$FINGER%g
+s%@GPG@%$GPG%g
+s%@PGPK@%$PGPK%g
+s%@PGP@%$PGP%g
 s%@MODULES@%$MODULES%g
 
 CEOF

@@ -98,6 +98,23 @@ if ! test "x$FINGER" = xno ; then
 	AC_SUBST(FINGER)
 fi
 
+AC_PATH_PROG(GPG, gpg, "no", `echo $PATH | sed "s/:/ /g"`)
+if ! test "x$GPG" = xno ; then
+	MODULES="$MODULES m_gpg"
+	AC_SUBST(GPG)
+fi
+
+AC_PATH_PROG(PGPK, pgpk, "no", `echo $PATH | sed "s/:/ /g"`)
+if ! test "x$PGPK" = xno ; then
+	MODULES="$MODULES m_pgp5"
+	AC_SUBST(PGPK)
+fi
+
+AC_PATH_PROG(PGP, pgp, "no", `echo $PATH | sed "s/:/ /g"`)
+if ! test "x$PGP" = xno ; then
+	MODULES="$MODULES m_pgp2"
+	AC_SUBST(PGP)
+fi
 
 MODULES_SH=""
 for i in $MODULES ; do
