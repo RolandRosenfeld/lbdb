@@ -83,7 +83,7 @@ METHODS="m_inmail m_passwd m_finger"
 # This module searches for addresses in your GnomeCard database files.
 # The variable GNOMECARD_FILES is a whitespace separated list of
 # GnomeCard data files. If this variable isn't defined, the module
-# searches in $HOME/.gnome/GnomeCard for the GnomeCard database of at
+# searches in $HOME/.gnome/GnomeCard for the GnomeCard database or at
 # least falls back to $HOME/.gnome/GnomeCard.gcrd. If a filename does
 # not start with a slash, it is prefixed with $HOME/.
 #

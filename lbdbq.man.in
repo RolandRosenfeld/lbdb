@@ -204,7 +204,7 @@ The variable
 is a whitespace separated list of GnomeCard data files.  If this
 variable isn't defined, the module searches in
 .BI $HOME /.gnome/GnomeCard
-for the GnomeCard database of at least falls back to
+for the GnomeCard database or at least falls back to
 .BI $HOME /.gnome/GnomeCard.gcrd\fR.
 If a filename does not start with a slash, it is prefixed with
 .BR $HOME/ .
