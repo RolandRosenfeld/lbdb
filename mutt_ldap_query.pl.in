@@ -50,24 +50,12 @@ my $ldap_result_realname = '${givenname} ${sn}';
 my $ldap_result_comment = '(${o})';
 
 my %ldap_server_db = (
-  'four11'		=> ['ldap.four11.com', 'c=US',
-			    'givenname sn cn mail', 'givenname cn sn mail o',
-			    '${mail}', '${givenname} ${sn}', '${o}' ],
-  'infospace'		=> ['ldap.infospace.com', 'c=US',
-			    'givenname sn cn mail', 'givenname cn sn mail o',
-			    '${mail}', '${givenname} ${sn}', '${o}' ],
-  'whowhere'		=> ['ldap.whowhere.com', 'c=US',
-			    'givenname sn cn mail', 'givenname cn sn mail o',
-			    '${mail}', '${givenname} ${sn}', '${o}' ],
-  'bigfoot'		=> ['ldap.bigfoot.com', 'c=US',
-			    'givenname sn cn mail', 'givenname cn sn mail o',
-			    '${mail}', '${givenname} ${sn}', '${o}' ],
-  'switchboard'		=> ['ldap.switchboard.com', 'c=US',
-			    'givenname sn cn mail', 'givenname cn sn mail o',
-			    '${mail}', '${givenname} ${sn}', '${o}' ],
-  'infospacebiz'	=> ['ldapbiz.infospace.com', 'c=US',
-			    'givenname sn cn mail', 'givenname cn sn mail o',
-			    '${mail}', '${givenname} ${sn}', '${o}' ]
+  'four11'		=> ['ldap.four11.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
+  'infospace'		=> ['ldap.infospace.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
+  'whowhere'		=> ['ldap.whowhere.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
+  'bigfoot'		=> ['ldap.bigfoot.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
+  'switchboard'		=> ['ldap.switchboard.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
+  'infospacebiz'	=> ['ldapbiz.infospace.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ]
 );
 #------8<------8<------8<------8<---cut here--->8------>8------>8------>8------
 
@@ -133,11 +121,10 @@ if ($config_file) {
   process_file($config_file);
 }
 else {
-  process_file("@sysconfdir@/lbdb_ldap.rc", 
+  process_file("@sysconfdir@/lbdb_ldap.rc",
 	       "@sysconfdir@/mutt_ldap_query.rc",
-	       "$ENV{HOME}/.lbdb_ldaprc",
-	       "$ENV{HOME}/.lbdb/ldaprc",
-	       "$ENV{HOME}/.mutt_ldap_query.rc");
+	       "$ENV{HOME}/.lbdb/ldap.rc",
+	       "$ENV{HOME}/.mutt_ldap_query.rc")
 }
 
 if ($ldap_server_nickname) {
@@ -224,8 +211,8 @@ mutt_ldap_query.pl [options] <name_to_query> [[<other_name_to_query>] ...]
 =item B<--config=config_file> or B<-c config_file>
 
 specify an alternate ressource file other than the system ones
-(F</etc/mutt_ldap_query.rc> or F</usr/local/etc/mutt_ldap_query.rc>)
-or default personal one (F<$HOME/.mutt_ldap_query.rc>).
+(F<@sysconfdir@/lbdb_ldap.rc> or F<@sysconfdir@/mutt_ldap_query.rc>)
+or default personal ones (F<$HOME/.lbdb/ldap.rc> F<$HOME/.mutt_ldap_query.rc>).
 
 =item B<--server=ldap_server> or B<-ls ldap_server>
 

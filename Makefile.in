@@ -39,7 +39,7 @@ sysconfdir=@sysconfdir@
 
 ALL=lbdbq lbdb_lib lbdb-fetchaddr lbdb-munge fetchaddr qpto8bit munge \
 	munge-keeporder	nodelist2lbdb palm_lsaddr mutt_ldap_query lbdbq.man \
-	lbdb-fetchaddr.man nodelist2lbdb.man mutt_ldap_query.man \
+	lbdb-fetchaddr.man nodelist2lbdb.man mutt_ldap_query.man lbdb.rc \
 	$(MODULES) $(DOTLOCK_TARGET) $(TACTARGET)
 
 all: Makefile $(ALL)

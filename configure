@@ -1900,7 +1900,7 @@ ac_given_INSTALL="$INSTALL"
 
 trap 'rm -fr `echo "Makefile lbdbq.sh munge.awk munge-keeporder.awk lbdb-fetchaddr.sh \
 	lbdb-munge.sh lbdb_lib.sh nodelist2lbdb.pl palm_lsaddr.pl \
-	mutt_ldap_query.pl lbdb.spec $MODULES_SH $TACAWK lbdb.spec" | sed "s/:[^ ]*//g"` conftest*; exit 1' 1 2 15
+	mutt_ldap_query.pl lbdb.spec $MODULES_SH $TACAWK lbdb.spec lbdb.rc" | sed "s/:[^ ]*//g"` conftest*; exit 1' 1 2 15
 EOF
 cat >> $CONFIG_STATUS <<EOF
 
@@ -2006,7 +2006,7 @@ cat >> $CONFIG_STATUS <<EOF
 
 CONFIG_FILES=\${CONFIG_FILES-"Makefile lbdbq.sh munge.awk munge-keeporder.awk lbdb-fetchaddr.sh \
 	lbdb-munge.sh lbdb_lib.sh nodelist2lbdb.pl palm_lsaddr.pl \
-	mutt_ldap_query.pl lbdb.spec $MODULES_SH $TACAWK lbdb.spec"}
+	mutt_ldap_query.pl lbdb.spec $MODULES_SH $TACAWK lbdb.spec lbdb.rc"}
 EOF
 cat >> $CONFIG_STATUS <<\EOF
 for ac_file in .. $CONFIG_FILES; do if test "x$ac_file" != x..; then

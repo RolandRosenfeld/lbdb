@@ -180,4 +180,4 @@ AC_SUBST(LBDB_VERSION)
 AC_SUBST(MODULES)
 AC_OUTPUT(Makefile lbdbq.sh munge.awk munge-keeporder.awk lbdb-fetchaddr.sh \
 	lbdb-munge.sh lbdb_lib.sh nodelist2lbdb.pl palm_lsaddr.pl \
-	mutt_ldap_query.pl lbdb.spec $MODULES_SH $TACAWK lbdb.spec)
+	mutt_ldap_query.pl lbdb.spec $MODULES_SH $TACAWK lbdb.spec lbdb.rc)

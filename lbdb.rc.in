@@ -114,6 +114,15 @@ METHODS="m_inmail m_passwd m_finger"
 #EMACS="emacs"
 
 
+# - m_ldap  query an LDAP server.
+#
+# This module queries an LDAP server using the Net::LDAP Perl modules
+# from CPAN. It can be configured using an external resource file.
+# 
+
+
+
+
 #
 # If you want to use private modules set the MODULES_PATH to find them:
 # (a space separated list):
