@@ -3,7 +3,7 @@ lbdb (0.16) unstable; urgency=low
   * m_passwd: give UID in comment field.
   * m_gpg: now only return addresses which match query. Closes #33672.
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 21 Feb 1999 18:55:45 +0100
 
 lbdb (0.15) unstable; urgency=low
 
