@@ -48,7 +48,15 @@
     (defmacro defcustom (symbol init docstring &rest rest)
       `(defvar ,symbol ,init ,docstring)))
 
-  ;; If `line-end-position' isn't available provide one.
+  ;; If `line-beginning-position' isn't available, provide one.
+  (unless (fboundp 'line-beginning-position)
+    (defun line-beginning-position ()
+      "Return the `point' of the beginning of the current line."
+      (save-excursion
+        (beginning-of-line)
+        (point))))
+  
+  ;; If `line-end-position' isn't available, provide one.
   (unless (fboundp 'line-end-position)
     (defun line-end-position ()
       "Return the `point' of the end of the current line."
@@ -241,7 +249,7 @@ The type of sort is controlled by `lbdb-sort-display'."
     (suppress-keymap map t)
     (define-key map "a"           #'lbdb-insert-address)
     (define-key map "n"           #'lbdb-insert-name)
-    (define-key map [return]      #'lbdb-insert-full)
+    (define-key map (kbd "RET")   #'lbdb-insert-full)
     (define-key map "q"           #'lbdb-mode-quit)
     (define-key map [(control g)] #'lbdb-mode-quit)
     (define-key map [mouse-2]     #'lbdb-mouse-select)
@@ -263,7 +271,7 @@ The key bindings for `lbdb-mode' are:
         mode-name  "lbdb")
   (run-hooks 'lbdb-mode-hook)
   (setq buffer-read-only t
-        truncate-lines t)
+        truncate-lines   t)
   (buffer-disable-undo (current-buffer)))
 
 (defun lbdb-mode-quit ()
@@ -287,10 +295,7 @@ TYPE dictates what will be inserted, options are:
   `full'    - Insert the name and the address.
               `lbdb-full-format-function' is used to format the name
               and address."
-  (let ((line (nth (save-excursion
-                     (beginning-of-line)
-                     (count-lines (point-min) (point)))
-                   lbdb-results)))
+  (let ((line (nth (count-lines (point-min) (line-beginning-position)) lbdb-results)))
     (if line
         (with-current-buffer lbdb-last-buffer
           (insert

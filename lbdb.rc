@@ -73,7 +73,7 @@ METHODS="m_inmail m_passwd m_finger"
 # variable PALM_ADDRESS_DATABASE or if this isn't set in
 # $HOME/.jpilot/AddressDB.pdb.
 #
-#PALM_ADDRESS_DATABASE="$HOME/.jpilot/AddressDB.pdb
+#PALM_ADDRESS_DATABASE="$HOME/.jpilot/AddressDB.pdb"
 
 
 #

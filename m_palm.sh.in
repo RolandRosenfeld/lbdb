@@ -25,6 +25,7 @@ libdir=@libdir@
 
 m_palm_query ()
 {
-    $libdir/palm_lsaddr ${PALM_ADDRESS_DATABASE:-$HOME/.jpilot/AddressDB.pdb} \
-    | grep -i "$@"
+    palmdatabase=${PALM_ADDRESS_DATABASE:-$HOME/.jpilot/AddressDB.pdb}
+    test -f $palmdatabase || return
+    $libdir/palm_lsaddr $palmdatabase | grep -i "$@"
 }
