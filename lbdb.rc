@@ -6,7 +6,7 @@
 # ~/.lbdbrc
 # ~/.lbdb/lbdbrc
 # ~/.lbdb/rc
-# (evaluated with ascending order!)
+# (evaluated with ascending priority!)
 # 
 # (c) 1999-2000 Roland Rosenfeld <roland@spinnaker.de>
 #

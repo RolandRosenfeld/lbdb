@@ -1,3 +1,13 @@
+lbdb (0.20) unstable; urgency=low
+
+  * Correct dependencies:
+    - No longer depend on mutt (only suggest it), we use lbdb_dotlock now,
+      so #58188 is really closed now.
+    - Depend on awk instead of mawk, because we use /usr/bin/awk, which
+      can be any awk.
+
+ -- Roland Rosenfeld <roland@debian.org>  Wed, 10 May 2000 03:16:05 +0200
+
 lbdb (0.19) unstable; urgency=low
 
   * Upgrade to standards version 3.1.1: Add Build-Depends.
