@@ -2,6 +2,8 @@ lbdb (0.28.2) unstable; urgency=low
 
   * Another upgrade of m_bbdb by Aaron Kaplan <kaplan@cs.rochester.edu>.
   * Add homepage URL to the package description.
+  * Quote $GNUCLIENT in m_bbdb to avoid error message when this variable
+    is not defined (Closes: #231061).
 
  --
 

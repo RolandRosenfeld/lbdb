@@ -39,7 +39,7 @@ m_bbdb_query()
 		GNUCLIENT=gnuclient
 	    fi
         fi
-	if [ $GNUCLIENT == "no" ]; then
+	if [ "$GNUCLIENT" == "no" ]; then
 	    GNUCLIENT=
 	fi
 
