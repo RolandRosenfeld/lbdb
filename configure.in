@@ -110,7 +110,7 @@ AC_SUBST(DOTLOCKBASE)
 path_fetchaddr="$libdir/fetchaddr"
 AC_SUBST(path_fetchaddr)
 
-MODULES="m_inmail m_passwd m_muttalias m_pine"
+MODULES="m_inmail m_passwd m_muttalias m_pine m_gnomecard"
 
 AC_PATH_PROG(FINGER, finger, "no")
 if test "x$FINGER" != xno ; then
@@ -158,8 +158,7 @@ AC_PATH_PROG(PERL, perl, "no")
 if test "x$PERL" != xno ; then
 	# m_fido needs nodelist2lbdb, which needs perl
 	# m_palm needs palm_lsaddr, which needs perl
-	# m_gnomecard needs gcrd_lsaddr, which needs perl
-	MODULES="$MODULES m_fido m_palm m_gnomecard"
+	MODULES="$MODULES m_fido m_palm"
 	AC_SUBST(PERL)
 fi
 
@@ -174,4 +173,4 @@ AC_SUBST(LBDB_VERSION)
 AC_SUBST(MODULES)
 AC_OUTPUT(Makefile lbdbq.sh munge.awk munge-keeporder.awk lbdb-fetchaddr.sh \
 	lbdb-munge.sh lbdb_lib.sh nodelist2lbdb.pl palm_lsaddr.pl \
-	gcrd_lsaddr.pl lbdb.spec $MODULES_SH $TACAWK lbdb.spec)
+	lbdb.spec $MODULES_SH $TACAWK lbdb.spec)

@@ -38,7 +38,7 @@ mandir=@mandir@
 sysconfdir=@sysconfdir@
 
 ALL=lbdbq lbdb_lib lbdb-fetchaddr lbdb-munge fetchaddr qpto8bit munge \
-	munge-keeporder	nodelist2lbdb palm_lsaddr gcrd_lsaddr lbdbq.man \
+	munge-keeporder	nodelist2lbdb palm_lsaddr lbdbq.man \
 	lbdb-fetchaddr.man nodelist2lbdb.man \
 	$(MODULES) $(DOTLOCK_TARGET) $(TACTARGET)
 
@@ -63,7 +63,6 @@ install: all
 		$(INSTALL) -m 644 nodelist2lbdb.man \
 			$(mandir)/man1/nodelist2lbdb.1; \
 		$(INSTALL) -m 755 palm_lsaddr $(libdir); \
-		$(INSTALL) -m 755 gcrd_lsaddr $(libdir); \
 	fi
 	for i in $(MODULES) ; do $(INSTALL) -m 755 $$i $(libdir) ; done
 	$(INSTALL) -m 644 lbdbq.man $(mandir)/man1/lbdbq.1
@@ -97,9 +96,6 @@ nodelist2lbdb: $(srcdir)/nodelist2lbdb.pl
 palm_lsaddr: $(srcdir)/palm_lsaddr.pl
 	cat palm_lsaddr.pl > $@
 
-gcrd_lsaddr: $(srcdir)/gcrd_lsaddr.pl
-	cat gcrd_lsaddr.pl > $@
-
 lbdb_dotlock: $(srcdir)/dotlock.o $(srcdir)/helpers.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $? -o $@
 
@@ -119,7 +115,7 @@ munge-keeporder: $(srcdir)/munge-keeporder.awk
 
 clean:
 	-rm -f *.o *~ $(ALL) munge.awk munge-keeporder.awk tac.awk \
-		nodelist2lbdb.pl palm_lsaddr.pl gcrd_lsaddr.pl lbdb_dotlock
+		nodelist2lbdb.pl palm_lsaddr.pl lbdb_dotlock
 
 distclean: clean
 	-rm -f config.status config.cache config.log Makefile

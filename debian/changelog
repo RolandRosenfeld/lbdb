@@ -3,10 +3,10 @@ lbdb (0.23) unstable; urgency=low
   * Add a second grep to m_pgp5 and m_gpg to remove UIDs, which don't
     match the search string, but are only generated, because a different
     UID of this key matches.
-  * Add new module m_gnomecard and gcrd_lsaddr based on an idea by Rick
-    Frankel <rick@rickster.com>.
+  * Add new module m_gnomecard based on an idea by Rick Frankel 
+    <rick@rickster.com>.
 
- -- Roland Rosenfeld <roland@debian.org>  Wed, 18 Oct 2000 23:55:58 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Fri, 20 Oct 2000 12:09:22 +0200
 
 lbdb (0.22) unstable; urgency=low
 

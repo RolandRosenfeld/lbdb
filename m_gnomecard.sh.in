@@ -58,7 +58,14 @@ m_gnomecard_query ()
 
 	if [ -f $file ]
 	then
-	    $libdir/gcrd_lsaddr $file | grep -i "$@"
+	    $AWK 'BEGIN {FS=":"; RS="\r\n"; name=""} \
+		  /^VCARD:END/ {name=""} \
+		  /^FN:/ {name=$2} \
+		  name!="" && /^EMAIL;/ {email=$2; \
+					 type=substr($1,7); \
+					 printf ("%s\t%s\tGC:%s\n", \
+						 email, name, type) }' \
+            < $file | grep -i "$@"
 	fi
     done
 }
