@@ -1,5 +1,7 @@
 dnl $Id$
 
+AC_REVISON($Revision$)dnl
+
 AC_INIT(fetchaddr.c)
 
 AC_MSG_CHECKING(for prefix)
@@ -20,7 +22,7 @@ dnl SH=NONE
 dnl If we are runnin bash right now, BASH is set.
 unset BASH
 
-if test "x$SH" = xNONE ; then
+if test "x$SH" = x ; then
 	AC_PATH_PROG(BASH, bash, NONE)
 	if test ! "x$BASH" = xNONE ; then
 		if $BASH -posix -c true ; then
@@ -32,7 +34,7 @@ if test "x$SH" = xNONE ; then
 	fi
 fi
 
-if test "x$SH" = xNONE ; then
+if test "x$SH" = x ; then
 	AC_PATH_PROG(KSH, ksh, NONE)
 	if test ! "x$KSH" = xNONE ; then
 		SH="$KSH"
@@ -40,7 +42,7 @@ if test "x$SH" = xNONE ; then
 	fi
 fi
 
-if test "x$SH" = xNONE ; then
+if test "x$SH" = x ; then
 	AC_PATH_PROG(BINSH, sh, NONE)
 	if test "x$BINSH" = xNONE; then
 		echo "ERROR: Can't find sh." >&2
