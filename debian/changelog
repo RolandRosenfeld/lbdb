@@ -1,3 +1,11 @@
+lbdb (0.19.6) unstable; urgency=low
+
+  * New version of m_pine by Gabor Fleischer <flocsy@mtesz.hu>: Now
+    handles aliases without real names correct (by using a single space as
+    the realname, so Mutt has not problem with this.
+
+ --
+
 lbdb (0.19.5) unstable; urgency=low
 
   * Remove "-f" option from configure @AWK@ variable and manually add it,
