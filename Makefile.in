@@ -50,6 +50,7 @@ install: all
 	for i in $(MODULES) ; do $(INSTALL) -m 755 $$i $(libdir) ; done
 	$(INSTALL) -m 644 lbdbq.man $(mandir)/man1/lbdbq.1
 	$(INSTALL) -m 644 lbdb-fetchaddr.man $(mandir)/man1/lbdb-fetchaddr.1
+	$(INSTALL) -m 644 lbdb-merge.man $(mandir)/man1/lbdb-merge.1
 	$(INSTALL) -m 644 lbdb.rc $(sysconfdir)/lbdb.rc
 	if [ "@DOTLOCK_TARGET@" != "" ]; then \
 		$(INSTALL) -m 755 lbdb_dotlock $(bindir); \

@@ -15,7 +15,7 @@
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc.,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 .\"
-.TH LBDBQ 1 "FEBRUARY 1999" "Unix" "User Manuals"
+.TH LBDBQ 1 "APRIL 1999" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -23,6 +23,8 @@ lbdbq \- query program for the little brother's database
 .I something
 .br
 .B lbdb-fetchaddr
+.br
+.B lbdb-merge
 .SH DESCRIPTION
 This manual page documents briefly the
 .B lbdb
@@ -108,6 +110,18 @@ small C program which grabs that message's "From:" header.
 will then construct an address list out of these data. This list is
 stored under 
 .IR $HOME/.lbdb/m_inmail.list .
+For performance issues 
+.B lbdb-fetchaddr
+appends new addresses to this file without removing duplicates. For
+this the program
+.B lbdb-merge
+exists, which is run by
+.B m_inmail
+if needed and removes duplicates. If you run lbdbq not very often, it
+may be a good idea to run
+.B lbdb-merge
+by
+.BR cron (8).
 .TP
 .B m_passwd
 This module searches for matching entries in your local /etc/passwd
@@ -159,7 +173,8 @@ from mutt, add the following line to your
 .BR gpg (1),
 .BR mutt (1),
 .BR procmail (1),
-.BR procmailrc (5)
+.BR procmailrc (5),
+.BR cron (8)
 .SH CREDITS
 Most of the really interesting code of this program (namely, the RFC
 822 address parser used by lbdb-fetchaddr) was stolen from Michael
