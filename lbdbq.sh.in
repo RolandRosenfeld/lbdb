@@ -36,7 +36,7 @@ mkdir $tmpdir || exit 1
 trap "rm -rf $tmpdir ; trap '' 0; exit" 0 1 2 3 15
 collection=$tmpdir/coll
 
-for conffile in @sysconfdir@/lbdb.rc $HOME/.lbdbrc \
+for conffile in $sysconfdir/lbdb.rc $HOME/.lbdbrc \
 	$HOME/.lbdb/lbdbrc $HOME/.lbdb/rc ; do
 	
   if test -f $conffile ; then
@@ -59,4 +59,4 @@ for method in $METHODS ; do
 done
 
 echo
-@libdir@/munge $collection | sort -uf
+$libdir/munge $collection | sort -uf

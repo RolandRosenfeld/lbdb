@@ -1,3 +1,11 @@
+lbdb (0.17) unstable; urgency=low
+
+  * Delay munging of mails when using lbdb-fetchaddr/m_inmail by adding a
+    new script lbdb-munge, which is run by lbdbq and can be run by cron
+    additionally.
+
+ -- Roland Rosenfeld <roland@debian.org>  Thu, 29 Apr 1999 12:55:18 +0200
+
 lbdb (0.16.3) unstable; urgency=low
 
   * include getopt.h only if it is existing (using autoconf). 

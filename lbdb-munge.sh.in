@@ -1,7 +1,7 @@
 #! @SH@
 # -*-sh-mode-*-
-#     Copyright (C) 1998  Thomas Roessler <roessler@guug.de>
-#                   1999  Roland Rosenfeld <roland@spinnaker.de>
+#
+#     Copyright (C) 1999  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -25,22 +25,12 @@ prefix=@prefix@
 exec_prefix=@exec_prefix@
 dotlock=@DOTLOCK@
 fetchaddr=@libdir@/fetchaddr
+munge=@libdir@/munge
 db=$HOME/.lbdb/m_inmail.list
 
-if [ ! -f $db ]; then
-  dbdir=`dirname $db`
-  if [ ! -d $dbdir ]; then
-    mkdir -p $dbdir
-    if [ ! -d $dbdir ]; then
-      echo "Can't create $dbdir" >&2
-      exit 1
-    fi
-  fi
-  touch $db
-  if [ ! -f $db ]; then
-    echo "Can't create $db" >&2
-    exit 1
-  fi
+if [ ! -f $db.dirty ]; then
+    # Nothing to do
+    exit 0
 fi
 
 if ! $dotlock -r 10 -f $db ; then
@@ -48,8 +38,8 @@ if ! $dotlock -r 10 -f $db ; then
   exit 1
 fi
 
-if $fetchaddr >> $db ; then
-  touch $db.dirty
-fi
+$munge < $db > $db.$$.tmp
+mv -f $db.$$.tmp $db
+rm -f $db.dirty
 
 $dotlock -u $db
