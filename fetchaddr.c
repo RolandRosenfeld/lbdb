@@ -146,8 +146,8 @@ int main(int argc, char* argv[])
       partial = 0;
   }
 
-  if (argv == 2)
-    datefmt = argc[1];
+  if (argc == 2)
+    datefmt = argv[1];
 
   for(rv = 0, i = 0; hdr[i].tag; i++)
   {
