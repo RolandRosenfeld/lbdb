@@ -56,7 +56,7 @@ install: all
 	if [ "$(PERL)" != "no" ]; then \
 		$(INSTALL) -m 755 nodelist2lbdb $(bindir); \
 		$(INSTALL) -m 644 nodelist2lbdb.man \
-			$(mandir)/man1/nodelist2lbdb.1 \
+			$(mandir)/man1/nodelist2lbdb.1; \
 	fi
 	for i in $(MODULES) ; do $(INSTALL) -m 755 $$i $(libdir) ; done
 	$(INSTALL) -m 644 lbdbq.man $(mandir)/man1/lbdbq.1
