@@ -84,7 +84,6 @@ if test x$ac_cv_path_DOTLOCK = xno ; then
 	DOTLOCK="$bindir"/lbdb_dotlock
 fi
 
-
 AC_SUBST(DOTLOCK)
 
 DOTLOCKBASE=`basename $DOTLOCK`
@@ -94,7 +93,6 @@ path_fetchaddr="$libdir/fetchaddr"
 AC_SUBST(path_fetchaddr)
 
 MODULES="m_inmail m_passwd"
-
 
 AC_PATH_PROG(FINGER, finger, "no")
 if test "x$FINGER" != xno ; then
@@ -120,6 +118,13 @@ if test "x$PGP" != xno ; then
 	AC_SUBST(PGP)
 fi
 
+AC_PATH_PROG(PERL, perl, "no")
+if test "x$PERL" != xno ; then
+	# m_fido needs nodelist2lbdb, which needs perl
+	MODULES="$MODULES m_fido"
+	AC_SUBST(PERL)
+fi
+
 MODULES_SH=""
 for i in $MODULES ; do
 	MODULES_SH="$MODULES_SH $i.sh"
@@ -127,4 +132,4 @@ done
 
 AC_SUBST(MODULES)
 AC_OUTPUT(Makefile lbdbq.sh munge.awk lbdb-fetchaddr.sh lbdb-munge.sh \
-	lbdb_lib.sh $MODULES_SH)
+	lbdb_lib.sh nodelist2lbdb.pl $MODULES_SH)

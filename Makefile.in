@@ -25,6 +25,8 @@ DEFS=@DEFS@
 INSTALL=@INSTALL@
 MODULES=@MODULES@
 DOTLOCKBASE=@DOTLOCKBASE@
+DOTLOCK_TARGET=@DOTLOCK_TARGET@
+PERL=@PERL@
 
 prefix=@prefix@
 exec_prefix=@exec_prefix@
@@ -34,8 +36,9 @@ libdir=@libdir@
 mandir=@mandir@
 sysconfdir=@sysconfdir@
 
-ALL=lbdbq lbdb_lib lbdb-fetchaddr lbdb-munge fetchaddr munge lbdbq.man \
-	lbdb-fetchaddr.man $(MODULES) @DOTLOCK_TARGET@
+ALL=lbdbq lbdb_lib lbdb-fetchaddr lbdb-munge fetchaddr munge nodelist2lbdb \
+	lbdbq.man lbdb-fetchaddr.man nodelist2lbdb.man $(MODULES) \
+	$(DOTLOCK_TARGET)
 
 all: $(ALL)
 
@@ -48,11 +51,16 @@ install: all
 	$(INSTALL) -m 755 lbdb-munge $(libdir)
 	$(INSTALL) -m 755 lbdb_lib $(libdir)
 	$(INSTALL) -m 755 munge $(libdir)
+	if [ "$(PERL)" != "no" ]; then \
+		$(INSTALL) -m 755 nodelist2lbdb $(bindir) \
+		$(INSTALL) -m 644 nodelist2lbdb.man \
+			$(mandir)/man1/nodelist2lbdb.1 \
+	fi
 	for i in $(MODULES) ; do $(INSTALL) -m 755 $$i $(libdir) ; done
 	$(INSTALL) -m 644 lbdbq.man $(mandir)/man1/lbdbq.1
 	$(INSTALL) -m 644 lbdb-fetchaddr.man $(mandir)/man1/lbdb-fetchaddr.1
 	$(INSTALL) -m 644 lbdb.rc $(sysconfdir)/lbdb.rc
-	if [ "@DOTLOCK_TARGET@" != "" ]; then \
+	if [ "$(DOTLOCK_TARGET)" != "" ]; then \
 		$(INSTALL) -m 755 lbdb_dotlock $(bindir); \
 		$(INSTALL) -m 644 dotlock.man $(mandir)/man1/lbdb_dotlock.1; \
 	fi
@@ -67,13 +75,18 @@ query: $(srcdir)/query.sh
 
 lbdb-query: $(srcdir)/lbdb-query.sh
 
+nodelist2lbdb: $(srcdir)/nodelist2lbdb.pl
+
 lbdbq.man: $(srcdir)/lbdbq.man.in
-	sed -e 's%@''libdir@%${libdir}%' \
-	    -e 's%@''sysconfdir@%${sysconfdir}%' $< > $@
+	sed -e 's%@''libdir@%$(libdir)%' \
+	    -e 's%@''sysconfdir@%$(sysconfdir)%' $< > $@
 
 lbdb-fetchaddr.man: $(srcdir)/lbdb-fetchaddr.man.in
-	sed -e 's%@''libdir@%${libdir}%' \
-	    -e 's%@''dotlock@%${DOTLOCKBASE}%' $< > $@
+	sed -e 's%@''libdir@%$(libdir)%' \
+	    -e 's%@''dotlock@%$(DOTLOCKBASE)%' $< > $@
+
+nodelist2lbdb.man: $(srcdir)/nodelist2lbdb.man.in
+	sed -e 's%@''libdir@%$(libdir)%' $< > $@
 
 lbdb_dotlock: $(srcdir)/dotlock.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $? -o $@
@@ -81,21 +94,32 @@ lbdb_dotlock: $(srcdir)/dotlock.o
 dotlock.o: $(srcdir)/dotlock.h $(srcdir)/dotlock.c
 
 clean:
-	-rm -f *.o *~ $(ALL) munge.awk
+	-rm -f *.o *~ $(ALL) munge.awk nodelist2lbdb.pl
 
 distclean: clean
 	-rm -f config.status config.cache config.log Makefile
 	-rm -f *.sh
 
-munge: munge.awk
-	cat munge.awk > munge
-	chmod +x munge
-
 %.sh: %.sh.in
+	./config.status
+
+%.pl: %.pl.in
 	./config.status
 
 %.awk: %.awk.in
 	./config.status
+
+%: %.sh
+	cat $< > $@
+	chmod a+x $@
+
+%: %.pl
+	cat $< > $@
+	chmod a+x $@
+
+%: %.awk
+	cat $< > $@
+	chmod a+x $@
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(DEFS) -c $<

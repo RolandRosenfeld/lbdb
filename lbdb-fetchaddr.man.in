@@ -64,6 +64,8 @@ which results in e.g. "99-04-29".
 .I $HOME/.lbdb/m_inmail.list
 .br
 .I @libdir@/fetchaddr
+.br
+.I @libdir@/m_inmail
 .SH "SEE ALSO"
 .BR ldbdq (1),
 .BR @dotlock@ (1),
