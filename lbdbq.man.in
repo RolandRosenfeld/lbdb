@@ -70,6 +70,10 @@ lbdbq won't sort the addresses but returns them in reverse order
 first). If you set this to 
 .IR name ,
 lbdbq sorts the output by real name.  If you set this to 
+.IR comment ,
+it sort the output by the comment (for example the date in 
+.BR m_inmail ).
+If you set this to
 .IR address ,
 lbdbq sorts the output by addresses (that's the default).
 .TP

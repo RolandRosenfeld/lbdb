@@ -165,6 +165,7 @@ LDAP_NICKS="debian bigfoot"
 # but returns them in reverse order (which means that the most recent
 # address in m_inmail database is first).
 # If you set this to "name", lbdbq sorts the output by real name.
+# If you set this to "comment", lbdbq sorts the output by comment (column 3).
 # If you set this to "address", lbdbq sorts the output by addresses
 # (that's the default).
 #

@@ -92,6 +92,9 @@ case "$SORT_OUTPUT" in
     *name)
 	$MUNGE $collection | sort -f +1 > $collection.uniq
 	;;
+    comment)
+        $MUNGE $collection | sort -f +2 -t'	' > $collection.uniq
+	;;
     *)
 	$MUNGE $collection | sort -f > $collection.uniq
 	;;
