@@ -105,6 +105,12 @@ if test "x$FINGER" != xno ; then
 	AC_SUBST(FINGER)
 fi
 
+AC_PATH_PROG(ABOOK, abook, "no")
+if test "x$ABOOK" != xno ; then
+	MODULES="$MODULES m_abook"
+	AC_SUBST(ABOOK)
+fi
+
 AC_PATH_PROG(GPG, gpg, "no")
 if test "x$GPG" != xno ; then
 	MODULES="$MODULES m_gpg"

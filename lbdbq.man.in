@@ -1,5 +1,5 @@
 .\" -*- nroff -*-
-.\" Copyright (c) 1998,1999  Roland Rosenfeld <roland@spinnaker.de>
+.\" Copyright (c) 1998-2000  Roland Rosenfeld <roland@spinnaker.de>
 .\"               
 .\" This program is free software; you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc.,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 .\"
-.TH LBDBQ 1 "September 1999" "Unix" "User Manuals"
+.TH LBDBQ 1 "April 2000" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -112,6 +112,11 @@ This module searches your Fido nodelist, stored in
 .I $HOME/.lbdb/nodelist
 created by
 .BR nodelist2lbdb (1).
+.TP
+.BR m_abook
+This module uses the program
+.BR abook (1),
+a text based address book application to search for addresses.
 .PP
 Feel free to create your own modules to query LDAP servers, YP maps,
 and the like. 
@@ -155,7 +160,8 @@ Print short help of lbdbq.
 .BR gpg (1),
 .BR mutt (1),
 .BR lbdb-fetchaddr (1),
-.BR nodelist2lbdb (1).
+.BR nodelist2lbdb (1),
+.BR abook (1).
 .SH CREDITS
 Most of the really interesting code of this program (namely, the RFC
 822 address parser used by lbdb-fetchaddr) was stolen from Michael

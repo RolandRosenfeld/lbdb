@@ -8,7 +8,7 @@
 # ~/.lbdb/rc
 # (evaluated with ascending order!)
 # 
-# (c) 1999 Roland Rosenfeld <roland@spinnaker.de>
+# (c) 1999-2000 Roland Rosenfeld <roland@spinnaker.de>
 #
 # $Id$
 #
@@ -24,6 +24,7 @@
 # - m_pgp5	search your PGP 5.* keyring
 # - m_gpg	search your GnuPG keyring
 # - m_fido	search the Fido nodelist converted by nodelist2lbdb(1)
+# - m_abook	query abook(1), the text based address book application.
 
 METHODS="m_inmail m_passwd m_finger"
 

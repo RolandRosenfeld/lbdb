@@ -8,7 +8,7 @@ Build-Depends: debhelper
 Package: lbdb
 Architecture: any
 Depends: ${shlibs:Depends}, mawk, mutt (>= 0.94.10)
-Suggests: procmail, finger
+Suggests: procmail, finger, abook
 Description: The little brother's database for the mutt mail reader
  This package consists of a set of small tools, which collect mail
  addresses from mails you received and then offer these addresses as
