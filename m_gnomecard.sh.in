@@ -30,7 +30,7 @@ AWK=@AWK@
 
 rcfile=$HOME/.gnome/GnomeCard
 
-m_gcrd_query ()
+m_gnomecard_query ()
 {
     if [ -z "$GNOMECARD_FILES" ]
     then 
