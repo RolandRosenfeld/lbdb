@@ -17,7 +17,7 @@
 .\"
 .\" $Id$
 .\"
-.TH LBDBQ 1 "January 2001" "Unix" "User Manuals"
+.TH LBDBQ 1 "February 2001" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -72,6 +72,14 @@ first). If you set this to
 lbdbq sorts the output by real name.  If you set this to 
 .IR address ,
 lbdbq sorts the output by addresses (that's the default).
+.TP
+.B KEEP_DUPES
+If you set this to
+.I true
+or
+.IR yes ,
+lbdbq won't remove duplicate addresses with different real name
+comment fields.
 .PP
 Note that there 
 .I are

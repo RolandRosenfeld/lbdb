@@ -121,3 +121,9 @@ METHODS="m_inmail m_passwd m_finger"
 # (that's the default).
 #
 #SORT_OUTPUT=address
+
+#
+# Do you want to see duplicate mail addresses (with multiple real
+# names or different comment fields)?  Default is "no".
+#
+#KEEP_DUPES=no
