@@ -519,7 +519,7 @@ fi
 
 
 VERSION="0"
-SUBVERSION="10"
+SUBVERSION="11"
 
 
 
@@ -1027,6 +1027,39 @@ fi
 set dummy mutt.dotlock; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
 echo "configure:1030: checking for $ac_word" >&5
+if eval "test \"`echo '$''{'ac_cv_path_DOTLOCK_OLD'+set}'`\" = set"; then
+  echo $ac_n "(cached) $ac_c" 1>&6
+else
+  case "$DOTLOCK_OLD" in
+  /*)
+  ac_cv_path_DOTLOCK_OLD="$DOTLOCK_OLD" # Let the user override the test with a path.
+  ;;
+  *)
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  for ac_dir in `echo $PATH | sed "s/:/ /g"` $ac_dummy; do
+    test -z "$ac_dir" && ac_dir=.
+    if test -f $ac_dir/$ac_word; then
+      ac_cv_path_DOTLOCK_OLD="$ac_dir/$ac_word"
+      break
+    fi
+  done
+  IFS="$ac_save_ifs"
+  test -z "$ac_cv_path_DOTLOCK_OLD" && ac_cv_path_DOTLOCK_OLD="no"
+  ;;
+esac
+fi
+DOTLOCK_OLD="$ac_cv_path_DOTLOCK_OLD"
+if test -n "$DOTLOCK_OLD"; then
+  echo "$ac_t""$DOTLOCK_OLD" 1>&6
+else
+  echo "$ac_t""no" 1>&6
+fi
+
+if test x$ac_cv_path_DOTLOCK_OLD = xno ; then
+	# Extract the first word of "mutt_dotlock", so it can be a program name with args.
+set dummy mutt_dotlock; ac_word=$2
+echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
+echo "configure:1063: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_path_DOTLOCK'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1036,7 +1069,7 @@ else
   ;;
   *)
   IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
-  for ac_dir in `echo $PATH | sed "s/:/ /g"` $ac_dummy; do
+  for ac_dir in `echo $PATH | sed "s/:/ /g"`$ac_dummy; do
     test -z "$ac_dir" && ac_dir=.
     if test -f $ac_dir/$ac_word; then
       ac_cv_path_DOTLOCK="$ac_dir/$ac_word"
@@ -1055,11 +1088,17 @@ else
   echo "$ac_t""no" 1>&6
 fi
 
+else
+	ac_cv_path_DOTLOCK=$ac_cv_path_DOTLOCK_OLD
+fi
+
 if test x$ac_cv_path_DOTLOCK = xno ; then
-	echo "ERROR: mutt.dotlock is required to build this package." >&2
+	echo "ERROR: mutt_dotlock is required to build this package." >&2
 	echo "ERROR: You can get it from the mutt package's source code." >&2
 	exit 1
 fi
+
+
 cat >> confdefs.h <<EOF
 #define DOTLOCK "$ac_cv_path_DOTLOCK"
 EOF
@@ -1075,7 +1114,7 @@ MODULES="m_inmail"
 # Extract the first word of "finger", so it can be a program name with args.
 set dummy finger; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1079: checking for $ac_word" >&5
+echo "configure:1118: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_path_FINGER'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1272,6 +1311,7 @@ s%@MAWK@%$MAWK%g
 s%@GAWK@%$GAWK%g
 s%@NAWK@%$NAWK%g
 s%@AWK@%$AWK%g
+s%@DOTLOCK_OLD@%$DOTLOCK_OLD%g
 s%@DOTLOCK@%$DOTLOCK%g
 s%@path_fetchaddr@%$path_fetchaddr%g
 s%@FINGER@%$FINGER%g

@@ -91,7 +91,7 @@ to submit them to me for inclusion in later releases.
 Finally, to use lbdbq from mutt, add the following line to
 your ~/.muttrc:
 
-	set query_command="lbdbq '%s'"
+	set query_command="lbdbq %s"
 
 
 CREDITS

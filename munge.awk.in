@@ -1,5 +1,5 @@
 #! @AWK@
-
+# -*-c-mode-*-
 
 #     Copyright (C) 1998  Thomas Roessler <roessler@guug.de>
 # 
@@ -19,7 +19,7 @@
 
 # $Id$
 
-# -*-c-mode-*-
+
 
 BEGIN {
   FS = "	";

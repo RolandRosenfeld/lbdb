@@ -3,7 +3,7 @@ dnl -*-sh-mode-*-
 
 AC_INIT(fetchaddr.c)
 VERSION="0"
-SUBVERSION="10"
+SUBVERSION="11"
 
 AC_SUBST(VERSION)
 AC_SUBST(SUBVERSION)
@@ -74,12 +74,20 @@ fi
 		
 AC_SUBST(AWK)
 
-AC_PATH_PROG(DOTLOCK, mutt.dotlock, no, `echo $PATH | sed "s/:/ /g"` )
+AC_PATH_PROG(DOTLOCK_OLD, mutt.dotlock, no, `echo $PATH | sed "s/:/ /g"` )
+if test x$ac_cv_path_DOTLOCK_OLD = xno ; then
+	AC_PATH_PROG(DOTLOCK, mutt_dotlock, no, `echo $PATH | sed "s/:/ /g"`)
+else
+	ac_cv_path_DOTLOCK=$ac_cv_path_DOTLOCK_OLD
+fi
+
 if test x$ac_cv_path_DOTLOCK = xno ; then
-	echo "ERROR: mutt.dotlock is required to build this package." >&2
+	echo "ERROR: mutt_dotlock is required to build this package." >&2
 	echo "ERROR: You can get it from the mutt package's source code." >&2
 	exit 1
 fi
+
+
 AC_DEFINE_UNQUOTED(DOTLOCK, "$ac_cv_path_DOTLOCK")
 AC_SUBST(DOTLOCK)
 
