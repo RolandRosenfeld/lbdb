@@ -26,13 +26,13 @@ m_passwd_query()
     HOST="`lbdb_hostname`"
     case "$PASSWD_IGNORESYS" in
 	true|yes|1)
-	    IGNOREGREP="grep 'UID	\([12]....\|....\)$'"
+	    IGNORESYS='UID \([12]....\|....\)$'
 	    ;;
         *)
-	    IGNOREGREP="cat"
+	    IGNORESYS='.'
 	    ;;
     esac
 
     sed -e "s/^\([^:]*\):[^:]*:\([^:]*\):[^:]*:\([^:,]*\)[,:].*\$/\1@$HOST	\3	UID \2/" /etc/passwd \
-    | grep -i "$@" | "$IGNOREGREP"
+    | grep -i "$@" | grep "$IGNORESYS"
 }
