@@ -32,6 +32,8 @@ m_addr_email_query()
     if [ -x "$ADDR_EMAIL" ]		# check whether addr-email in installed
     then
 	$ADDR_EMAIL "$@" \
-	| sed -e 's/\(.*\):[ 	]\([^ 	].*$\)/\2	\1	addr-email/'
+	| sed -e 's/^\([^,]*\), \([^:]*\):	\(.*\)$/\3	\1	\2/' \
+	| grep '@'
+#	| sed -e 's/\(.*\):[ 	]\([^ 	].*$\)/\2	\1	addr-email/'
     fi
 }

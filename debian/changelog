@@ -3,8 +3,10 @@ lbdb (0.22) unstable; urgency=low
   * Add new module m_addr_email to request data from addressbook program
     (http://red.roses.de/~clemens/addressbook/) by Torsten Jerzembeck
     <toje@nightingale.ms.sub.org>.
+  * Some optimizations on m_addr_email to handle city name correct and to
+    junk entries without email address.
 
- -- Roland Rosenfeld <roland@debian.org>  Mon,  9 Oct 2000 15:08:57 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Mon,  9 Oct 2000 15:24:46 +0200
 
 lbdb (0.21.1) unstable; urgency=low
 
