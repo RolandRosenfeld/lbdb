@@ -12,8 +12,10 @@ lbdb (0.23) unstable; urgency=low
   * Add $(install_prefix) to Makefile.in and change debian/rules to use
     it.  Thanks to Rob Payne <rnspayne@adelphia.net> for providing the
     idea and a patch.
+  * Update lbdb.spec.in, patch provided by Rob Payne
+    <rnspayne@adelphia.net>.
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 23 Jan 2001 18:24:14 +0100
 
 lbdb (0.22) unstable; urgency=low
 
