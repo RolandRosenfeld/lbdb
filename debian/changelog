@@ -1,3 +1,12 @@
+lbdb (0.25.2) unstable; urgency=low
+
+  * New version (1.10) of lbdb.el by Dave Pearson <davep@davep.org>:
+    Fixes the fact that, when in an emacs that doesn't have
+    `line-{beginning,end}-position' available (xemacs, for example) I
+    wasn't defining fully compatible versions.
+
+ --
+
 lbdb (0.25.1) unstable; urgency=low
 
   * Add ">" to pod2man call in Makefile, because older versions of perl

@@ -1,5 +1,5 @@
 ;;; lbdb.el - Little Brother's Database interface.
-;; Copyright 2000 by Dave Pearson <davep@davep.org>
+;; Copyright 2000,2001 by Dave Pearson <davep@davep.org>
 ;; $Revision$
 
 ;; lbdb.el is free software distributed under the terms of the GNU
@@ -31,7 +31,7 @@
 ;;
 ;; The latest lbdb.el is always available from:
 ;;
-;;   <URL:http://www.davep.org/emacs/lbdb.el>
+;;   <URL:http://www.davep.org/emacs/#lbdb.el>
 
 ;;; BUGS:
 ;;
@@ -64,20 +64,20 @@
     (defmacro defcustom (symbol init docstring &rest rest)
       `(defvar ,symbol ,init ,docstring)))
 
-  ;; If `line-beginning-position' isn't available, provide one.
+  ;; If `line-beginning-position' isn't available provide one.
   (unless (fboundp 'line-beginning-position)
-    (defun line-beginning-position ()
+    (defun line-beginning-position (&optional n)
       "Return the `point' of the beginning of the current line."
       (save-excursion
-        (beginning-of-line)
+        (beginning-of-line n)
         (point))))
-  
-  ;; If `line-end-position' isn't available, provide one.
+
+  ;; If `line-end-position' isn't available provide one.
   (unless (fboundp 'line-end-position)
-    (defun line-end-position ()
+    (defun line-end-position (&optional n)
       "Return the `point' of the end of the current line."
       (save-excursion
-        (end-of-line)
+        (end-of-line n)
         (point)))))
 
 ;; Customize options.
