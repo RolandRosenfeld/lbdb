@@ -10,11 +10,6 @@ lbdb (0.17) unstable; urgency=low
   * Made date format in lbdb-fetchaddr runtime configurable as a command
     line parameter. If no date format is specified, "%Y-%m-%d %H:%M" is
     used as the default.
-
- -- Roland Rosenfeld <roland@debian.org>  Thu, 29 Apr 1999 16:42:13 +0200
-
-lbdb (0.16.3) unstable; urgency=low
-
   * include getopt.h only if it is existing (using autoconf). 
 
  -- Roland Rosenfeld <roland@debian.org>  Wed,  7 Apr 1999 12:22:13 +0200
