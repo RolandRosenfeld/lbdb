@@ -71,7 +71,7 @@ for method in $METHODS ; do
   eval ${method}_query \""$@"\" >> $collection || true
 done
 
-lines=`wc -l $collection | awk '{print $1}`
+lines=`wc -l $collection | awk '{print $1}'`
 
 if [ $lines = "0" ]
 then
