@@ -1,3 +1,10 @@
+lbdb (0.18.3) unstable; urgency=low
+
+  * m_gpg no longer writes error messages to stderr, when the given search 
+    string does not exist (Closes: #45422).
+
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 18 Sep 1999 20:40:02 +0200
+
 lbdb (0.18.2) unstable; urgency=low
 
   * Added HP-UX support (by David Ellement <ellement@sdd.hp.com>): 
