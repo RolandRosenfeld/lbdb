@@ -1,3 +1,9 @@
+lbdb (0.26.1) unstable; urgency=low
+
+  * Rebuild configure with autoconf 2.52.
+
+ -- Roland Rosenfeld <roland@spinnaker.de>  Wed, 13 Feb 2002 21:12:31 +0100
+
 lbdb (0.26) unstable; urgency=low
 
   * m_finger: Suppress lines where real name is '???' (some versions of
