@@ -1,7 +1,8 @@
 .\" -*-nroff-*-
 .\"
+.\"
 .\"     Copyright (C) 1996-8 Michael R. Elkins <me@cs.hmc.edu>
-.\"	Copyright (C) 1998 Thomas Roessler <roessler@guug.de>
+.\"	Copyright (C) 1998-9 Thomas Roessler <roessler@guug.de>
 .\" 
 .\"     This program is free software; you can redistribute it and/or modify
 .\"     it under the terms of the GNU General Public License as published by
@@ -17,14 +18,14 @@
 .\"     along with this program; if not, write to the Free Software
 .\"     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 .\"
-.TH dotlock 1 "JULY 1998" Unix "User Manuals"
+.TH dotlock 1 "AUGUST 1999" Unix "User Manuals"
 .SH NAME
 .PP
 lbdb_dotlock \- Lock mail spool files.
 .SH SYNOPSIS
 .PP
 .B lbdb_dotlock 
-[-t|-f|-u] [-r \fIretries\fP] \fIfile\fP
+[-t|-f|-u|-d] [-r \fIretries\fP] \fIfile\fP
 .SH DESCRIPTION
 .PP
 .B dotlock
@@ -47,6 +48,11 @@ will break that lock by removing the lockfile.
 Unlock.
 .B dotlock 
 will remove \fIfile\fP.lock.
+.IP "-d"
+Delete.
+.B dotlock
+will lock \fIfile\fP, remove it if it has length 0, and afterwards
+remove \fIfile\fP.lock.
 .IP "-r \fIretries\fP"
 This command line option tells 
 .B dotlock 
@@ -67,6 +73,7 @@ generates.
 .PP
 .BR fcntl (2),
 .BR flock (2),
+.BR lockfile (1),
 .BR lbdb-fetchaddr (1)
 .SH DIAGNOSTICS
 .PP
