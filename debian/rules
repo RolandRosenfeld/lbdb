@@ -1,19 +1,18 @@
 #!/usr/bin/make -f
-# MAde with the aid of dh_make, by Craig Small
-# Sample debian/rules that uses debhelper. GNU copyright 1997 by Joey Hess.
-# Some lines taken from debmake, by Cristoph Lameter.
+# (c) 1998-2003  Roland Rosenfeld <roland@debian.org>
+# Sample debian/rules that uses debhelper.
+# This file is public domain software, originally written by Joey Hess. 
 
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-# This is the debhelper compatibility version to use.
-export DH_COMPAT=3
-
 DROOT=`pwd`/debian/lbdb
 
-DEBUGSYMS=
-ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
-	DEBUGSYMS=-g
+OPTIMIZE=
+ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+        OPTIMIZE=-O0
+else
+        OPTIMIZE=-O2
 endif
 
 build: build-stamp
@@ -27,7 +26,7 @@ build-stamp:
 		./configure --prefix=/usr --libdir='$${prefix}/lib/lbdb' \
 			--mandir='$${prefix}/share/man' --sysconfdir=/etc \
 			--enable-lbdb-dotlock
-	$(MAKE) CFLAGS="-O2 -Wall $(DEBUGSYMS)"
+	$(MAKE) CFLAGS="$(OPTIMIZE) -Wall -g"
 
 	touch build-stamp
 
@@ -61,20 +60,21 @@ binary-indep: build install
 binary-arch: build install
 	dh_testdir
 	dh_testroot
-#	dh_installdebconf	
+	dh_installchangelogs
 	dh_installdocs
 	dh_installexamples
-	dh_installmenu
-	dh_installlogrotate
-	dh_installemacsen
+#	dh_install
+#	dh_installmenu
+#	dh_installdebconf	
+#	dh_installlogrotate
+#	dh_installemacsen
 #	dh_installpam
 #	dh_installmime
 #	dh_installinit
-	dh_installcron
-	dh_installman
-	dh_installinfo
+#	dh_installcron
+#	dh_installinfo
 #	dh_undocumented
-	dh_installchangelogs
+	dh_installman
 	dh_link
 	dh_strip
 	dh_compress
