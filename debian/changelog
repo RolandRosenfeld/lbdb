@@ -5,6 +5,8 @@ lbdb (0.25.2) unstable; urgency=low
     `line-{beginning,end}-position' available (xemacs, for example) I
     wasn't defining fully compatible versions.
   * Add short description to mutt_ldap_query in NAME section.
+  * Add m_getent by Adrian Likins <alikins@redhat.com>, which can replace
+    m_passwd and m_yppasswd on systems where getent(1) is installed.
 
  --
 

@@ -80,6 +80,10 @@ m_nispasswd
        This module searches for matching entries in the NIS+ password
        database using the command ``niscat passwd.org_dir''.
 
+m_getent
+       This module searches for matching entries in whatever password
+       database is configured using the command ``getent passwd''.
+
 m_pgp2, m_pgp5, m_gpg
        These modules scan your PGP 2.*, PGP 5.* or GnuPG public key
        ring for data. They use the programs pgp(1), pgpk(1), or gpg(1)

@@ -22,6 +22,7 @@
 # - m_passwd	 search the local /etc/passwd file.
 # - m_yppasswd	 search the NIS password database.
 # - m_nispasswd	 search the NIS+ password database.
+# - m_getent	 search the password database (whatever is configured).
 # - m_pgp2	 search your PGP 2.* keyring
 # - m_pgp5	 search your PGP 5.* keyring
 # - m_gpg	 search your GnuPG keyring

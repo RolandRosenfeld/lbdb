@@ -17,7 +17,7 @@
 .\"
 .\" $Id$
 .\"
-.TH LBDBQ 1 "April 2001" "Unix" "User Manuals"
+.TH LBDBQ 1 "September 2001" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -134,6 +134,10 @@ using the command ``ypcat passwd''.
 .B m_nispasswd
 This module searches for matching entries in the NIS+ password database
 using the command ``niscat passwd.org_dir''.
+.TP
+.B m_getent
+This module searches for matching entries in whatever password
+database is configured using the command ``getent passwd''.
 .TP
 .BR m_pgp2 ", " m_pgp5 ", " m_gpg
 These modules scan your PGP 2.*, PGP 5.* or GnuPG public key ring for
@@ -294,6 +298,7 @@ Print short help of lbdbq.
 .BR finger (1),
 .BR ypcat (1),
 .BR niscat (1),
+.BR getent (1),
 .BR pgp (1),
 .BR pgpk (1),
 .BR gpg (1),
@@ -324,6 +329,7 @@ Gabor Fleischer <flocsy@mtesz.hu> (m_pine),
 Rick Frankel <rick@rickster.com> (m_gnomecard),
 Utz-Uwe Haus <haus@uuhaus.de> (m_bbdb, m_nispasswd),
 Torsten Jerzembeck <toje@nightingale.ms.sub.org> (m_addr_email),
+Adrian Likins <alikins@redhat.com> (m_getent),
 Dave Pearson <davep@davep.org> (m_palm, lbdb.el), and
 Brian Salter-Duke <b_duke@lacebark.ntu.edu.au> (m_muttalias)
 .SH AUTHOR
