@@ -36,4 +36,6 @@ int main ()
     rfc2047_decode (buff, buff, sizeof (buff));
     fputs (buff, stdout);
   }
+  
+  return 0;
 }
