@@ -77,10 +77,10 @@ case "$SORT_OUTPUT" in
 	$libdir/munge-keeporder $collection | $TAC > $collection.uniq
 	;;
     *name)
-	$libdir/munge $collection | sort -uf +1 > $collection.uniq
+	$libdir/munge $collection | sort -f +1 > $collection.uniq
 	;;
     *)
-	$libdir/munge $collection | sort -uf > $collection.uniq
+	$libdir/munge $collection | sort -f > $collection.uniq
 	;;
 esac
 
