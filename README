@@ -18,7 +18,7 @@ to use, e.g., an installed PostgreSQL server as it's
 backend.
 
 As an additional requirement, we rely on mutt's
-mutt.dotlock program to do some locking.
+mutt_dotlock program to do some locking.
 
 
 For querying the Little Brother, just type "lbdbq
@@ -26,15 +26,15 @@ For querying the Little Brother, just type "lbdbq
 modules to gather information about persons matching
 "<something>".  E.g., it may look at a list of addresses
 from which you have received mail, it may look at YP maps,
-or it may try to finger <somethign>@<various hosts>.
+or it may try to finger <something>@<various hosts>.
 
-The behaviour is configurable:  Upon startup, lbdbq will
+The behavior is configurable:  Upon startup, lbdbq will
 source the shell scripts
 
 	/etc/lbdb.rc
 	$HOME/.lbdbrc
 	$HOME/.lbdb/lbdbrc
-	$HOmE/.lbdb/rc
+	$HOME/.lbdb/rc
 
 if they exist.
 
@@ -45,7 +45,7 @@ They can be used to set the following global variables:
 - METHODS: What modules to use.
 
 Note that there _are_ defaults, so you should most
-probably modify these variables using contructs like this:
+probably modify these variables using constructs like this:
 
 	MODULE_PATH="MODULE_PATH $HOME/lbdb_modules"
 
@@ -91,7 +91,7 @@ to submit them to me for inclusion in later releases.
 Finally, to use lbdbq from mutt, add the following line to
 your ~/.muttrc:
 
-	set query_command="lbdbq '%s'"
+	set query_command="lbdbq %s"
 
 
 CREDITS
