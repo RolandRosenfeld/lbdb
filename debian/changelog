@@ -1,8 +1,8 @@
 lbdb (0.16.2) unstable; urgency=low
 
-  * Removed some bash and Linux specials.
+  * Removed some bash, GNU-make, and GNU libc specials.
 
- -- Roland Rosenfeld <roland@debian.org>  Tue,  6 Apr 1999 19:00:31 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Tue,  6 Apr 1999 19:11:24 +0200
 
 lbdb (0.16.1) unstable; urgency=low
 
