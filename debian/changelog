@@ -1,4 +1,4 @@
-lbdb (0.20.2) unstable; urgency=low
+lbdb (0.21) unstable; urgency=low
 
   * Don't fail in m_palm, if no database is available.
   * Update lbdb.el to version 1.3 (thanks Dave).
