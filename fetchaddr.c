@@ -101,7 +101,7 @@ int main(int argc, char* argv[])
   int i, rv;
   int partial = 0;
   struct header *cur_hdr = NULL;
-  char datefmt[]   = "%Y-%m-%d %H:%M";
+  char* datefmt;
 
   while(fgets(buff, sizeof(buff), stdin))
   {
@@ -146,8 +146,11 @@ int main(int argc, char* argv[])
       partial = 0;
   }
 
-  if (argc == 2)
+  if (argc == 1) {
+    datefmt = strdup("%Y-%m-%d %H:%M");
+  } else {
     datefmt = argv[1];
+  }
 
   for(rv = 0, i = 0; hdr[i].tag; i++)
   {
