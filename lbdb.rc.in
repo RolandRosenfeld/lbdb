@@ -141,7 +141,7 @@ LDAP_NICKS="debian bigfoot"
 #
 # if you have more than one abook addressbook, use the ABOOK_FILES
 # variable. It contains a space separated list of all your files. 
-# Default is $HOME/.abook.addressbook
+# Default is $HOME/.abook/addressbook $HOME/.abook.addressbook
 # ABOOK_FILES="$HOME/.abook/friends $HOME/.abook/work"
 
 
