@@ -3,7 +3,7 @@
 # -*-sh-mode-*-
 #
 #     Copyright (C) 2000 Ross Campbell <rcampbel@us.oracle.com>
-#     Copyright (C) 2000 Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 2000-2002 Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -28,6 +28,13 @@ m_abook_query()
 
     if [ -x "$ABOOK" ]		# check whether abook in installed
     then
-	$ABOOK --mutt-query "$@" | sed -e '1d;s/$/	abook/'
+	for book in ${ABOOK_FILES:-$HOME/.abook.addressbook}
+	do
+	    if [ -f "$book" ]
+	    then
+		$ABOOK --datafile $book --mutt-query "$@" \
+		| sed -e '1d;s/$/	abook/'
+	    fi
+	done
     fi
 }

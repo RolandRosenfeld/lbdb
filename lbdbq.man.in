@@ -17,7 +17,7 @@
 .\"
 .\" $Id$
 .\"
-.TH LBDBQ 1 "April 2002" "Unix" "User Manuals"
+.TH LBDBQ 1 "August 2002" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -157,7 +157,10 @@ created by
 .BR m_abook
 This module uses the program
 .BR abook (1),
-a text based address book application to search for addresses.
+a text based address book application to search for addresses.  You
+can define multiple abook address books by setting the variable
+.B ABOOK_FILES
+to a space separated list.
 .TP
 .BR m_addr_email
 This module uses the program

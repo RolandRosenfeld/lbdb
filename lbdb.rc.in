@@ -136,6 +136,14 @@ METHODS="m_inmail m_passwd m_finger"
 LDAP_NICKS="debian bigfoot"
 
 
+# - m_abook query the abook(1) programm
+#
+# if you have more than one abook addressbook, use the ABOOK_FILES
+# variable. It contains a space separated list of all your files. 
+# Default is $HOME/.abook.addressbook
+# ABOOK_FILES="$HOME/.abook/friends $HOME/.abook/work"
+
+
 #
 # If you want to use private modules set the MODULES_PATH to find them:
 # (a space separated list):
