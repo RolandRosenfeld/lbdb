@@ -45,6 +45,8 @@ all: $(ALL)
 install: all
 	$(srcdir)/mkinstalldirs $(bindir)
 	$(srcdir)/mkinstalldirs $(libdir)
+	$(srcdir)/mkinstalldirs $(mandir)
+	$(srcdir)/mkinstalldirs $(mandir)/man1
 	$(INSTALL) -m 755 fetchaddr $(libdir)
 	$(INSTALL) -m 755 lbdbq $(bindir)
 	$(INSTALL) -m 755 lbdb-fetchaddr $(bindir)
@@ -52,7 +54,7 @@ install: all
 	$(INSTALL) -m 755 lbdb_lib $(libdir)
 	$(INSTALL) -m 755 munge $(libdir)
 	if [ "$(PERL)" != "no" ]; then \
-		$(INSTALL) -m 755 nodelist2lbdb $(bindir) \
+		$(INSTALL) -m 755 nodelist2lbdb $(bindir); \
 		$(INSTALL) -m 644 nodelist2lbdb.man \
 			$(mandir)/man1/nodelist2lbdb.1 \
 	fi
