@@ -1,3 +1,9 @@
+lbdb (0.19.4) unstable; urgency=low
+
+  * Make dotlock.c compile on systems without snprintf() again.
+
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 28 May 2000 11:20:03 +0200
+
 lbdb (0.19.3) unstable; urgency=low
 
   * Add new module m_muttalias, provided by Brian Salter-Duke
