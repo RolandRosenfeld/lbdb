@@ -3,6 +3,8 @@ lbdb (0.28.1) unstable; urgency=low
   * Make m_osx_addressbook compile on MacOS 10.3 and XCode, too.  Thanks
     to Yuval Kogman <nothingmuch@woobling.org> and Brendan Cully
     <brendan@kublai.com> for the patch.
+  * Remove "set -e" from lbdbq, which causes trouble if grep doesn't find
+    a match in some of the modules (Closes: #222647).
 
  --
 
