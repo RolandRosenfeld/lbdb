@@ -26,3 +26,4 @@ Description: The little brother's database for the mutt mail reader
   - m_pine (searches your Pine addressbook files)
   - m_palm (uses your Palm database; needs libpalm-perl package)
   - m_gnomecard (uses GnomeCard database files)
+  - m_bbdb (search your BBDB (big brother database)
