@@ -1,11 +1,11 @@
 lbdb (0.26.2) unstable; urgency=low
 
   * Optimized manual page in mutt_ldap_query.pl, to look less corrupted.
-  * mutt_ldap_query: Add new option $ldap_ignorant (and also 7th field in
+  * mutt_ldap_query: Add new config option $ignorant (and also 7th field in
     NICK array) to enable ignorant searching (search for *foo* instead of
     foo) (Closes: #179861).
 
- -- Roland Rosenfeld <roland@debian.org>  Sun,  9 Feb 2003 13:12:25 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Sun,  9 Feb 2003 13:19:49 +0100
 
 lbdb (0.26.1) unstable; urgency=low
 

@@ -49,7 +49,7 @@ our $ldap_result_realname = '${givenname} ${sn}';
 # format of the comment result based on the expected answers of the ldap query
 our $ldap_result_comment = '(${o})';
 # use ignorant (wildcard searching):
-our $ldap_ignorant = 0;
+our $ignorant = 0;
 
 our %ldap_server_db = (
   'four11'		=> ['ldap.four11.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
@@ -140,9 +140,7 @@ if ($ldap_server_nickname) {
   $ldap_result_realname = $option_array->[5];
   $ldap_result_comment = $option_array->[6];
   if (defined($option_array->[7])) {
-     $ldap_ignorant = $option_array->[7];
-  } else {
-     $ldap_ignorant = 0;
+     $ignorant = $option_array->[7];
   }
 }
 
@@ -153,7 +151,7 @@ my @results;
 
 foreach my $askfor ( @ARGV ) {
   my $query="";
-  if ($ignorant || $ldap_ignorant) {
+  if ($ignorant) {
 # enable this if you want to include wildcard in your search with some huge
 # ldap databases you might want to avoid it
     $query = join '', map { "($_=*$askfor*)" } @fields;
@@ -340,8 +338,8 @@ site configuration.  A file example is provided below:
  #                   'LDAP_RESULT_EMAIL',
  #                   'LDAP_RESULT_REALNAME',
  #                   'LDAP_RESULT_COMMENT',
- #                   LDAP_IGNORANT],
- # (LDAP_IGNORANT is an optional argument. If you set it to 1, mutt_ldap_query
+ #                   IGNORANT],
+ # (IGNORANT is an optional argument. If you set it to 1, mutt_ldap_query
  # uses wildcards *foo* for searching).
  # A practical illustrating example being:
  #  debian	=> ['db.debian.org', 'ou=users,dc=debian,dc=org', 'uid cn sn ircnick', 'uid cn sn ircnick', '${uid}@debian.org', '${cn} ${sn}', '${ircnick}'],
@@ -372,7 +370,7 @@ site configuration.  A file example is provided below:
  # format of the comment result based on the expected answers of the ldap query
  $ldap_result_comment = '(${o})';
  # Don't use wildchars on searching
- $ldap_ignorant = 0;
+ $ignorant = 0;
 
 =head1 EXAMPLES OF QUERIES
 
