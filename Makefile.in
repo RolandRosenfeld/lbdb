@@ -79,17 +79,6 @@ lbdb-query: $(srcdir)/lbdb-query.sh
 
 nodelist2lbdb: $(srcdir)/nodelist2lbdb.pl
 
-lbdbq.man: $(srcdir)/lbdbq.man.in
-	sed -e 's%@''libdir@%$(libdir)%' \
-	    -e 's%@''sysconfdir@%$(sysconfdir)%' $< > $@
-
-lbdb-fetchaddr.man: $(srcdir)/lbdb-fetchaddr.man.in
-	sed -e 's%@''libdir@%$(libdir)%' \
-	    -e 's%@''dotlock@%$(DOTLOCKBASE)%' $< > $@
-
-nodelist2lbdb.man: $(srcdir)/nodelist2lbdb.man.in
-	sed -e 's%@''libdir@%$(libdir)%' $< > $@
-
 lbdb_dotlock: $(srcdir)/dotlock.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $? -o $@
 
@@ -110,6 +99,11 @@ distclean: clean
 
 %.awk: %.awk.in
 	./config.status
+
+%.man: %.man.in
+	sed -e 's%@''libdir@%$(libdir)%' \
+	    -e 's%@''sysconfdir@%$(sysconfdir)%' \
+	    -e 's%@''dotlock@%$(DOTLOCKBASE)%' $< > $@
 
 %: %.sh
 	cat $< > $@

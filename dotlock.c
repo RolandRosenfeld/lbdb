@@ -379,9 +379,8 @@ dotlock_lock(const char *realpath)
   struct stat sb;
   time_t t;
   
-  snprintf(nfslockfile, sizeof(nfslockfile), "%s.%s.%d",
-	   realpath, Hostname, (int) getpid());
-  snprintf(lockfile, sizeof(lockfile), "%s.lock", realpath);
+  sprintf(nfslockfile, "%s.%s.%d", realpath, Hostname, (int) getpid());
+  sprintf(lockfile, "%s.lock", realpath);
 
   
   unlink(nfslockfile);
@@ -461,8 +460,7 @@ dotlock_unlock(const char *realpath)
   char lockfile[_POSIX_PATH_MAX + LONG_STRING];
   int i;
 
-  snprintf(lockfile, sizeof(lockfile), "%s.lock",
-	   realpath);
+  sprintf (lockfile, "%s.lock", realpath);
   
   i = unlink(lockfile);
   

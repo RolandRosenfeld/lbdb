@@ -1,3 +1,10 @@
+lbdb (0.18.3) unstable; urgency=low
+
+  * Make dotlock.c more portable.
+  * Make Makefile.in much more portable.
+
+ -- Roland Rosenfeld <roland@debian.org>  Thu,  2 Sep 1999 19:20:32 +0200
+
 lbdb (0.18.2) unstable; urgency=low
 
   * Added HP-UX support (by David Ellement <ellement@sdd.hp.com>): 
