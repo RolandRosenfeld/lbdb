@@ -1,11 +1,8 @@
 $Id$
 
 - add new modules:
-    - m_fido (scan Fido nodelist/pointlist)
     - extend m_passwd for NIS access (or create a separate module). 
 
-- split lbdbq manpage into several pages (lbdbq, lbdb-fetchaddr,
-  lbdb-munge, m_inmail, m_*,...)
 
 Roland Rosenfeld <roland@spinnaker.de>
 
