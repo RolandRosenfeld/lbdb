@@ -1,3 +1,10 @@
+lbdb (0.11-2) unstable; urgency=low
+
+  * Fixed nits in manpage.
+  * Changed date format in fetchaddr.c to yy-mm-dd HH:MM.
+
+ -- Roland Rosenfeld <roland@debian.org>  Thu, 22 Oct 1998 00:50:14 +0200
+
 lbdb (0.11-1) unstable; urgency=low
 
   * New upstream version.
