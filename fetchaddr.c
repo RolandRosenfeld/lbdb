@@ -147,7 +147,7 @@ int main(int argc, char* argv[])
   }
 
   if (argc == 1) {
-    datefmt = strdup("%Y-%m-%d %H:%M");
+    datefmt = safe_strdup("%Y-%m-%d %H:%M");
   } else {
     datefmt = argv[1];
   }
