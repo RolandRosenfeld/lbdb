@@ -9,8 +9,11 @@ lbdb (0.23) unstable; urgency=low
     guarantees, that /bin/sh is a posix shell (Closes: #75475).
   * Move /usr/share/doc/lbdb/override.Lintian to
     /usr/share/lintian/overrides/lbdb.
+  * Add $(install_prefix) to Makefile.in and change debian/rules to use
+    it.  Thanks to Rob Payne <rnspayne@adelphia.net> for providing the
+    idea and a patch.
 
- -- Roland Rosenfeld <roland@debian.org>  Fri, 24 Nov 2000 21:13:43 +0100
+ --
 
 lbdb (0.22) unstable; urgency=low
 

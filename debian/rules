@@ -48,7 +48,7 @@ install-stamp: build-stamp
 	dh_clean -k
 	dh_installdirs
 
-	$(MAKE) prefix=$(DROOT)/usr sysconfdir=$(DROOT)/etc install
+	$(MAKE) install_prefix=$(DROOT) install
 	install -m644 -oroot -groot lbdb.el \
 		$(DROOT)/usr/share/emacs/site-lisp/lbdb/lbdb.el
 	install -m644 -oroot -groot debian/override.Lintian \
