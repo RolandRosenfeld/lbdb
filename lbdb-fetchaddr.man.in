@@ -75,7 +75,7 @@ Print short help of lbdb-fetchaddr.
 .br
 .I @libdir@/m_inmail
 .SH "SEE ALSO"
-.BR ldbdq (1),
+.BR lbdbq (1),
 .BR @dotlock@ (1),
 .BR procmail (1),
 .BR procmailrc (5).
