@@ -138,7 +138,7 @@ m_bbdb
        configure the EMACS variable to tell this module which emacsen
        to use.  Otherwise it will fall back to emacs or xemacs.
 
-m_lbdb
+m_ldap
        This module queries an LDAP server using the Net::LDAP Perl
        modules from CPAN.  It can be configured using an external
        resource file (for more details please refer to the
