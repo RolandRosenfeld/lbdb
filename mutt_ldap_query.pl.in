@@ -1,6 +1,6 @@
 #! @PERL@ -w
 #
-#     Copyright (C) 2001 Marc de Courville <marc@courville.org>
+#     Copyright (C) 2000-2003 Marc de Courville <marc@courville.org>
 #
 #     $Id$
 #
@@ -21,7 +21,7 @@
 use strict;
 use Getopt::Long;
 use Net::LDAP;
-#use Pod::Usage;
+use Pod::Usage;
 
 #------8<------8<------8<------8<---cut here--->8------>8------>8------>8------
 # The defaults
@@ -109,9 +109,9 @@ sub process_file {
   }
 }
 
-#die pod2usage(1) if (! $ARGV[0] || $help || $version);
-#pod2usage(1) if $help;
-#pod2usage(-exitstatus => 0, -verbose => 2) if $man;
+die pod2usage(1) if (! $ARGV[0] || $help || $version);
+pod2usage(1) if $help;
+pod2usage(-verbose => 2) if $man;
 
 if ($version) {
   print "mutt_ldap_query version " . &versionstring() . "\n";
@@ -203,7 +203,7 @@ __END__
 
 =head1 NAME
 
-mutt_ldap_query - Query LDAP server for Mutt mailreader
+mutt_ldap_query - Query LDAP server for Mutt mail-reader
 
 =head1 SYNOPSIS
 
@@ -215,7 +215,7 @@ mutt_ldap_query.pl [options] <name_to_query> [[<other_name_to_query>] ...]
 
 =item B<--config=config_file> or B<-c config_file>
 
-specify an alternate ressource file other than the system ones
+specify an alternate resource file other than the system ones
 (F<@sysconfdir@/lbdb_ldap.rc> or F<@sysconfdir@/mutt_ldap_query.rc>)
 or default personal ones (F<$HOME/.lbdb/ldap.rc> or
 F<$HOME/.mutt_ldap_query.rc>).
@@ -277,7 +277,7 @@ ignorant mode: search using wildcard for *name_to_query* (requires a longer proc
 
 =item B<--lbdb_output> or B<-l>
 
-supress number of matches output (suited for interfacing with little brother database http://www.spinnaker.de/lbdb/)
+suppress number of matches output (suited for interfacing with little brother database http://www.spinnaker.de/lbdb/)
 
 =item B<--version> or B<-v>
 
@@ -297,7 +297,8 @@ email address, the name of the person and a comment.
 =head1 INTERFACING WITH MUTT
 
 This perl script can be interfaced with mutt by defining in your .muttrc:
-  C<set query_command = "mutt_ldap_query.pl '%s'">
+
+    set query_command = "mutt_ldap_query.pl '%s'"
 
 Multiple requests are supported: the "Q" command of mutt accepts as argument
 a list of queries (e.g. "Gosse de\ Courville").
@@ -305,76 +306,75 @@ a list of queries (e.g. "Gosse de\ Courville").
 Alternatively mutt_ldap_query can be interfaced with the more generic
 little brother database query program (http://www.spinnaker.de/lbdb/)
 using:
-  set query_command = "lbdbq '%s'"
+
+    set query_command = "lbdbq '%s'"
 
 and by specifying in your ~/.lbdb/lbdbrc file another method of query
 just adding to the METHODS variable the m_ldap module e.g.:
-  C<METHODS='m_inmail m_passwd m_ldap m_muttalias m_finger'>
 
-and the right path to access m_ldap in MODULES_PATH e.g.
-  C<MODULES_PATH="/usr/local/lib $HOME/.lbdb/modules">
+    METHODS='m_inmail m_passwd m_ldap m_muttalias m_finger'
 
-(if you moved F<m_ldap> in F<~/.lbdb/modules>).
+and the right path to access m_ldap in MODULES_PATH, e.g. if you moved
+F<m_ldap> in F<~/.lbdb/modules>:
+
+    MODULES_PATH="/usr/local/lib $HOME/.lbdb/modules"
+
 Just make sure to use the correct path for calling mutt_ldap_query
 in the m_ldap script.
 
 =head1 RESOURCE FILE FORMAT
 
-mutt_ldap_query is now fully customizable using an external
-ressource file.  By default mutt_ldap_query parses the system
-definition file localted gernerally at F</etc/mutt_ldap_query.rc>
-or F</usr/local/etc/mutt_ldap_query.rc> and also the user one:
+mutt_ldap_query is now fully customizable using an external resource
+file. By default mutt_ldap_query parses the system definition file
+located generally at F</etc/mutt_ldap_query.rc> or
+F</usr/local/etc/mutt_ldap_query.rc> and also the user one:
 F<$HOME/.mutt_ldap_query.rc>.
 
 Instead of using command line options, the user can redefine all the
 variables using the resource file by two manners in order to match his
 site configuration.  A file example is provided below:
 
- # The format of each entry of the ldap server database is the following:
- # LDAP_NICKNAME => ['LDAP_SERVER',
- #                   'LDAP_SEARCH_BASE',
- #                   'LDAP_SEARCH_FIELDS',
- #                   'LDAP_EXPECTED_ANSWERS',
- #                   'LDAP_RESULT_EMAIL',
- #                   'LDAP_RESULT_REALNAME',
- #                   'LDAP_RESULT_COMMENT',
- #                   IGNORANT],
- # (IGNORANT is an optional argument. If you set it to 1, mutt_ldap_query
- # uses wildcards *foo* for searching).
- # A practical illustrating example being:
- #  debian	=> ['db.debian.org', 'ou=users,dc=debian,dc=org', 'uid cn sn ircnick', 'uid cn sn ircnick', '${uid}@debian.org', '${cn} ${sn}', '${ircnick}'],
- # the output of the query will be then: ${uid}@debian.org\t${cn} ${sn}\t${ircnick} (i.e.: email name comment)
-
- # warning this database will erase default script builtin
- %ldap_server_db = (
-   'four11'        => ['ldap.four11.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
-   'infospace'     => ['ldap.infospace.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
-   'whowhere'      => ['ldap.whowhere.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
-   'bigfoot'       => ['ldap.bigfoot.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
-   'switchboard'   => ['ldap.switchboard.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
-   'infospacebiz'  => ['ldapbiz.infospace.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
- );
-
- # hostname of your ldap server
- $ldap_server = 'ldap.four11.com';
- # ldap base search
- $search_base = 'c=US';
- # list of the fields that will be used for the query
- $ldap_search_fields = 'givenname sn cn mail';
- # list of the fields that will be used for composing the answer
- $ldap_expected_answers = 'givenname sn cn mail o';
- # format of the email result based on the expected answers of the ldap query
- $ldap_result_email = '${mail}';
- # format of the realname result based on the expected answers of the ldap query
- $ldap_result_realname = '${givenname} ${sn}';
- # format of the comment result based on the expected answers of the ldap query
- $ldap_result_comment = '(${o})';
- # Don't use wildchars on searching
- $ignorant = 0;
+    # The format of each entry of the ldap server database is the following:
+    # LDAP_NICKNAME => ['LDAP_SERVER', 
+    #                   'LDAP_SEARCH_BASE',
+    #                   'LDAP_SEARCH_FIELDS',
+    #                   'LDAP_EXPECTED_ANSWERS',
+    #                   'LDAP_RESULT_EMAIL',
+    #                   'LDAP_RESULT_REALNAME',
+    #                   'LDAP_RESULT_COMMENT'],
+    
+    # a practical illustrating example being:
+    #  debian	=> ['db.debian.org', 'ou=users,dc=debian,dc=org', 'uid cn sn ircnick', 'uid cn sn ircnick', '${uid}@debian.org', '${cn} ${sn}', '${ircnick}'],
+    # the output of the query will be then: ${uid}@debian.org\t${cn} ${sn}\t${ircnick} (i.e.: email name comment)
+    
+    # warning this database will erase default script builtin
+    %ldap_server_db = (
+      'four11'		=> ['ldap.four11.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
+      'infospace'		=> ['ldap.infospace.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
+      'whowhere'		=> ['ldap.whowhere.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
+      'bigfoot'		=> ['ldap.bigfoot.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
+      'switchboard'		=> ['ldap.switchboard.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
+      'infospacebiz'	=> ['ldapbiz.infospace.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
+    );
+    
+    # hostname of your ldap server
+    $ldap_server = 'ldap.four11.com';
+    # ldap base search
+    $search_base = 'c=US';
+    # list of the fields that will be used for the query
+    $ldap_search_fields = 'givenname sn cn mail';
+    # list of the fields that will be used for composing the answer
+    $ldap_expected_answers = 'givenname sn cn mail o';
+    # format of the email result based on the expected answers of the ldap query
+    $ldap_result_email = '${mail}';
+    # format of the realname result based on the expected answers of the ldap query
+    $ldap_result_realname = '${givenname} ${sn}';
+    # format of the comment result based on the expected answers of the ldap query
+    $ldap_result_comment = '(${o})';
 
 =head1 EXAMPLES OF QUERIES
 
-B<mutt_ldap_query.pl> --ldap_server='ldap.mot.com' --search_base='ou=employees, o=Motorola,c=US' --ldap_search_fields='commonName gn sn cn uid' --ldap_expected_answers='gn sn preferredRfc822Recipient ou c telephonenumber' --ldap_result_email='${preferredRfc822Recipient}' --ldap_result_realname='${gn} ${sn}' --ldap_result_comment='(${telephonenumber}) ${ou} ${c}' Gosse de\ Courville
+    mutt_ldap_query.pl --ldap_server='ldap.mot.com' --search_base='ou=employees, o=Motorola,c=US' --ldap_search_fields='commonName gn sn cn uid' --ldap_expected_answers='gn sn preferredRfc822Recipient ou c telephonenumber' --ldap_result_email='${preferredRfc822Recipient}' --ldap_result_realname='${gn} ${sn}' --ldap_result_comment='(${telephonenumber}) ${ou} ${c}' Gosse de\ Courville
 
 performs a query using the ldap server ldap.mot.com using
 the following searching base 'ou=employees, o=Motorola,c=US' and
@@ -385,27 +385,27 @@ mutt_ldap_query will return a list of entries identified of the form:
 
   <${preferredRfc822Recipient}>\t${gn} ${sn}\t(${telephonenumber}) ${ou} ${c}
 
-where ${} variables should be considered as containers that are replaced
-by the results of the query
+where ${} variables should be considered as containers that are
+replaced by the results of the query. The previous query can be
+greatly simplified by using the ldap server mini database feature of
+the resource file introducing for example a nickname.
 
-The previous query can be greatly simplified by using the ldap server
-mini database feature of the resource file introducing for example a
-nickname
-
-C<mutt_ldap_query.pl --ldap_server_nickname='motorola' Gosse de\ Courville>
+    mutt_ldap_query.pl --ldap_server_nickname='motorola' Gosse de\ Courville
 
 When not sure of the full name (i.e. it should contain Courville)
 the ignorant mode is useful since the query will be performed using
 wildcards, i.e. *Courville* in the following case:
 
-C<mutt_ldap_query.pl --ignorant Courville>
+    mutt_ldap_query.pl --ignorant Courville
 
 =head1 WHERE TO GET IT
 
 The latest version can be retrieved at
   ftp://ftp.mutt.org/pub/mutt/contrib
 or
-  http://mapage.noos.fr/~courvill
+  http://www.courville.org/
+
+Note that now the script is integrated in the latest version of the little brother database available at http://www.spinnaker.de/lbdb/.  It is thus easier to use through this standard package than to hand customize it to fit your system/distribution needs.
 
 =head1 REFERENCES
 
@@ -433,13 +433,14 @@ multiple searches for email addresses based on external query scripts
 just like this one 8-)
  http://www.spinnaker.de/lbdb/
 
-=back
+=head1 AUTHORS
+
+Marc de Courville <marc@courville.org> and the various other contributors... that kindly sent their patches.
+
+Please report any bugs, or post any suggestions, to <marc@courville.org>.
 
 =head1 COPYRIGHT
 
-Copyright (c) 1998-2001 Marc de Courville <marc@courville.org>
-All rights reserved.
-This code is distributed under the GNU General Public License (GPL). See
-http://www.opensource.org/gpl-license.html and http://www.opensource.org/.
+Copyright (c) 1998-2003 Marc de Courville <marc@courville.org>. All rights reserved. This program is free software; you can redistribute it and/or modify it under the GNU General Public License (GPL). See http://www.opensource.org/gpl-license.html and http://www.opensource.org/.
 
 =cut

@@ -10,7 +10,12 @@ lbdb (0.28) unstable; urgency=low
   * m_abook: Search for $HOME/.abook/addressbook in addition to
     $HOME/.abook.addressbook to honor the fact that this file was moved in
     abook 0.5 (Closes: #205418).
-  
+  * Add a new version of mutt_ldap_query.pl by Marc de Courville:
+    - activated pod2usage (now contained in all the decent distributions)
+    - cleaned pod section to comply better with the pod formatting standard
+    - change contact address
+    - fixed typos
+
  --
 
 lbdb (0.27) unstable; urgency=low
