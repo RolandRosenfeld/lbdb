@@ -48,25 +48,25 @@ do
     -v) 
 	echo "lbdb-fetchaddr version $LBDB_VERSION"
 	exit 0
-	break;;
+	;;
     -h) 
 	usage
 	exit 0
-	break;;
+	;;
     -d)
 	if [ $# -gt 1 ]
 	then
 	    shift
 	    datefmt="$1"
 	fi
-	break;;
+	;;
     -x)
 	if [ $# -gt 1 ]
 	then
 	    shift
 	    hdrlist="-x $1"
 	fi
-	break;;
+	;;
     *)
 	if [ $# -eq 1 ]
 	then
@@ -78,7 +78,7 @@ do
 	    usage
 	    exit 1
 	fi
-	break;;
+	;;
     esac
     shift
 done

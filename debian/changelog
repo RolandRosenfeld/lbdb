@@ -2,8 +2,9 @@ lbdb (0.19.9) unstable; urgency=low
 
   * Remove erroneous quotes from lbdb-fetchaddr, which caused fetchaddr to
     write "`' wrong parameter" error message to procmail log file.
+  * Correct the getopt behavior in lbdb-fetchaddr.
 
- -- Roland Rosenfeld <roland@debian.org>  Wed, 16 Aug 2000 09:41:26 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Wed, 16 Aug 2000 09:55:48 +0200
 
 lbdb (0.19.8) unstable; urgency=low
 
