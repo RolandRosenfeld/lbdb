@@ -4,7 +4,8 @@ lbdb (0.28) unstable; urgency=low
     non-latin character sets.  Now returns UTF8 results instead.  Thanks
     to Brendan Cully <brendan@kublai.com>.
   * Correct delimiter of vcard to END:VCARD in m_gnomecard and allow
-    encodings etc. in the FN field (Closes: #198633).
+    encodings etc. in the FN field, thanks to Rogerio Brito
+    <rbrito@ime.usp.br> (Closes: #198633).
 
  --
 
