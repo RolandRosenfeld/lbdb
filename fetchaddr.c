@@ -60,6 +60,7 @@ int writeout(struct header *h)
   int rv = 0, i;
   ADDRESS *addr, *p;
   time_t timep;
+  char timebuf[16];
 
   if(!h->value)
     return;
@@ -70,15 +71,20 @@ int writeout(struct header *h)
   rfc2047_decode_adrlist(addr);
   for(p = addr; p; p = p->next)
   {
-    if(!p->group && p->mailbox && *p->mailbox && p->personal && *p->personal)
+    if(!p->group && p->mailbox && *p->mailbox && p->personal)
     {
       if(p->personal && strlen(p->personal) > 30)
 	strcpy(p->personal + 27, "...");
       
+#if 0
       printf("%s\t%s\t%s", p->mailbox, p->personal && *p->personal ? 
-	     p->personal : "<unknown>",
+	     p->personal : "no realname given",
 	     ctime(&timep));
-
+#else
+      strftime(timebuf, sizeof(timebuf), "%y-%m-%d %H:%M", localtime(&timep));
+      printf("%s\t%s\t%s\n", p->mailbox, p->personal && *p->personal ? 
+	     p->personal : "no realname given", timebuf);
+#endif
       rv = 1;
     }
   }
