@@ -1,7 +1,7 @@
 lbdb (0.23.1) unstable; urgency=low
 
   * Always use /bin/sh as the shell on Debian systems, because Debian
-    guarantees, that /bin/sh is a posix shell.
+    guarantees, that /bin/sh is a posix shell (Closes: #75475).
 
  -- Roland Rosenfeld <roland@debian.org>  Tue, 24 Oct 2000 14:07:27 +0200
 
