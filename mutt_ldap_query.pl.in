@@ -23,8 +23,6 @@ use Getopt::Long;
 use Net::LDAP;
 #use Pod::Usage;
 
-package mutt_ldap_query;
-
 #------8<------8<------8<------8<---cut here--->8------>8------>8------>8------
 # The defaults
 my $man = 0;
@@ -37,21 +35,21 @@ my $ldap_server_nickname = '';
 my $config_file = '';
 
 # hostname of your ldap server
-local $ldap_server = 'ldap.four11.com';
+my $ldap_server = 'ldap.four11.com';
 # ldap base search
-local $search_base = 'c=US';
+my $search_base = 'c=US';
 # list of the fields that will be used for the query
-local $ldap_search_fields = 'givenname sn cn';
+my $ldap_search_fields = 'givenname sn cn';
 # list of the fields that will be used for composing the answer
-local $ldap_expected_answers = 'givenname sn mail o';
+my $ldap_expected_answers = 'givenname sn mail o';
 # format of the email result based on the expected answers of the ldap query
-local $ldap_result_email = '${mail}';
+my $ldap_result_email = '${mail}';
 # format of the realname result based on the expected answers of the ldap query
-local $ldap_result_realname = '${givenname} ${sn}';
+my $ldap_result_realname = '${givenname} ${sn}';
 # format of the comment result based on the expected answers of the ldap query
-local $ldap_result_comment = '(${o})';
+my $ldap_result_comment = '(${o})';
 
-local %ldap_server_db = (
+my %ldap_server_db = (
   'four11'		=> ['ldap.four11.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
   'infospace'		=> ['ldap.infospace.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
   'whowhere'		=> ['ldap.whowhere.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
