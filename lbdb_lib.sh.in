@@ -30,7 +30,7 @@ lbdb_hn_sendmail()
 {
 	sendmail_cf="NONE"
 	for p in /etc /etc/mail /etc/sendmail ; do
-		if test -f $p/sendmail.cf ; then
+		if test -r $p/sendmail.cf ; then
 			sendmail_cf=$p/sendmail.cf
 		 	break;
 		fi
@@ -52,14 +52,18 @@ lbdb_hn_sendmail()
 
 lbdb_hostname()
 {
-	hn=`lbdb_hn_sendmail`
-	if test "x$hn" = "xNONE" ; then
-		for i in /etc/HOSTNAME /etc/hostname ; do
-			if test -f $i ; then
-				hn="`cat $i`"
-				break;
-			fi
-		done
-        fi
+	if test "x$MAIL_DOMAIN_NAME" != "x" ; then
+		hn=$MAIL_DOMAIN_NAME;
+	else
+		hn=`lbdb_hn_sendmail`
+		if test "x$hn" = "xNONE" ; then
+			for i in /etc/HOSTNAME /etc/hostname ; do
+				if test -f $i ; then
+					hn="`cat $i`"
+					break;
+				fi
+			done
+		fi
+	fi
 	echo "$hn"
 }

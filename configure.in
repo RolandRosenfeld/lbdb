@@ -136,6 +136,12 @@ if test "x$YPCAT" != xno ; then
 	AC_SUBST(YPCAT)
 fi
 
+AC_PATH_PROG(NISCAT, niscat, "no")
+if test "x$NISCAT" != xno ; then
+	MODULES="$MODULES m_nispasswd"
+	AC_SUBST(NISCAT)
+fi
+
 AC_PATH_PROG(GPG, gpg, "no")
 if test "x$GPG" != xno ; then
 	MODULES="$MODULES m_gpg"

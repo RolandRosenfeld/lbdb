@@ -76,6 +76,10 @@ m_yppasswd
        This module searches for matching entries in your NIS password
        file using the command "ypcat passwd".
 
+m_nispasswd
+       This module searches for matching entries in the NIS+ password
+       database using the command ``niscat passwd.org_dir''.
+
 m_pgp2, m_pgp5, m_gpg
        These modules scan your PGP 2.*, PGP 5.* or GnuPG public key
        ring for data. They use the programs pgp(1), pgpk(1), or gpg(1)
@@ -144,8 +148,8 @@ m_ldap
        resource file (for more details please refer to the
        mutt_ldap_query(1) manual page).
 
-Feel free to create your own modules to query LDAP servers and the
-like.  m_finger should be a good example of how to do it.
+Feel free to create your own modules to query other kinds of
+databases.  m_finger should be a good example of how to do it.
 
 If you create your own modules or have other changes and feel that
 they could be helpful for others, don't hesitate to submit them to me
@@ -170,7 +174,7 @@ Many thanks to the authors of the several modules and extensions:
 - Marc de Courville <marc@courville.org>           (m_ldap, mutt_ldap_query)
 - Gabor Fleischer <flocsy@mtesz.hu>                (m_pine)
 - Rick Frankel <rick@rickster.com>		   (m_gnomecard)
-- Utz-Uwe Haus <haus@uuhaus.de>			   (m_bbdb)
+- Utz-Uwe Haus <haus@uuhaus.de>			   (m_bbdb, m_nispasswd)
 - Torsten Jerzembeck <toje@nightingale.ms.sub.org> (m_addr_email)
 - Dave Pearson <davep@davep.org>                   (m_palm, lbdb.el)
 - Brian Salter-Duke <b_duke@lacebark.ntu.edu.au>   (m_muttalias)

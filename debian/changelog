@@ -6,8 +6,11 @@ lbdb (0.25) unstable; urgency=low
     <marc@courville.org>.
   * lbdb-munge didn't honor SORT_OUTPUT when called from m_inmail, so
     export this variable in m_inmail (Closes: #92767).
+  * Module m_nispasswd added by Utz-Uwe Haus <haus@uuhaus.de>.
+  * Added variable MAIL_DOMAIN_NAME to override other settings of mail
+    domain.
 
- -- Roland Rosenfeld <roland@debian.org>  Wed,  4 Apr 2001 18:40:22 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 10 Apr 2001 19:12:51 +0200
 
 lbdb (0.24) unstable; urgency=low
 

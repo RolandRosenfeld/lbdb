@@ -1,9 +1,6 @@
 $Id$
 
 - Add new modules:
-    - Add m_ldap for LDAP access (Marc de Courville
-      <Marc.de.Courville@crm.mot.com>, the author of
-      mutt_lbdb_query.pl, is working on this).
     - Add m_pgp6 for PGP 6.5.1.
 
 - lbdb_dotlock: Have a deep look into the locking mechanism.  Over NFS
@@ -25,13 +22,6 @@ $Id$
 - lbdb-fetchaddr/m_inmail: Make the database file configurable.  This
   can be realized in lbdb-fetchaddr via a new option, while m_inmail
   needs a new lbdbrc-variable for this.
-
-- munge/munge-keeporder: At the moment the mail address is the "unique
-  key", so multiple lines with the same mail address but different
-  real names are deduped to only one line (with the real name randomly
-  chosen).  It may be a good idea to make the combination of mail
-  address and real name the key.  Maybe we should give this decision
-  to the user and make it configurable.
 
 - replace m_passwd and m_yppasswd by m_getent, if getent(1) is
   supported by all UNIXes.  Otherwise we need some autoconf magic to

@@ -1568,10 +1568,51 @@ if test "x$YPCAT" != xno ; then
 	
 fi
 
+# Extract the first word of "niscat", so it can be a program name with args.
+set dummy niscat; ac_word=$2
+echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
+echo "configure:1575: checking for $ac_word" >&5
+if eval "test \"`echo '$''{'ac_cv_path_NISCAT'+set}'`\" = set"; then
+  echo $ac_n "(cached) $ac_c" 1>&6
+else
+  case "$NISCAT" in
+  /*)
+  ac_cv_path_NISCAT="$NISCAT" # Let the user override the test with a path.
+  ;;
+  ?:/*)			 
+  ac_cv_path_NISCAT="$NISCAT" # Let the user override the test with a dos path.
+  ;;
+  *)
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
+  ac_dummy="$PATH"
+  for ac_dir in $ac_dummy; do 
+    test -z "$ac_dir" && ac_dir=.
+    if test -f $ac_dir/$ac_word; then
+      ac_cv_path_NISCAT="$ac_dir/$ac_word"
+      break
+    fi
+  done
+  IFS="$ac_save_ifs"
+  test -z "$ac_cv_path_NISCAT" && ac_cv_path_NISCAT=""no""
+  ;;
+esac
+fi
+NISCAT="$ac_cv_path_NISCAT"
+if test -n "$NISCAT"; then
+  echo "$ac_t""$NISCAT" 1>&6
+else
+  echo "$ac_t""no" 1>&6
+fi
+
+if test "x$NISCAT" != xno ; then
+	MODULES="$MODULES m_nispasswd"
+	
+fi
+
 # Extract the first word of "gpg", so it can be a program name with args.
 set dummy gpg; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1575: checking for $ac_word" >&5
+echo "configure:1616: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_path_GPG'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1612,7 +1653,7 @@ fi
 # Extract the first word of "pgpk", so it can be a program name with args.
 set dummy pgpk; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1616: checking for $ac_word" >&5
+echo "configure:1657: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_path_PGPK'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1653,7 +1694,7 @@ fi
 # Extract the first word of "pgp", so it can be a program name with args.
 set dummy pgp; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1657: checking for $ac_word" >&5
+echo "configure:1698: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_path_PGP'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1694,7 +1735,7 @@ fi
 # Extract the first word of "perl", so it can be a program name with args.
 set dummy perl; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1698: checking for $ac_word" >&5
+echo "configure:1739: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_path_PERL'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1915,6 +1956,7 @@ s%@FINGER@%$FINGER%g
 s%@ABOOK@%$ABOOK%g
 s%@ADDR_EMAIL@%$ADDR_EMAIL%g
 s%@YPCAT@%$YPCAT%g
+s%@NISCAT@%$NISCAT%g
 s%@GPG@%$GPG%g
 s%@PGPK@%$PGPK%g
 s%@PGP@%$PGP%g

@@ -17,7 +17,7 @@
 .\"
 .\" $Id$
 .\"
-.TH LBDBQ 1 "February 2001" "Unix" "User Manuals"
+.TH LBDBQ 1 "April 2001" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -109,6 +109,12 @@ file (if it finds one) and by reading
 .I /etc/hostname 
 and
 .IR /etc/HOSTNAME .
+If you know that this fails on your machine, or you want to force lbdbq
+to consider some other name to be the local mail domain name (misconfigured
+SUNs come to mind here), you can specify a name using the
+.B MAIL_DOMAIN_NAME
+variable. If this variable is set by you, no probing will be done by
+.BR lbdbq .
 .TP
 .B m_inmail
 This module will look up user name fragments in a list of mail
@@ -124,6 +130,10 @@ does.
 .B m_yppasswd
 This module searches for matching entries in the NIS password database
 using the command ``ypcat passwd''.
+.TP
+.B m_nispasswd
+This module searches for matching entries in the NIS+ password database
+using the command ``niscat passwd.org_dir''.
 .TP
 .BR m_pgp2 ", " m_pgp5 ", " m_gpg
 These modules scan your PGP 2.*, PGP 5.* or GnuPG public key ring for
@@ -270,6 +280,7 @@ Print short help of lbdbq.
 .SH "SEE ALSO"
 .BR finger (1),
 .BR ypcat (1),
+.BR niscat (1),
 .BR pgp (1),
 .BR pgpk (1),
 .BR gpg (1),

@@ -21,6 +21,7 @@
 # - m_finger	 finger some hosts defined in variable M_FINGER_HOSTS
 # - m_passwd	 search the local /etc/passwd file.
 # - m_yppasswd	 search the NIS password database.
+# - m_nispasswd	 search the NIS+ password database.
 # - m_pgp2	 search your PGP 2.* keyring
 # - m_pgp5	 search your PGP 5.* keyring
 # - m_gpg	 search your GnuPG keyring
@@ -44,6 +45,13 @@ METHODS="m_inmail m_passwd m_finger"
 #
 #M_FINGER_HOSTS="master.debian.org va.debian.org localhost"
 
+#
+# If it isn't possible to find out the correct mail domain name of
+# your system by reading sendmail.cf, /etc/hostname or /etc/HOSTNAME,
+# you can specify it in the variable MAIL_DOMAIN_NAME. This overrides
+# all other mechanisms.
+#
+#MAIL_DOMAIN_NAME=does-not-exist.org
 
 # - m_muttalias      query set of mutt alias files:
 #
@@ -52,6 +60,7 @@ METHODS="m_inmail m_passwd m_finger"
 # $MUTT_DIRECTORY (defaults to $HOME/.mutt or $HOME, if ~/.mutt does
 # not exist) prepended before the file name. Absolute file names
 # (beginning with /) will be taken direct.
+#
 #MUTT_DIRECTORY="$HOME/.mutt"
 #MUTTALIAS_FILES=".muttrc .mail_aliases muttrc aliases"
 
