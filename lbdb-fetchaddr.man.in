@@ -1,5 +1,5 @@
 .\" -*- nroff -*-
-.\" Copyright (c) 1998-2000  Roland Rosenfeld <roland@spinnaker.de>
+.\" Copyright (c) 1998-2001  Roland Rosenfeld <roland@spinnaker.de>
 .\"               
 .\" This program is free software; you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc.,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 .\"
-.TH LBDB-FETCHADDR 1 "August 2000" "Unix" "User Manuals"
+.TH LBDB-FETCHADDR 1 "September 2001" "Unix" "User Manuals"
 .SH NAME
 lbdb-fetchaddr \- grab addresses from mails add append them to lbdb database
 .SH SYNOPSIS
@@ -24,6 +24,7 @@ lbdb-fetchaddr \- grab addresses from mails add append them to lbdb database
 .IR dateformat ]
 .RB [ -x
 .IR headerfieldlist ]
+.RB [ -a ]
 .br
 .B lbdb-fetchaddr
 .RB [ -v | -h ]
@@ -86,6 +87,10 @@ syntax.
 A colon separated list of header fields, which should be searched for
 mail addresses.  If this option isn't given, we fall back to
 .RB ` from:to:cc:resent-from:resent-to '.
+.TP
+.B -a
+Also grab addresses without a real name.  Use the local part of the
+mail address as real name.
 .SH FILES
 .I $HOME/.lbdb/m_inmail.list
 .br

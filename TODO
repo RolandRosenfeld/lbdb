@@ -27,6 +27,9 @@ $Id$
   supported by all UNIXes.  Otherwise we need some autoconf magic to
   do the right thing...
 
+- Optimize munge/munge-keeporder to work case-insensitive (at least on
+  the domain part of the addresses).
+
 Roland Rosenfeld <roland@spinnaker.de>
 $Id$
 

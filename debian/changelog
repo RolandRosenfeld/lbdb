@@ -7,8 +7,10 @@ lbdb (0.25.2) unstable; urgency=low
   * Add short description to mutt_ldap_query in NAME section.
   * Add m_getent by Adrian Likins <alikins@redhat.com>, which can replace
     m_passwd and m_yppasswd on systems where getent(1) is installed.
+  * Add option -a to fetchaddr and lbdb-fetchaddr to fetch also addresses
+    without realname.
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Sat,  1 Sep 2001 11:56:25 +0200
 
 lbdb (0.25.1) unstable; urgency=low
 

@@ -58,7 +58,8 @@ void chop(struct header *cur)
     cur->value[--cur->len] = '\0';
 }
 
-int writeout(struct header *h, const char *datefmt)
+int writeout(struct header *h, const char *datefmt, 
+	     unsigned char create_real_name)
 {
   int rv = 0;
   ADDRESS *addr, *p;
@@ -75,6 +76,17 @@ int writeout(struct header *h, const char *datefmt)
   rfc2047_decode_adrlist(addr);
   for(p = addr; p; p = p->next)
   {
+    if(create_real_name == 1 
+       && (!p->personal || !*p->personal)
+       && p->mailbox)
+    {
+      if(p->personal)
+	FREE(p->personal);
+      p->personal = safe_strdup(p->mailbox);
+      c=strchr(p->personal, '@');
+      if (c)
+	*c='\0';
+    }
     if(!p->group && p->mailbox && *p->mailbox && p->personal)
     {
       if(p->personal && strlen(p->personal) > 30)
@@ -107,6 +119,7 @@ int main(int argc, char* argv[])
   char *datefmt = NULL;
   char *headerlist = NULL;
   char *fieldname, *next;
+  char create_real_name = 0;
 
   /* process command line arguments: */
   if (argc > 1) {
@@ -116,6 +129,8 @@ int main(int argc, char* argv[])
 	datefmt = argv[++i];
       } else if (!strcmp (argv[i], "-x") && i+1 < argc) {
 	headerlist = argv[++i];
+      } else if (!strcmp (argv[i], "-a") {
+	create_real_name = 1;
       } else {
 	fprintf (stderr, "%s: `%s' wrong parameter\n", argv[0], argv[i]);
       }
@@ -197,7 +212,7 @@ int main(int argc, char* argv[])
   for(rv = 0, i = 0; hdr[i].tag; i++)
   {
     if(hdr[i].value)
-      rv = writeout(&hdr[i], datefmt) || rv;
+      rv = writeout(&hdr[i], datefmt, create_real_name) || rv;
   }
 
   return (rv ? 0 : 1);

@@ -31,6 +31,7 @@ fetchaddr=@libdir@/fetchaddr
 db=$HOME/.lbdb/m_inmail.list
 
 datefmt='%Y-%m-%d %H:%M'
+additional_param=""
 
 usage() {
     echo "Usage: $0 [OPTIONS]"
@@ -40,6 +41,7 @@ usage() {
     echo "       -h                 this short help"
     echo "       -d 'dateformat'    select date format using strftime(3)"
     echo "       -x 'from:to:cc'    colon separated list of header fields"
+    echo "       -a                 also grep addresses without realname"
 }
 
 while [ $# -gt 0 ]
@@ -66,6 +68,9 @@ do
 	    shift
 	    hdrlist="-x $1"
 	fi
+	;;
+    -a)
+	additional_param="$additional_param $1"
 	;;
     *)
 	if [ $# -eq 1 ]
@@ -107,7 +112,7 @@ else
   exit 1
 fi
 
-if $fetchaddr -d "$datefmt" $hdrlist >> $db ; then
+if $fetchaddr $additional_param -d "$datefmt" $hdrlist >> $db ; then
   touch $db.dirty
 fi
 
