@@ -152,6 +152,11 @@ m_ldap
        resource file (for more details please refer to the
        mutt_ldap_query(1) manual page).
 
+m_wanderlust
+       This module searches for addresses stored in your ~/.addresses
+       file of WanderLust.
+       
+
 Feel free to create your own modules to query other kinds of
 databases.  m_finger should be a good example of how to do it.
 
@@ -180,5 +185,6 @@ Many thanks to the authors of the several modules and extensions:
 - Rick Frankel <rick@rickster.com>		   (m_gnomecard)
 - Utz-Uwe Haus <haus@uuhaus.de>			   (m_bbdb, m_nispasswd)
 - Torsten Jerzembeck <toje@nightingale.ms.sub.org> (m_addr_email)
+- Gergely Nagy <algernon@debian.org>		   (m_wanderlust)
 - Dave Pearson <davep@davep.org>                   (m_palm, lbdb.el)
 - Brian Salter-Duke <b_duke@lacebark.ntu.edu.au>   (m_muttalias)

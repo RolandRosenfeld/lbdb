@@ -8,7 +8,7 @@
 # ~/.lbdb/rc
 # (evaluated with ascending priority!)
 # 
-# (c) 1999-2001 Roland Rosenfeld <roland@spinnaker.de>
+# (c) 1999-2002 Roland Rosenfeld <roland@spinnaker.de>
 #
 # $Id$
 #
@@ -35,7 +35,7 @@
 # - m_gnomecard	 search your GnomeCard address database files.
 # - m_bbdb	 search your BBDB (big brother database).
 # - m_ldap       query an LDAP server 
-
+# - m_wanderlust search your wanderlust ~/.addresses file.
 
 METHODS="m_inmail m_passwd m_finger"
 

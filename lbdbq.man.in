@@ -1,5 +1,5 @@
 .\" -*- nroff -*-
-.\" Copyright (c) 1998-2001  Roland Rosenfeld <roland@spinnaker.de>
+.\" Copyright (c) 1998-2002  Roland Rosenfeld <roland@spinnaker.de>
 .\"               
 .\" This program is free software; you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 .\"
 .\" $Id$
 .\"
-.TH LBDBQ 1 "September 2001" "Unix" "User Manuals"
+.TH LBDBQ 1 "February 2002" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -258,6 +258,12 @@ or more of the predefined queries from the
 in this file.  For this you have to define a space separated list of
 nicknames from entries in the variable
 .BR LDAP_NICKS .
+.TP
+.BR m_wanderlust
+This module searches for addresses stored in your 
+.I ~/.addresses 
+file of 
+.BR WanderLust .
 .PP
 Feel free to create your own modules to query other database resources,
 YP maps, and the like.
@@ -330,8 +336,9 @@ Rick Frankel <rick@rickster.com> (m_gnomecard),
 Utz-Uwe Haus <haus@uuhaus.de> (m_bbdb, m_nispasswd),
 Torsten Jerzembeck <toje@nightingale.ms.sub.org> (m_addr_email),
 Adrian Likins <alikins@redhat.com> (m_getent),
+Gergely Nagy <algernon@debian.org> (m_wanderlust),
 Dave Pearson <davep@davep.org> (m_palm, lbdb.el), and
-Brian Salter-Duke <b_duke@lacebark.ntu.edu.au> (m_muttalias)
+Brian Salter-Duke <b_duke@lacebark.ntu.edu.au> (m_muttalias).
 .SH AUTHOR
 The lbdb package was written by Thomas Roessler <roessler@guug.de> and
 is now maintained and extended by Roland Rosenfeld

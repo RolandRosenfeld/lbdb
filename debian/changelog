@@ -1,9 +1,12 @@
-lbdb (0.25.3) unstable; urgency=low
+lbdb (0.26) unstable; urgency=low
 
   * m_finger: Suppress lines where real name is '???' (some versions of
     finger seem to use this for non existing users) (Closes: #112127).
-
- --
+  * m_wanderlust: new module to read ~/.addesses file from WanderLust
+    MUA.  Module provided by Gergely Nagy <algernon@debian.org>.
+    (Closes: #133209).
+  
+ -- Roland Rosenfeld <roland@debian.org>  Mon, 11 Feb 2002 16:36:48 +0100
 
 lbdb (0.25.2) unstable; urgency=low
 
