@@ -6,7 +6,7 @@ Standards-Version: 2.5.0.0
 
 Package: lbdb
 Architecture: any
-Depends: ${shlibs:Depends}, mawk, mutt (>= 0.94.10) | mutt-i (>= 0.94.10i)
+Depends: ${shlibs:Depends}, mawk, mutt (>= 0.94.10)
 Recommends: netstd 
 Suggests: procmail
 Description: The little brother's database for the mutt mail reader

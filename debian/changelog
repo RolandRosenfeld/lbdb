@@ -2,8 +2,11 @@ lbdb (0.13) unstable; urgency=low
 
   * Upgraded lbdb.sl supplied by Thomas Roessler <roessler@guug.de>
   * Moved lbdb.sl to /usr/doc/lbdb/examples
+  * Removed dependency to mutt-i (>= 0.94.10), because there was no mutt-i 
+    >= 0.94.10, instead mutt-i was renamed to mutt in the time of adding
+    the needed mutt_dotlock.
 
- -- Roland Rosenfeld <roland@debian.org>  Tue, 17 Nov 1998 20:09:09 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 24 Nov 1998 23:38:33 +0100
 
 lbdb (0.12) unstable; urgency=low
 
