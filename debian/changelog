@@ -8,8 +8,10 @@ lbdb (0.20.2) unstable; urgency=low
     your MUTT_DIRECTORY (Closes: #71975).
   * Correct README (we have more than two modules now :-)
   * Create sysconfdir, if it doesn't already exist.
+  * lbdbq: write information about number of matching entries into status
+    line and exit with return value 1, if no matching entries were found.
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Sun,  8 Oct 2000 00:46:18 +0200
 
 lbdb (0.20.1) unstable; urgency=low
 

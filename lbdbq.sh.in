@@ -71,7 +71,15 @@ for method in $METHODS ; do
   eval ${method}_query \""$@"\" >> $collection || true
 done
 
-echo
+lines=`wc -l $collection | awk '{print $1}`
+
+if [ $lines = "0" ]
+then
+    echo "lbdbq: no matches"
+    exit 1
+else
+    echo "lbdbq: $lines matches"
+fi
 
 if [ "$SORT_OUTPUT" = "false" -o "$SORT_OUTPUT" = "no" ]
 then
