@@ -6,6 +6,7 @@ lbdb (0.25) unstable; urgency=low
     <marc@courville.org>.
   * Fix problem in mutt_ldap_query, which ignored the content of the
     config file before.
+  * Remove <> from email address in mutt_ldap_query output.
   * lbdb-munge didn't honor SORT_OUTPUT when called from m_inmail, so
     export this variable in m_inmail (Closes: #92767).
   * Module m_nispasswd added by Utz-Uwe Haus <haus@uuhaus.de>.
@@ -17,7 +18,7 @@ lbdb (0.25) unstable; urgency=low
   * Upgrade to Standards-Version 3.5.2 (no changes).
   * Depend on mawk | awk to give apt a default.
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 22 Jul 2001 20:04:34 +0200
 
 lbdb (0.24) unstable; urgency=low
 

@@ -29,8 +29,8 @@
 		       'givenname sn cn mail', 'givenname cn sn mail o',
 		       '${mail}', '${givenname} ${sn}', '${o}' ],
   'bigfoot'	   => ['ldap.bigfoot.com', 'c=US', 
-		       'givenname sn cn mail', 'givenname cn sn mail o',
-		       '${mail}', '${givenname} ${sn}', '${o}' ],
+		       'givenname surname cn mail', 'mail cn l',
+		       '${mail}', '${cn}', '${l}' ],
   'switchboard'	   => ['ldap.switchboard.com', 'c=US',
 		       'givenname sn cn mail', 'givenname cn sn mail o',
 		       '${mail}', '${givenname} ${sn}', '${o}' ],
@@ -53,16 +53,16 @@
 );
 
 # hostname of your ldap server
-$ldap_server = 'ldap.four11.com';
+$ldap_server = 'db.debian.org';
 # ldap base search
-$search_base = 'c=US';
+$search_base = 'ou=users,dc=debian,dc=org';
 # list of the fields that will be used for the query
-$ldap_search_fields = 'givenname sn cn mail';
+$ldap_search_fields = 'uid cn sn ircnick';
 # list of the fields that will be used for composing the answer
-$ldap_expected_answers = 'givenname sn cn mail o';
+$ldap_expected_answers = 'uid cn sn ircnick';
 # format of the email result based on the expected answers of the ldap query
-$ldap_result_email = '${mail}';
+$ldap_result_email = '${uid}@debian.org';
 # format of the realname result based on the expected answers of the ldap query
-$ldap_result_realname = '${givenname} ${sn}';
+$ldap_result_realname = '${cn} ${sn}';
 # format of the comment result based on the expected answers of the ldap query
-$ldap_result_comment = '(${o})';
+$ldap_result_comment = '(${ircnick})';
