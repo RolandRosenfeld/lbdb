@@ -1,8 +1,9 @@
 lbdb (0.19.4) unstable; urgency=low
 
   * Make dotlock.c compile on systems without snprintf() again.
+  * Don't remove Makefile in clean target but only in distclean.
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 28 May 2000 11:20:03 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 28 May 2000 11:32:16 +0200
 
 lbdb (0.19.3) unstable; urgency=low
 

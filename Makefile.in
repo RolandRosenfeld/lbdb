@@ -37,11 +37,11 @@ libdir=@libdir@
 mandir=@mandir@
 sysconfdir=@sysconfdir@
 
-ALL=Makefile lbdbq lbdb_lib lbdb-fetchaddr lbdb-munge fetchaddr munge \
+ALL=lbdbq lbdb_lib lbdb-fetchaddr lbdb-munge fetchaddr munge \
 	munge-keeporder	nodelist2lbdb lbdbq.man lbdb-fetchaddr.man \
 	nodelist2lbdb.man $(MODULES) $(DOTLOCK_TARGET) $(TACTARGET)
 
-all: $(ALL)
+all: Makefile $(ALL)
 
 install: all
 	$(srcdir)/mkinstalldirs $(bindir)
