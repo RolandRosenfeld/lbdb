@@ -1,0 +1,41 @@
+#
+# This is the main configuration file of the little brothers database lbdb
+#
+# Everything you configure here can be overridden by the users config
+# file which can be found at
+# ~/.lbdbrc
+# ~/.lbdb/lbdbrc
+# ~/.lbdb/rc
+# (evaluated with ascending order!)
+# 
+# (c) 1999 Roland Rosenfeld <roland@spinnaker.rhein.de>
+#
+# $Id$
+#
+
+#
+# Select which methods you want to use in which order (ascending priority):
+# (a space separated list)
+#
+# - m_inmail	search the database created by lbdb-fetchaddr(1)
+# - m_finger	finger some hosts defined in variable M_FINGER_HOSTS
+# - m_passwd	search the local /etc/passwd file.
+# - m_pgp2	search your PGP 2.* keyring
+# - m_pgp5	search your PGP 5.* keyring
+# - m_gpg	search your GnuPG keyring
+
+METHODS="m_inmail m_finger m_passwd"
+
+
+#
+# If you want m_finger to ask other host then localhost, create a list here:
+# (a space separated list):
+#
+#M_FINGER_HOSTS="master.debian.org va.debian.org"
+
+
+#
+# If you want to use private modules set the MODULES_PATH to find them:
+# (a space separated list):
+#
+#MODULES_PATH="/usr/lib/lbdb $HOME/.lbdb/modules"
