@@ -2,9 +2,11 @@ lbdb (0.16) unstable; urgency=low
 
   * Added dotlock command from mutt 0.96.1 sources (without the SGID mail
     stuff) which is installed as lbdb_dotlock, when no mutt_dotlock can be 
-    found.
+    found. This doesn't change the Debian binary, because the Debian
+    package depends on mutt which is compiled with mutt_dotlock in the
+    Debian environment (because of "SGID mail")
 
- -- Roland Rosenfeld <roland@debian.org>  Sun,  4 Apr 1999 19:17:55 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sun,  4 Apr 1999 19:24:26 +0200
 
 lbdb (0.15.1) unstable; urgency=low
 
