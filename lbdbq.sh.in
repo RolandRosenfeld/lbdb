@@ -59,9 +59,9 @@ for conffile in $sysconfdir/lbdb.rc $HOME/.lbdbrc \
 done
 
 for method in $METHODS ; do
-  for p in $MODULES_PATH ; do
-    if test -f $p/$method ; then
-      . $p/$method
+  for CURRENT_MODULE_DIR in $MODULES_PATH ; do
+    if test -f $CURRENT_MODULE_DIR/$method ; then
+      . $CURRENT_MODULE_DIR/$method
       break
     fi
   done
