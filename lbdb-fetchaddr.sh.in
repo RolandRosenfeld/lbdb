@@ -107,7 +107,7 @@ else
   exit 1
 fi
 
-if $fetchaddr -d "$datefmt" "$hdrlist" >> $db ; then
+if $fetchaddr -d "$datefmt" $hdrlist >> $db ; then
   touch $db.dirty
 fi
 
