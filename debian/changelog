@@ -1,3 +1,12 @@
+lbdb (0.18.2) unstable; urgency=low
+
+  * Added HP-UX support (by David Ellement <ellement@sdd.hp.com>): 
+    - Try awk (in addition to mawk, gawk, nawk).
+    - Use "test ... != ..." instead of "! test ... = ...", which works
+      with ksh.
+
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 22 Aug 1999 23:05:07 +0200
+
 lbdb (0.18.1) unstable; urgency=low
 
   * Always build Debian binary with m_pgp2, m_pgp5 and m_gpg (ignoring

@@ -53,9 +53,14 @@ fi
 
 AC_SUBST(SH)
 
+AC_PATH_PROG(AWK, awk, NONE)
 AC_PATH_PROG(MAWK, mawk, NONE)
 AC_PATH_PROG(GAWK, gawk, NONE)
 AC_PATH_PROG(NAWK, nawk, NONE)
+
+if test "x$AWK" != "xNONE" ; then
+	AWK="$AWK -f"
+fi
 
 if test "x$NAWK" != "xNONE" ; then
 	AWK="$NAWK -f"

@@ -36,7 +36,7 @@ lbdb_hn_sendmail()
 		fi
 	done
 	
-	if ! test "x$sendmail_cf" = "xNONE" ; then
+	if test "x$sendmail_cf" != "xNONE" ; then
 		hn="`sed -n -e 's/^DM\(.*\)$/\1/p' $sendmail_cf`"
 		if test "x$hn" = x ; then
 			hn="`sed -n -e 's/^Dj\(.*\)$/\1/p' $sendmail_cf`"
