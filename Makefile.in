@@ -28,6 +28,7 @@ DOTLOCKBASE=@DOTLOCKBASE@
 DOTLOCK_TARGET=@DOTLOCK_TARGET@
 TACTARGET=@TACTARGET@
 PERL=@PERL@
+XCODEBUILD=@XCODEBUILD@
 PBXBUILD=@PBXBUILD@
 
 prefix=@prefix@
@@ -71,7 +72,7 @@ install: all
 		$(INSTALL) -m 644 lbdb_ldap.rc \
 			$(install_prefix)$(sysconfdir)/lbdb_ldap.rc; \
 	fi
-	if [ "$(PBXBUILD)" != "no" ]; then \
+	if [ "$(XCODEBUILD)" != "no" -o "$(PBXBUILD)" != "no" ]; then \
 		$(INSTALL) -m 755 ABQuery/sym/ABQuery $(install_prefix)$(libdir); \
 	fi
 	for i in $(MODULES); do \
@@ -143,7 +144,11 @@ ABQuery/sym/ABQuery: ABQuery/pbxbuild.sh ABQuery/ABQuery.m
 	ABQuery/pbxbuild.sh
 
 ABQuery/pbxbuild.sh:
-	(cd ABQuery; pbxbuild -buildstyle Deployment export)
+	if [ "$(XCODEBUILD)" != "no" ]; then \
+		(cd ABQuery; xcodebuild -buildstyle Deployment; printf '#!/bin/sh\nmkdir ABQuery/sym; cp ABQuery/build/ABQuery ABQuery/sym\n' > pbxbuild.sh; chmod a+x pbxbuild.sh) \
+	else \
+		(cd ABQuery; pbxbuild -buildstyle Deployment export) \
+	fi
 
 clean:
 	-rm -f *.o *~ $(ALL) munge.awk munge-keeporder.awk tac.awk \

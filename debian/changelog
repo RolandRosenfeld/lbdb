@@ -1,3 +1,11 @@
+lbdb (0.28.1) unstable; urgency=low
+
+  * Make m_osx_addressbook compile on MacOS 10.3 and XCode, too.  Thanks
+    to Yuval Kogman <nothingmuch@woobling.org> and Brendan Cully
+    <brendan@kublai.com> for the patch.
+
+ --
+
 lbdb (0.28) unstable; urgency=low
 
   * Fix bug in ABQuery module, which crashes when it finds results in

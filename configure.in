@@ -175,11 +175,17 @@ if test "x$PERL" != xno ; then
 	AC_SUBST(PERL)
 fi
 
-AC_PATH_PROG(PBXBUILD, pbxbuild, "no")
-if test "x$PBXBUILD" != xno ; then
-	# m_osx_addressbook builds only on OS X with the Developer tools installed
+# m_osx_addressbook requires xcode (10.3) or projectbuilder (<10.3)
+AC_PATH_PROG(XCODEBUILD, xcodebuild, "no")
+if test "x$XCODEBUILD" != xno; then
 	MODULES="$MODULES m_osx_addressbook"
-	AC_SUBST(PBXBUILD)
+	AC_SUBST(XCODEBUILD)
+else
+	AC_PATH_PROG(PBXBUILD, pbxbuild, "no")
+	if test "x$PBXBUILD" != xno ; then
+		MODULES="$MODULES m_osx_addressbook"
+		AC_SUBST(PBXBUILD)
+	fi
 fi
 
 MODULES_SH=""
