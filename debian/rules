@@ -12,8 +12,7 @@ build-stamp:
 
 	env PGP=/usr/bin/pgp PGPK=/usr/bin/pgpk GPG=/usr/bin/gpg \
 		FINGER=/usr/bin/finger ABOOK=/usr/bin/abook \
-		YPCAT=/usr/bin/ypcat DOTLOCK=/usr/bin/mutt_dotlock \
-		MAWK=/usr/bin/awk \
+		YPCAT=/usr/bin/ypcat MAWK=/usr/bin/awk \
 		./configure --prefix=/usr --libdir='$${prefix}/lib/lbdb' \
 			--mandir='$${prefix}/share/man' --sysconfdir=/etc \
 			--enable-lbdb-dotlock

@@ -1,3 +1,12 @@
+lbdb (0.19.3) unstable; urgency=low
+
+  * Remove DOTLOCK=/usr/bin/mutt_dotlock from ./configure environment.
+    This is superfluous since --enable-lbdb-dotlock is used, but it
+    doesn't cause problems (neither with mutt installed or deinstalled)
+    (Closes: #64134).
+
+ --
+
 lbdb (0.19.2) unstable; urgency=low
 
   * Give the dateformat to fetchaddr(1) using the -d option (instead of
