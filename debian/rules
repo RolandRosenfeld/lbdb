@@ -33,7 +33,6 @@ install-stamp: build-stamp
 
 	$(MAKE) install prefix=`pwd`/debian/tmp/usr
 	install -m 644 debian/lbdb.rc `pwd`/debian/tmp/etc/lbdb.rc
-	install -m 644 lbdb.sl `pwd`/debian/tmp/usr/lib/jed/jedsl/lbdb.sl
 
 	touch install-stamp
 

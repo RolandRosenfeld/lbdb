@@ -1,8 +1,9 @@
 lbdb (0.13) unstable; urgency=low
 
   * Upgraded lbdb.sl supplied by Thomas Roessler <roessler@guug.de>
+  * Moved lbdb.sl to /usr/doc/lbdb/examples
 
- -- Roland Rosenfeld <roland@debian.org>  Tue, 17 Nov 1998 14:59:27 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 17 Nov 1998 20:09:09 +0100
 
 lbdb (0.12) unstable; urgency=low
 
