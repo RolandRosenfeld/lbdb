@@ -10,9 +10,17 @@
 ;; lbdb.el is an emacs interface to the Little Brother's Database. You can
 ;; find out more about LBDB at <URL:http://www.spinnaker.de/lbdb/>.
 ;;
-;; Two commands are provided, `lbdb' and `lbdb-last'. `lbdb' lets to perform
-;; an interactive query on the lbdb while `lbdb-last' allows you to recall
-;; and work with the results of the last query you performed.
+;; A number of commands are provided, they are:
+;;
+;; `lbdb' : Perform an interactive LBDB query.
+;;
+;; `lbdb-region' : Query the LBDB for the content of the current region.
+;;
+;; `lbdb-maybe-region' : If a mark is active, search for the content of the
+;; region in the LBDB, otherwise perform an interactive query.
+;;
+;; `lbdb-last' : Recall and work with the results of the last query you
+;; performed.
 ;;
 ;; The latest lbdb.el is always available from:
 ;;
@@ -28,9 +36,11 @@
 ;; o Drop lbdb.el somwehere into your `load-path'. Try your site-lisp
 ;;   directory for example (you might also want to byte-compile the file).
 ;;
-;; o Add the following autoload statement to your ~/.emacs file:
+;; o Add the following autoload statements to your ~/.emacs file:
 ;;
 ;;   (autoload 'lbdb "lbdb" "Query the Little Brother's Database" t)
+;;   (autoload 'lbdb-region "lbdb" "Query the Little Brother's Database" t)
+;;   (autoload 'lbdb-maybe-region "lbdb" "Query the Little Brother's Database" t)
 
 ;;; Code:
 
@@ -156,7 +166,7 @@ current buffer."
         for email-len = (length (lbdb-email line)) then (max email-len (length (lbdb-email line)))
         for name-len  = (length (lbdb-name  line)) then (max name-len  (length (lbdb-name  line)))
         finally return (format "%%-%ds %%-%ds %%s" name-len email-len)))
-  
+
 (defun lbdb-line-as-list ()
   "Split the current line into its component parts.
 
@@ -203,6 +213,18 @@ The type of sort is controlled by `lbdb-sort-display'."
   (lbdb-present-results (lbdbq query (interactive-p))))
 
 ;;;###autoload
+(defun lbdb-region (start end)
+  "Look for the contents of regioning bounded by START and END."
+  (interactive "r")
+  (lbdb (buffer-substring-no-properties start end)))
+
+;;;###autoload
+(defun lbdb-maybe-region ()
+  "If region is active search for content of region otherwise prompt."
+  (interactive)
+  (call-interactively (if mark-active #'lbdb-region #'lbdb)))
+
+;;;###autoload
 (defun lbdb-last ()
   "Recall and use the results of the last successful query."
   (interactive)
@@ -210,8 +232,8 @@ The type of sort is controlled by `lbdb-sort-display'."
 
 (defun lbdb-present-results (results)
   "Present the results in a buffer and allow the user to interact with them."
-  (let ((format (lbdb-generate-format-string results)))
-    (if results
+  (if results
+      (let ((format (lbdb-generate-format-string results)))
         (progn
           (setq lbdb-results results)
           (unless (string= (buffer-name) lbdb-buffer-name)
@@ -226,8 +248,8 @@ The type of sort is controlled by `lbdb-sort-display'."
                         "\n")
                        (put-text-property start (1- (point)) 'mouse-face 'highlight))))
           (setf (point) (point-min))
-          (lbdb-mode))
-      (error "No matches found in the Little Brother's Database"))))
+          (lbdb-mode)))
+    (error "No matches found in the Little Brother's Database")))
 
 (defun lbdbq (query &optional interactive)
   "Query the Little Brother's Database and return a list of results.
