@@ -1,0 +1,61 @@
+#! @SH@
+
+#     Copyright (C) 1998  Thomas Roessler <roessler@guug.de>
+# 
+#     This program is free software; you can redistribute it and/or modify
+#     it under the terms of the GNU General Public License as published by
+#     the Free Software Foundation; either version 2 of the License, or
+#     (at your option) any later version.
+# 
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+# 
+#     You should have received a copy of the GNU General Public License
+#     along with this program; if not, write to the Free Software
+#     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+# $Id$
+
+
+set -e
+
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+
+METHODS="@MODULES@"
+MODULES_PATH=@libdir@
+
+. $libdir/lbdb_lib
+
+tmpdir=${TMPDIR-/tmp}/query.`hostname`.$$
+mkdir -p $tmpdir || exit 1
+trap "rm -rf $tmpdir ; trap '' 0; exit" 0 1 2 3 15
+collection=$tmpdir/coll
+
+for conffile in /etc/lbdb.rc $HOME/.lbdbrc \
+	$HOME/.lbdb/lbdbrc $HOME/.lbdb/rc ; do
+	
+  if test -f $conffile ; then
+    source $conffile
+  fi
+
+done
+
+for method in $METHODS ; do
+  for p in $MODULES_PATH ; do
+    if test -f $p/$method ; then
+      source $p/$method
+      break
+    fi
+  done
+done
+
+for method in $METHODS ; do
+  eval ${method}_query \"'$1'\" >> $collection || true
+done
+
+echo
+@libdir@/munge $collection | sort -uf

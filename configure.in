@@ -1,0 +1,105 @@
+dnl $Id$
+dnl -*-sh-mode-*-
+
+AC_INIT(fetchaddr.c)
+VERSION="0"
+SUBVERSION="10"
+
+AC_SUBST(VERSION)
+AC_SUBST(SUBVERSION)
+
+AC_MSG_CHECKING(for prefix)
+if test x$prefix = xNONE; then
+	lbdb_cv_prefix=$ac_default_prefix
+else
+	lbdb_cv_prefix=$prefix
+fi
+AC_MSG_RESULT($lbdb_cv_prefix)
+
+AC_PROG_CC
+AC_PROG_INSTALL
+
+SH=NONE
+
+dnl If we are runnin bash right now, BASH is set.
+unset BASH
+
+if test "x$SH" = xNONE ; then
+	AC_PATH_PROG(BASH, bash, NONE, `echo $PATH | sed "s/:/ /g"`)
+	if test ! "x$BASH" = xNONE ; then
+		if $BASH -posix -c true ; then
+			SH="$BASH -posix"
+		elif $BASH --posix -c true ; then
+			SH="$BASH --posix"
+		fi
+		echo "Using $SH".
+	fi
+fi
+
+if test "x$SH" = xNONE ; then
+	AC_PATH_PROG(KSH, ksh, NONE, `echo $PATH | sed "s/:/ /g"`)
+	if test ! "x$KSH" = xNONE ; then
+		SH="$KSH"
+		echo "Using $SH".
+	fi
+fi
+
+if test "x$SH" = xNONE ; then
+	AC_PATH_PROG(BINSH, sh, NONE, `echo $PATH | sed "s/:/ /g"`)
+	if test "x$BINSH" = xNONE; then
+		echo "ERROR: Can't find sh." >&2
+		exit 1
+	else
+		SH="$BINSH"
+	fi
+fi
+
+AC_SUBST(SH)
+
+AC_PATH_PROG(MAWK, mawk, NONE, `echo $PATH | sed "s/:/ /g"`)
+AC_PATH_PROG(GAWK, gawk, NONE, `echo $PATH | sed "s/:/ /g"`)
+AC_PATH_PROG(NAWK, nawk, NONE, `echo $PATH | sed "s/:/ /g"`)
+
+if ! test "x$NAWK" = "xNONE" ; then
+	AWK="$NAWK -f"
+fi
+
+if ! test "x$GAWK" = "xNONE" ; then
+	AWK="$GAWK -f"
+fi
+
+if ! test "x$MAWK" = "xNONE" ; then
+	AWK="$MAWK -f"
+fi
+		
+AC_SUBST(AWK)
+
+AC_PATH_PROG(DOTLOCK, mutt.dotlock, no, `echo $PATH | sed "s/:/ /g"` )
+if test x$ac_cv_path_DOTLOCK = xno ; then
+	echo "ERROR: mutt.dotlock is required to build this package." >&2
+	echo "ERROR: You can get it from the mutt package's source code." >&2
+	exit 1
+fi
+AC_DEFINE_UNQUOTED(DOTLOCK, "$ac_cv_path_DOTLOCK")
+AC_SUBST(DOTLOCK)
+
+path_fetchaddr="$libdir/fetchaddr"
+AC_SUBST(path_fetchaddr)
+
+MODULES="m_inmail"
+
+
+AC_PATH_PROG(FINGER, finger, "no", `echo $PATH | sed "s/:/ /g"`)
+if ! test "x$FINGER" = xno ; then
+	MODULES="$MODULES m_finger"
+	AC_SUBST(FINGER)
+fi
+
+
+MODULES_SH=""
+for i in $MODULES ; do
+	MODULES_SH="$MODULES_SH $i.sh"
+done
+
+AC_SUBST(MODULES)
+AC_OUTPUT(Makefile lbdbq.sh munge.awk lbdb-fetchaddr.sh lbdb_lib.sh $MODULES_SH)

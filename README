@@ -1,0 +1,104 @@
+$Id$
+
+
+	       The Little Brother's Database
+		
+	    Thomas Roessler <roessler@guug.de>
+		
+
+This package was inspired by the Big Brother Database
+package available for various Emacs mailers, and by
+Brandon Long's "external query" patch for the mutt mail
+user agent.  (Note that this patch has been incorporated
+into the main-line mutt versions as of mutt 0.93.)
+
+The package doesn't use any formal database libraries or
+languages, although it should be quite easy to extend it
+to use, e.g., an installed PostgreSQL server as it's
+backend.
+
+As an additional requirement, we rely on mutt's
+mutt.dotlock program to do some locking.
+
+
+For querying the Little Brother, just type "lbdbq
+<something>".  lbdbq will now attempt to invoke various
+modules to gather information about persons matching
+"<something>".  E.g., it may look at a list of addresses
+from which you have received mail, it may look at YP maps,
+or it may try to finger <somethign>@<various hosts>.
+
+The behaviour is configurable:  Upon startup, lbdbq will
+source the shell scripts
+
+	/etc/lbdb.rc
+	$HOME/.lbdbrc
+	$HOME/.lbdb/lbdbrc
+	$HOmE/.lbdb/rc
+
+if they exist.
+
+They can be used to set the following global variables:
+
+- MODULE_PATH: Where lbdbq should look for modules
+
+- METHODS: What modules to use.
+
+Note that there _are_ defaults, so you should most
+probably modify these variables using contructs like this:
+
+	MODULE_PATH="MODULE_PATH $HOME/lbdb_modules"
+
+Additionally, modules may have configuration variables of
+their own.
+
+Currently, two modules are supplied with lbdb:
+
+- m_finger: This module will use finger to find out
+  something more about a person.  The list of hosts do be
+  asked is configurable; use the M_FINGER_HOSTS variable.
+  Note that "localhost" will mean an invocation of your
+  local finger(1) binary, and should thus work even if you
+  don't provide the finger service to the network.
+
+  m_finger tries to find out the machines mail domain name
+  by parsing a sendmail.cf file (if it finds one ;-) and
+  by reading /etc/hostname and /etc/HOSTNAME.  You may
+  want to add more methods.  See also lbdb_lib.sh.in.
+
+- m_inmail: This module will look up user name fragments
+  in a list of mail addresses.   To create this list, put
+  the following lines into your ~/.procmailrc:
+  
+  :0hc
+  | lbdb-fetchaddr
+
+  This will pipe a copy of every mail message you receive
+  through a small C program which grabs that message's
+  From: header.  lbdb-fetchaddr will then construct an
+  address list out of these data.  This list is stored
+  under $HOME/.lbdb/m_inmail.
+
+Feel free to create your own modules to query LDAP
+servers, YP maps, and the like. m_finger should be a good
+example of how to do it.
+
+If you create your own modules or have other changes and
+feel that they could be helpful for others, don't hesitate
+to submit them to me for inclusion in later releases.
+
+
+Finally, to use lbdbq from mutt, add the following line to
+your ~/.muttrc:
+
+	set query_command="lbdbq '%s'"
+
+
+CREDITS
+-------
+
+Most of the really interesting code of this program
+(namely, the RFC 822 address parser used by
+lbdb-fetchaddr) was stolen from Michael Elkins' mutt mail
+user agent.  Additional credits go to Brandon Long for
+putting the query functionality into mutt.

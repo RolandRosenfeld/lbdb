@@ -1,0 +1,77 @@
+
+#     Copyright (C) 1998  Thomas Roessler <roessler@guug.de>
+# 
+#     This program is free software; you can redistribute it and/or modify
+#     it under the terms of the GNU General Public License as published by
+#     the Free Software Foundation; either version 2 of the License, or
+#     (at your option) any later version.
+# 
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+# 
+#     You should have received a copy of the GNU General Public License
+#     along with this program; if not, write to the Free Software
+#     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+# $Id$
+
+CC=@CC@
+LDFLAGS=@LDFLAGS@
+CFLAGS=@CFLAGS@
+CPPFLAGS=@CPPFLAGS@
+INSTALL=@INSTALL@
+VERSION=@VERSION@.@SUBVERSION@
+MODULES=@MODULES@
+
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+bindir=@bindir@
+srcdir=@srcdir@
+libdir=@libdir@
+
+ALL=lbdbq lbdb_lib lbdb-fetchaddr fetchaddr munge $(MODULES)
+
+all: $(ALL)
+
+install: all
+	$(srcdir)/mkinstalldirs $(bindir)
+	$(srcdir)/mkinstalldirs $(libdir)
+	$(INSTALL) -m 555 fetchaddr $(libdir)
+	$(INSTALL) -m 555 lbdbq $(bindir)
+	$(INSTALL) -m 555 lbdb-fetchaddr $(bindir)
+	$(INSTALL) -m 555 lbdb_lib $(libdir)
+	$(INSTALL) -m 555 munge $(libdir)
+	for i in $(MODULES) ; do $(INSTALL) -m 555 $$i $(libdir) ; done
+
+
+fetchaddr: $(srcdir)/fetchaddr.o $(srcdir)/rfc822.o $(srcdir)/helpers.o  \
+	$(srcdir)/rfc2047.o
+
+fetch: $(srcdir)/fetch.sh
+
+query: $(srcdir)/query.sh
+
+lbdb-query: $(srcdir)/lbdb-query.sh
+
+clean:
+	-rm -f *.o *~ $(ALL) munge.awk
+
+distclean: clean
+	-rm -f config.status config.cache config.log Makefile
+	-rm -f *.sh
+
+dist: distclean
+	cd .. ; tar czf lbdb-$(VERSION).tgz lbdb ;	\
+	mv lbdb-$(VERSION).tgz $(HOME)/ftp/
+
+munge: munge.awk
+	cat munge.awk > munge
+	chmod +x munge
+
+%.sh: %.sh.in
+	./config.status
+
+%.awk: %.awk.in
+	./config.status

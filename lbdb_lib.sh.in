@@ -1,0 +1,65 @@
+#! @SH@
+
+# -*-sh-mode-*-
+
+
+#     Copyright (C) 1998  Thomas Roessler <roessler@guug.de>
+# 
+#     This program is free software; you can redistribute it and/or modify
+#     it under the terms of the GNU General Public License as published by
+#     the Free Software Foundation; either version 2 of the License, or
+#     (at your option) any later version.
+# 
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+# 
+#     You should have received a copy of the GNU General Public License
+#     along with this program; if not, write to the Free Software
+#     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+# $Id$
+
+
+#
+# library routines
+#
+
+lbdb_hn_sendmail()
+{
+	sendmail_cf="NONE"
+	for p in /etc /etc/mail /etc/sendmail ; do
+		if test -f $p/sendmail.cf ; then
+			sendmail_cf=$p/sendmail.cf
+		 	break;
+		fi
+	done
+	
+	if ! test "x$sendmail_cf" = "xNONE" ; then
+		hn="`sed -n -e 's/^DM\(.*\)$/\1/p' $sendmail_cf`"
+		if test "x$hn" = x ; then
+			hn="`sed -n -e 's/^Dj\(.*\)$/\1/p' $sendmail_cf`"
+		fi
+	fi
+	if test "x$hn" = x ; then
+		echo "NONE"
+	else
+		echo "$hn"
+	fi
+}
+
+
+lbdb_hostname()
+{
+	hn=`lbdb_hn_sendmail`
+	if test "x$hn" = "xNONE" ; then
+		for i in /etc/HOSTNAME /etc/hostname ; do
+			if test -f $i ; then
+				hn="`cat $i`"
+				break;
+			fi
+		done
+        fi
+	echo "$hn"
+}

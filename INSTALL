@@ -1,0 +1,14 @@
+Installation notes
+------------------
+
+To install the Little Brother's database, type:
+
+	./configure
+	make install
+
+Note that this will put quite a few auxiliary files into
+/usr/local/lib.  You may want to put lbdb into a separate
+directory hierarchy such as /usr/local/lbdb (use the
+--prefix switch), or you may want to give it a different
+libdir, such as /usr/local/lib/lbdb (use the --libdir
+switch).
