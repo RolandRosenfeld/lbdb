@@ -29,7 +29,8 @@ m_bbdb_query()
 	then
 	    $EMACS -nw --no-site-file --no-init-file -batch \
 		--load $LBDB_BBDB_SCRIPT \
-		--eval '(lbdb-bbdb-query "'"$@"'")' 2>/dev/null 
+		--eval '(lbdb-bbdb-query "'"$@"'")' 2>/dev/null \
+	    | grep -v '^$'
 	fi
     fi
 }
