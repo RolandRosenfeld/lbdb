@@ -1,3 +1,10 @@
+lbdb (0.14.1) frozen unstable; urgency=low
+
+  * Fixed wrong mawk path (/usr/bin//mawk instead of /usr/bin/mawk)
+    created by broken development environment...
+
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 19 Jan 1999 19:03:44 +0100
+
 lbdb (0.14) frozen unstable; urgency=low
 
   * fetchaddr converts the domain part of mail addresses to lowercase, to
