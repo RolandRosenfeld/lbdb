@@ -18,8 +18,9 @@ lbdb (0.28) unstable; urgency=low
   * m_palm: Use only "email" entries as e-mail addresses and not
     everything including "@".  Thanks to Nikolaus Rath <Nikolaus@rath.org>
     for providing the patch (Closes: #196888).
+  * Upgrade to Standards-Version 3.6.1 (no changes).
 
- -- Roland Rosenfeld <roland@debian.org>  Tue,  9 Sep 2003 19:47:30 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Tue,  9 Sep 2003 19:49:20 +0200
 
 lbdb (0.27) unstable; urgency=low
 

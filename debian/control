@@ -2,7 +2,7 @@ Source: lbdb
 Section: mail
 Priority: optional
 Maintainer: Roland Rosenfeld <roland@debian.org>
-Standards-Version: 3.5.9
+Standards-Version: 3.6.1
 Build-Depends: debhelper (>= 4.0.0), perl
 
 Package: lbdb
