@@ -1,2 +1,3 @@
 /etc/lbdb.rc
+/etc/lbdb_ldap.rc
 /etc/emacs/site-start.d/50lbdb.el
