@@ -26,10 +26,10 @@ m_passwd_query()
     HOST="`lbdb_hostname`"
     case "$PASSWD_IGNORESYS" in
 	true|yes|1)
-	    IGNOREGREP = "grep 'UID	\([12]....\|....\)$'"
+	    IGNOREGREP="grep 'UID	\([12]....\|....\)$'"
 	    ;;
         *)
-	    IGNOREGREP = "cat"
+	    IGNOREGREP="cat"
 	    ;;
     esac
 
