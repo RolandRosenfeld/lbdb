@@ -4,6 +4,7 @@ lbdb (0.25.2) unstable; urgency=low
     Fixes the fact that, when in an emacs that doesn't have
     `line-{beginning,end}-position' available (xemacs, for example) I
     wasn't defining fully compatible versions.
+  * Add short description to mutt_ldap_query in NAME section.
 
  --
 
