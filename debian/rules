@@ -84,7 +84,6 @@ ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
 endif
 	dh_compress
 	dh_fixperms
-	dh_suidregister
 #	dh_makeshlibs
 	dh_installdeb
 #	dh_perl

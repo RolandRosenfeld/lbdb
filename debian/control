@@ -2,7 +2,7 @@ Source: lbdb
 Section: mail
 Priority: optional
 Maintainer: Roland Rosenfeld <roland@debian.org>
-Standards-Version: 3.2.0
+Standards-Version: 3.2.1
 Build-Depends: debhelper (>= 2.0.0)
 
 Package: lbdb
@@ -21,6 +21,8 @@ Description: The little brother's database for the mutt mail reader
   - m_pgp2, m_pgp5, m_gpg (searches your PGP or GnuPG keyrings)
   - m_fido (searches the Fidonet nodelist)
   - m_abook (uses the address book application abook(1))
+  - m_addr_email (uses addr-email from the addressbook Tk program)
   - m_muttalias (searches your Mutt mail aliases)
   - m_pine (searches your Pine addressbook files)
   - m_palm (uses your Palm database; needs libpalm-perl package)
+  - m_gnomecard (uses GnomeCard database files)

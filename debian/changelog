@@ -14,8 +14,10 @@ lbdb (0.23) unstable; urgency=low
     idea and a patch.
   * Update lbdb.spec.in, patch provided by Rob Payne
     <rnspayne@adelphia.net>.
+  * Remove dh_suidregister from debian/rules.
+  * Update Debian package description.
 
- -- Roland Rosenfeld <roland@debian.org>  Tue, 23 Jan 2001 18:24:14 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 23 Jan 2001 18:28:07 +0100
 
 lbdb (0.22) unstable; urgency=low
 
