@@ -1,8 +1,9 @@
 lbdb (0.11-1) unstable; urgency=low
 
   * New upstream version.
+  * jed mode lbdb.sl installed.
 
- -- Roland Rosenfeld <roland@debian.org>  Wed, 14 Oct 1998 17:18:24 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Wed, 14 Oct 1998 17:46:25 +0200
 
 lbdb (0.10-1) unstable; urgency=low
 
