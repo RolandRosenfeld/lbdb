@@ -20,9 +20,11 @@
 
 # $Id$
 
+FINGER=@FINGER@
+
 m_finger_query()
 {
-    if type finger >/dev/null		# check whether finger in installed
+    if [ -x "$FINGER" ]		# check whether finger in installed
     then
 
 	f_user="`echo \"$@\" | sed 's/@.*//'`"
@@ -32,15 +34,15 @@ m_finger_query()
 	fi
 
 	for host in $M_FINGER_HOSTS ; do
-		if test "$host" = "localhost" ; then
-			athost=""
-			mailhost="`lbdb_hostname`"
-		else
-			athost="@$host"
-			mailhost="$host"
-		fi
-		@FINGER@ $f_user$athost 2> /dev/null | sed -n	\
-		     -e "s/^Login: *\([^ ]*\)[ 	]*Name: \(.*\)$/\1@$mailhost	\2	(finger)/p" \
+	    if test "$host" = "localhost" ; then
+		athost=""
+		mailhost="`lbdb_hostname`"
+	    else
+		athost="@$host"
+		mailhost="$host"
+	    fi
+	    $FINGER $f_user$athost 2> /dev/null \
+	    | sed -n -e "s/^Login: *\([^ ]*\)[ 	]*Name: \(.*\)$/\1@$mailhost	\2	(finger)/p" \
 		     -e "s/^Login name: *\([^ ]*\)[ 	]*In real life: \(.*\)$/\1@$mailhost	\2	(finger)/p" \
 			|| true
 	 done
