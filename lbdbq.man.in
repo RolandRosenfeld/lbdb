@@ -343,7 +343,7 @@ Torsten Jerzembeck <toje@nightingale.ms.sub.org> (m_addr_email),
 Adrian Likins <alikins@redhat.com> (m_getent),
 Gergely Nagy <algernon@debian.org> (m_wanderlust),
 Dave Pearson <davep@davep.org> (m_palm, lbdb.el), and
-Brian Salter-Duke <b_duke@lacebark.ntu.edu.au> (m_muttalias).
+Brian Salter-Duke <b_duke@octa4.net.au> (m_muttalias).
 .SH AUTHOR
 The lbdb package was initially written by Thomas Roessler
 <roessler@guug.de> and is now maintained and heavily extended by

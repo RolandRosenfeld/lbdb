@@ -4,8 +4,9 @@ lbdb (0.26.1) unstable; urgency=low
   * Add long options --version and --help to ldbdq and man page.
   * Support multiple address book files with abook.  Thanks to Etienne
     PIERRE <marluchon@netcourrier.com> for providing this patch.
+  * New mail address of Brian Salter-Duke <b_duke@octa4.net.au>.
 
- -- Roland Rosenfeld <roland@debian.org>  Thu,  1 Aug 2002 20:57:40 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 24 Sep 2002 17:48:35 +0200
 
 lbdb (0.26) unstable; urgency=low
 
