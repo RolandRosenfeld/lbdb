@@ -8,7 +8,7 @@
 # ~/.lbdb/rc
 # (evaluated with ascending priority!)
 # 
-# (c) 1999-2002 Roland Rosenfeld <roland@spinnaker.de>
+# (c) 1999-2003 Roland Rosenfeld <roland@spinnaker.de>
 #
 # $Id$
 #
@@ -48,9 +48,9 @@ METHODS="m_inmail m_passwd m_finger"
 
 #
 # If it isn't possible to find out the correct mail domain name of
-# your system by reading sendmail.cf, /etc/hostname or /etc/HOSTNAME,
-# you can specify it in the variable MAIL_DOMAIN_NAME. This overrides
-# all other mechanisms.
+# your system in /etc/mailname, by reading sendmail.cf, /etc/hostname
+# or /etc/HOSTNAME, you can specify it in the variable
+# MAIL_DOMAIN_NAME. This overrides all other mechanisms.
 #
 #MAIL_DOMAIN_NAME=does-not-exist.org
 

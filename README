@@ -59,9 +59,9 @@ m_finger
        M_FINGER_HOSTS variable. Note that "localhost" will mean an
        invocation of your local finger(1) binary, and should thus work
        even if you don't provide the finger service to the network.
-       m_finger tries to find out the machines mail domain name by
-       parsing a sendmail.cf file (if it finds one) and by reading
-       /etc/hostname and /etc/HOSTNAME.
+       m_finger tries to find out the machines mail domain name in
+       /etc/mailname, by parsing a sendmail.cf file (if it finds one)
+       and by reading /etc/hostname and /etc/HOSTNAME.
 
 m_inmail
        This module will look up user name fragments in a list of mail

@@ -1,5 +1,5 @@
 .\" -*- nroff -*-
-.\" Copyright (c) 1998-2002  Roland Rosenfeld <roland@spinnaker.de>
+.\" Copyright (c) 1998-2003  Roland Rosenfeld <roland@spinnaker.de>
 .\"               
 .\" This program is free software; you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 .\"
 .\" $Id$
 .\"
-.TH LBDBQ 1 "August 2002" "Unix" "User Manuals"
+.TH LBDBQ 1 "February 2003" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -103,10 +103,12 @@ variable. Note that "localhost" will mean an invocation of your local
 binary, and should thus work even if you don't provide the finger
 service to the network.
 .B m_finger
-tries to find out the machines mail domain name by parsing a
+tries to find out the machines mail domain name in
+.IR /etc/mailname ,
+by parsing a
 .I sendmail.cf
 file (if it finds one) and by reading
-.I /etc/hostname 
+.I /etc/hostname
 and
 .IR /etc/HOSTNAME .
 If you know that this fails on your machine, or you want to force lbdbq

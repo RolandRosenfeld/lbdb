@@ -9,8 +9,9 @@ lbdb (0.26.1) unstable; urgency=low
     in DEB_BUILD_OPTIONS changed).
   * Upgrade to debhelper 4.
   * Remove dependency on awk, which is essential, to make lintian happy.
+  * Use /etc/mailname as mail domain name in lbdb_hostname() (Closes: #165159).
 
- -- Roland Rosenfeld <roland@debian.org>  Sat,  8 Feb 2003 18:15:50 +0100
+ --
 
 lbdb (0.26) unstable; urgency=low
 

@@ -4,6 +4,7 @@
 
 
 #     Copyright (C) 1998  Thomas Roessler <roessler@guug.de>
+#     Copyright (C) 1999-2003  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -53,7 +54,9 @@ lbdb_hn_sendmail()
 lbdb_hostname()
 {
 	if test "x$MAIL_DOMAIN_NAME" != "x" ; then
-		hn=$MAIL_DOMAIN_NAME;
+		hn=$MAIL_DOMAIN_NAME
+	elif test -f /etc/mailname; then
+		hn=`cat /etc/mailname`
 	else
 		hn=`lbdb_hn_sendmail`
 		if test "x$hn" = "xNONE" ; then
