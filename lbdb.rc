@@ -31,7 +31,7 @@ METHODS="m_inmail m_passwd m_finger"
 # If you want m_finger to ask other host then localhost, create a list here:
 # (a space separated list):
 #
-#M_FINGER_HOSTS="master.debian.org va.debian.org"
+#M_FINGER_HOSTS="master.debian.org va.debian.org localhost"
 
 
 #
