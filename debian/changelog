@@ -1,3 +1,9 @@
+lbdb (0.28.2) unstable; urgency=low
+
+  * Another upgrade of m_bbdb by Aaron Kaplan <kaplan@cs.rochester.edu>.
+
+ --
+
 lbdb (0.28.1) unstable; urgency=low
 
   * Make m_osx_addressbook compile on MacOS 10.3 and XCode, too.  Thanks

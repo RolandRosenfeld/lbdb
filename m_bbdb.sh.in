@@ -42,14 +42,17 @@ m_bbdb_query()
 	if [ $GNUCLIENT == "no" ]; then
 	    GNUCLIENT=
 	fi
+
+
+	success=0
 	if [ -n "$GNUCLIENT" ] ; then
-	    $GNUCLIENT -batch -eval "t" > /dev/null 2>&1 || GNUCLIENT=
-	fi
-	if [ -n "$GNUCLIENT" ] ; then
-	    $GNUCLIENT -batch -eval "$form" 2> /dev/null  | grep -v '^$'
-        else
+	   if $GNUCLIENT -batch -eval "$form" 2> /dev/null; then
+	       success=1
+	   fi
+        fi
+	if [ $success == 0 ]; then
 	    if [ -z "$EMACS" ]
-	        then
+	    then
 		if type emacs >/dev/null 2>&1; then
 		    EMACS=emacs
 		elif type xemacs >/dev/null 2>&1; then
@@ -57,9 +60,9 @@ m_bbdb_query()
 		fi
 	    fi
 	    if [ -n "$EMACS" ] ; then
-	        $EMACS -nw --no-site-file --no-init-file -batch \
-	            --eval "$form"  2>/dev/null | grep -v '^$'
+		$EMACS -nw --no-site-file --no-init-file -batch \
+		    --eval "$form"  2>/dev/null
 	    fi
 	fi
-    fi
+    fi |  grep -v '^$'
 }
