@@ -29,9 +29,6 @@ db=$HOME/.lbdb/m_inmail.list
 
 datefmt=${*:-'%Y-%m-%d %H:%M'}
 
-echo "$datefmt"
-exit
-
 if [ ! -f $db ]; then
   dbdir=`dirname $db`
   if [ ! -d $dbdir ]; then
