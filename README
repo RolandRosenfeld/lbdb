@@ -49,7 +49,7 @@ these variables using constructs like this:
 
 Additionally, modules may have configuration variables of their own.
 
-Currently, two modules are supplied with lbdb:
+Currently the following modules are supplied with lbdb:
 
 m_finger
        This module will use finger to find out something more about a

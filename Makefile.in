@@ -47,6 +47,7 @@ all: Makefile $(ALL)
 install: all
 	$(srcdir)/mkinstalldirs $(bindir)
 	$(srcdir)/mkinstalldirs $(libdir)
+	$(srcdir)/mkinstalldirs $(sysconfdir)
 	$(srcdir)/mkinstalldirs $(mandir)
 	$(srcdir)/mkinstalldirs $(mandir)/man1
 	$(INSTALL) -m 755 fetchaddr $(libdir)
