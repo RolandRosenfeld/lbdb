@@ -5,13 +5,12 @@ lbdb (0.22) unstable; urgency=low
     <toje@nightingale.ms.sub.org>.
   * Some optimizations on m_addr_email to handle city name correct and to
     junk entries without email address.
-  * Update lbdb.el to version 1.7 which fixes the problem with spaces in
-    query strings (Closes: #74818).  In addition to this it introduces
-    some new features like the new commands lbdb-region and
-    lbdb-maybe-region which query lbdb for the content of the current
-    region.
+  * Update lbdb.el to version 1.8:
+    - Fixes the problem with spaces in query strings (Closes: #74818).
+    - New commands lbdb-region and lbdb-maybe-region to query lbdb for the
+      content of the current region.
 
- -- Roland Rosenfeld <roland@debian.org>  Mon, 16 Oct 2000 23:14:21 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 17 Oct 2000 14:40:13 +0200
 
 lbdb (0.21.1) unstable; urgency=low
 

@@ -204,6 +204,24 @@ The type of sort is controlled by `lbdb-sort-display'."
                          (string< (downcase (lbdb-email x)) (downcase (lbdb-email y)))))))
     results))
 
+(defun lbdb-mark-active-p ()
+  "Is there a mark active?
+
+Because there's more than one true emacs."
+  (if (boundp 'mark-active)
+      ;; GNU Emacs.
+      (symbol-value 'mark-active)
+    ;; X Emacs.
+    (funcall (symbol-function 'region-exists-p))))
+
+(defun lbdb-deactivate-mark ()
+  "Deactivate any active mark.
+
+Because there's more than one true emacs."
+  (when (fboundp 'deactivate-mark)
+    ;; GNU emacs.
+    (funcall (symbol-function 'deactivate-mark))))
+
 ;; Main code.
 
 ;;;###autoload
@@ -216,13 +234,14 @@ The type of sort is controlled by `lbdb-sort-display'."
 (defun lbdb-region (start end)
   "Look for the contents of regioning bounded by START and END."
   (interactive "r")
+  (lbdb-deactivate-mark)
   (lbdb (buffer-substring-no-properties start end)))
 
 ;;;###autoload
 (defun lbdb-maybe-region ()
   "If region is active search for content of region otherwise prompt."
   (interactive)
-  (call-interactively (if mark-active #'lbdb-region #'lbdb)))
+  (call-interactively (if (lbdb-mark-active-p) #'lbdb-region #'lbdb)))
 
 ;;;###autoload
 (defun lbdb-last ()
@@ -234,21 +253,20 @@ The type of sort is controlled by `lbdb-sort-display'."
   "Present the results in a buffer and allow the user to interact with them."
   (if results
       (let ((format (lbdb-generate-format-string results)))
-        (progn
-          (setq lbdb-results results)
-          (unless (string= (buffer-name) lbdb-buffer-name)
-            (setq lbdb-last-buffer (current-buffer)))
-          (pop-to-buffer lbdb-buffer-name)
-          (let ((buffer-read-only nil))
-            (setf (buffer-string) "")
-            (loop for line in results
-                  do (let ((start (point)))
-                       (insert
-                        (format format (lbdb-name line) (lbdb-email line) (lbdb-method line))
-                        "\n")
-                       (put-text-property start (1- (point)) 'mouse-face 'highlight))))
-          (setf (point) (point-min))
-          (lbdb-mode)))
+        (setq lbdb-results results)
+        (unless (string= (buffer-name) lbdb-buffer-name)
+          (setq lbdb-last-buffer (current-buffer)))
+        (pop-to-buffer lbdb-buffer-name)
+        (let ((buffer-read-only nil))
+          (setf (buffer-string) "")
+          (loop for line in results
+                do (let ((start (point)))
+                     (insert
+                      (format format (lbdb-name line) (lbdb-email line) (lbdb-method line))
+                      "\n")
+                     (put-text-property start (1- (point)) 'mouse-face 'highlight))))
+        (setf (point) (point-min))
+        (lbdb-mode))
     (error "No matches found in the Little Brother's Database")))
 
 (defun lbdbq (query &optional interactive)
