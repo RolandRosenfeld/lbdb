@@ -21,6 +21,7 @@ CC=@CC@
 LDFLAGS=@LDFLAGS@
 CFLAGS=@CFLAGS@
 CPPFLAGS=@CPPFLAGS@
+DEFS=@DEFS@
 INSTALL=@INSTALL@
 MODULES=@MODULES@
 
@@ -56,7 +57,7 @@ install: all
 
 fetchaddr: $(srcdir)/fetchaddr.o $(srcdir)/rfc822.o $(srcdir)/helpers.o  \
 	$(srcdir)/rfc2047.o
-	$(CC) $(LDFLAGS) -o $@ $?
+	$(CC) $(CFLAGS) $(LDFLAGS) $? -o $@
 
 fetch: $(srcdir)/fetch.sh
 
@@ -69,7 +70,7 @@ lbdbq.man: $(srcdir)/lbdbq.man.in
 	    -e 's%@''sysconfdir@%${sysconfdir}%' $< > $@
 
 lbdb_dotlock: $(srcdir)/dotlock.o
-	$(CC) $(LDFLAGS) -o $@ $?
+	$(CC) $(CFLAGS) $(LDFLAGS) $? -o $@
 
 dotlock.o: $(srcdir)/dotlock.h $(srcdir)/dotlock.c
 
@@ -89,3 +90,6 @@ munge: munge.awk
 
 %.awk: %.awk.in
 	./config.status
+
+%.o: %.c
+	$(CC) $(CFLAGS) $(DEFS) -c $<

@@ -34,13 +34,16 @@
 #include <time.h>
 #include <fcntl.h>
 #include <limits.h>
-#include <getopt.h>
 
 #ifndef _POSIX_PATH_MAX
 #include <posix1_lim.h>
 #endif
 
 #include "dotlock.h"
+
+#ifdef HAVE_GETOPT_H
+#include <getopt.h>
+#endif
 
 #define MAXLINKS 1024 /* maximum link depth */
 

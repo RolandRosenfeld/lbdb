@@ -1,3 +1,9 @@
+lbdb (0.16.3) unstable; urgency=low
+
+  * include getopt.h only if it is existing (using autoconf). 
+
+ -- Roland Rosenfeld <roland@debian.org>  Wed,  7 Apr 1999 12:22:13 +0200
+
 lbdb (0.16.2) unstable; urgency=low
 
   * Removed some bash, GNU-make, and GNU libc specials.
