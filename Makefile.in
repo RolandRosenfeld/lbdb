@@ -30,8 +30,9 @@ exec_prefix=@exec_prefix@
 bindir=@bindir@
 srcdir=@srcdir@
 libdir=@libdir@
+mandir=@mandir@
 
-ALL=lbdbq lbdb_lib lbdb-fetchaddr fetchaddr munge $(MODULES)
+ALL=lbdbq lbdb_lib lbdb-fetchaddr fetchaddr munge lbdbq.man $(MODULES)
 
 all: $(ALL)
 
@@ -44,7 +45,8 @@ install: all
 	$(INSTALL) -m 555 lbdb_lib $(libdir)
 	$(INSTALL) -m 555 munge $(libdir)
 	for i in $(MODULES) ; do $(INSTALL) -m 555 $$i $(libdir) ; done
-
+	$(INSTALL) -m 644 lbdbq.man $(mandir)/man1/lbdbq.1
+	$(INSTALL) -m 644 lbdb-fetchaddr.man $(mandir)/man1/lbdb-fetchaddr.1
 
 fetchaddr: $(srcdir)/fetchaddr.o $(srcdir)/rfc822.o $(srcdir)/helpers.o  \
 	$(srcdir)/rfc2047.o
@@ -54,6 +56,9 @@ fetch: $(srcdir)/fetch.sh
 query: $(srcdir)/query.sh
 
 lbdb-query: $(srcdir)/lbdb-query.sh
+
+lbdbq.man: $(srcdir)/lbdbq.man.in
+	sed -e 's%@''libdir@%${libdir}%' $< > $@
 
 clean:
 	-rm -f *.o *~ $(ALL) munge.awk
