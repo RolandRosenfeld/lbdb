@@ -51,8 +51,6 @@
 #define LONG_STRING 1024
 #define MAXLOCKATTEMPT 5
 
-#define strfcpy(A,B,C) strncpy (A,B,C), *(A+(C)-1)=0
-
 static int DotlockFlags;
 static int Retry = MAXLOCKATTEMPT;
 
