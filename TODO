@@ -8,7 +8,7 @@ $Id$
   grows. Maybe a database backend or some expire mechanism which
   removes old entries from the list.
 
-Roland Rosenfeld <roland@spinnaker.rhein.de>
+Roland Rosenfeld <roland@spinnaker.de>
 
 
 Local variables:
