@@ -29,7 +29,11 @@ m_ldap_query ()
 {
     if [ "$LDAP_NICK" != "" ]
     then
-	NICK_OPT="--nickname=$LDAP_NICK"
+	for NICK in $LDAP_NICKS
+	do
+	    $libdir/mutt_ldap_query --lbdb_output --nickname=$NICK "$@"
+	done
+    else
+	$libdir/mutt_ldap_query --lbdb_output "$@"
     fi
-    $libdir/mutt_ldap_query --lbdb_output $NICK_OPT "$@"
 }

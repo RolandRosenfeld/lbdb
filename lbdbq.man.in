@@ -249,14 +249,14 @@ Perl modules from CPAN.  It can be configured using an external
 resource file 
 .I @sysconfdir@/lbdb_ldap.rc
 You can explicity define a LDAP query in this file or you can use one
-of the predefined queries from the 
+or more of the predefined queries from the 
 .B %ldap_server_db
-in this file.  For this you have to define the selected entry in the
-variable
-.BR LDAP_NICK .
+in this file.  For this you have to define a space separated list of
+nicknames from entries in the variable
+.BR LDAP_NICKS .
 .PP
-Feel free to create your own modules to query LDAP servers, YP maps,
-and the like. 
+Feel free to create your own modules to query other database resources,
+YP maps, and the like.
 .B m_finger
 should be a good example of how to do it.
 .PP

@@ -4,13 +4,15 @@ lbdb (0.25) unstable; urgency=low
     does not provide mutt (Closes: #85923).
   * Add m_ldap and mutt_ldap_query provided by Marc de Courville,
     <marc@courville.org>.
+  * Fix problem in mutt_ldap_query, which ignored the content of the
+    config file before.
   * lbdb-munge didn't honor SORT_OUTPUT when called from m_inmail, so
     export this variable in m_inmail (Closes: #92767).
   * Module m_nispasswd added by Utz-Uwe Haus <haus@uuhaus.de>.
   * Added variable MAIL_DOMAIN_NAME to override other settings of mail
     domain.
 
- -- Roland Rosenfeld <roland@debian.org>  Tue, 10 Apr 2001 19:12:51 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Wed, 11 Apr 2001 19:27:07 +0200
 
 lbdb (0.24) unstable; urgency=low
 
