@@ -118,9 +118,12 @@ METHODS="m_inmail m_passwd m_finger"
 #
 # This module queries an LDAP server using the Net::LDAP Perl modules
 # from CPAN. It can be configured using an external resource file.
-# 
-
-
+# You can explicity define a LDAP query in this file or you can use
+# one of the predefined queries from the %ldap_server_db in this file.
+# For this you have to define the selected entry in the variable
+# LDAP_NICK.
+#
+#LDAP_NICK=debian
 
 
 #
