@@ -5,6 +5,9 @@ lbdb (0.24) unstable; urgency=low
     <haus@uuhaus.de> for providing this.
   * s/MODULE_PATH/MODULES_PATH/ in documentation to match the behavior of
     the program (Closes: #83933).
+  * m_gpg: stop using --with-colons, because this outputs utf8 instead of
+    your local charset, which causes problems with non 7bit characters
+    (Closes: #83936).
 
  --
 
