@@ -26,7 +26,7 @@ m_inmail_db=$HOME/.lbdb/m_inmail.list
 
 m_inmail_query()
 {
-	$lib/lbdb-munge
+	$libdir/lbdb-munge
 	test -f $m_inmail_db  || return
 	grep -i "$1." $m_inmail_db
 }
