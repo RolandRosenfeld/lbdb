@@ -27,6 +27,14 @@ exec_prefix=@exec_prefix@
 fetchaddr=@libdir@/fetchaddr
 db=$HOME/.lbdb/m_inmail.list
 
+if [ ! -f $db ]; then
+  touch $db
+  if [ ! -f $db ]; then
+    echo "Can't create $db" >&2
+    exit 1
+  fi
+fi
+
 if ! $dotlock -r 10 -f $db ; then
   echo "Can't lock $db [dotlock returned $rv]." >&2
   exit 1

@@ -8,5 +8,13 @@ $Id$
 
 - write a more expressive /etc/lbdb.rc
 
+- rewrite lbdb-fetchaddr, which becomes very slow when the database
+  grows. Maybe a database backend or some expire mechanism which
+  removes old entries from the list.
 
 Roland Rosenfeld <roland@spinnaker.rhein.de>
+
+
+Local variables:
+mode: text
+End:

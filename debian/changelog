@@ -1,3 +1,10 @@
+lbdb (0.14) frozen unstable; urgency=low
+
+  * Create ~/.lbdb/m_inmail.list in lbdb-fetchaddr if it does not exist.
+  * Fix manpage lbdb-fetchaddr(1) to refer to the correct db filename.
+
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 12 Jan 1999 00:04:24 +0100
+
 lbdb (0.13) unstable; urgency=low
 
   * Upgraded lbdb.sl supplied by Thomas Roessler <roessler@guug.de>

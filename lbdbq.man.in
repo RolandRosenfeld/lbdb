@@ -107,7 +107,7 @@ small C program which grabs that message's "From:" header.
 .B lbdb-fetchaddr
 will then construct an address list out of these data. This list is
 stored under 
-.I $HOME/.lbdb/m_inmail.
+.IR $HOME/.lbdb/m_inmail.list .
 .PP
 Feel free to create your own modules to query LDAP servers, YP maps,
 and the like. 
@@ -135,6 +135,8 @@ from mutt, add the following line to your
 .I $HOME/.lbdb/rc
 .br
 .I @libdir@/*
+.br
+.I $HOME/.lbdb/m_inmail.list
 .SH "SEE ALSO"
 .BR finger (1),
 .BR mutt (1),
