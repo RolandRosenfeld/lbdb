@@ -293,6 +293,7 @@ email address, the name of the person and a comment.
 
 This perl script can be interfaced with mutt by defining in your .muttrc:
   C<set query_command = "mutt_ldap_query.pl '%s'">
+
 Multiple requests are supported: the "Q" command of mutt accepts as argument
 a list of queries (e.g. "Gosse de\ Courville").
 
@@ -300,11 +301,14 @@ Alternatively mutt_ldap_query can be interfaced with the more generic
 little brother database query program (http://www.spinnaker.de/lbdb/)
 using: 
   set query_command = "lbdbq '%s'"
+
 and by specifying in your ~/.lbdb/lbdbrc file another method of query
 just adding to the METHODS variable the m_ldap module e.g.:
   C<METHODS='m_inmail m_passwd m_ldap m_muttalias m_finger'>
+
 and the right path to access m_ldap in MODULES_PATH e.g.
   C<MODULES_PATH="/usr/local/lib $HOME/.lbdb/modules">
+
 (if you moved F<m_ldap> in F<~/.lbdb/modules>).
 Just make sure to use the correct path for calling mutt_ldap_query
 in the m_ldap script. 
@@ -321,44 +325,42 @@ Instead of using command line options, the user can redefine all the
 variables using the resource file by two manners in order to match his
 site configuration.  A file example is provided below:
 
-C<
-# The format of each entry of the ldap server database is the following:
-# LDAP_NICKNAME => ['LDAP_SERVER', 
-#                   'LDAP_SEARCH_BASE',
-#                   'LDAP_SEARCH_FIELDS',
-#                   'LDAP_EXPECTED_ANSWERS',
-#                   'LDAP_RESULT_EMAIL',
-#                   'LDAP_RESULT_REALNAME',
-#                   'LDAP_RESULT_COMMENT'],
-# a practical illustrating example being:
-#  debian	=> ['db.debian.org', 'ou=users,dc=debian,dc=org', 'uid cn sn ircnick', 'uid cn sn ircnick', '${uid}@debian.org', '${cn} ${sn}', '${ircnick}'],
-# the output of the query will be then: ${uid}@debian.org\t${cn} ${sn}\t${ircnick} (i.e.: email name comment)
+ # The format of each entry of the ldap server database is the following:
+ # LDAP_NICKNAME => ['LDAP_SERVER', 
+ #                   'LDAP_SEARCH_BASE',
+ #                   'LDAP_SEARCH_FIELDS',
+ #                   'LDAP_EXPECTED_ANSWERS',
+ #                   'LDAP_RESULT_EMAIL',
+ #                   'LDAP_RESULT_REALNAME',
+ #                   'LDAP_RESULT_COMMENT'],
+ # a practical illustrating example being:
+ #  debian	=> ['db.debian.org', 'ou=users,dc=debian,dc=org', 'uid cn sn ircnick', 'uid cn sn ircnick', '${uid}@debian.org', '${cn} ${sn}', '${ircnick}'],
+ # the output of the query will be then: ${uid}@debian.org\t${cn} ${sn}\t${ircnick} (i.e.: email name comment)
 
-# warning this database will erase default script builtin
-%ldap_server_db = (
-  'four11'		=> ['ldap.four11.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
-  'infospace'		=> ['ldap.infospace.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
-  'whowhere'		=> ['ldap.whowhere.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
-  'bigfoot'		=> ['ldap.bigfoot.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
-  'switchboard'		=> ['ldap.switchboard.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
-  'infospacebiz'	=> ['ldapbiz.infospace.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
-);
+ # warning this database will erase default script builtin
+ %ldap_server_db = (
+   'four11'        => ['ldap.four11.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
+   'infospace'     => ['ldap.infospace.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
+   'whowhere'      => ['ldap.whowhere.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
+   'bigfoot'       => ['ldap.bigfoot.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
+   'switchboard'   => ['ldap.switchboard.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
+   'infospacebiz'  => ['ldapbiz.infospace.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
+ );
 
-# hostname of your ldap server
-$ldap_server = 'ldap.four11.com';
-# ldap base search
-$search_base = 'c=US';
-# list of the fields that will be used for the query
-$ldap_search_fields = 'givenname sn cn mail';
-# list of the fields that will be used for composing the answer
-$ldap_expected_answers = 'givenname sn cn mail o';
-# format of the email result based on the expected answers of the ldap query
-$ldap_result_email = '${mail}';
-# format of the realname result based on the expected answers of the ldap query
-$ldap_result_realname = '${givenname} ${sn}';
-# format of the comment result based on the expected answers of the ldap query
-$ldap_result_comment = '(${o})';
->
+ # hostname of your ldap server
+ $ldap_server = 'ldap.four11.com';
+ # ldap base search
+ $search_base = 'c=US';
+ # list of the fields that will be used for the query
+ $ldap_search_fields = 'givenname sn cn mail';
+ # list of the fields that will be used for composing the answer
+ $ldap_expected_answers = 'givenname sn cn mail o';
+ # format of the email result based on the expected answers of the ldap query
+ $ldap_result_email = '${mail}';
+ # format of the realname result based on the expected answers of the ldap query
+ $ldap_result_realname = '${givenname} ${sn}';
+ # format of the comment result based on the expected answers of the ldap query
+ $ldap_result_comment = '(${o})';
 
 =head1 EXAMPLES OF QUERIES
 
@@ -397,16 +399,31 @@ or
 
 =head1 REFERENCES
 
-- perl-ldap module
-  http://perl-ldap.sourceforge.net/
-- mutt is the ultimate email client
-  http://www.mutt.org
-- historical Brandon Blong's "External Address Query" feature patch for mutt
-  http://www.fiction.net/blong/programs/mutt/#query
-- little brother database is an interface query program for mutt that allow
-  multiple searches for email addresses based on external query scripts
-  just like this one 8-)
-  http://www.spinnaker.de/lbdb/
+=over 2
+
+=item -
+
+perl-ldap module
+ http://perl-ldap.sourceforge.net/
+
+=item -
+
+mutt is the ultimate email client
+ http://www.mutt.org/
+
+=item -
+
+historical Brandon Blong's "External Address Query" feature patch for mutt
+ http://www.fiction.net/blong/programs/mutt/#query
+
+=item -
+
+little brother database is an interface query program for mutt that allow
+multiple searches for email addresses based on external query scripts
+just like this one 8-)
+ http://www.spinnaker.de/lbdb/
+
+=back
 
 =head1 COPYRIGHT
 
