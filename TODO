@@ -1,3 +1,5 @@
+$Id$
+
 - add new modules:
     - m_pgp2 (scan PGP 2.* keyring)
     - m_pgp5 (scan PGP 5.* keyring)
@@ -6,5 +8,5 @@
 
 - write a more expressive /etc/lbdb.rc
 
-$Id$
+
 Roland Rosenfeld <roland@spinnaker.rhein.de>
