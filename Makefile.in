@@ -37,7 +37,7 @@ libdir=@libdir@
 mandir=@mandir@
 sysconfdir=@sysconfdir@
 
-ALL=lbdbq lbdb_lib lbdb-fetchaddr lbdb-munge fetchaddr munge \
+ALL=lbdbq lbdb_lib lbdb-fetchaddr lbdb-munge fetchaddr qpto8bit munge \
 	munge-keeporder	nodelist2lbdb lbdbq.man lbdb-fetchaddr.man \
 	nodelist2lbdb.man $(MODULES) $(DOTLOCK_TARGET) $(TACTARGET)
 
@@ -49,6 +49,7 @@ install: all
 	$(srcdir)/mkinstalldirs $(mandir)
 	$(srcdir)/mkinstalldirs $(mandir)/man1
 	$(INSTALL) -m 755 fetchaddr $(libdir)
+	$(INSTALL) -m 755 qpto8bit $(libdir)
 	$(INSTALL) -m 755 lbdbq $(bindir)
 	$(INSTALL) -m 755 lbdb-fetchaddr $(bindir)
 	$(INSTALL) -m 755 lbdb-munge $(libdir)
@@ -74,6 +75,10 @@ install: all
 
 fetchaddr: $(srcdir)/fetchaddr.o $(srcdir)/rfc822.o $(srcdir)/helpers.o  \
 	$(srcdir)/rfc2047.o
+	$(CC) $(CFLAGS) $(LDFLAGS) $? -o $@
+
+qpto8bit: $(srcdir)/qpto8bit.o $(srcdir)/rfc822.o $(srcdir)/helpers.o  \
+		$(srcdir)/rfc2047.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $? -o $@
 
 fetch: $(srcdir)/fetch.sh

@@ -2,8 +2,8 @@ Source: lbdb
 Section: mail
 Priority: optional
 Maintainer: Roland Rosenfeld <roland@debian.org>
-Standards-Version: 3.1.1
-Build-Depends: debhelper
+Standards-Version: 3.2.0
+Build-Depends: debhelper (>= 2.0.0)
 
 Package: lbdb
 Architecture: any

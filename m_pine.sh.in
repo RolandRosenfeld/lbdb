@@ -19,7 +19,7 @@
 #     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111, USA.
 #
 
-# m_pine v0.8 for lbdb by Gabor Fleischer <flocsy@mtesz.hu>
+# m_pine for lbdb v0.9 by Gabor Fleischer <flocsy@mtesz.hu>
 #
 # Two variabled can be set in lbdbrc: PINERC, PINE_ADDRESSBOOKS
 # Here comes the explanation what are they for:
@@ -33,6 +33,7 @@
 # 5. Make the query in the listed addressbooks
 #
 # Changelog:
+# 0.9: Convert Quoted-Printable in the real names into plain 8bit.
 # 0.8: When the 'real name' is missing, put " " there, so mutt works fine.
 # 0.7: Fixed bugs:
 #	* Search was case sensitive. Now it's insensitive.
@@ -42,10 +43,13 @@
 # 0.5: Initial release.
 #
 
+AWK=@AWK@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+qpto8bit=@libdir@/qpto8bit
+
 m_pine_query()
 {
-    AWK=@AWK@
-
     addressbooks=
     if [ x$PINERC != xno ] ; then
 	for pinerc in ${PINERC:-/etc/pine.conf /etc/pine.conf.fixed .pinerc}
@@ -82,7 +86,7 @@ m_pine_query()
 	fi
 	if [ -f $file ]
 	then
-	    $AWK -v find="$@" '\
+	    $qpto8bit | $AWK -v find="$@" '\
 	    function out() { \
 		if (match(tolower(line),low_find)) {
 		    #order: nick full addr fcc comm \

@@ -3,8 +3,16 @@ lbdb (0.19.6) unstable; urgency=low
   * New version of m_pine by Gabor Fleischer <flocsy@mtesz.hu>: Now
     handles aliases without real names correct (by using a single space as
     the realname, so Mutt has not problem with this.
+  * Add new helper program qpto8bit, which converts quoted-printable
+    (according to RFC2047) to plain 8bit (without MIME header).  This is
+    used by m_pine to decode quoted-printable in addressbooks to 8bit.
+  * Upgrade to Standards-Version 3.2.0:
+    - Evaluate DEB_BUILD_OPTIONS for -g and strip.
+  * Upgrade to new debhepler:
+    - Change to DH_COMPAT=2.
+    - Add some dh_* calls to debian/rules.
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Sat,  5 Aug 2000 21:20:59 +0200
 
 lbdb (0.19.5) unstable; urgency=low
 
