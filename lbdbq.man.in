@@ -24,7 +24,7 @@ lbdbq \- query program for the little brother's database
 .br
 .B lbdb-fetchaddr
 .br
-.B lbdb-merge
+.B lbdb-munge
 .SH DESCRIPTION
 This manual page documents briefly the
 .B lbdb
@@ -114,12 +114,12 @@ For performance issues
 .B lbdb-fetchaddr
 appends new addresses to this file without removing duplicates. For
 this the program
-.B lbdb-merge
+.B lbdb-munge
 exists, which is run by
 .B m_inmail
 if needed and removes duplicates. If you run lbdbq not very often, it
 may be a good idea to run
-.B lbdb-merge
+.B lbdb-munge
 by
 .BR cron (8).
 .TP
