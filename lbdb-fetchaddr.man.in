@@ -15,12 +15,15 @@
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc.,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 .\"
-.TH LBDB-FETCHADDR 1 "June 1999" "Unix" "User Manuals"
+.TH LBDB-FETCHADDR 1 "September 1999" "Unix" "User Manuals"
 .SH NAME
 lbdb-fetchaddr \- grab addresses from mails add append them to lbdb database
 .SH SYNOPSIS
 .B lbdb-fetchaddr
 .BI [ 'dateformat' ]
+.br
+.B lbdb-fetchaddr
+.RB [ -v | -h ]
 .SH DESCRIPTION
 .B lbdb-fetchaddr
 is a shell script which reads a mail on stdin. It extracts 
@@ -60,6 +63,11 @@ as parameter of lbdb-fetchaddr command like
      | lbdb-fetchaddr "%y-%m-%d"
 .fi
 which results in e.g. "99-04-29".
+.SH OPTIONS
+.IP -v
+Print version number of lbdb-fetchaddr.
+.IP -h
+Print short help of lbdb-fetchaddr.
 .SH FILES
 .I $HOME/.lbdb/m_inmail.list
 .br

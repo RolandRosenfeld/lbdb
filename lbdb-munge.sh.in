@@ -19,6 +19,8 @@
 
 # $Id$
 
+LBDB_VERSION=@LBDB_VERSION@
+
 umask 077
 
 prefix=@prefix@

@@ -19,6 +19,8 @@
 
 # $Id$
 
+LBDB_VERSION=@LBDB_VERSION@
+
 umask 077
 
 prefix=@prefix@
@@ -28,6 +30,17 @@ fetchaddr=@libdir@/fetchaddr
 db=$HOME/.lbdb/m_inmail.list
 
 datefmt=${*:-'%Y-%m-%d %H:%M'}
+
+case "$1" in
+    -v) echo "lbdb-fetchaddr version $LBDB_VERSION"
+	exit 0
+	break;;
+    -h) echo "Usage: $0 ['dateformat']  dig addresses with formatted timestamp"
+	echo "       $0 -v              print version of lbdbq"
+	echo "       $0 -h              this short help"
+	exit 0
+	break;;
+esac
 
 if [ ! -f $db ]; then
   dbdir=`dirname $db`

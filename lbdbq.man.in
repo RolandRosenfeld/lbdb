@@ -15,12 +15,16 @@
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc.,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 .\"
-.TH LBDBQ 1 "June 1999" "Unix" "User Manuals"
+.TH LBDBQ 1 "September 1999" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
 .B lbdbq
 .I something
+.br
+.B lbdbq
+.RB [ -v | -h ]
+.B
 .SH DESCRIPTION
 .B lbdbq
 is the client program for the little brother's database. It will
@@ -52,7 +56,7 @@ a space separated list of directories, where
 .B lbdbq
 should look for modules.
 .TP
-.B METHODS
+.B  METHODS
 a space separated list of the modules to use.
 .PP
 Note that there 
@@ -126,6 +130,11 @@ from mutt, add the following line to your
 .nf
     set query_command="lbdbq '%s'"
 .fi
+.SH OPTIONS
+.IP -v
+Print version number of lbdbq.
+.IP -h
+Print short help of lbdbq.
 .SH FILES
 .I @sysconfdir@/lbdb.rc
 .br

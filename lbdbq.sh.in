@@ -18,6 +18,7 @@
 
 # $Id$
 
+LBDB_VERSION=@LBDB_VERSION@
 
 set -e
 
@@ -28,6 +29,17 @@ sysconfdir=@sysconfdir@
 
 METHODS="@MODULES@"
 MODULES_PATH=@libdir@
+
+case "$1" in
+    -v) echo "lbdbq version $LBDB_VERSION"
+	exit 0
+	break;;
+    -h) echo "Usage: $0 'something'    search addresses matching 'something'"
+	echo "       $0 -v             print version of lbdbq"
+	echo "       $0 -h              this short help"
+	exit 0
+	break;;
+esac
 
 . $libdir/lbdb_lib
 

@@ -1562,6 +1562,9 @@ for i in $MODULES ; do
 	MODULES_SH="$MODULES_SH $i.sh"
 done
 
+LBDB_VERSION=`sed -e '2,10000d;s/^.*(\(.*\)).*$/\1/' < debian/changelog`
+
+
 
 trap '' 1 2 15
 cat > confcache <<\EOF
@@ -1732,6 +1735,7 @@ s%@GPG@%$GPG%g
 s%@PGPK@%$PGPK%g
 s%@PGP@%$PGP%g
 s%@PERL@%$PERL%g
+s%@LBDB_VERSION@%$LBDB_VERSION%g
 s%@MODULES@%$MODULES%g
 
 CEOF

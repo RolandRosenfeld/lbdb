@@ -135,6 +135,9 @@ for i in $MODULES ; do
 	MODULES_SH="$MODULES_SH $i.sh"
 done
 
+LBDB_VERSION=`sed -e '2,10000d;s/^.*(\(.*\)).*$/\1/' < debian/changelog`
+AC_SUBST(LBDB_VERSION)
+
 AC_SUBST(MODULES)
 AC_OUTPUT(Makefile lbdbq.sh munge.awk lbdb-fetchaddr.sh lbdb-munge.sh \
 	lbdb_lib.sh nodelist2lbdb.pl $MODULES_SH)
