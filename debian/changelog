@@ -1,3 +1,11 @@
+lbdb (0.17.1) unstable; urgency=low
+
+  * Upgraded autoconf from 2.12 to 2.13.
+  * Removed word boundary check in m_inmail, because this is only
+    available in GNU grep.
+
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 25 May 1999 15:40:33 +0200
+
 lbdb (0.17) unstable; urgency=low
 
   * Delay munging of mails when using lbdb-fetchaddr/m_inmail by adding a
