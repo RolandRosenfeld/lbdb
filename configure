@@ -1088,9 +1088,9 @@ else
 fi
 
 if test x$ac_cv_path_DOTLOCK = xno ; then
-	echo "ERROR: mutt_dotlock is required to build this package." >&2
-	echo "ERROR: You can get it from the mutt package's source code." >&2
-	exit 1
+	DOTLOCK_TARGET="lbdb_dotlock"
+	
+	DOTLOCK="$bindir"/lbdb_dotlock
 fi
 
 
@@ -1416,6 +1416,7 @@ s%@NAWK@%$NAWK%g
 s%@AWK@%$AWK%g
 s%@DOTLOCK_OLD@%$DOTLOCK_OLD%g
 s%@DOTLOCK@%$DOTLOCK%g
+s%@DOTLOCK_TARGET@%$DOTLOCK_TARGET%g
 s%@path_fetchaddr@%$path_fetchaddr%g
 s%@FINGER@%$FINGER%g
 s%@GPG@%$GPG%g

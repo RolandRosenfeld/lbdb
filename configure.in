@@ -77,9 +77,9 @@ else
 fi
 
 if test x$ac_cv_path_DOTLOCK = xno ; then
-	echo "ERROR: mutt_dotlock is required to build this package." >&2
-	echo "ERROR: You can get it from the mutt package's source code." >&2
-	exit 1
+	DOTLOCK_TARGET="lbdb_dotlock"
+	AC_SUBST(DOTLOCK_TARGET)
+	DOTLOCK="$bindir"/lbdb_dotlock
 fi
 
 

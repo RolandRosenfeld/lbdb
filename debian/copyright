@@ -4,8 +4,12 @@ Sun, 11 Oct 1998 15:59:49 +0200.
 It was formerly downloaded from 
 ftp://riemann.iam.uni-bonn.de/pub/users/roessler/lbdb-0.11.tgz
 
+At the moment upstream version and Debian version are identical and
+can be found at
+http://www.spinnaker.de/debian/#lbdb
+
 Upstream Author: Thomas Roessler <roessler@guug.de>
-Upstream Maintainer: Roland Rosenfeld <roland@spinnaker.rhein.de>
+Upstream Maintainer: Roland Rosenfeld <roland@spinnaker.de>
 
 Copyright:
 

@@ -1,3 +1,11 @@
+lbdb (0.16) unstable; urgency=low
+
+  * Added dotlock command from mutt 0.96.1 sources (without the SGID mail
+    stuff) which is installed as lbdb_dotlock, when no mutt_dotlock can be 
+    found.
+
+ -- Roland Rosenfeld <roland@debian.org>  Sun,  4 Apr 1999 19:17:55 +0200
+
 lbdb (0.15.1) unstable; urgency=low
 
   * m_passwd: give UID in comment field.

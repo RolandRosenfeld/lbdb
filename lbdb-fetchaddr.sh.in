@@ -21,9 +21,9 @@
 
 umask 077
 
-dotlock=@DOTLOCK@
 prefix=@prefix@
 exec_prefix=@exec_prefix@
+dotlock=@DOTLOCK@
 fetchaddr=@libdir@/fetchaddr
 db=$HOME/.lbdb/m_inmail.list
 
