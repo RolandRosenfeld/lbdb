@@ -3,8 +3,8 @@ $Id$
 
                The Little Brother's Database
                 
-            Thomas Roessler <roessler@guug.de>
           Roland Rosenfeld <roland@spinnaker.de> (current maintainer)
+            Thomas Roessler <roessler@guug.de> (initial author)
 
 This package was inspired by the Big Brother Database package
 available for various Emacs mailers, and by Brandon Long's "external
@@ -121,6 +121,15 @@ m_palm
        searches in the variable PALM_ADDRESS_DATABASE or if this isn't
        set in $HOME/.jpilot/AddressDB.pdb.
 
+m_gnomecard
+       This module searches for addresses in your GnomeCard database
+       files.  The variable GNOMECARD_FILES is a whitespace separated
+       list of GnomeCard data files.  If this variable isn't defined,
+       the module searches in $HOME/.gnome/GnomeCard for the GnomeCard
+       database of at least falls back to $HOME/.gnome/GnomeCard.gcrd.
+       If a filename does not start with a slash, it is prefixed with
+       $HOME/.
+
 Feel free to create your own modules to query LDAP servers and the
 like.  m_finger should be a good example of how to do it.
 
@@ -145,6 +154,7 @@ for putting the query functionality into mutt.
 Many thanks to the authors of the several modules and extensions:
 - Ross Campbell <rcampbel@us.oracle.com>           (m_abook, m_yppasswd)
 - Gabor Fleischer <flocsy@mtesz.hu>                (m_pine)
+- Rick Frankel <rick@rickster.com>		   (m_gnomecard)
+- Torsten Jerzembeck <toje@nightingale.ms.sub.org> (m_addr_email)
 - Dave Pearson <davep@davep.org>                   (m_palm, lbdb.el)
 - Brian Salter-Duke <b_duke@lacebark.ntu.edu.au>   (m_muttalias)
-- Torsten Jerzembeck <toje@nightingale.ms.sub.org> (m_addr_email)

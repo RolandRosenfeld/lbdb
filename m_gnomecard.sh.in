@@ -1,0 +1,64 @@
+#! @SH@
+#
+# -*-sh-*-
+#
+#     m_gnomecard - GnomeCard Address book module for lbdb
+#     Copyright (C) 2000 Rick Frankel <rick@rickster.com>
+#                   2000 Roland Rosenfeld <roland@spinnaker.de>
+#
+#     This program is free software; you can redistribute it and/or modify
+#     it under the terms of the GNU General Public License as published by
+#     the Free Software Foundation; either version 2 of the License, or
+#     (at your option) any later version.
+# 
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+# 
+#     You should have received a copy of the GNU General Public License
+#     along with this program; if not, write to the Free Software
+#     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111, USA.
+#
+# $Id$
+#
+
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+AWK=@AWK@
+
+rcfile=$HOME/.gnome/GnomeCard
+
+m_gcrd_query ()
+{
+    if [ -z "$GNOMECARD_FILES" ]
+    then 
+	if [ -r "$rcfile" ]
+	then
+	    GNOMECARD_FILES=`\
+		$AWK 'BEGIN {FS="="; infile=0} \
+		      /^\[.*\]/ {infile=0} \
+		      /^\[file\]/ {infile=1} \
+		      infile && /^open=/ {print $2}' \
+		    < $rcfile`
+	fi
+	if [ -z "$GNOMECARD_FILES" ]
+	then
+	    GNOMECARD_FILES=".gnome/GnomeCard.gcrd"
+	fi
+    fi
+    
+    for file in $GNOMECARD_FILES
+    do
+	if [ $file = ${file#/} ]
+	then
+	    file=$HOME/$file
+	fi
+
+	if [ -f $file ]
+	then
+	    $libdir/gcrd_lsaddr $file | grep -i "$@"
+	fi
+    done
+}

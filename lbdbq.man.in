@@ -196,6 +196,18 @@ It searches in the variable
 .B PALM_ADDRESS_DATABASE
 or if this isn't set in 
 .IR $HOME/.jpilot/AddressDB.pdb .
+.TP
+.BR m_gnomecard
+This module searches for addresses in your GnomeCard database files.
+The variable 
+.B GNOMECARD_FILES
+is a whitespace separated list of GnomeCard data files.  If this
+variable isn't defined, the module searches in
+.BI $HOME /.gnome/GnomeCard
+for the GnomeCard database of at least falls back to
+.BI $HOME /.gnome/GnomeCard.gcrd\fR.
+If a filename does not start with a slash, it is prefixed with
+.BR $HOME/ .
 .PP
 Feel free to create your own modules to query LDAP servers, YP maps,
 and the like. 

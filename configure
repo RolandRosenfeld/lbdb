@@ -1731,7 +1731,8 @@ fi
 if test "x$PERL" != xno ; then
 	# m_fido needs nodelist2lbdb, which needs perl
 	# m_palm needs palm_lsaddr, which needs perl
-	MODULES="$MODULES m_fido m_palm"
+	# m_gnomecard needs gcrd_lsaddr, which needs perl
+	MODULES="$MODULES m_fido m_palm m_gnomecard"
 	
 fi
 
@@ -1859,7 +1860,7 @@ ac_given_INSTALL="$INSTALL"
 
 trap 'rm -fr `echo "Makefile lbdbq.sh munge.awk munge-keeporder.awk lbdb-fetchaddr.sh \
 	lbdb-munge.sh lbdb_lib.sh nodelist2lbdb.pl palm_lsaddr.pl \
-	lbdb.spec $MODULES_SH $TACAWK lbdb.spec" | sed "s/:[^ ]*//g"` conftest*; exit 1' 1 2 15
+	gcrd_lsaddr.pl lbdb.spec $MODULES_SH $TACAWK lbdb.spec" | sed "s/:[^ ]*//g"` conftest*; exit 1' 1 2 15
 EOF
 cat >> $CONFIG_STATUS <<EOF
 
@@ -1964,7 +1965,7 @@ cat >> $CONFIG_STATUS <<EOF
 
 CONFIG_FILES=\${CONFIG_FILES-"Makefile lbdbq.sh munge.awk munge-keeporder.awk lbdb-fetchaddr.sh \
 	lbdb-munge.sh lbdb_lib.sh nodelist2lbdb.pl palm_lsaddr.pl \
-	lbdb.spec $MODULES_SH $TACAWK lbdb.spec"}
+	gcrd_lsaddr.pl lbdb.spec $MODULES_SH $TACAWK lbdb.spec"}
 EOF
 cat >> $CONFIG_STATUS <<\EOF
 for ac_file in .. $CONFIG_FILES; do if test "x$ac_file" != x..; then
