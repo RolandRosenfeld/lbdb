@@ -1,7 +1,9 @@
-lbdb (0.24.1) unstable; urgency=low
+lbdb (0.25) unstable; urgency=low
 
   * Suggest mutt-ja as an alternative to mutt, because mutt-ja currently
     does not provide mutt (Closes: #85923).
+  * Add m_ldap and mutt_ldap_query provided by Marc de Courville,
+    <marc@courville.org>.
 
  --
 

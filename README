@@ -138,6 +138,12 @@ m_bbdb
        configure the EMACS variable to tell this module which emacsen
        to use.  Otherwise it will fall back to emacs or xemacs.
 
+m_lbdb
+       This module queries an LDAP server using the Net::LDAP Perl
+       modules from CPAN.  It can be configured using an external
+       resource file (for more details please refer to the
+       mutt_ldap_query(1) manual page).
+
 Feel free to create your own modules to query LDAP servers and the
 like.  m_finger should be a good example of how to do it.
 
@@ -161,6 +167,7 @@ for putting the query functionality into mutt.
 
 Many thanks to the authors of the several modules and extensions:
 - Ross Campbell <rcampbel@us.oracle.com>           (m_abook, m_yppasswd)
+- Marc de Courville <marc@courville.org>           (m_ldap, mutt_ldap_query)
 - Gabor Fleischer <flocsy@mtesz.hu>                (m_pine)
 - Rick Frankel <rick@rickster.com>		   (m_gnomecard)
 - Utz-Uwe Haus <haus@uuhaus.de>			   (m_bbdb)

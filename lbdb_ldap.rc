@@ -1,0 +1,55 @@
+# -*- perl -*-
+#
+# $Id$
+#
+# The format of each entry of the ldap server database is the following:
+# LDAP_NICKNAME => ['LDAP_SERVER', 
+#                   'LDAP_SEARCH_BASE',
+#                   'LDAP_SEARCH_FIELDS',
+#                   'LDAP_EXPECTED_ANSWERS',
+#                   'LDAP_RESULT_EMAIL',
+#                   'LDAP_RESULT_REALNAME',
+#                   'LDAP_RESULT_COMMENT'],
+# a practical illustrating example being:
+#  debian	=> ['db.debian.org', 'ou=users,dc=debian,dc=org',
+#                   'uid cn sn ircnick', 'uid cn sn ircnick',
+#                   '${uid}@debian.org', '${cn} ${sn}', '${ircnick}'],
+# the output of the query will be then:
+#   ${uid}@debian.org\t${cn} ${sn}\t${ircnick} (i.e.: email name comment)
+
+# warning this database will erase default script builtin
+%ldap_server_db = (
+  'four11'		=> ['ldap.four11.com', 'c=US',
+			    'givenname sn cn mail', 'givenname cn sn mail o',
+			    '${mail}', '${givenname} ${sn}', '${o}' ],
+  'infospace'		=> ['ldap.infospace.com', 'c=US',
+			    'givenname sn cn mail', 'givenname cn sn mail o',
+			    '${mail}', '${givenname} ${sn}', '${o}' ],
+  'whowhere'		=> ['ldap.whowhere.com', 'c=US',
+			    'givenname sn cn mail', 'givenname cn sn mail o',
+			    '${mail}', '${givenname} ${sn}', '${o}' ],
+  'bigfoot'		=> ['ldap.bigfoot.com', 'c=US', 
+			    'givenname sn cn mail', 'givenname cn sn mail o',
+			    '${mail}', '${givenname} ${sn}', '${o}' ],
+  'switchboard'		=> ['ldap.switchboard.com', 'c=US',
+			    'givenname sn cn mail', 'givenname cn sn mail o',
+			    '${mail}', '${givenname} ${sn}', '${o}' ],
+  'infospacebiz'	=> ['ldapbiz.infospace.com', 'c=US',
+			    'givenname sn cn mail', 'givenname cn sn mail o',
+			    '${mail}', '${givenname} ${sn}', '${o}' ],
+);
+
+# hostname of your ldap server
+$ldap_server = 'ldap.four11.com';
+# ldap base search
+$search_base = 'c=US';
+# list of the fields that will be used for the query
+$ldap_search_fields = 'givenname sn cn mail';
+# list of the fields that will be used for composing the answer
+$ldap_expected_answers = 'givenname sn cn mail o';
+# format of the email result based on the expected answers of the ldap query
+$ldap_result_email = '${mail}';
+# format of the realname result based on the expected answers of the ldap query
+$ldap_result_realname = '${givenname} ${sn}';
+# format of the comment result based on the expected answers of the ldap query
+$ldap_result_comment = '(${o})';

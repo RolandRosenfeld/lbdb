@@ -8,7 +8,7 @@ Build-Depends: debhelper (>= 2.0.0)
 Package: lbdb
 Architecture: any
 Depends: ${shlibs:Depends}, awk
-Suggests: mutt | mutt-ja, procmail, finger, abook, libpalm-perl
+Suggests: mutt | mutt-ja, procmail, finger, abook, libpalm-perl, libnet-ldap-perl
 Description: The little brother's database for the mutt mail reader
  This package consists of a set of small tools, which collect mail
  addresses from several sources and offer these addresses to the mutt
@@ -26,4 +26,5 @@ Description: The little brother's database for the mutt mail reader
   - m_pine (searches your Pine addressbook files)
   - m_palm (uses your Palm database; needs libpalm-perl package)
   - m_gnomecard (uses GnomeCard database files)
-  - m_bbdb (search your BBDB (big brother database)
+  - m_bbdb (search your BBDB (big brother database))
+  - m_ldap (query some LDAP server)

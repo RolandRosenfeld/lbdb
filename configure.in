@@ -158,7 +158,8 @@ AC_PATH_PROG(PERL, perl, "no")
 if test "x$PERL" != xno ; then
 	# m_fido needs nodelist2lbdb, which needs perl
 	# m_palm needs palm_lsaddr, which needs perl
-	MODULES="$MODULES m_fido m_palm"
+	# m_ldap needs mutt_ldap_query which is written in perl
+	MODULES="$MODULES m_fido m_palm m_ldap"
 	AC_SUBST(PERL)
 fi
 
@@ -173,4 +174,4 @@ AC_SUBST(LBDB_VERSION)
 AC_SUBST(MODULES)
 AC_OUTPUT(Makefile lbdbq.sh munge.awk munge-keeporder.awk lbdb-fetchaddr.sh \
 	lbdb-munge.sh lbdb_lib.sh nodelist2lbdb.pl palm_lsaddr.pl \
-	lbdb.spec $MODULES_SH $TACAWK lbdb.spec)
+	mutt_ldap_query.pl lbdb.spec $MODULES_SH $TACAWK lbdb.spec)

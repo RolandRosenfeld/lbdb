@@ -32,6 +32,7 @@
 # - m_palm	 search your Palm addressbook file.
 # - m_gnomecard	 search your GnomeCard address database files.
 # - m_bbdb	 search your BBDB (big brother database).
+# - m_ldap       query an LDAP server 
 
 
 METHODS="m_inmail m_passwd m_finger"

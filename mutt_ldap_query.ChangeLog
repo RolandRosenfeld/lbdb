@@ -1,0 +1,29 @@
+* 4.0 (02/16/2001):
+  - external configuration capability through a resource file has now be added
+  - more flexibility in the specification of the format of the output is possible through a variable container approach
+  - mutt_ldap_query is exclusively based on perl_ldap module (no longer supports ldapsearch)
+  - Getopt::Long is used for the options: everything has changed
+  - documentation is embedded using POD
+* 3.3 (02/15/2001): 
+  - fixed typo in server_db (pointed out by dpelle@cisco.com)
+  - added "ignorant" option: -i to search with wildcards
+* 3.2 (01/12/2000): 
+  - now use get_value intead of ->[0]
+* 3.1 (03/10/2000): 
+  - added the -l option that suppresses the number of matches output 
+  - for better interfacing with little brother database 
+  - http://www.spinnaker.de/lbdb/
+* 3.0 (12/29/1999): 
+  - implemented another query method using perl-ldap module enabled by 
+  - the -p boolean flag
+* 2.3 (12/28/1999): 
+  - added better parsing of the options, a shortcut for avoiding
+  - -s and -b options by using the script builtin table of common
+  - servers and associated search bases performing a <server_nickname>
+  - lookup (changes inspired from a patch sent by Adrian Likins
+  - <alikins@redhat.com>), performed some Y2K cleanups ;-)
+* 2.2 (11/02/1999): 
+  - merged perl style fixes proposed by Warren Jones <wjones@tc.fluke.com>
+* 2.1 (4/14/1998):
+  - first public release
+

@@ -15,5 +15,7 @@ may want to give it a different libdir, such as /usr/local/lib/lbdb
 You need to have the Palm::PDB and Palm::Address Perl modules
 installed to use the m_palm module.
 
+You need to have the Net::LDAP Perl module installed to use the m_ldap
+module.
 
 $Id$
