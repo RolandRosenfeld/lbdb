@@ -2,11 +2,6 @@ dnl $Id$
 dnl -*-sh-mode-*-
 
 AC_INIT(fetchaddr.c)
-VERSION="0"
-SUBVERSION="12"
-
-AC_SUBST(VERSION)
-AC_SUBST(SUBVERSION)
 
 AC_MSG_CHECKING(for prefix)
 if test x$prefix = xNONE; then
