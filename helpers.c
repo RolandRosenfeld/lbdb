@@ -99,10 +99,11 @@ void safe_realloc (void **p, size_t siz)
   *p = r;
 }
 
-void safe_free (void **p)
-{
+void safe_free (void *ptr)
+{ 
+  void **p = (void **)ptr;
   if (*p)
-  {
+  { 
     free (*p);
     *p = 0;
   }

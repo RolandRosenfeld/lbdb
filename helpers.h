@@ -40,9 +40,9 @@ char *safe_strdup (const char *);
 void *safe_calloc (size_t, size_t);
 void *safe_malloc (unsigned int);
 void safe_realloc (void **, size_t);
-void safe_free (void **);
+void safe_free (void *);
 
-#define FREE(x) safe_free((void **)x)
+#define FREE(x) safe_free(x)
 #define SKIPWS(c) while (*(c) && isspace ((unsigned char) *(c))) c++;
 #define strfcpy(A,B,C) strncpy(A,B,C), *(A+(C)-1)=0
 

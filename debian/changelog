@@ -1,3 +1,10 @@
+lbdb (0.29.1) unstable; urgency=low
+
+  * Get rid of strict aliasing warnings in gcc.  Thanks to Ludwig Nussel
+    <ludwig.nussel@suse.de> for providing a patch.
+
+ --
+
 lbdb (0.29) unstable; urgency=low
 
   * Add new module m_evolution to access Ximian Evolution addressbook.

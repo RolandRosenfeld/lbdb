@@ -479,7 +479,7 @@ void rfc822_qualify (ADDRESS *addr, const char *host)
     {
       p = safe_malloc (strlen (addr->mailbox) + strlen (host) + 2);
       sprintf (p, "%s@%s", addr->mailbox, host);
-      safe_free ((void **) &addr->mailbox);
+      safe_free (&addr->mailbox);
       addr->mailbox = p;
     }
 }
@@ -742,10 +742,14 @@ ADDRESS *rfc822_append (ADDRESS **a, ADDRESS *b)
 }
 
 #ifdef TESTING
-int safe_free (void **p)
-{
-  free(*p);
-  *p = 0;
+void safe_free (void *ptr)
+{ 
+  void **p = (void **)ptr;
+  if (*p)
+  { 
+    free (*p);
+    *p = 0;
+  }
 }
 
 int main (int argc, char **argv)

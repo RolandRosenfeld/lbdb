@@ -196,7 +196,7 @@ int main(int argc, char* argv[])
       
       if(cur_hdr)
       {
-	safe_free((void **) &cur_hdr->value);
+	safe_free(&cur_hdr->value);
 	cur_hdr->value = safe_strdup(buff + cur_hdr->taglen);
 	cur_hdr->len = strlen(cur_hdr->value);
 	chop(cur_hdr);

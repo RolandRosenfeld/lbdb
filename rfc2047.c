@@ -149,7 +149,7 @@ static int rfc2047_decode_word (char *d, const char *s, size_t len)
     }
     pp = 0;
   }
-  safe_free ((void **) &p);
+  safe_free (&p);
   if (filter)
   {
     pd = d;
