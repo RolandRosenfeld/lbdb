@@ -95,11 +95,12 @@ sub versionstring {
 sub process_file {
   foreach my $file (@_) {
     if (-r $file) {
-      unless (my $return = do $file) {
-	warn "couldn't parse $file: $@" if $@;
-	warn "couldn't do $file: $!" unless defined $return;
-	warn "couldn't run $file" unless $return;
-      }
+      eval `cat $filename`;
+#      unless (my $return = do $file) {
+#	warn "couldn't parse $file: $@" if $@;
+#	warn "couldn't do $file: $!" unless defined $return;
+#	warn "couldn't run $file" unless $return;
+#      }
     }
 #    else {
 #      warn "either $file doesn't exist or is not readable by me!\n";
