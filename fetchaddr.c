@@ -60,7 +60,7 @@ int writeout(struct header *h, const char *datefmt)
   int rv = 0;
   ADDRESS *addr, *p;
   time_t timep;
-  char timebuf[16];
+  char timebuf[256];
   char *c;
 
   if(!h->value)
