@@ -27,7 +27,7 @@ libdir=@libdir@
 
 m_ldap_query ()
 {
-    if [ "$LDAP_NICK" != "" ]
+    if [ "$LDAP_NICKS" != "" ]
     then
 	for NICK in $LDAP_NICKS
 	do
