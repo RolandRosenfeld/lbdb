@@ -199,7 +199,7 @@ Many thanks to the authors of the several modules and extensions:
 - Brendan Cully <brendan@kublai.com>		   (m_osx_addressbook)
 - Gabor Fleischer <flocsy@mtesz.hu>                (m_pine)
 - Rick Frankel <rick@rickster.com>		   (m_gnomecard)
-- Guido Guenther <agx@debian.org>                  (m_evolution)
+- Guido Guenther <agx@sigxcpu.org>                 (m_evolution)
 - Utz-Uwe Haus <haus@uuhaus.de>			   (m_bbdb, m_nispasswd)
 - Torsten Jerzembeck <toje@nightingale.ms.sub.org> (m_addr_email)
 - Gergely Nagy <algernon@debian.org>		   (m_wanderlust)
