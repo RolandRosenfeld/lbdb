@@ -89,7 +89,7 @@ AC_SUBST(DOTLOCK)
 path_fetchaddr="$libdir/fetchaddr"
 AC_SUBST(path_fetchaddr)
 
-MODULES="m_inmail m_passwd m_pgp2 m_pgp5 m_gpg"
+MODULES="m_inmail m_passwd"
 
 
 AC_PATH_PROG(FINGER, finger, "no", `echo $PATH | sed "s/:/ /g"`)
