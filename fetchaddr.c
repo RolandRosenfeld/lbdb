@@ -77,7 +77,7 @@ int writeout(struct header *h)
       if(p->personal && strlen(p->personal) > 30)
 	strcpy(p->personal + 27, "...");
       
-      if(atchar=strchr(p->mailbox,'@'))
+      if((atchar=strchr(p->mailbox,'@')))
 	tolower(atchar);
       
 #if 0
