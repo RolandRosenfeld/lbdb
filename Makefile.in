@@ -49,9 +49,9 @@ install: all
 	$(INSTALL) -m 644 lbdbq.man $(mandir)/man1/lbdbq.1
 	$(INSTALL) -m 644 lbdb-fetchaddr.man $(mandir)/man1/lbdb-fetchaddr.1
 	$(INSTALL) -m 644 lbdb.rc $(sysconfdir)/lbdb.rc
-	if [ "@DOTLOCK_TARGET@" != "" ]; then
-		$(INSTALL) -m 755 lbdb_dotlock $(bindir)
-		$(INSTALL) -m 644 dotlock.man $(mandir)/man1/lbdb_dotlock.1
+	if [ "@DOTLOCK_TARGET@" != "" ]; then \
+		$(INSTALL) -m 755 lbdb_dotlock $(bindir); \
+		$(INSTALL) -m 644 dotlock.man $(mandir)/man1/lbdb_dotlock.1; \
 	fi
 
 fetchaddr: $(srcdir)/fetchaddr.o $(srcdir)/rfc822.o $(srcdir)/helpers.o  \
