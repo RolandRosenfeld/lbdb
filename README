@@ -4,35 +4,25 @@ $Id$
 	       The Little Brother's Database
 		
 	    Thomas Roessler <roessler@guug.de>
-current maintainer: Roland Rosenfeld <roland@spinnaker.de>
+          Roland Rosenfeld <roland@spinnaker.de> (current maintainer)
 
-!!! Please note, that this README is not completely up to date !!!
-!!! Refer to the manpage lbdbq.man for more actual information !!!
+This package was inspired by the Big Brother Database package
+available for various Emacs mailers, and by Brandon Long's "external
+query" patch for the mutt mail user agent (Note that this patch has
+been incorporated into the main-line mutt versions as of mutt 0.93.)
 
-This package was inspired by the Big Brother Database
-package available for various Emacs mailers, and by
-Brandon Long's "external query" patch for the mutt mail
-user agent.  (Note that this patch has been incorporated
-into the main-line mutt versions as of mutt 0.93.)
+The package doesn't use any formal database libraries or languages,
+although it should be quite easy to extend it to use, e.g., an
+installed PostgreSQL server as it's backend.
 
-The package doesn't use any formal database libraries or
-languages, although it should be quite easy to extend it
-to use, e.g., an installed PostgreSQL server as it's
-backend.
-
-As an additional requirement, we rely on mutt's
-mutt_dotlock program to do some locking.
-
-
-For querying the Little Brother, just type "lbdbq
-<something>".  lbdbq will now attempt to invoke various
-modules to gather information about persons matching
-"<something>".  E.g., it may look at a list of addresses
-from which you have received mail, it may look at YP maps,
+For querying the Little Brother, just type "lbdbq <something>". lbdbq
+will now attempt to invoke various modules to gather information about
+persons matching "<something>". E.g., it may look at a list of
+addresses from which you have received mail, it may look at YP maps,
 or it may try to finger <something>@<various hosts>.
 
-The behavior is configurable:  Upon startup, lbdbq will
-source the shell scripts
+The behavior is configurable: Upon startup, lbdbq will source the
+shell scripts
 
 	/usr/local/etc/lbdb.rc (or where your @sysconfdir@ points to)
 	$HOME/.lbdbrc
@@ -47,52 +37,51 @@ They can be used to set the following global variables:
 
 - METHODS: What modules to use.
 
-Note that there _are_ defaults, so you should most
-probably modify these variables using constructs like this:
+Note that there _are_ defaults, so you should most probably modify
+these variables using constructs like this:
 
 	MODULE_PATH="MODULE_PATH $HOME/lbdb_modules"
 
-Additionally, modules may have configuration variables of
-their own.
+Additionally, modules may have configuration variables of their own.
 
 Currently, two modules are supplied with lbdb:
 
-- m_finger: This module will use finger to find out
-  something more about a person.  The list of hosts do be
-  asked is configurable; use the M_FINGER_HOSTS variable.
-  Note that "localhost" will mean an invocation of your
-  local finger(1) binary, and should thus work even if you
-  don't provide the finger service to the network.
+m_finger
+       This module will use finger to find out something more about a
+       person. The list of hosts do be asked is configurable; use the
+       M_FINGER_HOSTS variable. Note that "localhost" will mean an
+       invocation of your local finger(1) binary, and should thus work
+       even if you don't provide the finger service to the network.
+       m_finger tries to find out the machines mail domain name by
+       parsing a sendmail.cf file (if it finds one) and by reading
+       /etc/hostname and /etc/HOSTNAME.
 
-  m_finger tries to find out the machines mail domain name
-  by parsing a sendmail.cf file (if it finds one ;-) and
-  by reading /etc/hostname and /etc/HOSTNAME.  You may
-  want to add more methods.  See also lbdb_lib.sh.in.
+m_inmail
+       This module will look up user name fragments in a list of mail
+       addresses created by lbdb-fetchaddr(1).
 
-- m_inmail: This module will look up user name fragments
-  in a list of mail addresses.   To create this list, put
-  the following lines into your ~/.procmailrc:
-  
-  :0hc
-  | lbdb-fetchaddr
+m_passwd
+       This module searches for matching entries in your local
+       /etc/passwd file. It evaluates the local machine mail domain in
+       the same way m_finger does.
 
-  This will pipe a copy of every mail message you receive
-  through a small C program which grabs that message's
-  From: header.  lbdb-fetchaddr will then construct an
-  address list out of these data.  This list is stored
-  under $HOME/.lbdb/m_inmail.
+m_pgp2, m_pgp5, m_gpg
+       These modules scan your PGP 2.*, PGP 5.* or GnuPG public key
+       ring for data. They use the programs pgp(1), pgpk(1), or gpg(1)
+       to get the data.
 
-Feel free to create your own modules to query LDAP
-servers, YP maps, and the like. m_finger should be a good
-example of how to do it.
+m_fido This module searches your Fido nodelist, stored in
+       $HOME/.lbdb/nodelist created by nodelist2lbdb(1).
 
-If you create your own modules or have other changes and
-feel that they could be helpful for others, don't hesitate
-to submit them to me for inclusion in later releases.
+Feel free to create your own modules to query LDAP servers, YP maps,
+and the like. m_finger should be a good example of how to do it.
 
+If you create your own modules or have other changes and feel that
+they could be helpful for others, don't hesitate to submit them to me
+for inclusion in later releases.
 
-Finally, to use lbdbq from mutt, add the following line to
-your ~/.muttrc:
+Finally, to use lbdbq from mutt, add the following line to your
+~/.muttrc:
 
 	set query_command="lbdbq %s"
 
@@ -100,8 +89,7 @@ your ~/.muttrc:
 CREDITS
 -------
 
-Most of the really interesting code of this program
-(namely, the RFC 822 address parser used by
-lbdb-fetchaddr) was stolen from Michael Elkins' mutt mail
-user agent.  Additional credits go to Brandon Long for
-putting the query functionality into mutt.
+Most of the really interesting code of this program (namely, the RFC
+822 address parser used by lbdb-fetchaddr) was stolen from Michael
+Elkins' mutt mail user agent. Additional credits go to Brandon Long
+for putting the query functionality into mutt.
