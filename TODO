@@ -1,7 +1,18 @@
 $Id$
 
-- add new modules:
-    - extend m_passwd for NIS access (or create a separate module). 
+- Add new modules:
+    - extend m_passwd for NIS access (or create a separate module).
+    - Add m_ldap for LDAP access.
+
+- Make AWK=/usr/bin/awk the default for Debian (instead of
+  /usr/bin/mawk), because /usr/bin/awk is handled by the alternates
+  mechanism.
+
+- Have a deep look into the locking mechanism.  Over NFS dotlocking
+  may not be enough, it should be combined with fcntl() (this should
+  be possible to disable via configure option).  This means that we
+  may no longer use mutt_dotlock but always use a private
+  lbdb_dotlock.
 
 
 Roland Rosenfeld <roland@spinnaker.de>
