@@ -65,6 +65,10 @@ m_passwd
        /etc/passwd file. It evaluates the local machine mail domain in
        the same way m_finger does.
 
+m_yppasswd
+       This module searches for matching entries in your NIS password
+       file using the command "ypcat passwd".
+
 m_pgp2, m_pgp5, m_gpg
        These modules scan your PGP 2.*, PGP 5.* or GnuPG public key
        ring for data. They use the programs pgp(1), pgpk(1), or gpg(1)

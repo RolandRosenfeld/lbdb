@@ -95,6 +95,9 @@ addresses created by
 .B m_passwd
 This module searches for matching entries in your local /etc/passwd
 file. It evaluates the local machine mail domain in the same way 
+.B m_yppasswd
+This module searches for matching entries in the NIS password database
+using the command ``ypcat passwd''.
 .B m_finger
 does.
 .TP
@@ -155,6 +158,7 @@ Print short help of lbdbq.
 .I $HOME/.lbdb/nodelist
 .SH "SEE ALSO"
 .BR finger (1),
+.BR ypcat (1),
 .BR pgp (1),
 .BR pgpk (1),
 .BR gpg (1),

@@ -7,8 +7,10 @@ lbdb (0.18.6) unstable; urgency=low
   * Add lbdb.spec by Horms <horms@vergenet.net>.
   * Add abook support based on an idea by Ross Campbell
     <rcampbel@us.oracle.com>.
+  * Add NIS support based on an idea by Ross Campbell
+    <rcampbel@us.oracle.com>.
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 30 Apr 2000 11:03:19 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 30 Apr 2000 11:25:57 +0200
 
 lbdb (0.18.5) unstable; urgency=low
 

@@ -20,6 +20,7 @@
 # - m_inmail	search the database created by lbdb-fetchaddr(1)
 # - m_finger	finger some hosts defined in variable M_FINGER_HOSTS
 # - m_passwd	search the local /etc/passwd file.
+# - m_yppasswd	search the NIS password database.
 # - m_pgp2	search your PGP 2.* keyring
 # - m_pgp5	search your PGP 5.* keyring
 # - m_gpg	search your GnuPG keyring
