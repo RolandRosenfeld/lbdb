@@ -28,6 +28,6 @@ m_abook_query()
 
     if [ -x "$ABOOK" ]		# check whether abook in installed
     then
-	$ABOOK --mutt-query "@$" | sed -e '1d;s/$/	abook/'
+	$ABOOK --mutt-query "$@" | sed -e '1d;s/$/	abook/'
     fi
 }
