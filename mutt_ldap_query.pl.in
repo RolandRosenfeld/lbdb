@@ -48,6 +48,8 @@ our $ldap_result_email = '${mail}';
 our $ldap_result_realname = '${givenname} ${sn}';
 # format of the comment result based on the expected answers of the ldap query
 our $ldap_result_comment = '(${o})';
+# use ignorant (wildcard searching):
+our $ldap_ignorant = 0;
 
 our %ldap_server_db = (
   'four11'		=> ['ldap.four11.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
@@ -137,6 +139,11 @@ if ($ldap_server_nickname) {
   $ldap_result_email = $option_array->[4];
   $ldap_result_realname = $option_array->[5];
   $ldap_result_comment = $option_array->[6];
+  if (defined($option_array->[7])) {
+     $ldap_ignorant = $option_array->[7];
+  } else {
+     $ldap_ignorant = 0;
+  }
 }
 
 print "DEBUG: ldap_server=$ldap_server search_base=$search_base\n" if ($DEBUG);
@@ -146,8 +153,8 @@ my @results;
 
 foreach my $askfor ( @ARGV ) {
   my $query="";
-  if ($ignorant) {
-# enable this if you want to include wildcard in your search with some huge 
+  if ($ignorant || $ldap_ignorant) {
+# enable this if you want to include wildcard in your search with some huge
 # ldap databases you might want to avoid it
     $query = join '', map { "($_=*$askfor*)" } @fields;
   }
@@ -155,7 +162,7 @@ foreach my $askfor ( @ARGV ) {
     $query = join '', map { "($_=$askfor)" } @fields;
   }
   $query = "(|" . $query . ")";
-  
+
   print "DEBUG: perl ldap module processing filter:\nDEBUG: $query\n" if ($DEBUG);
   my $ldap = Net::LDAP->new($ldap_server, DN => "", Password => "", Port => 389, Debug => 3,) or die $@;
   $ldap->bind;
@@ -164,7 +171,7 @@ foreach my $askfor ( @ARGV ) {
   my @entries = $mesg->entries;
   map { $_->dump } $mesg->all_entries if ($DEBUG);
   my $entry;
-  foreach $entry (@entries) { 
+  foreach $entry (@entries) {
     print "DEBUG processing $entry->dn\n" if ($DEBUG);
 # prepare the results
     my $email = $ldap_result_email;
@@ -191,7 +198,7 @@ if ($lbdb_output) {
 else {
   print "LDAP query: found ", scalar(@results), "\n", @results;
 }
-  
+
 exit 1 if ! @results;
 
 __END__
@@ -299,7 +306,7 @@ a list of queries (e.g. "Gosse de\ Courville").
 
 Alternatively mutt_ldap_query can be interfaced with the more generic
 little brother database query program (http://www.spinnaker.de/lbdb/)
-using: 
+using:
   set query_command = "lbdbq '%s'"
 
 and by specifying in your ~/.lbdb/lbdbrc file another method of query
@@ -311,7 +318,7 @@ and the right path to access m_ldap in MODULES_PATH e.g.
 
 (if you moved F<m_ldap> in F<~/.lbdb/modules>).
 Just make sure to use the correct path for calling mutt_ldap_query
-in the m_ldap script. 
+in the m_ldap script.
 
 =head1 RESOURCE FILE FORMAT
 
@@ -326,14 +333,17 @@ variables using the resource file by two manners in order to match his
 site configuration.  A file example is provided below:
 
  # The format of each entry of the ldap server database is the following:
- # LDAP_NICKNAME => ['LDAP_SERVER', 
+ # LDAP_NICKNAME => ['LDAP_SERVER',
  #                   'LDAP_SEARCH_BASE',
  #                   'LDAP_SEARCH_FIELDS',
  #                   'LDAP_EXPECTED_ANSWERS',
  #                   'LDAP_RESULT_EMAIL',
  #                   'LDAP_RESULT_REALNAME',
- #                   'LDAP_RESULT_COMMENT'],
- # a practical illustrating example being:
+ #                   'LDAP_RESULT_COMMENT',
+ #                   LDAP_IGNORANT],
+ # (LDAP_IGNORANT is an optional argument. If you set it to 1, mutt_ldap_query
+ # uses wildcards *foo* for searching).
+ # A practical illustrating example being:
  #  debian	=> ['db.debian.org', 'ou=users,dc=debian,dc=org', 'uid cn sn ircnick', 'uid cn sn ircnick', '${uid}@debian.org', '${cn} ${sn}', '${ircnick}'],
  # the output of the query will be then: ${uid}@debian.org\t${cn} ${sn}\t${ircnick} (i.e.: email name comment)
 
@@ -361,6 +371,8 @@ site configuration.  A file example is provided below:
  $ldap_result_realname = '${givenname} ${sn}';
  # format of the comment result based on the expected answers of the ldap query
  $ldap_result_comment = '(${o})';
+ # Don't use wildchars on searching
+ $ldap_ignorant = 0;
 
 =head1 EXAMPLES OF QUERIES
 
@@ -373,7 +385,7 @@ and then "de Courville" looking for the following answers 'gn sn
 preferredRfc822Recipient ou c telephonenumber'. Based on this answers,
 mutt_ldap_query will return a list of entries identified of the form:
 
-  <${preferredRfc822Recipient}>\t${gn} ${sn}\t(${telephonenumber}) ${ou} ${c} 
+  <${preferredRfc822Recipient}>\t${gn} ${sn}\t(${telephonenumber}) ${ou} ${c}
 
 where ${} variables should be considered as containers that are replaced
 by the results of the query
@@ -392,7 +404,7 @@ C<mutt_ldap_query.pl --ignorant Courville>
 
 =head1 WHERE TO GET IT
 
-The latest version can be retrieved at 
+The latest version can be retrieved at
   ftp://ftp.mutt.org/pub/mutt/contrib
 or
   http://mapage.noos.fr/~courvill
@@ -428,7 +440,7 @@ just like this one 8-)
 =head1 COPYRIGHT
 
 Copyright (c) 1998-2001 Marc de Courville <marc@courville.org>
-All rights reserved. 
+All rights reserved.
 This code is distributed under the GNU General Public License (GPL). See
 http://www.opensource.org/gpl-license.html and http://www.opensource.org/.
 

@@ -3,14 +3,17 @@
 # $Id$
 #
 # The format of each entry of the ldap server database is the following:
-# LDAP_NICKNAME => ['LDAP_SERVER', 
+# LDAP_NICKNAME => ['LDAP_SERVER',
 #                   'LDAP_SEARCH_BASE',
 #                   'LDAP_SEARCH_FIELDS',
 #                   'LDAP_EXPECTED_ANSWERS',
 #                   'LDAP_RESULT_EMAIL',
 #                   'LDAP_RESULT_REALNAME',
-#                   'LDAP_RESULT_COMMENT'],
-# a practical illustrating example being:
+#                   'LDAP_RESULT_COMMENT',
+#                   LDAP_IGNORANT],
+# (LDAP_IGNORANT is an optional argument. If you set it to 1, mutt_ldap_query
+# uses wildcards *foo* for searching).
+# A practical illustrating example being:
 #  debian	=> ['db.debian.org', 'ou=users,dc=debian,dc=org',
 #                   'uid cn sn ircnick', 'uid cn sn ircnick',
 #                   '${uid}@debian.org', '${cn} ${sn}', '${ircnick}'],
@@ -66,3 +69,5 @@ $ldap_result_email = '${uid}@debian.org';
 $ldap_result_realname = '${cn} ${sn}';
 # format of the comment result based on the expected answers of the ldap query
 $ldap_result_comment = '(${ircnick})';
+# Don't use wildchars on searching
+$ldap_ignorant = 0;
