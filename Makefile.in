@@ -1,5 +1,5 @@
-
 #     Copyright (C) 1998  Thomas Roessler <roessler@guug.de>
+#     Copyright (C) 1999  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 #     You should have received a copy of the GNU General Public License
 #     along with this program; if not, write to the Free Software
 #     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
+#
 # $Id$
 
 CC=@CC@
@@ -36,9 +36,9 @@ libdir=@libdir@
 mandir=@mandir@
 sysconfdir=@sysconfdir@
 
-ALL=lbdbq lbdb_lib lbdb-fetchaddr lbdb-munge fetchaddr munge nodelist2lbdb \
-	lbdbq.man lbdb-fetchaddr.man nodelist2lbdb.man $(MODULES) \
-	$(DOTLOCK_TARGET)
+ALL=Makefile lbdbq lbdb_lib lbdb-fetchaddr lbdb-munge fetchaddr munge \
+	nodelist2lbdb lbdbq.man lbdb-fetchaddr.man nodelist2lbdb.man \
+	$(MODULES) $(DOTLOCK_TARGET)
 
 all: $(ALL)
 
@@ -84,12 +84,19 @@ lbdb_dotlock: $(srcdir)/dotlock.o
 
 dotlock.o: $(srcdir)/dotlock.h $(srcdir)/dotlock.c
 
+munge: munge.awk
+	cat munge.awk > $@
+	chmod a+x $@
+
 clean:
 	-rm -f *.o *~ $(ALL) munge.awk nodelist2lbdb.pl
 
 distclean: clean
 	-rm -f config.status config.cache config.log Makefile
 	-rm -f *.sh
+
+Makefile: Makefile.in
+	./config.status
 
 %.sh: %.sh.in
 	./config.status
@@ -101,21 +108,9 @@ distclean: clean
 	./config.status
 
 %.man: %.man.in
-	sed -e 's%@''libdir@%$(libdir)%' \
-	    -e 's%@''sysconfdir@%$(sysconfdir)%' \
-	    -e 's%@''dotlock@%$(DOTLOCKBASE)%' $< > $@
-
-%: %.sh
-	cat $< > $@
-	chmod a+x $@
-
-%: %.pl
-	cat $< > $@
-	chmod a+x $@
-
-%: %.awk
-	cat $< > $@
-	chmod a+x $@
+	sed -e 's!@''libdir@!$(libdir)!' \
+	    -e 's!@''sysconfdir@!$(sysconfdir)!' \
+	    -e 's!@''dotlock@!$(DOTLOCKBASE)!' $@.in > $@
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(DEFS) -c $<
