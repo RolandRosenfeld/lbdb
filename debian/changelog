@@ -11,7 +11,7 @@ lbdb (0.26.1) unstable; urgency=low
   * Remove dependency on awk, which is essential, to make lintian happy.
   * Use /etc/mailname as mail domain name in lbdb_hostname() (Closes: #165159).
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Sat,  8 Feb 2003 18:28:36 +0100
 
 lbdb (0.26) unstable; urgency=low
 
