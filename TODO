@@ -2,8 +2,7 @@ $Id$
 
 - add new modules:
     - m_fido (scan Fido nodelist/pointlist)
-
-- write a more descriptive /etc/lbdb.rc
+    - extend m_passwd for NIS access (or create a separate module). 
 
 - rewrite lbdb-fetchaddr, which becomes very slow when the database
   grows. Maybe a database backend or some expire mechanism which

@@ -31,7 +31,7 @@ or it may try to finger <something>@<various hosts>.
 The behavior is configurable:  Upon startup, lbdbq will
 source the shell scripts
 
-	/etc/lbdb.rc
+	/usr/local/etc/lbdb.rc (or where your @sysconfdir@ points to)
 	$HOME/.lbdbrc
 	$HOME/.lbdb/lbdbrc
 	$HOME/.lbdb/rc
