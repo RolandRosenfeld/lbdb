@@ -1,4 +1,5 @@
-/*
+/* ABQuery
+ *
  *    Copyright 2003 Brendan Cully <brendan@kublai.com>
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -15,6 +16,8 @@
  *     along with this program; if not, write to the Free Software
  *     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111, USA.
  *
+ *
+ * $Id$
  */
 
 #import <Foundation/Foundation.h>
@@ -53,14 +56,14 @@ int main (int argc, const char *argv[]) {
     addressEnum = [results objectEnumerator];
 
     while (person = (ABPerson*)[addressEnum nextObject]) {
-      NSString *fullName = [NSString stringWithFormat:@"%s %s", [[[person valueForProperty:kABFirstNameProperty] description] cString], [[[person valueForProperty:kABLastNameProperty] description] cString]];
+        NSString *fullName = [NSString stringWithFormat:@"%@ %@", [[person valueForProperty:kABFirstNameProperty] description], [[person valueForProperty:kABLastNameProperty] description]];
       
-      ABMultiValue *emails = [person valueForProperty:kABEmailProperty];
-      int count = [emails count];
-      int i;
-      for (i = 0; i < count; i++) {
-         NSString *email = [emails valueAtIndex:i];
-	 printf("%s\t%s\t(AddressBook)\n", [email cString], [fullName cString]);
+        ABMultiValue *emails = [person valueForProperty:kABEmailProperty];
+        int count = [emails count];
+        int i;
+        for (i = 0; i < count; i++) {
+            NSString *email = [emails valueAtIndex:i];
+            printf("%s\t%s\t(AddressBook)\n", [email cString], [fullName UTF8String]);
       }
     }
 
