@@ -2,7 +2,7 @@ This package was debianized by Roland Rosenfeld <roland@debian.org> on
 Sun, 11 Oct 1998 15:59:49 +0200.
 
 It was downloaded from 
-ftp://riemann.iam.uni-bonn.de/pub/users/roessler/lbdb-0.10.tgz
+ftp://riemann.iam.uni-bonn.de/pub/users/roessler/lbdb-0.11.tgz
 
 Upstream Author: Thomas Roessler <roessler@guug.de>
 
@@ -23,3 +23,4 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
 USA.
 
+See /usr/doc/copyright/GPL for the complete GNU General Public License.
