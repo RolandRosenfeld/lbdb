@@ -1,6 +1,5 @@
 .\" -*-nroff-*-
 .\"
-.\"
 .\"     Copyright (C) 1996-8 Michael R. Elkins <me@cs.hmc.edu>
 .\"	Copyright (C) 1998 Thomas Roessler <roessler@guug.de>
 .\" 
@@ -21,7 +20,7 @@
 .TH dotlock 1 "JULY 1998" Unix "User Manuals"
 .SH NAME
 .PP
-mutt_dotlock \- Lock mail spool files.
+lbdb_dotlock \- Lock mail spool files.
 .SH SYNOPSIS
 .PP
 .B lbdb_dotlock 
@@ -117,8 +116,7 @@ is unable to lock \fIfile\fP.
 .B dotlock
 tries to implement an NFS-safe dotlocking method which was
 borrowed from 
-.B lockfile
-(1).  
+.BR lockfile (1).  
 .PP
 If the user can't open \fIfile\fP for reading with his
 normal privileges, dotlock will return the
