@@ -28,13 +28,13 @@ m_evolution_query ()
     EVOLUTION_ADDRESSBOOK_EXPORT=@EVOLUTION_ADDRESSBOOK_EXPORT@
 
     if [ -x $EVOLUTION_ADDRESSBOOK_EXPORT ]; then
-    	$EVOLUTION_ADDRESSBOOK_EXPORT \
+    	$EVOLUTION_ADDRESSBOOK_EXPORT 2>/dev/null \
         | $AWK 'BEGIN {FS=":"; RS="\r\n"; name=""} \
 	      /^END:VCARD/ {name=""; fileas=""} \
 	      /^FN:/ {name=$2; } \
 	      /^X-EVOLUTION-FILE-AS:/ {fileas=$2; } \
 	      ( name!="" || fileas!="" ) && /^EMAIL;/ \
-		    {email=$2; printf ("%s\t%s\tas:%s\n",email,name,fileas)}'\
+		    {email=$2; printf ("%s\t%s\tEV:%s\n",email,name,fileas)}'\
 	| grep -i "$@"
     fi
 }
