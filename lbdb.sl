@@ -1,10 +1,14 @@
 %
 % Query the little brother's database from within jed.
 %
+% activate this by adding the following line to your ~/.jedrc:
+% autoload ("lbdbq", "/some/path/to/your/jedfiles/lbdb");
+%
+% Then you can use it by entering "M-x lbdbq" (or bind it on some key)
+%
 % Thomas Roessler <roessler@guug.de> 
 % Mon Jul 27 23:27:57 MEST 1998
 %
-
 
 variable lbdb_buf = "*lbdb*";
 variable num_win;
