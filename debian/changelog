@@ -5,8 +5,10 @@ lbdb (0.26) unstable; urgency=low
   * m_wanderlust: new module to read ~/.addesses file from WanderLust
     MUA.  Module provided by Gergely Nagy <algernon@debian.org>.
     (Closes: #133209).
-  
- -- Roland Rosenfeld <roland@debian.org>  Mon, 11 Feb 2002 16:36:48 +0100
+  * Quote the search string in m_yppasswd, m_nispasswd and m_getent as
+    mentioned by Gary Johnson <garyjohn@spk.agilent.com>.
+
+ -- Roland Rosenfeld <roland@debian.org>  Mon, 11 Feb 2002 16:45:14 +0100
 
 lbdb (0.25.2) unstable; urgency=low
 

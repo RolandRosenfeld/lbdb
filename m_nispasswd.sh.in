@@ -33,7 +33,7 @@ m_nispasswd_query()
 	HOST="`lbdb_hostname`"
 
 	$NISCAT passwd.org_dir \
-	| grep -i $f_user \
+	| grep -i "$f_user" \
 	| sed -e "s/^\([^:]*\):[^:]*:\([^:]*\):[^:]*:\([^:,]*\)[,:].*\$/\1@$HOST	\3	UID \2/"
     fi
 }

@@ -32,7 +32,7 @@ m_yppasswd_query()
 	HOST="`lbdb_hostname`"
 
 	$YPCAT passwd \
-	| grep -i $f_user \
+	| grep -i "$f_user" \
 	| sed -e "s/^\([^:]*\):[^:]*:\([^:]*\):[^:]*:\([^:,]*\)[,:].*\$/\1@$HOST	\3	UID \2/"
     fi
 }
