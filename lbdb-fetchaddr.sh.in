@@ -28,6 +28,14 @@ fetchaddr=@libdir@/fetchaddr
 db=$HOME/.lbdb/m_inmail.list
 
 if [ ! -f $db ]; then
+  dbdir=`dirname $db`
+  if [ ! -d $dbdir ]; then
+    mkdir -p $dbdir
+    if [ ! -d $dbdir ]; then
+      echo "Can't create $dbdir" >&2
+      exit 1
+    fi
+  fi
   touch $db
   if [ ! -f $db ]; then
     echo "Can't create $db" >&2
