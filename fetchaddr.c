@@ -57,13 +57,13 @@ void chop(struct header *cur)
 
 int writeout(struct header *h)
 {
-  int rv = 0, i;
+  int rv = 0;
   ADDRESS *addr, *p;
   time_t timep;
   char timebuf[16];
 
   if(!h->value)
-    return;
+    return 0;
   
   addr = rfc822_parse_adrlist(NULL, h->value);
   time(&timep);
@@ -94,13 +94,13 @@ int writeout(struct header *h)
   return rv;
 }
   
-main()
+int main()
 {
   char buff[2048];
   char *t;
   int i, rv;
   int partial = 0;
-  struct header *cur_hdr;
+  struct header *cur_hdr = NULL;
 
   while(fgets(buff, sizeof(buff), stdin))
   {
