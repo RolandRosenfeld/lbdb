@@ -1,3 +1,9 @@
+lbdb (0.18.4) unstable; urgency=low
+
+  * Fixed typo in lbdb-fetchaddr.man.
+
+ -- Roland Rosenfeld <roland@debian.org>  Wed, 13 Oct 1999 23:14:26 +0200
+
 lbdb (0.18.3) unstable; urgency=low
 
   * m_gpg no longer writes error messages to stderr, when the given search 
