@@ -86,7 +86,7 @@ m_pine_query()
 	fi
 	if [ -f $file ]
 	then
-	    $qpto8bit | $AWK -v find="$@" '\
+	    cat $file | $qpto8bit | $AWK -v find="$@" '\
 	    function out() { \
 		if (match(tolower(line),low_find)) {
 		    #order: nick full addr fcc comm \
@@ -125,7 +125,7 @@ m_pine_query()
 	    } \
 	    END { \
 		out() \
-	    }' < $file 
+	    }'
 	fi
     done
 }
