@@ -1,10 +1,3 @@
-lbdb (0.23.1) unstable; urgency=low
-
-  * Always use /bin/sh as the shell on Debian systems, because Debian
-    guarantees, that /bin/sh is a posix shell (Closes: #75475).
-
- -- Roland Rosenfeld <roland@debian.org>  Tue, 24 Oct 2000 14:07:27 +0200
-
 lbdb (0.23) unstable; urgency=low
 
   * Add a second grep to m_pgp5 and m_gpg to remove UIDs, which don't
@@ -12,8 +5,10 @@ lbdb (0.23) unstable; urgency=low
     UID of this key matches.
   * Add new module m_gnomecard based on an idea by Rick Frankel 
     <rick@rickster.com>.
+  * Always use /bin/sh as the shell on Debian systems, because Debian
+    guarantees, that /bin/sh is a posix shell (Closes: #75475).
 
- -- Roland Rosenfeld <roland@debian.org>  Fri, 20 Oct 2000 12:09:22 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 24 Oct 2000 14:11:50 +0200
 
 lbdb (0.22) unstable; urgency=low
 
