@@ -1,8 +1,12 @@
 lbdb (0.18.5) unstable; urgency=low
 
   * Optimized m_gpg to use --with-colons.
+  * Remove "Recommends: netstd" (Closes: #49397).
+  * Add "Suggests: finger" and test in m_finger whether the finger command
+    is available (don't do anything in m_finger, if finger isn't
+    available).
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 24 Oct 1999 18:45:56 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sun,  7 Nov 1999 02:51:52 +0100
 
 lbdb (0.18.4) unstable; urgency=low
 

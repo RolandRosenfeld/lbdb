@@ -7,8 +7,7 @@ Standards-Version: 3.0.1
 Package: lbdb
 Architecture: any
 Depends: ${shlibs:Depends}, mawk, mutt (>= 0.94.10)
-Recommends: netstd 
-Suggests: procmail
+Suggests: procmail, finger
 Description: The little brother's database for the mutt mail reader
  This package consists of a set of small tools, which collect mail
  addresses from mails you received and then offer these addresses as

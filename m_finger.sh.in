@@ -22,6 +22,9 @@
 
 m_finger_query()
 {
+    if type finger >/dev/null		# check whether finger in installed
+    then
+
 	f_user="`echo \"$@\" | sed 's/@.*//'`"
 	
 	if test "x$M_FINGER_HOSTS" = x ; then
@@ -41,4 +44,5 @@ m_finger_query()
 		     -e "s/^Login name: *\([^ ]*\)[ 	]*In real life: \(.*\)$/\1@$mailhost	\2	(finger)/p" \
 			|| true
 	 done
+    fi
 }
