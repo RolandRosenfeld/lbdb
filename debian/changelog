@@ -8,8 +8,9 @@ lbdb (0.26.1) unstable; urgency=low
   * Upgrade to Standards-Version 3.5.8 (handling of compiler optimization
     in DEB_BUILD_OPTIONS changed).
   * Upgrade to debhelper 4.
+  * Remove dependency on awk, which is essential, to make lintian happy.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat,  8 Feb 2003 18:10:02 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Sat,  8 Feb 2003 18:15:50 +0100
 
 lbdb (0.26) unstable; urgency=low
 
