@@ -1,9 +1,9 @@
 lbdb (0.14) frozen unstable; urgency=low
 
-  * convert mail addresses to lowercase to get rid of duplicates. 
-    Closes #31989
+  * fetchaddr converts the domain part of mail addresses to lowercase, to
+    beware of duplicates in m_inmail.list. Closes #31989
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 16 Jan 1999 20:27:16 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 16 Jan 1999 21:21:40 +0100
 
 lbdb (0.13) frozen unstable; urgency=low
 
