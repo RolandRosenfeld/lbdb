@@ -1243,19 +1243,19 @@ fi
 
 
 if test "x$AWK" != "xNONE" ; then
-	AWK="$AWK -f"
+	AWK="$AWK"
 fi
 
 if test "x$NAWK" != "xNONE" ; then
-	AWK="$NAWK -f"
+	AWK="$NAWK"
 fi
 
 if test "x$GAWK" != "xNONE" ; then
-	AWK="$GAWK -f"
+	AWK="$GAWK"
 fi
 
 if test "x$MAWK" != "xNONE" ; then
-	AWK="$MAWK -f"
+	AWK="$MAWK"
 fi
 		
 
