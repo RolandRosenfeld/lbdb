@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 1998  Thomas Roessler <roessler@guug.de>
+ *  Copyright (C) 1998-1999  Thomas Roessler <roessler@guug.de>
  *
  *  This program is free software; you can redistribute
  *  it and/or modify it under the terms of the GNU
@@ -55,7 +55,7 @@ void chop(struct header *cur)
     cur->value[--cur->len] = '\0';
 }
 
-int writeout(struct header *h)
+int writeout(struct header *h, const char *datefmt)
 {
   int rv = 0;
   ADDRESS *addr, *p;
@@ -81,15 +81,10 @@ int writeout(struct header *h)
 	for(c++; *c; c++)
 	  *c=tolower(*c);
 
-#if 0
-      printf("%s\t%s\t%s", p->mailbox, p->personal && *p->personal ? 
-	     p->personal : "no realname given",
-	     ctime(&timep));
-#else
-      strftime(timebuf, sizeof(timebuf), "%y-%m-%d %H:%M", localtime(&timep));
+      strftime(timebuf, sizeof(timebuf), datefmt, localtime(&timep));
       printf("%s\t%s\t%s\n", p->mailbox, p->personal && *p->personal ? 
 	     p->personal : "no realname given", timebuf);
-#endif
+
       rv = 1;
     }
   }
@@ -99,13 +94,14 @@ int writeout(struct header *h)
   return rv;
 }
   
-int main()
+int main(int argc, char* argv[])
 {
   char buff[2048];
   char *t;
   int i, rv;
   int partial = 0;
   struct header *cur_hdr = NULL;
+  char datefmt[]   = "%Y-%m-%d %H:%M";
 
   while(fgets(buff, sizeof(buff), stdin))
   {
@@ -150,10 +146,13 @@ int main()
       partial = 0;
   }
 
+  if (argv == 2)
+    datefmt = argc[1];
+
   for(rv = 0, i = 0; hdr[i].tag; i++)
   {
     if(hdr[i].value)
-      rv = writeout(&hdr[i]) || rv;
+      rv = writeout(&hdr[i], datefmt) || rv;
   }
 
   return (rv ? 0 : 1);

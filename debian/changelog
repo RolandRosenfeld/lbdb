@@ -2,9 +2,16 @@ lbdb (0.17) unstable; urgency=low
 
   * Delay munging of mails when using lbdb-fetchaddr/m_inmail by adding a
     new script lbdb-munge, which is run by lbdbq and can be run by cron
-    additionally.
+    additionally. Thanks to Enrico Zini <zinie@cs.unibo.it> for the base
+    idea of this.
+  * Made lbdb-fetchaddr Y2K compliant by changing the date format which is 
+    written to the 3rd column of m_inmail.list to "%Y-%m-%d %H:%M" (e.g.
+    "1999-04-29 14:33").
+  * Made date format in lbdb-fetchaddr runtime configurable as a command
+    line parameter. If no date format is specified, "%Y-%m-%d %H:%M" is
+    used as the default.
 
- -- Roland Rosenfeld <roland@debian.org>  Thu, 29 Apr 1999 12:55:18 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Thu, 29 Apr 1999 16:42:13 +0200
 
 lbdb (0.16.3) unstable; urgency=low
 

@@ -27,6 +27,11 @@ dotlock=@DOTLOCK@
 fetchaddr=@libdir@/fetchaddr
 db=$HOME/.lbdb/m_inmail.list
 
+datefmt=${*:-'%Y-%m-%d %H:%M'}
+
+echo "$datefmt"
+exit
+
 if [ ! -f $db ]; then
   dbdir=`dirname $db`
   if [ ! -d $dbdir ]; then
@@ -48,7 +53,7 @@ if ! $dotlock -r 10 -f $db ; then
   exit 1
 fi
 
-if $fetchaddr >> $db ; then
+if $fetchaddr "$datefmt" >> $db ; then
   touch $db.dirty
 fi
 
