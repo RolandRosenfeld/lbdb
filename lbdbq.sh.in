@@ -36,7 +36,7 @@ case "$1" in
 	break;;
     -h) echo "Usage: $0 'something'    search addresses matching 'something'"
 	echo "       $0 -v             print version of lbdbq"
-	echo "       $0 -h              this short help"
+	echo "       $0 -h             this short help"
 	exit 0
 	break;;
 esac
