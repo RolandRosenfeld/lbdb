@@ -23,6 +23,8 @@ use Getopt::Long;
 use Net::LDAP;
 #use Pod::Usage;
 
+package mutt_ldap_query;
+
 #------8<------8<------8<------8<---cut here--->8------>8------>8------>8------
 # The defaults
 my $man = 0;
