@@ -2,8 +2,9 @@ lbdb (0.12) unstable; urgency=low
 
   * Debian maintainer took over the maintenance of the upstream packet.
   * lbdbq manpage moved to main packet.
+  * fixed some "-Wall" warnings.
 
- -- Roland Rosenfeld <roland@debian.org>  Wed, 11 Nov 1998 17:34:01 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Wed, 11 Nov 1998 18:08:48 +0100
 
 lbdb (0.11-3) unstable; urgency=low
 
