@@ -9,9 +9,9 @@ lbdb (0.24) unstable; urgency=low
     your local charset, which causes problems with non 7bit characters
     (Closes: #83936).
   * Add a new variable KEEP_DUPES, which allows to see duplicate mail
-    addresses (with different real names or comment fields) (Closes: #83908).
+    addresses (with different real names or comment fields).
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 10 Feb 2001 17:57:54 +0100
+ --
 
 lbdb (0.23) unstable; urgency=low
 
