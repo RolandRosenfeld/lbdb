@@ -1,3 +1,9 @@
+lbdb (0.19.8) unstable; urgency=low
+
+  * Renamed option -h to -x, because -h is already used for "help".
+
+ -- Roland Rosenfeld <roland@debian.org>  Tue,  8 Aug 2000 19:04:07 +0200
+
 lbdb (0.19.7) unstable; urgency=low
 
   * Add a new option -h to lbdb-fetchaddr and fetchaddr, which allows you

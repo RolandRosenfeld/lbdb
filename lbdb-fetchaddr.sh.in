@@ -39,7 +39,7 @@ usage() {
     echo "       -v                 print version of lbdbq"
     echo "       -h                 this short help"
     echo "       -d 'dateformat'    select date format using strftime(3)"
-    echo "       -h 'from:to:cc'    colon separated list of header fields"
+    echo "       -x 'from:to:cc'    colon separated list of header fields"
 }
 
 while [ $# -gt 0 ]
@@ -60,11 +60,11 @@ do
 	    datefmt="$1"
 	fi
 	break;;
-    -h)
+    -x)
 	if [ $# -gt 1 ]
 	then
 	    shift
-	    hdrlist="-h $1"
+	    hdrlist="-x $1"
 	fi
 	break;;
     *)

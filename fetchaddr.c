@@ -114,7 +114,7 @@ int main(int argc, char* argv[])
     while (i < argc) {
       if (!strcmp (argv[i], "-d") && i+1 < argc) {
 	datefmt = argv[++i];
-      } else if (!strcmp (argv[i], "-h") && i+1 < argc) {
+      } else if (!strcmp (argv[i], "-x") && i+1 < argc) {
 	headerlist = argv[++i];
       } else {
 	fprintf (stderr, "%s: `%s' wrong parameter\n", argv[0], argv[i]);

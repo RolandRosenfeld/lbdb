@@ -22,7 +22,7 @@ lbdb-fetchaddr \- grab addresses from mails add append them to lbdb database
 .B lbdb-fetchaddr
 .RB [ -d 
 .IR dateformat ]
-.RB [ -h
+.RB [ -x
 .IR headerfieldlist ]
 .br
 .B lbdb-fetchaddr
@@ -82,7 +82,7 @@ Use the given date format using
 .BR strftime (3)
 syntax.
 .TP
-.BI -h " headerfields"
+.BI -x " headerfields"
 A colon separated list of header fields, which should be searched for
 mail addresses.  If this option isn't given, we fall back to
 .RB ` from:to:cc:resent-from:resent-to '.
