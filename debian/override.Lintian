@@ -1,0 +1,2 @@
+lbdb: perl-script-uses-unknown-module ./usr/lib/lbdb/palm_lsaddr use Palm::PDB
+lbdb: perl-script-uses-unknown-module ./usr/lib/lbdb/palm_lsaddr use Palm::Address

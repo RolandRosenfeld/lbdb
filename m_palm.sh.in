@@ -1,4 +1,6 @@
-#! /bin/bash -posix
+#! @SH@
+#
+# -*-sh-*-
 #
 #     m_palm - Palm address database module for lbdb
 #     Copyright (C) 2000 Dave Pearson <davep@davep.org>
@@ -17,7 +19,11 @@
 #     along with this program; if not, write to the Free Software
 #     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111, USA.
 
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+
 m_palm_query ()
 {
-    ${PALM_ADDRESS_LISTER:-${p}/m_palm_lsaddr} ${PALM_ADDRESS_DATABASE:-~/.jpilot/AddressDB.pdb} | grep -i "$@"
+    $libdir/m_palm_lsaddr ${PALM_ADDRESS_DATABASE:-$HOME/.jpilot/AddressDB.pdb} | grep -i "$@"
 }

@@ -1,9 +1,9 @@
 $Id$
 
 
-	       The Little Brother's Database
-		
-	    Thomas Roessler <roessler@guug.de>
+               The Little Brother's Database
+                
+            Thomas Roessler <roessler@guug.de>
           Roland Rosenfeld <roland@spinnaker.de> (current maintainer)
 
 This package was inspired by the Big Brother Database package
@@ -24,10 +24,10 @@ or it may try to finger <something>@<various hosts>.
 The behavior is configurable: Upon startup, lbdbq will source the
 shell scripts
 
-	/usr/local/etc/lbdb.rc (or where your @sysconfdir@ points to)
-	$HOME/.lbdbrc
-	$HOME/.lbdb/lbdbrc
-	$HOME/.lbdb/rc
+        /usr/local/etc/lbdb.rc (or where your @sysconfdir@ points to)
+        $HOME/.lbdbrc
+        $HOME/.lbdb/lbdbrc
+        $HOME/.lbdb/rc
 
 if they exist.
 
@@ -45,7 +45,7 @@ They can be used to set the following global variables:
 Note that there _are_ defaults, so you should most probably modify
 these variables using constructs like this:
 
-	MODULE_PATH="MODULE_PATH $HOME/lbdb_modules"
+        MODULE_PATH="MODULE_PATH $HOME/lbdb_modules"
 
 Additionally, modules may have configuration variables of their own.
 
@@ -79,7 +79,8 @@ m_pgp2, m_pgp5, m_gpg
        ring for data. They use the programs pgp(1), pgpk(1), or gpg(1)
        to get the data.
 
-m_fido This module searches your Fido nodelist, stored in
+m_fido 
+       This module searches your Fido nodelist, stored in
        $HOME/.lbdb/nodelist created by nodelist2lbdb(1).
 
 m_abook
@@ -95,7 +96,8 @@ m_muttalias
        $HOME/.mutt does not exist) prepended before the file name.
        Absolute file names (beginning with /) will be taken direct.
 
-m_pine This  module searches pine(1) addressbook files for
+m_pine
+       This  module searches pine(1) addressbook files for
        aliases. To realize this it first inspects the variable PINERC.
        If it isn't set, the default `/etc/pine.conf
        /etc/pine.conf.fixed .pinerc' is used. To suppress inspecting
@@ -105,6 +107,12 @@ m_pine This  module searches pine(1) addressbook files for
        to the list, which defaults to `/etc/addressbook .addressbook'.
        Then these addressbooks are searched for aliases. All filenames
        without leading slash are searched in $HOME.
+
+m_palm
+       This module searches the Palm address database using the
+       Palm::PDB and Palm::Address Perl modules from CPAN.  It
+       searches in the variable PALM_ADDRESS_DATABASE or if this isn't
+       set in $HOME/.jpilot/AddressDB.pdb.
 
 Feel free to create your own modules to query LDAP servers and the
 like.  m_finger should be a good example of how to do it.
@@ -116,7 +124,7 @@ for inclusion in later releases.
 Finally, to use lbdbq from mutt, add the following line to your
 ~/.muttrc:
 
-	set query_command="lbdbq %s"
+        set query_command="lbdbq %s"
 
 
 CREDITS
@@ -126,3 +134,9 @@ Most of the really interesting code of this program (namely, the RFC
 822 address parser used by lbdb-fetchaddr) was stolen from Michael
 Elkins' mutt mail user agent. Additional credits go to Brandon Long
 for putting the query functionality into mutt.
+
+Many thanks to the authors of the several modules and extensions:
+- Ross Campbell <rcampbel@us.oracle.com>          (m_abook, m_yppasswd)
+- Gabor Fleischer <flocsy@mtesz.hu>               (m_pine)
+- Dave Pearson <davep@davep.org>                  (m_palm, lbdb.el)
+- Brian Salter-Duke <b_duke@lacebark.ntu.edu.au>  (m_muttalias)

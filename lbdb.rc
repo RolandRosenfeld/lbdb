@@ -28,6 +28,7 @@
 # - m_abook	query abook(1), the text based address book application.
 # - m_muttalias search $MUTTALIAS_FILES for aliases.
 # - m_pine	search pine(1) addressbook files for aliases.
+# - m_palm	search your Palm addressbook file.
 
 METHODS="m_inmail m_passwd m_finger"
 
@@ -63,6 +64,16 @@ METHODS="m_inmail m_passwd m_finger"
 #
 #PINERC="/etc/pine.conf /etc/pine.conf.fixed .pinerc"
 #PINE_ADDRESSBOOKS="/etc/addressbook .addressbook"
+
+
+# - m_palm	search your Palm addressbook file:
+#
+# This module searches the Palm address database using the Palm::PDB
+# and Palm::Address Perl modules from CPAN. It searches in the
+# variable PALM_ADDRESS_DATABASE or if this isn't set in
+# $HOME/.jpilot/AddressDB.pdb.
+#
+#PALM_ADDRESS_DATABASE="$HOME/.jpilot/AddressDB.pdb
 
 
 #

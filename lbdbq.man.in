@@ -15,7 +15,7 @@
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc.,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 .\"
-.TH LBDBQ 1 "June 2000" "Unix" "User Manuals"
+.TH LBDBQ 1 "August 2000" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -172,6 +172,17 @@ to the list, which defaults to
 Then these addressbooks are searched for aliases.  All filenames
 without leading slash are searched in
 .BR $HOME .
+.TP
+.BR m_palm
+This module searches the Palm address database using the 
+.BR Palm::PDB (3pm)
+and
+.BR Palm::Address (3pm)
+Perl modules from CPAN.
+It searches in the variable
+.B PALM_ADDRESS_DATABASE
+or if this isn't set in 
+.IR $HOME/.jpilot/AddressDB.pdb .
 .PP
 Feel free to create your own modules to query LDAP servers, YP maps,
 and the like. 
@@ -219,12 +230,20 @@ Print short help of lbdbq.
 .BR nodelist2lbdb (1),
 .BR abook (1),
 .BR mutt (1),
-.BR pine (1).
+.BR pine (1),
+.BR Palm::PDB (3pm),
+.BR Palm::Address (3pm).
 .SH CREDITS
 Most of the really interesting code of this program (namely, the RFC
 822 address parser used by lbdb-fetchaddr) was stolen from Michael
 Elkins' mutt mail user agent. Additional credits go to Brandon Long
 for putting the query functionality into mutt.
+.PP
+Many thanks to the authors of the several modules and extensions:
+Ross Campbell <rcampbel@us.oracle.com> (m_abook, m_yppasswd), 
+Gabor Fleischer <flocsy@mtesz.hu> (m_pine), 
+Dave Pearson <davep@davep.org> (m_palm, lbdb.el), and
+Brian Salter-Duke <b_duke@lacebark.ntu.edu.au> (m_muttalias)
 .SH AUTHOR
 The lbdb package was written by Thomas Roessler <roessler@guug.de> and
 is now maintained and extended by Roland Rosenfeld

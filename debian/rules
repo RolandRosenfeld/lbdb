@@ -48,6 +48,8 @@ install-stamp: build-stamp
 	dh_installdirs
 
 	$(MAKE) prefix=$(DROOT)/usr sysconfdir=$(DROOT)/etc install
+	install -m644 -oroot -groot lbdb.el \
+		$(DROOT)/usr/share/emacs/site-lisp/lbdb.el
 
 	touch install-stamp
 
@@ -65,7 +67,7 @@ binary-arch: build install
 	dh_installexamples
 	dh_installmenu
 	dh_installlogrotate
-#	dh_installemacsen
+	dh_installemacsen
 #	dh_installpam
 #	dh_installmime
 #	dh_installinit

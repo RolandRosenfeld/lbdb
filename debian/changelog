@@ -1,3 +1,16 @@
+lbdb (0.20) unstable; urgency=low
+
+  * Add emacs interface lbdb.el 1.1 by Dave Pearson <davep@davep.org> and
+    install it on Debian systems.
+  * Add m_palm module and palm_lsaddr by Dave Pearson <davep@davep.org>.
+  * Update package description in debian/control file.
+  * Update documentation.
+  * Add override.Lintian to avoid warnings about missing Palm::PDB and
+    Palm::Address, which are in libpalm-perl, that is suggested (we don't
+    depend on it, because this is only used by the m_palm module).
+
+ -- Roland Rosenfeld <roland@debian.org>  Mon, 21 Aug 2000 14:03:42 +0200
+
 lbdb (0.19.9) unstable; urgency=low
 
   * Remove erroneous quotes from lbdb-fetchaddr, which caused fetchaddr to

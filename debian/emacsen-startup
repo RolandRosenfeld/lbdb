@@ -1,0 +1,6 @@
+;; -*-emacs-lisp-*-
+;;
+;; Emacs startup file for the Debian GNU/Linux lbdb package
+;;
+
+(autoload 'lbdb "lbdb" "Query the little brother database" t)
