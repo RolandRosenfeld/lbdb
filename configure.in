@@ -124,6 +124,12 @@ if test "x$ABOOK" != xno ; then
 	AC_SUBST(ABOOK)
 fi
 
+AC_PATH_PROG(ADDR_EMAIL, addr-email, "no")
+if test "x$ADDR_EMAIL" != xno ; then
+	MODULES="$MODULES m_abdr_emailook"
+	AC_SUBST(ADDR_EMAIL)
+fi
+
 AC_PATH_PROG(YPCAT, ypcat, "no")
 if test "x$YPCAT" != xno ; then
 	MODULES="$MODULES m_yppasswd"

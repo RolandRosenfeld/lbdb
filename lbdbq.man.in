@@ -137,6 +137,13 @@ This module uses the program
 .BR abook (1),
 a text based address book application to search for addresses.
 .TP
+.BR m_addr_email
+This module uses the program
+.BR addr-email (1),
+a text based frontend to the Tk 
+.BR addressbook (1)
+application.
+.TP
 .BR m_muttalias
 This module searches the variable
 .B MUTTALIAS_FILES
@@ -235,6 +242,8 @@ Print short help of lbdbq.
 .BR lbdb-fetchaddr (1),
 .BR nodelist2lbdb (1),
 .BR abook (1),
+.BR addr-email (1),
+.BR addressbook (1),
 .BR mutt (1),
 .BR pine (1),
 .BR Palm::PDB (3pm),

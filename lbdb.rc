@@ -17,18 +17,19 @@
 # Select which methods you want to use in which order (ascending priority):
 # (a space separated list)
 #
-# - m_inmail	search the database created by lbdb-fetchaddr(1)
-# - m_finger	finger some hosts defined in variable M_FINGER_HOSTS
-# - m_passwd	search the local /etc/passwd file.
-# - m_yppasswd	search the NIS password database.
-# - m_pgp2	search your PGP 2.* keyring
-# - m_pgp5	search your PGP 5.* keyring
-# - m_gpg	search your GnuPG keyring
-# - m_fido	search the Fido nodelist converted by nodelist2lbdb(1)
-# - m_abook	query abook(1), the text based address book application.
-# - m_muttalias search $MUTTALIAS_FILES for aliases.
-# - m_pine	search pine(1) addressbook files for aliases.
-# - m_palm	search your Palm addressbook file.
+# - m_inmail	 search the database created by lbdb-fetchaddr(1)
+# - m_finger	 finger some hosts defined in variable M_FINGER_HOSTS
+# - m_passwd	 search the local /etc/passwd file.
+# - m_yppasswd	 search the NIS password database.
+# - m_pgp2	 search your PGP 2.* keyring
+# - m_pgp5	 search your PGP 5.* keyring
+# - m_gpg	 search your GnuPG keyring
+# - m_fido	 search the Fido nodelist converted by nodelist2lbdb(1)
+# - m_abook	 query abook(1), the text based address book application.
+# - m_addr_email query addr-email(1) from addressbook Tk-program.
+# - m_muttalias  search $MUTTALIAS_FILES for aliases.
+# - m_pine	 search pine(1) addressbook files for aliases.
+# - m_palm	 search your Palm addressbook file.
 
 METHODS="m_inmail m_passwd m_finger"
 

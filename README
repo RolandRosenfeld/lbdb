@@ -143,7 +143,8 @@ Elkins' mutt mail user agent. Additional credits go to Brandon Long
 for putting the query functionality into mutt.
 
 Many thanks to the authors of the several modules and extensions:
-- Ross Campbell <rcampbel@us.oracle.com>          (m_abook, m_yppasswd)
-- Gabor Fleischer <flocsy@mtesz.hu>               (m_pine)
-- Dave Pearson <davep@davep.org>                  (m_palm, lbdb.el)
-- Brian Salter-Duke <b_duke@lacebark.ntu.edu.au>  (m_muttalias)
+- Ross Campbell <rcampbel@us.oracle.com>           (m_abook, m_yppasswd)
+- Gabor Fleischer <flocsy@mtesz.hu>                (m_pine)
+- Dave Pearson <davep@davep.org>                   (m_palm, lbdb.el)
+- Brian Salter-Duke <b_duke@lacebark.ntu.edu.au>   (m_muttalias)
+- Torsten Jerzembeck <toje@nightingale.ms.sub.org> (m_addr_email)
