@@ -11,8 +11,10 @@ lbdb (0.25) unstable; urgency=low
   * Module m_nispasswd added by Utz-Uwe Haus <haus@uuhaus.de>.
   * Added variable MAIL_DOMAIN_NAME to override other settings of mail
     domain.
+  * Change Build-Dependency to debhelper >=2.0.103, which is needed for
+    dh_installlogrotate (Closes: #94471).
 
- -- Roland Rosenfeld <roland@debian.org>  Wed, 11 Apr 2001 19:27:07 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Thu, 19 Apr 2001 18:25:45 +0200
 
 lbdb (0.24) unstable; urgency=low
 
