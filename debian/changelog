@@ -10,8 +10,13 @@ lbdb (0.25.2) unstable; urgency=low
   * Add option -a to fetchaddr and lbdb-fetchaddr to fetch also addresses
     without realname.
   * Upgrade to Policy version 3.5.6 (no changes).
+  * Use debhelper >= 2.2.0
+    - Use DH_COMPAT=3 instead of DH_COMPAT=2
+    - replace dh_installmanpages by dh_installman
+    - dh_strip now knows about DEB_BUILD_OPTIONS=nostrip itself
+    - activate dh_perl, because we also build perl scripts.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat,  1 Sep 2001 12:40:09 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat,  1 Sep 2001 13:01:27 +0200
 
 lbdb (0.25.1) unstable; urgency=low
 
