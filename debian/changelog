@@ -4,8 +4,10 @@ lbdb (0.27) unstable; urgency=low
     on OS X with the Developer tools installed) written by Brendan Cully
     <brendan@kublai.com>.
   * Fix description of m_nispasswd in debian/control (Closes: #185573).
+  * Upgrade to Standards-Version 3.5.9 (no changes).
+  * Add ${misc:Depends} to dependencies.
 
- -- Roland Rosenfeld <roland@debian.org>  Thu, 20 Mar 2003 19:18:39 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 22 Mar 2003 16:02:20 +0100
 
 lbdb (0.26.2) unstable; urgency=low
 
