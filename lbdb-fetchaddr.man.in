@@ -15,25 +15,28 @@
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc.,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 .\"
-.TH LBDB-FETCHADDR 1 "May 2000" "Unix" "User Manuals"
+.TH LBDB-FETCHADDR 1 "August 2000" "Unix" "User Manuals"
 .SH NAME
 lbdb-fetchaddr \- grab addresses from mails add append them to lbdb database
 .SH SYNOPSIS
 .B lbdb-fetchaddr
 .RB [ -d 
 .IR dateformat ]
+.RB [ -h
+.IR headerfieldlist ]
 .br
 .B lbdb-fetchaddr
 .RB [ -v | -h ]
 .SH DESCRIPTION
 .B lbdb-fetchaddr
-is a shell script which reads a mail on stdin. It extracts 
+is a shell script which reads a mail on stdin. It extracts the
+contents of some header fields (default:
 .RB ` From: ', 
 .RB ` To: ', 
 .RB ` Cc: ', 
 .RB ` Resent-From: ', 
 and
-.RB ` Resent-To: '
+.RB ` Resent-To: ')
 from the mail header (only addresses with a real name) and appends
 them to 
 .IR $HOME/.lbdb/m_inmail.list .
@@ -78,6 +81,11 @@ Print short help of lbdb-fetchaddr.
 Use the given date format using 
 .BR strftime (3)
 syntax.
+.TP
+.BI -h " headerfields"
+A colon separated list of header fields, which should be searched for
+mail addresses.  If this option isn't given, we fall back to
+.RB ` from:to:cc:resent-from:resent-to '.
 .SH FILES
 .I $HOME/.lbdb/m_inmail.list
 .br

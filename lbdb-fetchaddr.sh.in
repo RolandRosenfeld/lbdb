@@ -39,6 +39,7 @@ usage() {
     echo "       -v                 print version of lbdbq"
     echo "       -h                 this short help"
     echo "       -d 'dateformat'    select date format using strftime(3)"
+    echo "       -h 'from:to:cc'    colon separated list of header fields"
 }
 
 while [ $# -gt 0 ]
@@ -57,6 +58,13 @@ do
 	then
 	    shift
 	    datefmt="$1"
+	fi
+	break;;
+    -h)
+	if [ $# -gt 1 ]
+	then
+	    shift
+	    hdrlist="-h $1"
 	fi
 	break;;
     *)
@@ -99,7 +107,7 @@ else
   exit 1
 fi
 
-if $fetchaddr -d "$datefmt" >> $db ; then
+if $fetchaddr -d "$datefmt" "$hdrlist" >> $db ; then
   touch $db.dirty
 fi
 

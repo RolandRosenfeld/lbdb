@@ -1,5 +1,6 @@
 /*
- *  Copyright (C) 1998-1999  Thomas Roessler <roessler@guug.de>
+ *  Copyright (C) 1998-2000  Thomas Roessler <roessler@guug.de>
+ *  Copyright (C) 2000       Roland Rosenfeld <roland@spinnaker.de>
  *
  *  This program is free software; you can redistribute
  *  it and/or modify it under the terms of the GNU
@@ -31,15 +32,17 @@
 #include "rfc822.h"
 #include "rfc2047.h"
 
+#define MAXHDRS 21
+
 struct header
 {
-  const char *tag;
+  char *tag;
   char *value;
   size_t len;
   size_t taglen;
 };
 
-struct header hdr[] =
+struct header hdr[MAXHDRS] =
 {
   { "to:",		NULL, 0,  3 },
   { "from:",		NULL, 0,  5 },
@@ -101,7 +104,9 @@ int main(int argc, char* argv[])
   int i, rv;
   int partial = 0;
   struct header *cur_hdr = NULL;
-  char* datefmt = NULL;
+  char *datefmt = NULL;
+  char *headerlist = NULL;
+  char *fieldname, *next;
 
   /* process command line arguments: */
   if (argc > 1) {
@@ -109,6 +114,8 @@ int main(int argc, char* argv[])
     while (i < argc) {
       if (!strcmp (argv[i], "-d") && i+1 < argc) {
 	datefmt = argv[++i];
+      } else if (!strcmp (argv[i], "-h") && i+1 < argc) {
+	headerlist = argv[++i];
       } else {
 	fprintf (stderr, "%s: `%s' wrong parameter\n", argv[0], argv[i]);
       }
@@ -118,6 +125,31 @@ int main(int argc, char* argv[])
 
   if (!datefmt) 
     datefmt = safe_strdup("%Y-%m-%d %H:%M");
+
+  if (headerlist && strlen (headerlist) > 0 ) {
+    fieldname = headerlist;
+    i = 0;
+    while ( i < MAXHDRS-1 && (next = strchr (fieldname, ':'))) {
+      hdr[i].tag = malloc (next - fieldname + 2);
+      strncpy (hdr[i].tag, fieldname, next - fieldname);
+      hdr[i].tag[next - fieldname] = ':';
+      hdr[i].tag[next - fieldname + 1] = '\0';
+      hdr[i].taglen = next - fieldname + 1;
+      fieldname = next+1;
+      i++;
+    }
+    
+    if (i < MAXHDRS-1 && *fieldname != '\0') {
+      hdr[i].tag = malloc (strlen (fieldname) + 2);
+      strcpy (hdr[i].tag, fieldname);
+      hdr[i].tag[strlen (fieldname)] = ':';
+      hdr[i].tag[strlen (fieldname) + 1] = '\0';
+      hdr[i].taglen = strlen (fieldname) + 1;
+      i++;
+    }
+    
+    hdr[i].tag = NULL;	/* end of hdr list */
+  }
 
   while(fgets(buff, sizeof(buff), stdin))
   {

@@ -1,3 +1,12 @@
+lbdb (0.19.7) unstable; urgency=low
+
+  * Add a new option -h to lbdb-fetchaddr and fetchaddr, which allows you
+    to add a colon separated list of header fields to search for mail
+    addresses.  If this option isn't given, we fall back to
+    "from:to:cc:resent-from:resent-to" (Closes: #54169).
+
+ -- Roland Rosenfeld <roland@debian.org>  Mon,  7 Aug 2000 19:46:27 +0200
+
 lbdb (0.19.6) unstable; urgency=low
 
   * New version of m_pine by Gabor Fleischer <flocsy@mtesz.hu>: Now
