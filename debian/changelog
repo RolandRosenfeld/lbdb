@@ -5,8 +5,11 @@ lbdb (0.28.1) unstable; urgency=low
     <brendan@kublai.com> for the patch.
   * Remove "set -e" from lbdbq, which causes trouble if grep doesn't find
     a match in some of the modules (Closes: #222647).
+  * m_passwd: Ignore system accounts (UIDs, which aren't in the range
+    1000-29999 on a Debian system), if PASSWD_IGNORESYS=true is set
+    (Closes: #188085).
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 18 Jan 2004 14:23:33 +0100
 
 lbdb (0.28) unstable; urgency=low
 

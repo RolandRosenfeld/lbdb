@@ -70,7 +70,10 @@ m_inmail
 m_passwd
        This module searches for matching entries in your local
        /etc/passwd file. It evaluates the local machine mail domain in
-       the same way m_finger does.
+       the same way m_finger does.  If you set PASSWD_IGNORESYS=true,
+       this module ignores all system accounts and only finds UIDs
+       between 1000 and 29999 (all other UIDs are reserved on a Debian
+       system).
 
 m_yppasswd
        This module searches for matching entries in your NIS password

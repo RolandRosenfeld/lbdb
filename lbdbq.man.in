@@ -1,5 +1,5 @@
 .\" -*- nroff -*-
-.\" Copyright (c) 1998-2003  Roland Rosenfeld <roland@spinnaker.de>
+.\" Copyright (c) 1998-2004  Roland Rosenfeld <roland@spinnaker.de>
 .\"               
 .\" This program is free software; you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 .\"
 .\" $Id$
 .\"
-.TH LBDBQ 1 "March 2003" "Unix" "User Manuals"
+.TH LBDBQ 1 "January 2004" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -127,7 +127,10 @@ addresses created by
 This module searches for matching entries in your local /etc/passwd
 file. It evaluates the local machine mail domain in the same way 
 .B m_finger
-does.
+does.  If you set
+.BR PASSWD_IGNORESYS=true ,
+this module ignores all system accounts and only finds UIDs between
+1000 and 29999 (all other UIDs are reserved on a Debian system).
 .TP
 .B m_yppasswd
 This module searches for matching entries in the NIS password database

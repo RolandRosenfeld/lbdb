@@ -8,7 +8,7 @@
 # ~/.lbdb/rc
 # (evaluated with ascending priority!)
 # 
-# (c) 1999-2003 Roland Rosenfeld <roland@spinnaker.de>
+# (c) 1999-2004 Roland Rosenfeld <roland@spinnaker.de>
 #
 # $Id$
 #
@@ -144,6 +144,13 @@ LDAP_NICKS="debian bigfoot"
 # Default is $HOME/.abook/addressbook $HOME/.abook.addressbook
 # ABOOK_FILES="$HOME/.abook/friends $HOME/.abook/work"
 
+
+# - m_passwd search in /etc/passwd
+#
+# On a Debian system only the UIDs 1000-29999 are used for normal
+# users.  Setting PASSWD_IGNORESYS to "true" implies that lbdbq
+# ignores and UID, which isn't in that range:
+#PASSWD_IGNORESYS=true
 
 #
 # If you want to use private modules set the MODULES_PATH to find them:
