@@ -365,6 +365,8 @@ dotlock_deference_symlink(char *d, size_t l, const char *path)
  * 
  */
 
+#define HARDMAXATTEMPTS 10
+
 static int
 dotlock_lock(const char *realpath)
 {
@@ -373,11 +375,14 @@ dotlock_lock(const char *realpath)
   size_t prev_size = 0;
   int fd;
   int count = 0;
+  int hard_count = 0;
   struct stat sb;
   time_t t;
   
-  sprintf(nfslockfile, "%s.%s.%d", realpath, Hostname, (int) getpid());
-  sprintf(lockfile, "%s.lock", realpath);
+  snprintf(nfslockfile, sizeof(nfslockfile), "%s.%s.%d",
+	   realpath, Hostname, (int) getpid());
+  snprintf(lockfile, sizeof(lockfile), "%s.lock", realpath);
+
   
   unlink(nfslockfile);
 
@@ -394,7 +399,7 @@ dotlock_lock(const char *realpath)
   
   close(fd);
   
-  while(1)
+  while (hard_count++ < HARDMAXATTEMPTS)
   {
     link(nfslockfile, lockfile);
 
@@ -403,13 +408,13 @@ dotlock_lock(const char *realpath)
       /* perror("stat"); */
       return DL_EX_ERROR;
     }
-    
+
     if(sb.st_nlink == 2)
       break;
-    
+
     if(count == 0)
       prev_size = sb.st_size;
-    
+
     if(prev_size == sb.st_size && ++count > Retry)
     {
       if(f_force)
@@ -456,7 +461,8 @@ dotlock_unlock(const char *realpath)
   char lockfile[_POSIX_PATH_MAX + LONG_STRING];
   int i;
 
-  sprintf(lockfile, "%s.lock", realpath);
+  snprintf(lockfile, sizeof(lockfile), "%s.lock",
+	   realpath);
   
   i = unlink(lockfile);
   
