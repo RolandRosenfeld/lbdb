@@ -24,7 +24,6 @@ lbdbq \- query program for the little brother's database
 .br
 .B lbdbq
 .RB [ -v | -h ]
-.B
 .SH DESCRIPTION
 .B lbdbq
 is the client program for the little brother's database. It will
