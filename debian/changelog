@@ -2,9 +2,11 @@ lbdb (0.12) unstable; urgency=low
 
   * Debian maintainer took over the maintenance of the upstream packet.
   * lbdbq manpage moved to main packet.
+  * made @libdir@ configurable in lbdbq manpage.
   * fixed some "-Wall" warnings.
+  * several typos and nits fixed.
 
- -- Roland Rosenfeld <roland@debian.org>  Wed, 11 Nov 1998 18:08:48 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Wed, 11 Nov 1998 21:30:33 +0100
 
 lbdb (0.11-3) unstable; urgency=low
 
