@@ -1,3 +1,10 @@
+lbdb (0.23.1) unstable; urgency=low
+
+  * Always use /bin/sh as the shell on Debian systems, because Debian
+    guarantees, that /bin/sh is a posix shell.
+
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 24 Oct 2000 14:07:27 +0200
+
 lbdb (0.23) unstable; urgency=low
 
   * Add a second grep to m_pgp5 and m_gpg to remove UIDs, which don't

@@ -22,7 +22,7 @@ build-stamp:
 
 	env PGP=/usr/bin/pgp PGPK=/usr/bin/pgpk GPG=/usr/bin/gpg \
 		FINGER=/usr/bin/finger ABOOK=/usr/bin/abook \
-		ADDR_EMAIL=/usr/bin/addr-email \
+		ADDR_EMAIL=/usr/bin/addr-email SH=/bin/sh \
 		YPCAT=/usr/bin/ypcat MAWK=/usr/bin/awk \
 		./configure --prefix=/usr --libdir='$${prefix}/lib/lbdb' \
 			--mandir='$${prefix}/share/man' --sysconfdir=/etc \
