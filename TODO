@@ -34,7 +34,8 @@ $Id$
   key", so multiple lines with the same mail address but different
   real names are deduped to only one line (with the real name randomly
   chosen).  It may be a good idea to make the combination of mail
-  address and real name the key.
+  address and real name the key.  Maybe we should give this decision
+  to the user and make it configurable.
 
 - replace m_passwd and m_yppasswd by m_getent, if getent(1) is
   supported by all UNIXes.  Otherwise we need some autoconf magic to
