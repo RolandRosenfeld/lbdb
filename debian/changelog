@@ -9,11 +9,12 @@ lbdb (0.22) unstable; urgency=low
     - Fixes the problem with spaces in query strings (Closes: #74818).
     - New commands lbdb-region and lbdb-maybe-region to query lbdb for the
       content of the current region.
+    - Autoload lbdb-region and lbdb-maybe-region from startup file.
   * Use sort without -u option, because duplicates are already removed by
     munge before.
   * Do not overwrite m_inmail.list on munging, if file system is full.
 
- -- Roland Rosenfeld <roland@debian.org>  Tue, 17 Oct 2000 17:32:58 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 17 Oct 2000 17:59:07 +0200
 
 lbdb (0.21.1) unstable; urgency=low
 
