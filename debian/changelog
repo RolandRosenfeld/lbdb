@@ -1,8 +1,10 @@
-lbdb (0.17.2) unstable; urgency=low
+lbdb (0.18) unstable; urgency=low
 
-  * Split lbdb-fetchaddr.man off from lbdbq.man.
+  * Splited lbdb-fetchaddr.man off from lbdbq.man.
+  * Moved lbdb-fetchaddr from $bindir to $libdir.
+  * Added Fido module m_fido and nodelist2lbdb.
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Wed, 23 Jun 1999 18:22:53 +0200
 
 lbdb (0.17.1) unstable; urgency=low
 
