@@ -27,5 +27,9 @@ libdir=@libdir@
 
 m_ldap_query ()
 {
-    $libdir/mutt_ldap_query --lbdb_output "$@"
+    if [ "$LDAP_NICK" != "" ]
+    then
+	NICK_OPT="--nickname=$LDAP_NICK"
+    fi
+    $libdir/mutt_ldap_query --lbdb_output $NICK_OPT "$@"
 }
