@@ -17,8 +17,9 @@ lbdb (0.25.2) unstable; urgency=low
     - replace dh_installmanpages by dh_installman
     - dh_strip now knows about DEB_BUILD_OPTIONS=nostrip itself
     - activate dh_perl, because we also build perl scripts.
+    - Add ${perl:Depends} to debian/control.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat,  1 Sep 2001 13:05:16 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat,  1 Sep 2001 13:09:58 +0200
 
 lbdb (0.25.1) unstable; urgency=low
 

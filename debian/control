@@ -7,7 +7,7 @@ Build-Depends: debhelper (>= 2.2.0), perl
 
 Package: lbdb
 Architecture: any
-Depends: ${shlibs:Depends}, mawk | awk
+Depends: ${shlibs:Depends}, ${perl:Depends}, mawk | awk
 Suggests: mutt | mutt-ja, procmail, finger, abook, libpalm-perl, libnet-ldap-perl
 Description: The little brother's database for the mutt mail reader
  This package consists of a set of small tools, which collect mail
