@@ -18,7 +18,7 @@ Description: The little brother's database for the mutt mail reader
   - m_inmail (scans incoming mail for addresses)
   - m_passwd (searches /etc/passwd)
   - m_yppasswd (searches the YP password database)
-  - m_nispasswd (searches the YP password database)
+  - m_nispasswd (searches the NIS password database)
   - m_getent (searches the configured password database)
   - m_pgp2, m_pgp5, m_gpg (searches your PGP or GnuPG keyrings)
   - m_fido (searches the Fidonet nodelist)

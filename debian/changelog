@@ -3,8 +3,9 @@ lbdb (0.27) unstable; urgency=low
   * New module m_osx_addressbook, which queries the OS X AddressBook (only
     on OS X with the Developer tools installed) written by Brendan Cully
     <brendan@kublai.com>.
+  * Fix description of m_nispasswd in debian/control (Closes: #185573).
 
- -- Roland Rosenfeld <roland@debian.org>  Sun,  2 Mar 2003 18:49:06 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Thu, 20 Mar 2003 19:18:39 +0100
 
 lbdb (0.26.2) unstable; urgency=low
 
