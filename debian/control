@@ -2,7 +2,7 @@ Source: lbdb
 Section: mail
 Priority: optional
 Maintainer: Roland Rosenfeld <roland@debian.org>
-Standards-Version: 2.5.0.0
+Standards-Version: 3.0.1
 
 Package: lbdb
 Architecture: any

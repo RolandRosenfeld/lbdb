@@ -12,7 +12,7 @@ build-stamp:
 
 	env PGP=/usr/bin/pgp PGPK=/usr/bin/pgpk GPG=/usr/bin/gpg \
 		./configure --prefix=/usr --libdir='$${prefix}/lib/lbdb' \
-			--sysconfdir=/etc
+			--mandir='$${prefix}/share/man' --sysconfdir=/etc
 	$(MAKE) CFLAGS="-O2 -g -Wall"
 
 	touch build-stamp

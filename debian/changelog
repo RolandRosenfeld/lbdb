@@ -7,8 +7,11 @@ lbdb (0.18.2) unstable; urgency=low
   * Make dotlock.c more portable.
   * Make Makefile.in much more portable.
   * Merge in changes of dotlock program from Mutt 0.96.6.
+  * Upgraded Debian standards version to 3.0.1:
+    - GPL now in /usr/share/common-licenses/
+    - /usr/man -> /usr/share/man
 
- -- Roland Rosenfeld <roland@debian.org>  Fri,  3 Sep 1999 18:04:06 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Tue,  7 Sep 1999 21:38:51 +0200
 
 lbdb (0.18.1) unstable; urgency=low
 
