@@ -188,6 +188,12 @@ else
 	fi
 fi
 
+AC_PATH_PROG(EVOLUTION_ADDRESSBOOK_EXPORT, evolution-addressbook-export, "no")
+if test "x$EVOLUTION_ADDRESSBOOK_EXPORT" != xno ; then
+	MODULES="$MODULES m_evolution"
+	AC_SUBST(EVOLUTION_ADDRESSBOOK_EXPORT)
+fi
+
 MODULES_SH=""
 for i in $MODULES ; do
 	MODULES_SH="$MODULES_SH $i.sh"

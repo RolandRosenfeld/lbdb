@@ -168,6 +168,10 @@ m_osx_addressbook
        This module queries the OS X AddressBook.  It is only available
        on OS X systems.
 
+m_evolution
+       This module queries the Ximian Evolution address book using the
+       evolution-addressbook-export application.
+
 Feel free to create your own modules to query other kinds of
 databases.  m_finger should be a good example of how to do it.
 
@@ -195,6 +199,7 @@ Many thanks to the authors of the several modules and extensions:
 - Brendan Cully <brendan@kublai.com>		   (m_osx_addressbook)
 - Gabor Fleischer <flocsy@mtesz.hu>                (m_pine)
 - Rick Frankel <rick@rickster.com>		   (m_gnomecard)
+- Guido Guenther <agx@debian.org>                  (m_evolution)
 - Utz-Uwe Haus <haus@uuhaus.de>			   (m_bbdb, m_nispasswd)
 - Torsten Jerzembeck <toje@nightingale.ms.sub.org> (m_addr_email)
 - Gergely Nagy <algernon@debian.org>		   (m_wanderlust)

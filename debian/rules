@@ -20,9 +20,10 @@ build-stamp:
 	dh_testdir
 
 	env PGP=/usr/bin/pgp PGPK=/usr/bin/pgpk GPG=/usr/bin/gpg \
-		FINGER=/usr/bin/finger ABOOK=/usr/bin/abook \
-		ADDR_EMAIL=/usr/bin/addr-email SH=/bin/sh \
-		YPCAT=/usr/bin/ypcat MAWK=/usr/bin/awk \
+	    FINGER=/usr/bin/finger ABOOK=/usr/bin/abook \
+	    ADDR_EMAIL=/usr/bin/addr-email SH=/bin/sh \
+	    YPCAT=/usr/bin/ypcat MAWK=/usr/bin/awk \
+	    EVOLUTION_ADDRESSBOOK_EXPORT=/usr/bin/evolution-addressbook-export\
 		./configure --prefix=/usr --libdir='$${prefix}/lib/lbdb' \
 			--mandir='$${prefix}/share/man' --sysconfdir=/etc \
 			--enable-lbdb-dotlock

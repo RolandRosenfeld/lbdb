@@ -1,3 +1,10 @@
+lbdb (0.29) unstable; urgency=low
+
+  * Add new module m_evolution to access Ximian Evolution addressbook.
+    Thanks to Guido Guenther <agx@debian.org> (Closes: #234345).
+
+ -- Roland Rosenfeld <roland@debian.org>  Mon, 23 Feb 2004 12:39:42 +0100
+
 lbdb (0.28.2) unstable; urgency=low
 
   * Another upgrade of m_bbdb by Aaron Kaplan <kaplan@cs.rochester.edu>.

@@ -37,6 +37,7 @@
 # - m_ldap       query an LDAP server 
 # - m_wanderlust search your wanderlust ~/.addresses file.
 # - m_osx_addressbook  search the OS X addressbook (only available on OS X).
+# - m_evolution  search in the Ximan Evolution addressbook.
 
 METHODS="m_inmail m_passwd m_finger"
 

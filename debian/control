@@ -31,5 +31,6 @@ Description: The little brother's database for the mutt mail reader
   - m_gnomecard (uses GnomeCard database files)
   - m_bbdb (search your BBDB (big brother database))
   - m_ldap (query some LDAP server)
+  - m_evolution (search in the Evolution addressbook)
  .
   Homepage: http://www.spinnaker.de/lbdb/

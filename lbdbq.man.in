@@ -17,7 +17,7 @@
 .\"
 .\" $Id$
 .\"
-.TH LBDBQ 1 "January 2004" "Unix" "User Manuals"
+.TH LBDBQ 1 "February 2004" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -282,6 +282,12 @@ file, an addressbook of
 .BR m_osx_addressbook
 This module queries the OS X AddressBook.  It is only available on OS
 X systems.
+.TP
+.BR m_evolution
+This module queries the Ximian Evolution address book.  It depends on
+the program
+.BR evolution-addressbook-export ,
+which is shipped with evolution.
 .PP
 Feel free to create your own modules to query other database resources,
 YP maps, and the like.
