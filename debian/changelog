@@ -1,3 +1,10 @@
+lbdb (0.25.1) unstable; urgency=low
+
+  * Add ">" to pod2man call in Makefile, because older versions of perl
+    come with a pod2man which dies otherwise.
+
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 24 Jul 2001 17:47:16 +0200
+
 lbdb (0.25) unstable; urgency=low
 
   * Suggest mutt-ja as an alternative to mutt, because mutt-ja currently

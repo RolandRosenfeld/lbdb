@@ -128,7 +128,7 @@ munge-keeporder: $(srcdir)/munge-keeporder.awk
 
 mutt_ldap_query.man: $(srcdir)/mutt_ldap_query.pl
 	if [ "$(PERL)" != "no" ]; then \
-		pod2man mutt_ldap_query.pl $@; \
+		pod2man mutt_ldap_query.pl > $@; \
 	else \
 		touch mutt_ldap_query.man; \
 	fi
