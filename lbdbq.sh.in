@@ -40,7 +40,7 @@ for conffile in @sysconfdir@/lbdb.rc $HOME/.lbdbrc \
 	$HOME/.lbdb/lbdbrc $HOME/.lbdb/rc ; do
 	
   if test -f $conffile ; then
-    source $conffile
+    . $conffile
   fi
 
 done
@@ -48,7 +48,7 @@ done
 for method in $METHODS ; do
   for p in $MODULES_PATH ; do
     if test -f $p/$method ; then
-      source $p/$method
+      . $p/$method
       break
     fi
   done

@@ -1,3 +1,9 @@
+lbdb (0.16.2) unstable; urgency=low
+
+  * Removed some bash and Linux specials.
+
+ -- Roland Rosenfeld <roland@debian.org>  Tue,  6 Apr 1999 19:00:31 +0200
+
 lbdb (0.16.1) unstable; urgency=low
 
   * lbdb-fetchaddr: Create directory $HOME/.lbdb if it does not exist.
