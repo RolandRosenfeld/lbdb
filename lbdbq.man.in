@@ -15,7 +15,9 @@
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc.,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 .\"
-.TH LBDBQ 1 "August 2000" "Unix" "User Manuals"
+.\" $Id$
+.\"
+.TH LBDBQ 1 "October 2000" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -63,9 +65,13 @@ If you set this to
 .I false
 or 
 .IR no ,
-lbdbq won't sort the addresses alphabetically by email address but
-returns them in reverse order (which means that the most recent
-address in m_inmail database is first).
+lbdbq won't sort the addresses but returns them in reverse order
+(which means that the most recent address in m_inmail database is
+first). If you set this to 
+.IR name ,
+lbdbq sorts the output by real name.  If you set this to 
+.IR address ,
+lbdbq sorts the output by addresses (that's the default).
 .PP
 Note that there 
 .I are

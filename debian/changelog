@@ -1,3 +1,16 @@
+lbdb (0.21.1) unstable; urgency=low
+
+  * Update lbdb.el to version 1.4 to avoid problems with status line of
+    lbdbq.
+  * Correct behavior of variable SORT_OUTPUT (did the inverse of what it
+    should do).
+  * Correct output of number of matching entries (count after munging
+    instead before).
+  * SORT_OUTPUT now can be "name" or "address" to sort output by mail
+     real names or addresses (still the default).
+
+ -- Roland Rosenfeld <roland@debian.org>  Mon,  9 Oct 2000 12:05:28 +0200
+
 lbdb (0.21) unstable; urgency=low
 
   * Don't fail in m_palm, if no database is available.

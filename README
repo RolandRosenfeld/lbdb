@@ -38,9 +38,11 @@ They can be used to set the following global variables:
 - METHODS: What modules to use.
 
 - SORT_OUTPUT: Set this to "false" or "no" and lbdbq won't sort the
-  addresses alphabetically by email address but returns them in
-  reverse order (which means that the most recent address in m_inmail
-  database is first).
+  addresses but returns them in reverse order (which means that the
+  most recent address in m_inmail database is first).  If you set this
+  to "name", lbdbq sorts the output by real name.  If you set this to
+  "address", lbdbq sorts the output by addresses (that's the default).
+
 
 Note that there _are_ defaults, so you should most probably modify
 these variables using constructs like this:

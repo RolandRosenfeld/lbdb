@@ -72,7 +72,19 @@ for method in $METHODS ; do
   eval ${method}_query \""$@"\" >> $collection || true
 done
 
-lines=`wc -l $collection | awk '{print $1}'`
+case "$SORT_OUTPUT" in
+    false|no)
+	$libdir/munge-keeporder $collection | $TAC > $collection.uniq
+	;;
+    *name)
+	$libdir/munge $collection | sort -uf +1 > $collection.uniq
+	;;
+    *)
+	$libdir/munge $collection | sort -uf > $collection.uniq
+	;;
+esac
+
+lines=`wc -l $collection.uniq | awk '{print $1}'`
 
 if [ $lines = "0" ]
 then
@@ -82,9 +94,4 @@ else
     echo "lbdbq: $lines matches"
 fi
 
-if [ "$SORT_OUTPUT" = "false" -o "$SORT_OUTPUT" = "no" ]
-then
-    $libdir/munge $collection | sort -uf
-else
-    $libdir/munge-keeporder $collection | $TAC
-fi
+cat $collection.uniq

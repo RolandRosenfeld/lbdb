@@ -32,9 +32,9 @@ db=$HOME/.lbdb/m_inmail.list
 
 if [ "$SORT_OUTPUT" = "false" -o "$SORT_OUTPUT" = "no" ]
 then
-    munge=@libdir@/munge
-else
     munge=@libdir@/munge-keeporder
+else
+    munge=@libdir@/munge
 fi
 
 if [ ! -f $db.dirty ]; then

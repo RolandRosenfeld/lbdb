@@ -178,6 +178,7 @@ It is assumed that the current buffer contains the output of a call to
 lbdbq."
   (save-excursion
     (setf (point) (point-min))
+    (forward-line)                      ; Skip the message line.
     (loop until (eobp)
           unless (looking-at "^$") collect (lbdb-line-as-list)
           do (forward-line))))
