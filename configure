@@ -1004,15 +1004,15 @@ else
 fi
 
 
-if ! test "x$NAWK" = "xNONE" ; then
+if test "x$NAWK" != "xNONE" ; then
 	AWK="$NAWK -f"
 fi
 
-if ! test "x$GAWK" = "xNONE" ; then
+if test "x$GAWK" != "xNONE" ; then
 	AWK="$GAWK -f"
 fi
 
-if ! test "x$MAWK" = "xNONE" ; then
+if test "x$MAWK" != "xNONE" ; then
 	AWK="$MAWK -f"
 fi
 		
@@ -1138,7 +1138,7 @@ else
   echo "$ac_t""no" 1>&6
 fi
 
-if ! test "x$FINGER" = xno ; then
+if test "x$FINGER" != xno ; then
 	MODULES="$MODULES m_finger"
 	
 fi
@@ -1175,7 +1175,7 @@ else
   echo "$ac_t""no" 1>&6
 fi
 
-if ! test "x$GPG" = xno ; then
+if test "x$GPG" != xno ; then
 	MODULES="$MODULES m_gpg"
 	
 fi
@@ -1212,7 +1212,7 @@ else
   echo "$ac_t""no" 1>&6
 fi
 
-if ! test "x$PGPK" = xno ; then
+if test "x$PGPK" != xno ; then
 	MODULES="$MODULES m_pgp5"
 	
 fi
@@ -1249,7 +1249,7 @@ else
   echo "$ac_t""no" 1>&6
 fi
 
-if ! test "x$PGP" = xno ; then
+if test "x$PGP" != xno ; then
 	MODULES="$MODULES m_pgp2"
 	
 fi

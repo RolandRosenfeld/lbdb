@@ -7,8 +7,10 @@ lbdb (0.15) unstable; urgency=low
     - m_gpg:    scans your GnuPG keyring for addresses   
   * Made config directory autoconf configureable as @sysconfdir@ (this
     does not change anything for the Debian package).
+  * Fixed trouble in configure.in noted by Fabrice Noilhan
+    <noilhan@clipper.ens.fr>.
 
- -- Roland Rosenfeld <roland@debian.org>  Mon, 15 Feb 1999 15:38:45 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Thu, 18 Feb 1999 16:49:48 +0100
 
 lbdb (0.14.1) frozen unstable; urgency=low
 

@@ -55,15 +55,15 @@ AC_PATH_PROG(MAWK, mawk, NONE, `echo $PATH | sed "s/:/ /g"`)
 AC_PATH_PROG(GAWK, gawk, NONE, `echo $PATH | sed "s/:/ /g"`)
 AC_PATH_PROG(NAWK, nawk, NONE, `echo $PATH | sed "s/:/ /g"`)
 
-if ! test "x$NAWK" = "xNONE" ; then
+if test "x$NAWK" != "xNONE" ; then
 	AWK="$NAWK -f"
 fi
 
-if ! test "x$GAWK" = "xNONE" ; then
+if test "x$GAWK" != "xNONE" ; then
 	AWK="$GAWK -f"
 fi
 
-if ! test "x$MAWK" = "xNONE" ; then
+if test "x$MAWK" != "xNONE" ; then
 	AWK="$MAWK -f"
 fi
 		
@@ -93,25 +93,25 @@ MODULES="m_inmail m_passwd m_pgp2 m_pgp5 m_gpg"
 
 
 AC_PATH_PROG(FINGER, finger, "no", `echo $PATH | sed "s/:/ /g"`)
-if ! test "x$FINGER" = xno ; then
+if test "x$FINGER" != xno ; then
 	MODULES="$MODULES m_finger"
 	AC_SUBST(FINGER)
 fi
 
 AC_PATH_PROG(GPG, gpg, "no", `echo $PATH | sed "s/:/ /g"`)
-if ! test "x$GPG" = xno ; then
+if test "x$GPG" != xno ; then
 	MODULES="$MODULES m_gpg"
 	AC_SUBST(GPG)
 fi
 
 AC_PATH_PROG(PGPK, pgpk, "no", `echo $PATH | sed "s/:/ /g"`)
-if ! test "x$PGPK" = xno ; then
+if test "x$PGPK" != xno ; then
 	MODULES="$MODULES m_pgp5"
 	AC_SUBST(PGPK)
 fi
 
 AC_PATH_PROG(PGP, pgp, "no", `echo $PATH | sed "s/:/ /g"`)
-if ! test "x$PGP" = xno ; then
+if test "x$PGP" != xno ; then
 	MODULES="$MODULES m_pgp2"
 	AC_SUBST(PGP)
 fi
