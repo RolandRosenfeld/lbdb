@@ -71,3 +71,5 @@ $ldap_result_realname = '${cn} ${sn}';
 $ldap_result_comment = '(${ircnick})';
 # Don't use wildchars on searching
 $ignorant = 0;
+
+1;
