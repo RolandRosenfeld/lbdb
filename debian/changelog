@@ -1,3 +1,9 @@
+lbdb (0.17.2) unstable; urgency=low
+
+  * Split lbdb-fetchaddr.man off from lbdbq.man.
+
+ --
+
 lbdb (0.17.1) unstable; urgency=low
 
   * Upgraded autoconf from 2.12 to 2.13.

@@ -1302,7 +1302,9 @@ if test x$ac_cv_path_DOTLOCK = xno ; then
 fi
 
 
-# AC_DEFINE_UNQUOTED(DOTLOCK, "$ac_cv_path_DOTLOCK")
+
+
+DOTLOCKBASE=`basename $DOTLOCK`
 
 
 path_fetchaddr="$libdir/fetchaddr"
@@ -1314,7 +1316,7 @@ MODULES="m_inmail m_passwd"
 # Extract the first word of "finger", so it can be a program name with args.
 set dummy finger; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1318: checking for $ac_word" >&5
+echo "configure:1320: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_path_FINGER'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1355,7 +1357,7 @@ fi
 # Extract the first word of "gpg", so it can be a program name with args.
 set dummy gpg; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1359: checking for $ac_word" >&5
+echo "configure:1361: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_path_GPG'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1396,7 +1398,7 @@ fi
 # Extract the first word of "pgpk", so it can be a program name with args.
 set dummy pgpk; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1400: checking for $ac_word" >&5
+echo "configure:1402: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_path_PGPK'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1437,7 +1439,7 @@ fi
 # Extract the first word of "pgp", so it can be a program name with args.
 set dummy pgp; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1441: checking for $ac_word" >&5
+echo "configure:1443: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_path_PGP'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1643,6 +1645,7 @@ s%@AWK@%$AWK%g
 s%@DOTLOCK_OLD@%$DOTLOCK_OLD%g
 s%@DOTLOCK@%$DOTLOCK%g
 s%@DOTLOCK_TARGET@%$DOTLOCK_TARGET%g
+s%@DOTLOCKBASE@%$DOTLOCKBASE%g
 s%@path_fetchaddr@%$path_fetchaddr%g
 s%@FINGER@%$FINGER%g
 s%@GPG@%$GPG%g

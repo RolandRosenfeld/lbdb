@@ -24,6 +24,7 @@ CPPFLAGS=@CPPFLAGS@
 DEFS=@DEFS@
 INSTALL=@INSTALL@
 MODULES=@MODULES@
+DOTLOCKBASE=@DOTLOCKBASE@
 
 prefix=@prefix@
 exec_prefix=@exec_prefix@
@@ -34,7 +35,7 @@ mandir=@mandir@
 sysconfdir=@sysconfdir@
 
 ALL=lbdbq lbdb_lib lbdb-fetchaddr lbdb-munge fetchaddr munge lbdbq.man \
-	$(MODULES) @DOTLOCK_TARGET@
+	lbdb-fetchaddr.man $(MODULES) @DOTLOCK_TARGET@
 
 all: $(ALL)
 
@@ -70,6 +71,10 @@ lbdb-query: $(srcdir)/lbdb-query.sh
 lbdbq.man: $(srcdir)/lbdbq.man.in
 	sed -e 's%@''libdir@%${libdir}%' \
 	    -e 's%@''sysconfdir@%${sysconfdir}%' $< > $@
+
+lbdb-fetchaddr.man: $(srcdir)/lbdb-fetchaddr.man.in
+	sed -e 's%@''libdir@%${libdir}%' \
+	    -e 's%@''dotlock@%${DOTLOCKBASE}%' $< > $@
 
 lbdb_dotlock: $(srcdir)/dotlock.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $? -o $@
