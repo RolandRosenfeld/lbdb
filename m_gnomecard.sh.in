@@ -59,8 +59,8 @@ m_gnomecard_query ()
 	if [ -f $file ]
 	then
 	    $AWK 'BEGIN {FS=":"; RS="\r\n"; name=""} \
-		  /^VCARD:END/ {name=""} \
-		  /^FN:/ {name=$2} \
+		  /^END:VCARD/ {name=""} \
+		  /^FN[:;]/ {name=$2} \
 		  name!="" && /^EMAIL;/ {email=$2; \
 					 type=substr($1,7); \
 					 printf ("%s\t%s\tGC:%s\n", \
