@@ -55,7 +55,7 @@ for method in $METHODS ; do
 done
 
 for method in $METHODS ; do
-  eval ${method}_query \"'$1'\" >> $collection || true
+  eval ${method}_query \"'$@'\" >> $collection || true
 done
 
 echo
