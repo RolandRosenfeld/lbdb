@@ -22,7 +22,6 @@ LDFLAGS=@LDFLAGS@
 CFLAGS=@CFLAGS@
 CPPFLAGS=@CPPFLAGS@
 INSTALL=@INSTALL@
-VERSION=@VERSION@.@SUBVERSION@
 MODULES=@MODULES@
 
 prefix=@prefix@
@@ -39,12 +38,12 @@ all: $(ALL)
 install: all
 	$(srcdir)/mkinstalldirs $(bindir)
 	$(srcdir)/mkinstalldirs $(libdir)
-	$(INSTALL) -m 555 fetchaddr $(libdir)
-	$(INSTALL) -m 555 lbdbq $(bindir)
-	$(INSTALL) -m 555 lbdb-fetchaddr $(bindir)
-	$(INSTALL) -m 555 lbdb_lib $(libdir)
-	$(INSTALL) -m 555 munge $(libdir)
-	for i in $(MODULES) ; do $(INSTALL) -m 555 $$i $(libdir) ; done
+	$(INSTALL) -m 755 fetchaddr $(libdir)
+	$(INSTALL) -m 755 lbdbq $(bindir)
+	$(INSTALL) -m 755 lbdb-fetchaddr $(bindir)
+	$(INSTALL) -m 755 lbdb_lib $(libdir)
+	$(INSTALL) -m 755 munge $(libdir)
+	for i in $(MODULES) ; do $(INSTALL) -m 755 $$i $(libdir) ; done
 	$(INSTALL) -m 644 lbdbq.man $(mandir)/man1/lbdbq.1
 	$(INSTALL) -m 644 lbdb-fetchaddr.man $(mandir)/man1/lbdb-fetchaddr.1
 
@@ -66,10 +65,6 @@ clean:
 distclean: clean
 	-rm -f config.status config.cache config.log Makefile
 	-rm -f *.sh
-
-dist: distclean
-	cd .. ; tar czf lbdb-$(VERSION).tgz lbdb ;	\
-	mv lbdb-$(VERSION).tgz $(HOME)/ftp/
 
 munge: munge.awk
 	cat munge.awk > munge
