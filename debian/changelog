@@ -1,3 +1,11 @@
+lbdb (0.18.6) unstable; urgency=low
+
+  * Upgrade to standards version 3.1.0: Add Build-Depends.
+  * Hardcode finger and mutt_dotlock in debian/rules, to avoid additional
+    Build-Depends.
+
+ -- Roland Rosenfeld <roland@debian.org>  Wed, 10 Nov 1999 22:20:36 +0100
+
 lbdb (0.18.5) unstable; urgency=low
 
   * Optimized m_gpg to use --with-colons.
