@@ -1,0 +1,35 @@
+#! @SH@
+#
+# -*-sh-mode-*-
+#
+# This code is (c) Utz-Uwe Haus <haus@uuhaus.de> 2001
+#
+# It is donated to the lbdb code to be placed under the GPL
+# if included with the distribution.
+#
+# $Id$
+
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+
+m_bbdb_query()
+{
+    if [ -f ${LBDB_BBDB_SCRIPT:=$libdir/lbdb_bbdb_query.el} ]
+    then
+	if [ -z "$EMACS" ]
+	then
+	    if type emacs >/dev/null 2>&1; then
+		EMACS=emacs
+	    elif type xemacs >/dev/null 2>&1; then
+		EMACS=xemacs
+	    fi
+	fi
+	if [ -n "$EMACS" ]
+	then
+	    $EMACS -nw --no-site-file --no-init-file -batch \
+		--load $LBDB_BBDB_SCRIPT \
+		--eval '(lbdb-bbdb-query "'"$@"'")' 2>/dev/null 
+	fi
+    fi
+}

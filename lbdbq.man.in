@@ -1,5 +1,5 @@
 .\" -*- nroff -*-
-.\" Copyright (c) 1998-2000  Roland Rosenfeld <roland@spinnaker.de>
+.\" Copyright (c) 1998-2001  Roland Rosenfeld <roland@spinnaker.de>
 .\"               
 .\" This program is free software; you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 .\"
 .\" $Id$
 .\"
-.TH LBDBQ 1 "October 2000" "Unix" "User Manuals"
+.TH LBDBQ 1 "January 2001" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -208,6 +208,21 @@ for the GnomeCard database or at least falls back to
 .BI $HOME /.gnome/GnomeCard.gcrd\fR.
 If a filename does not start with a slash, it is prefixed with
 .BR $HOME/ .
+.TP
+.BR m_bbdb
+This module searches for addresses in your (X)Emacs BBDB (big brother
+database).  It doesn't access ~/.bbdb directly (yet) but calls
+.BR emacs (1)
+or
+.BR xemacs (1)
+with a special mode to get the information (so don't expect too much
+performance in this module).  You can configure the
+.B EMACS
+variable to tell this module which emacsen to use.  Otherwise it will
+fall back to 
+.B emacs
+or
+.BR xemacs.
 .PP
 Feel free to create your own modules to query LDAP servers, YP maps,
 and the like. 
@@ -258,6 +273,8 @@ Print short help of lbdbq.
 .BR addressbook (1),
 .BR mutt (1),
 .BR pine (1),
+.BR emacs (1),
+.BR xemacs (1),
 .BR Palm::PDB (3pm),
 .BR Palm::Address (3pm).
 .SH CREDITS
@@ -267,9 +284,12 @@ Elkins' mutt mail user agent. Additional credits go to Brandon Long
 for putting the query functionality into mutt.
 .PP
 Many thanks to the authors of the several modules and extensions:
-Ross Campbell <rcampbel@us.oracle.com> (m_abook, m_yppasswd), 
-Gabor Fleischer <flocsy@mtesz.hu> (m_pine), 
-Dave Pearson <davep@davep.org> (m_palm, lbdb.el), and
+Ross Campbell <rcampbel@us.oracle.com> (m_abook, m_yppasswd),
+Gabor Fleischer <flocsy@mtesz.hu> (m_pine),
+Rick Frankel <rick@rickster.com> (m_gnomecard),
+Utz-Uwe Haus <haus@uuhaus.de> (m_bbdb),
+Torsten Jerzembeck <toje@nightingale.ms.sub.org> (m_addr_email),
+Dave Pearson <davep@davep.org> (m_palm), and
 Brian Salter-Duke <b_duke@lacebark.ntu.edu.au> (m_muttalias)
 .SH AUTHOR
 The lbdb package was written by Thomas Roessler <roessler@guug.de> and

@@ -57,6 +57,7 @@ install: all
 	$(INSTALL) -m 755 lbdb-munge $(install_prefix)$(libdir)
 	$(INSTALL) -m 755 lbdb_lib $(install_prefix)$(libdir)
 	$(INSTALL) -m 755 munge $(install_prefix)$(libdir)
+	$(INSTALL) -m 755 lbdb_bbdb_query.el $(install_prefix)$(libdir)
 	$(INSTALL) -m 755 munge-keeporder $(install_prefix)$(libdir)
 	if [ "$(PERL)" != "no" ]; then \
 		$(INSTALL) -m 755 nodelist2lbdb $(install_prefix)$(bindir); \

@@ -1,3 +1,11 @@
+lbdb (0.24) unstable; urgency=low
+
+  * Add new module m_bbdb to access a (X)Emacs big brother database (bbdb)
+    from lbdb using (x)emacs as the backend.  Thanks to Utz-Uwe Haus
+    <haus@uuhaus.de> for providing this.
+
+ --
+
 lbdb (0.23) unstable; urgency=low
 
   * Add a second grep to m_pgp5 and m_gpg to remove UIDs, which don't

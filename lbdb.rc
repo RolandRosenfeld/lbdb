@@ -8,7 +8,7 @@
 # ~/.lbdb/rc
 # (evaluated with ascending priority!)
 # 
-# (c) 1999-2000 Roland Rosenfeld <roland@spinnaker.de>
+# (c) 1999-2001 Roland Rosenfeld <roland@spinnaker.de>
 #
 # $Id$
 #
@@ -31,6 +31,8 @@
 # - m_pine	 search pine(1) addressbook files for aliases.
 # - m_palm	 search your Palm addressbook file.
 # - m_gnomecard	 search your GnomeCard address database files.
+# - m_bbdb	 search your BBDB (big brother database).
+
 
 METHODS="m_inmail m_passwd m_finger"
 
@@ -88,6 +90,18 @@ METHODS="m_inmail m_passwd m_finger"
 # not start with a slash, it is prefixed with $HOME/.
 #
 #GNOMECARD_FILES="$HOME/.gnome/GnomeCard.gcrd"
+
+
+# - m_bbdb  search your BBDB (big brother database).
+#
+# This module searches for addresses in your (X)Emacs BBDB (big
+# brother database). It doesn't access ~/.bbdb directly (yet) but
+# calls emacs(1) or xemacs(1) with a special mode to get the
+# information (so don't expect too much performance in this module).
+# You can configure the EMACS variable to tell this module which
+# emacsen to use. Otherwise it will fall back to emacs or xemacs.
+#
+#EMACS="emacs"
 
 
 #

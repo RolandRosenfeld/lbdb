@@ -130,6 +130,14 @@ m_gnomecard
        If a filename does not start with a slash, it is prefixed with
        $HOME/.
 
+m_bbdb
+       This module searches for addresses in your (X)Emacs BBDB (big
+       brother database).  It doesn't access ~/.bbdb directly (yet)
+       but calls (x)emacs with a special mode to get the information
+       (so don't expect too much performance in this module). You can
+       configure the EMACS variable to tell this module which emacsen
+       to use.  Otherwise it will fall back to emacs or xemacs.
+
 Feel free to create your own modules to query LDAP servers and the
 like.  m_finger should be a good example of how to do it.
 
@@ -155,6 +163,7 @@ Many thanks to the authors of the several modules and extensions:
 - Ross Campbell <rcampbel@us.oracle.com>           (m_abook, m_yppasswd)
 - Gabor Fleischer <flocsy@mtesz.hu>                (m_pine)
 - Rick Frankel <rick@rickster.com>		   (m_gnomecard)
+- Utz-Uwe Haus <haus@uuhaus.de>			   (m_bbdb)
 - Torsten Jerzembeck <toje@nightingale.ms.sub.org> (m_addr_email)
 - Dave Pearson <davep@davep.org>                   (m_palm, lbdb.el)
 - Brian Salter-Duke <b_duke@lacebark.ntu.edu.au>   (m_muttalias)
