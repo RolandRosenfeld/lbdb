@@ -1,4 +1,4 @@
-#! /bin/bash -posix
+#! @SH@
 #
 # -*-sh-*-
 #
@@ -19,8 +19,7 @@
 #     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111, USA.
 #
 
-# m_pine for lbdb v0.6 by Gabor Fleischer <flocsy@mtesz.hu>
-# Depends: awk
+# m_pine v0.6 for lbdb by Gabor Fleischer <flocsy@mtesz.hu>
 #
 # Two variabled can be set in lbdbrc: PINERC, PINE_ADDRESSBOOKS
 # Here comes the explanation what are they for:
@@ -40,17 +39,18 @@
 
 m_pine_query()
 {
-    which awk >/dev/null || exit 1
-#    echo "Searching pine-style addressbooks"
+    AWK=@AWK@
+
     addressbooks=
     if [ x$PINERC != xno ] ; then
-	for pinerc in ${PINERC:-/etc/pine.conf /etc/pine.conf.fixed .pinerc} ; do
+	for pinerc in ${PINERC:-/etc/pine.conf /etc/pine.conf.fixed .pinerc}
+	do
 	    if [ $pinerc = ${pinerc#/} ] ; then
 	        pinerc=$HOME/$pinerc
 	    fi
 	    if [ -f $pinerc ] ; then
 		addressbook=`\
-		    awk 'BEGIN {SPACE="";} \
+		    $AWK 'BEGIN {SPACE="";} \
 		    /^(global-)?address-book[ 	]*=/ { \
 			gsub("^(global-)?address-book[ 	]*=",""); \
 			while (/[ 	]*[^ 	]+[ 	]+([^ ,	]+)[ 	]*,/) { \
@@ -69,6 +69,7 @@ m_pine_query()
 	    addressbooks="$addressbook ${addressbooks# }"
         done
     fi
+
     addressbooks="${PINE_ADDRESSBOOKS} ${addressbooks# }"
     addressbooks=${addressbooks# }
     for file in ${addressbooks:-/etc/addressbook .addressbook} ; do
@@ -77,7 +78,7 @@ m_pine_query()
 	fi
 	if [ -f $file ]
 	then
-	    awk <$file -v find="$@" 'function out() { \
+	    $AWK -v find="$@" 'function out() { \
 		if (match(line,find)) {
 		    split(line,A,/	/); \
 		    if (A[5]=="") {CB=CE=""} else {CB=" [";CE="]"}; \
@@ -101,7 +102,7 @@ m_pine_query()
 	    } \
 	    END { \
 		out() \
-	    }'
+	    }' < $file 
 	fi
     done
 }

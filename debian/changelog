@@ -1,3 +1,10 @@
+lbdb (0.19.5) unstable; urgency=low
+
+  * Add new module m_pine, provided by Gabor FLEISCHER <flocsy@mtesz.hu>
+    to search pine address books.
+
+ -- Roland Rosenfeld <roland@debian.org>  Thu, 22 Jun 2000 12:33:35 +0200
+
 lbdb (0.19.4) unstable; urgency=low
 
   * Make dotlock.c compile on systems without snprintf() again.

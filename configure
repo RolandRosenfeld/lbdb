@@ -1403,7 +1403,7 @@ DOTLOCKBASE=`basename $DOTLOCK`
 path_fetchaddr="$libdir/fetchaddr"
 
 
-MODULES="m_inmail m_passwd m_muttalias"
+MODULES="m_inmail m_passwd m_muttalias m_pine"
 
 # Extract the first word of "finger", so it can be a program name with args.
 set dummy finger; ac_word=$2
