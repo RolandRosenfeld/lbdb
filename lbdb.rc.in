@@ -81,6 +81,15 @@ METHODS="m_inmail m_passwd m_finger"
 #PINE_ADDRESSBOOKS="/etc/addressbook .addressbook"
 
 
+# - m_wanderlust      search your WanderLust addresses files:
+#
+# Set WANDERLUST_ADDRESSES below to point to your WanderLust address
+# book.  If you don't set this variable, the default
+# ($HOME/.addresses) is used.
+#
+#WANDERLUST_ADDRESSES="$HOME/.addresses"
+
+
 # - m_palm	search your Palm addressbook file:
 #
 # This module searches the Palm address database using the Palm::PDB

@@ -260,9 +260,11 @@ nicknames from entries in the variable
 .BR LDAP_NICKS .
 .TP
 .BR m_wanderlust
-This module searches for addresses stored in your 
-.I ~/.addresses 
-file of 
+This module searches for addresses stored in your
+.I $WANDERLUST_ADDRESSES 
+(or by default in 
+.IR $HOME/.addresses )
+file, an addressbook of
 .BR WanderLust .
 .PP
 Feel free to create your own modules to query other database resources,

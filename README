@@ -153,8 +153,9 @@ m_ldap
        mutt_ldap_query(1) manual page).
 
 m_wanderlust
-       This module searches for addresses stored in your ~/.addresses
-       file of WanderLust.
+       This module searches for addresses stored in your
+       $WANDERLUST_ADDRESSES (or by default in $HOME/.addresses) file,
+       an addressbook of WanderLust.
        
 
 Feel free to create your own modules to query other kinds of
