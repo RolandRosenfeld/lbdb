@@ -52,7 +52,7 @@ if they exist.
 .PP
 They can be used to set the following global variables:
 .TP
-.B MODULE_PATH
+.B MODULES_PATH
 a space separated list of directories, where 
 .B lbdbq
 should look for modules.
@@ -78,7 +78,7 @@ Note that there
 defaults, so you should most
 probably modify these variables using constructs like this:
 .nf
-       MODULE_PATH="$MODULE_PATH $HOME/lbdb_modules"
+       MODULES_PATH="$MODULES_PATH $HOME/lbdb_modules"
 .fi
 .PP
 Additionally, modules may have configuration variables of

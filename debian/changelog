@@ -3,6 +3,8 @@ lbdb (0.24) unstable; urgency=low
   * Add new module m_bbdb to access a (X)Emacs big brother database (bbdb)
     from lbdb using (x)emacs as the backend.  Thanks to Utz-Uwe Haus
     <haus@uuhaus.de> for providing this.
+  * s/MODULE_PATH/MODULES_PATH/ in documentation to match the behavior of
+    the program (Closes: #83933).
 
  --
 

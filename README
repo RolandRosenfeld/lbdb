@@ -33,7 +33,7 @@ if they exist.
 
 They can be used to set the following global variables:
 
-- MODULE_PATH: Where lbdbq should look for modules
+- MODULES_PATH: Where lbdbq should look for modules
 
 - METHODS: What modules to use.
 
@@ -47,7 +47,7 @@ They can be used to set the following global variables:
 Note that there _are_ defaults, so you should most probably modify
 these variables using constructs like this:
 
-        MODULE_PATH="MODULE_PATH $HOME/lbdb_modules"
+        MODULES_PATH="MODULES_PATH $HOME/lbdb_modules"
 
 Additionally, modules may have configuration variables of their own.
 
