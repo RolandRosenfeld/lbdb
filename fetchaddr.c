@@ -76,11 +76,11 @@ int writeout(struct header *h)
     {
       if(p->personal && strlen(p->personal) > 30)
 	strcpy(p->personal + 27, "...");
-      
-      c=strchr(p->mailbox,'@');
-      for(c++; c; c++)
-	*c=tolower(*c);
-      
+
+      if ((c=strchr(p->mailbox,'@')))
+	for(c++; *c; c++)
+	  *c=tolower(*c);
+
 #if 0
       printf("%s\t%s\t%s", p->mailbox, p->personal && *p->personal ? 
 	     p->personal : "no realname given",
