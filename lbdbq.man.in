@@ -104,12 +104,12 @@ addresses created by
 .B m_passwd
 This module searches for matching entries in your local /etc/passwd
 file. It evaluates the local machine mail domain in the same way 
+.B m_finger
+does.
 .TP
 .B m_yppasswd
 This module searches for matching entries in the NIS password database
 using the command ``ypcat passwd''.
-.B m_finger
-does.
 .TP
 .BR m_pgp2 ", " m_pgp5 ", " m_gpg
 These modules scan your PGP 2.*, PGP 5.* or GnuPG public key ring for
