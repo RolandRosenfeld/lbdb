@@ -24,6 +24,7 @@
 # This is a frontend to addr-email(1) from the addressbook(1) package,
 # which can be found at http://red.roses.de/~clemens/addressbook/.
 #
+# $Id$
 
 m_addr_email_query()
 {

@@ -7,8 +7,9 @@ lbdb (0.26) unstable; urgency=low
     (Closes: #133209).
   * Quote the search string in m_yppasswd, m_nispasswd and m_getent as
     mentioned by Gary Johnson <garyjohn@spk.agilent.com>.
+  * Add CVS Id tags to all modules.
 
- -- Roland Rosenfeld <roland@debian.org>  Mon, 11 Feb 2002 16:45:14 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Mon, 11 Feb 2002 20:23:42 +0100
 
 lbdb (0.25.2) unstable; urgency=low
 
