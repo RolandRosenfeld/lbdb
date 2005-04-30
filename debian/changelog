@@ -10,6 +10,7 @@ lbdb (0.30) unstable; urgency=low
     where it is located in sarge and newer (Closes: #286795).
   * mutt_ldap_query: Stop returning entries without email address
     (Closes: #290148).
+  * m_gpg: Add support for gpg 1.4 (not only 1.2.5) (Closes: #294113).
 
  --
 
