@@ -1,4 +1,4 @@
-lbdb (0.29.1) unstable; urgency=low
+lbdb (0.30) unstable; urgency=low
 
   * Get rid of strict aliasing warnings in gcc.  Thanks to Ludwig Nussel
     <ludwig.nussel@suse.de> for providing a patch.
@@ -6,6 +6,8 @@ lbdb (0.29.1) unstable; urgency=low
     more readable.
   * Replace "grep" with "grep -a" to avoid error messages on non-ascii
     output (Closes: #284119).
+  * Search for evolution-addressbook-export in /usr/lib/evolution/2.0,
+    where it is located in sarge and newer (Closes: #286795).
 
  --
 
