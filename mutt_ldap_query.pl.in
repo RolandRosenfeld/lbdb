@@ -355,17 +355,60 @@ site configuration.  A file example is provided below:
     #                   'LDAP_RESULT_COMMENT'],
     
     # a practical illustrating example being:
-    #  debian	=> ['db.debian.org', 'ou=users,dc=debian,dc=org', 'uid cn sn ircnick', 'uid cn sn ircnick', '${uid}@debian.org', '${cn} ${sn}', '${ircnick}'],
-    # the output of the query will be then: ${uid}@debian.org\t${cn} ${sn}\t${ircnick} (i.e.: email name comment)
+    #  debian	=> ['db.debian.org',
+    #               'ou=users,dc=debian,dc=org',
+    #               'uid cn sn ircnick',
+    #               'uid cn sn ircnick',
+    #               '${uid}@debian.org',
+    #               '${cn} ${sn}',
+    #               '${ircnick}'],
+    # the output of the query will be then: 
+    # ${uid}@debian.org\t${cn} ${sn}\t${ircnick} (i.e.: email name comment)
     
     # warning this database will erase default script builtin
     %ldap_server_db = (
-      'four11'		=> ['ldap.four11.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
-      'infospace'		=> ['ldap.infospace.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
-      'whowhere'		=> ['ldap.whowhere.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
-      'bigfoot'		=> ['ldap.bigfoot.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
-      'switchboard'		=> ['ldap.switchboard.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
-      'infospacebiz'	=> ['ldapbiz.infospace.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
+      'four11'		=> ['ldap.four11.com',
+                            'c=US',
+                            'givenname sn cn mail',
+                            'givenname cn sn mail o',
+                            '${mail}',
+                            '${givenname} ${sn}',
+                            '${o}' ],
+      'infospace'	=> ['ldap.infospace.com',
+                            'c=US',
+                            'givenname sn cn mail',
+                            'givenname cn sn mail o',
+                            '${mail}',
+                            '${givenname} ${sn}',
+                            '${o}' ],
+      'whowhere'	=> ['ldap.whowhere.com',
+                            'c=US',
+                            'givenname sn cn mail',
+                            'givenname cn sn mail o',
+                            '${mail}',
+                            '${givenname} ${sn}',
+                            '${o}' ],
+      'bigfoot'		=> ['ldap.bigfoot.com',
+                            'c=US',
+                            'givenname sn cn mail'
+                           , 'givenname cn sn mail o'
+                           , '${mail}'
+                           , '${givenname} ${sn}',
+                            '${o}' ],
+      'switchboard'	=> ['ldap.switchboard.com',
+                            'c=US',
+                            'givenname sn cn mail'
+                           , 'givenname cn sn mail o',
+                            '${mail}',
+                            '${givenname} ${sn}',
+                            '${o}' ],
+      'infospacebiz'	=> ['ldapbiz.infospace.com',
+                            'c=US',
+                            'givenname sn cn mail',
+                            'givenname cn sn mail o',
+                            '${mail}',
+                            '${givenname} ${sn}',
+                            '${o}' ],
     );
     
     # hostname of your ldap server
@@ -385,7 +428,14 @@ site configuration.  A file example is provided below:
 
 =head1 EXAMPLES OF QUERIES
 
-    mutt_ldap_query.pl --ldap_server='ldap.mot.com' --search_base='ou=employees, o=Motorola,c=US' --ldap_search_fields='commonName gn sn cn uid' --ldap_expected_answers='gn sn preferredRfc822Recipient ou c telephonenumber' --ldap_result_email='${preferredRfc822Recipient}' --ldap_result_realname='${gn} ${sn}' --ldap_result_comment='(${telephonenumber}) ${ou} ${c}' Gosse de\ Courville
+    mutt_ldap_query.pl --ldap_server='ldap.mot.com' \
+       --search_base='ou=employees, o=Motorola,c=US' \
+       --ldap_search_fields='commonName gn sn cn uid' \
+       --ldap_expected_answers='gn sn preferredRfc822Recipient ou c telephonenumber' \
+       --ldap_result_email='${preferredRfc822Recipient}' \
+       --ldap_result_realname='${gn} ${sn}' \
+       --ldap_result_comment='(${telephonenumber}) ${ou} ${c}' \
+       Gosse de\ Courville
 
 performs a query using the ldap server ldap.mot.com using
 the following searching base 'ou=employees, o=Motorola,c=US' and
