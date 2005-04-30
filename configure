@@ -3476,6 +3476,7 @@ path_fetchaddr="$libdir/fetchaddr"
 MODULES="m_inmail m_passwd m_muttalias m_pine m_gnomecard m_bbdb m_wanderlust"
 
 
+    withval=""
 
 # Check whether --with-finger or --without-finger was given.
 if test "${with_finger+set}" = set; then
@@ -3583,6 +3584,7 @@ fi
     fi
 
 
+    withval=""
 
 # Check whether --with-abook or --without-abook was given.
 if test "${with_abook+set}" = set; then
@@ -3690,6 +3692,7 @@ fi
     fi
 
 
+    withval=""
 
 # Check whether --with-addr-email or --without-addr-email was given.
 if test "${with_addr_email+set}" = set; then
@@ -3797,6 +3800,7 @@ fi
     fi
 
 
+    withval=""
 
 # Check whether --with-ypcat or --without-ypcat was given.
 if test "${with_ypcat+set}" = set; then
@@ -3904,6 +3908,7 @@ fi
     fi
 
 
+    withval=""
 
 # Check whether --with-niscat or --without-niscat was given.
 if test "${with_niscat+set}" = set; then
@@ -4011,6 +4016,7 @@ fi
     fi
 
 
+    withval=""
 
 # Check whether --with-getent or --without-getent was given.
 if test "${with_getent+set}" = set; then
@@ -4118,6 +4124,7 @@ fi
     fi
 
 
+    withval=""
 
 # Check whether --with-gpg or --without-gpg was given.
 if test "${with_gpg+set}" = set; then
@@ -4225,6 +4232,7 @@ fi
     fi
 
 
+    withval=""
 
 # Check whether --with-pgpk or --without-pgpk was given.
 if test "${with_pgpk+set}" = set; then
@@ -4332,6 +4340,7 @@ fi
     fi
 
 
+    withval=""
 
 # Check whether --with-pgp or --without-pgp was given.
 if test "${with_pgp+set}" = set; then
@@ -4439,6 +4448,7 @@ fi
     fi
 
 
+    withval=""
 
 # Check whether --with-evolution-addressbook-export or --without-evolution-addressbook-export was given.
 if test "${with_evolution_addressbook_export+set}" = set; then

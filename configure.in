@@ -121,6 +121,7 @@ AC_SUBST(path_fetchaddr)
 # none of the above - search for foo in PATH. disable if not found
 #
 AC_DEFUN([LBDB_ARG_WITH], [
+    withval=""
     AC_ARG_WITH($2,[AS_HELP_STRING([--with-$2],[$4])])
     if test x$withval = xyes; then
         AC_PATH_PROG($1, $2, "no")
