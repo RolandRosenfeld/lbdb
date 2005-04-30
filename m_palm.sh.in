@@ -4,6 +4,7 @@
 #
 #     m_palm - Palm address database module for lbdb
 #     Copyright (C) 2000 Dave Pearson <davep@davep.org>
+#     Copyright (C) 2005 Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -29,5 +30,5 @@ m_palm_query ()
 {
     palmdatabase=${PALM_ADDRESS_DATABASE:-$HOME/.jpilot/AddressDB.pdb}
     test -f $palmdatabase || return
-    $libdir/palm_lsaddr $palmdatabase | grep -i "$@"
+    $libdir/palm_lsaddr $palmdatabase | grep -ia "$@"
 }

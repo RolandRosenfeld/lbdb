@@ -4,7 +4,7 @@
 #
 #     m_gnomecard - GnomeCard Address book module for lbdb
 #     Copyright (C) 2000 Rick Frankel <rick@rickster.com>
-#                   2000-2003 Roland Rosenfeld <roland@spinnaker.de>
+#                   2000-2005 Roland Rosenfeld <roland@spinnaker.de>
 #
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -65,7 +65,7 @@ m_gnomecard_query ()
 					 type=substr($1,7); \
 					 printf ("%s\t%s\tGC:%s\n", \
 						 email, name, type) }' \
-            < $file | grep -i "$@"
+            < $file | grep -ia "$@"
 	fi
     done
 }

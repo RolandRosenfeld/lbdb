@@ -4,7 +4,7 @@
 #
 #     Copyright (C) 2000 Torsten Jerzembeck <toje@nightingale.ms.sub.org>
 #     Copyright (C) 2000 Ross Campbell <rcampbel@us.oracle.com>
-#     Copyright (C) 2000 Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 2000-2005 Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ m_addr_email_query()
     then
 	$ADDR_EMAIL "$@" \
 	| sed -e 's/^\([^,]*\), \([^:]*\):	\(.*\)$/\3	\1	\2/' \
-	| grep '@'
+	| grep -a '@'
 #	| sed -e 's/\(.*\):[ 	]\([^ 	].*$\)/\2	\1	addr-email/'
     fi
 }

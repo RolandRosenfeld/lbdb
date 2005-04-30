@@ -2,7 +2,7 @@
 #
 # -*-sh-*-
 #
-#     Copyright (C) 1999-2004  Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 1999-2005  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -34,5 +34,5 @@ m_passwd_query()
     esac
 
     sed -e "s/^\([^:]*\):[^:]*:\([^:]*\):[^:]*:\([^:,]*\)[,:].*\$/\1@$HOST	\3	UID \2/" /etc/passwd \
-    | grep -i "$@" | grep "$IGNORESYS"
+    | grep -ia "$@" | grep -a "$IGNORESYS"
 }

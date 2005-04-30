@@ -4,6 +4,8 @@ lbdb (0.29.1) unstable; urgency=low
     <ludwig.nussel@suse.de> for providing a patch.
   * Add line breaks to POD part of mutt_ldap_query.pl to make man page
     more readable.
+  * Replace "grep" with "grep -a" to avoid error messages on non-ascii
+    output (Closes: #284119).
 
  --
 

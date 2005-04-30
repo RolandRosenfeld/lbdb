@@ -4,7 +4,7 @@
 #
 #     m_evoltuion - Evoltuion Address book module for lbdb
 #     Copyright (C) 2004 Guido Guenther <agx@sigxcpu.org>
-#     Copyright (C) 2004 Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 2004-2005 Roland Rosenfeld <roland@spinnaker.de>
 #
 #     losely based on m_gnomecard
 #
@@ -36,6 +36,6 @@ m_evolution_query ()
 	      /^X-EVOLUTION-FILE-AS:/ {fileas=$2; } \
 	      ( name!="" || fileas!="" ) && /^EMAIL;/ \
 		    {email=$2; printf ("%s\t%s\tEV:%s\n",email,name,fileas)}'\
-	| grep -i "$@"
+	| grep -ia "$@"
     fi
 }

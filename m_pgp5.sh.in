@@ -2,7 +2,7 @@
 #
 # -*-sh-*-
 #
-#     Copyright (C) 1999-2000  Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 1999-2005  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -28,9 +28,9 @@ m_pgp5_query()
     if [ -x "$PGPK" ]
     then
 	$PGPK +language=en -l "$@" 2>/dev/null \
-	| grep '^uid  ...* <[^<>@:/ ]*@[^<>@ ]*>[^<>@]*$' \
+	| grep -a '^uid  ...* <[^<>@:/ ]*@[^<>@ ]*>[^<>@]*$' \
 	| sed -e 's/^uid  \(.*\) <\(.*\)>.*$/\2	\1	(PGP5)/' \
 	| sed -e 's/	\([^	]\{27,27\}\)[^	]*	/	\1...	/' \
-	| grep -i "$@"
+	| grep -ia "$@"
     fi
 }
