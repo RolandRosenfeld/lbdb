@@ -195,7 +195,9 @@ foreach my $askfor ( @ARGV ) {
       $realname =~ s/\${$answer}/$result/g;
       $comment =~ s/\${$answer}/$result/g;
     }
-    push @results, "$email\t$realname\t$comment\n";
+    if ($email ne '') {
+       push @results, "$email\t$realname\t$comment\n";
+    }
   }
   $ldap->unbind;
 }

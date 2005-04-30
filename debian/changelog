@@ -8,6 +8,8 @@ lbdb (0.30) unstable; urgency=low
     output (Closes: #284119).
   * Search for evolution-addressbook-export in /usr/lib/evolution/2.0,
     where it is located in sarge and newer (Closes: #286795).
+  * mutt_ldap_query: Stop returning entries without email address
+    (Closes: #290148).
 
  --
 
