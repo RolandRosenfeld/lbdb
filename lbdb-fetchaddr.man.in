@@ -67,7 +67,7 @@ option to select a different date format string as parameter of
 lbdb-fetchaddr command like
 .nf  
      :0hc
-     | lbdb-fetchaddr -d "%y\-%m\-%d"
+     | lbdb-fetchaddr \-d "%y-%m-%d"
 .fi
 which results in e.g. "99-04-29".
 .SH OPTIONS

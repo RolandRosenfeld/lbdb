@@ -26,7 +26,7 @@ lbdb_dotlock \- Lock mail spool files.
 .SH SYNOPSIS
 .PP
 .B lbdb_dotlock 
-[\-t|\-f|\-u|\-d] [-r \fIretries\fP] \fIfile\fP
+[\-t|\-f|\-u|\-d] [\-r \fIretries\fP] \fIfile\fP
 .SH DESCRIPTION
 .PP
 .B dotlock
@@ -35,32 +35,32 @@ To lock \fIfile\fP, a file named \fIfile\fP.lock is
 created.
 .SH OPTIONS
 .PP
-.IP "-t"
+.IP "\-t"
 Just try.
 .B dotlock
 won't actually lock a file, but inform the invoking
 process if it's at all possible to lock \fIfile\fP.
-.IP "-f"
+.IP "\-f"
 Force the lock.  If another process holds a lock on
 \fIfile\fP longer than a certain amount of time, 
 .B dotlock
 will break that lock by removing the lockfile.
-.IP "-u"
+.IP "\-u"
 Unlock.
 .B dotlock 
 will remove \fIfile\fP.lock.
-.IP "-d"
+.IP "\-d"
 Delete.
 .B dotlock
 will lock \fIfile\fP, remove it if it has length 0, and afterwards
 remove \fIfile\fP.lock.
-.IP "-r \fIretries\fP"
+.IP "\-r \fIretries\fP"
 This command line option tells 
 .B dotlock 
 to try locking
 \fIretries\fP times before giving up or (if invoked with
 the 
-.B -f
+.B \-f
 command line option) break a lock.  The default value is 5.
 .B dotlock
 waits one second between successive locking attempts.  
@@ -94,7 +94,7 @@ user wants to lock a file which has been locked by
 another process already.  If 
 .B dotlock
 is invoked with the
-.B -f 
+.B \-f 
 command line option, 
 .B dotlock
 won't generate this error, but break other processes'
@@ -105,7 +105,7 @@ This return value only occurs if
 .B dotlock 
 has been invoked
 with the 
-.B -t
+.B \-t
 command line option.  It means that
 .B dotlock
 will have to use its group mail privileges to lock
@@ -115,7 +115,7 @@ will have to use its group mail privileges to lock
 This return value only occurs if
 .B dotlock
 has been invoked with the
-.B -t
+.B \-t
 command line option.  It means that
 .B dotlock 
 is unable to lock \fIfile\fP.
