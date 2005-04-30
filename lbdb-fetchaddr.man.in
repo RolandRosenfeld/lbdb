@@ -1,5 +1,5 @@
 .\" -*- nroff -*-
-.\" Copyright (c) 1998-2001  Roland Rosenfeld <roland@spinnaker.de>
+.\" Copyright (c) 1998-2005  Roland Rosenfeld <roland@spinnaker.de>
 .\"               
 .\" This program is free software; you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc.,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 .\"
-.TH LBDB-FETCHADDR 1 "September 2001" "Unix" "User Manuals"
+.TH LBDB-FETCHADDR 1 "April 2005" "Unix" "User Manuals"
 .SH NAME
 lbdb-fetchaddr \- grab addresses from mails add append them to lbdb database
 .SH SYNOPSIS
@@ -67,7 +67,7 @@ option to select a different date format string as parameter of
 lbdb-fetchaddr command like
 .nf  
      :0hc
-     | lbdb-fetchaddr -d "%y-%m-%d"
+     | lbdb-fetchaddr -d "%y\-%m\-%d"
 .fi
 which results in e.g. "99-04-29".
 .SH OPTIONS

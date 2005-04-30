@@ -3,6 +3,7 @@
 .\"
 .\"     Copyright (C) 1996-8 Michael R. Elkins <me@cs.hmc.edu>
 .\"	Copyright (C) 1998-9 Thomas Roessler <roessler@guug.de>
+.\"	Copyright (C) 2005   Roland Rosenfeld <roland@spinnaker.de>
 .\" 
 .\"     This program is free software; you can redistribute it and/or modify
 .\"     it under the terms of the GNU General Public License as published by
@@ -18,14 +19,14 @@
 .\"     along with this program; if not, write to the Free Software
 .\"     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111, USA.
 .\"
-.TH dotlock 1 "AUGUST 1999" Unix "User Manuals"
+.TH dotlock 1 "APRIL 2005" Unix "User Manuals"
 .SH NAME
 .PP
 lbdb_dotlock \- Lock mail spool files.
 .SH SYNOPSIS
 .PP
 .B lbdb_dotlock 
-[-t|-f|-u|-d] [-r \fIretries\fP] \fIfile\fP
+[\-t|\-f|\-u|\-d] [-r \fIretries\fP] \fIfile\fP
 .SH DESCRIPTION
 .PP
 .B dotlock

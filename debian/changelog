@@ -15,8 +15,9 @@ lbdb (0.30) unstable; urgency=low
   * Rebuild configure with autoconf 2.59a.
   * Make the paths of several binaries configurable in configure as
     --with-foo
+  * Replace hyphens (-) by minus signs (\-) in the man pages.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 30 Apr 2005 21:10:32 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 30 Apr 2005 21:40:04 +0200
 
 lbdb (0.29) unstable; urgency=low
 
