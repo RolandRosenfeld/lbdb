@@ -84,9 +84,10 @@ if test "x$TAC" = "xNONE"; then
 fi	
 AC_SUBST(TAC)
 
-AC_ARG_ENABLE(lbdb_dotlock,
-	[  --enable-lbdb-dotlock   Force use of lbdb_dotlock program],
-        [lbdb_cv_lbdb_dotlock="$enableval"])
+AC_ARG_ENABLE(lbdb_dotlock, 
+	      AS_HELP_STRING ([--enable-lbdb-dotlock], 
+		 	      [Force use of lbdb_dotlock program]), 
+              [lbdb_cv_lbdb_dotlock="$enableval"])
 
 AC_PATH_PROG(DOTLOCK_OLD, mutt.dotlock, no)
 if test x$ac_cv_path_DOTLOCK_OLD = xno ; then
@@ -110,61 +111,51 @@ AC_SUBST(DOTLOCKBASE)
 path_fetchaddr="$libdir/fetchaddr"
 AC_SUBST(path_fetchaddr)
 
+#
+# LBDB_ARG_WITH(FOO, foo, m_foo, [with foo support])
+#
+# several cases:
+# --with-foo        - search for foo in PATH. error if not found 
+# --with-foo=/foo   - use /foo
+# --without-foo     - completely disable this
+# none of the above - search for foo in PATH. disable if not found
+#
+AC_DEFUN([LBDB_ARG_WITH], [
+    AC_ARG_WITH($2,[AS_HELP_STRING([--with-$2],[$4])])
+    if test x$withval = xyes; then
+        AC_PATH_PROG($1, $2, "no")
+        if test x$$1 = xno; then
+	    AC_MSG_ERROR([$2 not in PATH])
+        else
+    	    MODULES="$MODULES $3"
+	    AC_SUBST($1)
+        fi
+    elif test x$withval = x; then 
+        AC_PATH_PROG($1, $2, "no")
+        if test x$$1 != xno; then
+      	    MODULES="$MODULES $3"
+    	    AC_SUBST($1)
+        fi
+    elif test x$withval != xno; then      
+        $1=$withval
+        MODULES="$MODULES $3"
+        AC_SUBST($1)
+    fi
+])
+
 MODULES="m_inmail m_passwd m_muttalias m_pine m_gnomecard m_bbdb m_wanderlust"
 
-AC_PATH_PROG(FINGER, finger, "no")
-if test "x$FINGER" != xno ; then
-	MODULES="$MODULES m_finger"
-	AC_SUBST(FINGER)
-fi
-
-AC_PATH_PROG(ABOOK, abook, "no")
-if test "x$ABOOK" != xno ; then
-	MODULES="$MODULES m_abook"
-	AC_SUBST(ABOOK)
-fi
-
-AC_PATH_PROG(ADDR_EMAIL, addr-email, "no")
-if test "x$ADDR_EMAIL" != xno ; then
-	MODULES="$MODULES m_addr_email"
-	AC_SUBST(ADDR_EMAIL)
-fi
-
-AC_PATH_PROG(YPCAT, ypcat, "no")
-if test "x$YPCAT" != xno ; then
-	MODULES="$MODULES m_yppasswd"
-	AC_SUBST(YPCAT)
-fi
-
-AC_PATH_PROG(NISCAT, niscat, "no")
-if test "x$NISCAT" != xno ; then
-	MODULES="$MODULES m_nispasswd"
-	AC_SUBST(NISCAT)
-fi
-
-AC_PATH_PROG(GETENT, getent, "no")
-if test "x$GETENT" != xno ; then
-	MODULES="$MODULES m_getent"
-	AC_SUBST(GETENT)
-fi
-
-AC_PATH_PROG(GPG, gpg, "no")
-if test "x$GPG" != xno ; then
-	MODULES="$MODULES m_gpg"
-	AC_SUBST(GPG)
-fi
-
-AC_PATH_PROG(PGPK, pgpk, "no")
-if test "x$PGPK" != xno ; then
-	MODULES="$MODULES m_pgp5"
-	AC_SUBST(PGPK)
-fi
-
-AC_PATH_PROG(PGP, pgp, "no")
-if test "x$PGP" != xno ; then
-	MODULES="$MODULES m_pgp2"
-	AC_SUBST(PGP)
-fi
+LBDB_ARG_WITH(FINGER, finger, m_finger, [with finger support])
+LBDB_ARG_WITH(ABOOK, abook, m_abook, [with abook support])
+LBDB_ARG_WITH(ADDR_EMAIL, addr-email, m_addr_email, [with addressbook support])
+LBDB_ARG_WITH(YPCAT, ypcat, m_yppasswd, [with ypcat passwd support])
+LBDB_ARG_WITH(NISCAT, niscat, m_nispasswd, [with niscat passwd support])
+LBDB_ARG_WITH(GETENT, getent, m_getent, [with getent passwd support])
+LBDB_ARG_WITH(GPG, gpg, m_gpg, [with GnuPG support])
+LBDB_ARG_WITH(PGPK, pgpk, m_pgp5, [with PGP 5.* support])
+LBDB_ARG_WITH(PGP, pgp, m_pgp2, [with PGP 2.* support])
+LBDB_ARG_WITH(EVOLUTION_ADDRESSBOOK_EXPORT, evolution-addressbook-export,
+              m_evolution, [with Ximan Evolution support])
 
 AC_PATH_PROG(PERL, perl, "no")
 if test "x$PERL" != xno ; then
@@ -186,12 +177,6 @@ else
 		MODULES="$MODULES m_osx_addressbook"
 		AC_SUBST(PBXBUILD)
 	fi
-fi
-
-AC_PATH_PROG(EVOLUTION_ADDRESSBOOK_EXPORT, evolution-addressbook-export, "no")
-if test "x$EVOLUTION_ADDRESSBOOK_EXPORT" != xno ; then
-	MODULES="$MODULES m_evolution"
-	AC_SUBST(EVOLUTION_ADDRESSBOOK_EXPORT)
 fi
 
 MODULES_SH=""

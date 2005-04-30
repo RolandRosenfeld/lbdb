@@ -12,8 +12,11 @@ lbdb (0.30) unstable; urgency=low
     (Closes: #290148).
   * m_gpg: Add support for gpg 1.4 (not only 1.2.5) (Closes: #294113).
   * m_gpg: Stop showing revoked user ids (Closes: #259212).
+  * Rebuild configure with autoconf 2.59a.
+  * Make the paths of several binaries configurable in configure as
+    --with-foo
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 30 Apr 2005 21:10:32 +0200
 
 lbdb (0.29) unstable; urgency=low
 

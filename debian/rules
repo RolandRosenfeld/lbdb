@@ -19,14 +19,20 @@ build: build-stamp
 build-stamp:
 	dh_testdir
 
-	env PGP=/usr/bin/pgp PGPK=/usr/bin/pgpk GPG=/usr/bin/gpg \
-	    FINGER=/usr/bin/finger ABOOK=/usr/bin/abook \
-	    ADDR_EMAIL=/usr/bin/addr-email SH=/bin/sh \
-	    YPCAT=/usr/bin/ypcat MAWK=/usr/bin/awk \
-	    EVOLUTION_ADDRESSBOOK_EXPORT=/usr/lib/evolution/2.2/evolution-addressbook-export \
+	env SH=/bin/sh MAWK=/usr/bin/awk \
 		./configure --prefix=/usr --libdir='$${prefix}/lib/lbdb' \
 			--mandir='$${prefix}/share/man' --sysconfdir=/etc \
-			--enable-lbdb-dotlock
+			--enable-lbdb-dotlock \
+			--with-finger=/usr/bin/finger \
+		        --with-abook=/usr/bin/abook \
+		        --with-addr-email=/usr/bin/addr-email \
+		        --with-ypcat=/usr/bin/ypcat \
+		        --with-getent=/usr/bin/getent \
+		        --with-gpg=/usr/bin/gpg \
+		        --with-pgpk=/usr/bin/pgpk \
+		        --with-pgp=/usr/bin/pgp \
+		        --with-evolution-addressbook-export=/usr/lib/evolution/2.2/evolution-addressbook-export
+
 	$(MAKE) CFLAGS="$(OPTIMIZE) -Wall -g"
 
 	touch build-stamp
