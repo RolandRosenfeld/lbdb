@@ -11,6 +11,7 @@ lbdb (0.30) unstable; urgency=low
   * mutt_ldap_query: Stop returning entries without email address
     (Closes: #290148).
   * m_gpg: Add support for gpg 1.4 (not only 1.2.5) (Closes: #294113).
+  * m_gpg: Stop showing revoked user ids (Closes: #259212).
 
  --
 
