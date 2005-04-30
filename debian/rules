@@ -23,7 +23,7 @@ build-stamp:
 	    FINGER=/usr/bin/finger ABOOK=/usr/bin/abook \
 	    ADDR_EMAIL=/usr/bin/addr-email SH=/bin/sh \
 	    YPCAT=/usr/bin/ypcat MAWK=/usr/bin/awk \
-	    EVOLUTION_ADDRESSBOOK_EXPORT=/:usr/lib/evolution/2.2/evolution-addressbook-export \
+	    EVOLUTION_ADDRESSBOOK_EXPORT=/usr/lib/evolution/2.2/evolution-addressbook-export \
 		./configure --prefix=/usr --libdir='$${prefix}/lib/lbdb' \
 			--mandir='$${prefix}/share/man' --sysconfdir=/etc \
 			--enable-lbdb-dotlock
