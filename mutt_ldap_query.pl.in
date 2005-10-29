@@ -1,6 +1,7 @@
 #! @PERL@ -w
 #
 #     Copyright (C) 2000-2003 Marc de Courville <marc@courville.org>
+#     Copyright (C) 2005      Roland Rosenfeld <roland@spinnaker.de>
 #
 #     $Id$
 #
@@ -50,6 +51,10 @@ our $ldap_result_realname = '${givenname} ${sn}';
 our $ldap_result_comment = '(${o})';
 # use ignorant (wildcard searching):
 our $ignorant = 0;
+# LDAP bind DN:
+our $ldap_bind_dn = '';
+# LDAP bind password:
+our $ldap_bind_password = '';
 
 our %ldap_server_db = (
   'four11'		=> ['ldap.four11.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
@@ -109,6 +114,8 @@ GetOptions (
   'format_realname|fr:s'	=> \$ldap_result_realname,
   'format_comment|fc:s'		=> \$ldap_result_comment,
   'nickname|n=s'		=> \$ldap_server_nickname,
+  'bind_dn|bd:s'                => \$ldap_bind_dn,
+  'bind_password|bp:s'          => \$ldap_bind_password,
   'debug'			=> sub { $DEBUG = 1 },
   'help|?|h'			=> \$help,
   'man|m'			=> \$man,
@@ -152,10 +159,17 @@ if ($ldap_server_nickname) {
   if (defined($option_array->[7])) {
      $ignorant = $option_array->[7];
   }
+  if (defined($option_array->[8])) {
+     $ldap_bind_dn = $option_array->[8];
+  }
+  if (defined($option_array->[9])) {
+     $ldap_bind_password = $option_array->[9];
+  }
 }
 
 print "DEBUG: ldap_server='$ldap_server' search_base='$search_base' search_fields='$ldap_search_fields'\
-       expected_answer='$ldap_expected_answers' format_email='$ldap_result_email' format_realname='$ldap_result_realname'\n" if ($DEBUG);
+       expected_answer='$ldap_expected_answers' format_email='$ldap_result_email' format_realname='$ldap_result_realname'\
+       bind_dn='$ldap_bind_dn' bind_password='$ldap_bind_password'\n" if ($DEBUG);
 
 my @fields = split / /, $ldap_search_fields;
 my @results;
@@ -173,8 +187,13 @@ foreach my $askfor ( @ARGV ) {
   $query = "(|" . $query . ")";
 
   print "DEBUG: perl ldap module processing filter:\nDEBUG: $query\n" if ($DEBUG);
-  my $ldap = Net::LDAP->new($ldap_server, DN => "", Password => "", Port => 389, Debug => 3,) or die $@;
-  $ldap->bind;
+  my $ldap = Net::LDAP->new($ldap_server, Port => 389, Debug => 3) or die $@;
+  if (defined($ldap_bind_dn) && $ldap_bind_dn ne ''
+      && defined($ldap_bind_password) && $ldap_bind_password ne '') {
+      $ldap->bind($ldap_bind_dn, password=> $ldap_bind_password);
+  } else {
+      $ldap->bind;
+  }
   my $mesg = $ldap->search( base => $search_base, filter => $query ) or die $@;
   $mesg->code && die "Search failed. LDAP server returned an error : ", $mesg->code, ", description: ", $mesg->error;
   my @entries = $mesg->entries;
@@ -268,6 +287,16 @@ containers of the form ${variable} where variable belongs to the
 format to be used for composing the comment output result. It has to
 be based on the expected ldap server answers and can use variable
 containers of the form ${variable} where variable belongs to the
+
+=item B<--bind_dn=bind_distinguished_name> or B<-bd bind_distinguished_name>
+
+the destinguished name of the user who binds to the LDAP server.
+Leave it empty for an anonmyous bind.
+
+=item B<--bind_password=secret> or B<-bp secret>
+
+the bind password for binding to the LDAP server.
+Leave it empty for an anonmyous bind.
 
 =item B<--nickname=ldap_server_nickname> or B<-n ldap_server_nickname>
 
