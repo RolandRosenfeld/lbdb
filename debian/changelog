@@ -4,9 +4,9 @@ lbdb (0.31) unstable; urgency=low
     bug and sending a patch.
   * Apply patch by Brendan Cully to follow the Apple build system changes
     used to build ABQuery module.
-  * Add m_vcf provided by Brendan Cully.
+  * Add m_vcf module for querying vcard files provided by Brendan Cully.
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 29 Oct 2005 14:50:05 +0200
 
 lbdb (0.30) unstable; urgency=low
 
