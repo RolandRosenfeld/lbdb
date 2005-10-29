@@ -1,3 +1,10 @@
+lbdb (0.31) unstable; urgency=low
+
+  * m_pine: Double-quote parens. Thanks to Stefan Mätje for reporting this
+    bug and sending a patch.
+
+ --
+
 lbdb (0.30) unstable; urgency=low
 
   * Get rid of strict aliasing warnings in gcc.  Thanks to Ludwig Nussel
