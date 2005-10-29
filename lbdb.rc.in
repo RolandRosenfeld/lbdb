@@ -8,7 +8,7 @@
 # ~/.lbdb/rc
 # (evaluated with ascending priority!)
 # 
-# (c) 1999-2004 Roland Rosenfeld <roland@spinnaker.de>
+# (c) 1999-2005 Roland Rosenfeld <roland@spinnaker.de>
 #
 # $Id$
 #
@@ -38,6 +38,7 @@
 # - m_wanderlust search your wanderlust ~/.addresses file.
 # - m_osx_addressbook  search the OS X addressbook (only available on OS X).
 # - m_evolution  search in the Ximan Evolution addressbook.
+# - m_vcf        search a vcard (according to RFC2426) file.
 
 METHODS="m_inmail m_passwd m_finger"
 
@@ -152,6 +153,14 @@ LDAP_NICKS="debian bigfoot"
 # users.  Setting PASSWD_IGNORESYS to "true" implies that lbdbq
 # ignores and UID, which isn't in that range:
 #PASSWD_IGNORESYS=true
+
+
+# - m_vcf search in vcard files
+#
+# You have to define the vcard files space separated in $VCF_FILES to
+# make this module work:
+#VCF_FILES=$HOME/my.vcf
+
 
 #
 # If you want to use private modules set the MODULES_PATH to find them:

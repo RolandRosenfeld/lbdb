@@ -180,6 +180,15 @@ else
 	fi
 fi
 
+VFORMAT="no"
+AC_CHECK_HEADER([vf_iface.h], [
+  AC_CHECK_LIB([vformat], [vf_read_file], [
+    MODULES="$MODULES m_vcf"
+    VFORMAT="yes"
+  ])
+])
+AC_SUBST(VFORMAT)
+
 MODULES_SH=""
 for i in $MODULES ; do
 	MODULES_SH="$MODULES_SH $i.sh"

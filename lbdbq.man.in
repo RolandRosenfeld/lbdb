@@ -1,5 +1,5 @@
 .\" -*- nroff -*-
-.\" Copyright (c) 1998-2004  Roland Rosenfeld <roland@spinnaker.de>
+.\" Copyright (c) 1998-2005  Roland Rosenfeld <roland@spinnaker.de>
 .\"               
 .\" This program is free software; you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 .\"
 .\" $Id$
 .\"
-.TH LBDBQ 1 "February 2004" "Unix" "User Manuals"
+.TH LBDBQ 1 "October 2005" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -288,6 +288,11 @@ This module queries the Ximian Evolution address book.  It depends on
 the program
 .BR evolution-addressbook-export ,
 which is shipped with evolution.
+.TP
+.BR m_vcf
+This module uses libvformat to search for addresses from the
+space\-separated set of vCard files defined in
+.IR $VCF_FILES .
 .PP
 Feel free to create your own modules to query other database resources,
 YP maps, and the like.
@@ -355,7 +360,7 @@ for putting the query functionality into mutt.
 Many thanks to the authors of the several modules and extensions:
 Ross Campbell <rcampbel@us.oracle.com> (m_abook, m_yppasswd),
 Marc de Courville <marc@courville.org> (m_ldap, mutt_ldap_query),
-Brendan Cully <brendan@kublai.com> (m_osx_addressbook),
+Brendan Cully <brendan@kublai.com> (m_osx_addressbook, m_vcf),
 Gabor Fleischer <flocsy@mtesz.hu> (m_pine),
 Rick Frankel <rick@rickster.com> (m_gnomecard),
 Utz-Uwe Haus <haus@uuhaus.de> (m_bbdb, m_nispasswd),

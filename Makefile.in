@@ -30,6 +30,7 @@ TACTARGET=@TACTARGET@
 PERL=@PERL@
 XCODEBUILD=@XCODEBUILD@
 PBXBUILD=@PBXBUILD@
+VFORMAT=@VFORMAT@
 
 prefix=@prefix@
 exec_prefix=@exec_prefix@
@@ -74,6 +75,9 @@ install: all
 	fi
 	if [ "$(XCODEBUILD)" != "no" -o "$(PBXBUILD)" != "no" ]; then \
 		$(INSTALL) -m 755 ABQuery/sym/ABQuery $(install_prefix)$(libdir); \
+	fi
+	if [ "$(VFORMAT)" != "no" ]; then \
+		$(INSTALL) -m 755 vcquery $(install_prefix)$(libdir); \
 	fi
 	for i in $(MODULES); do \
 		$(INSTALL) -m 755 $$i $(install_prefix)$(libdir); \
@@ -137,6 +141,11 @@ mutt_ldap_query.man: $(srcdir)/mutt_ldap_query.pl
 	else \
 		touch mutt_ldap_query.man; \
 	fi
+
+m_vcf: vcquery
+
+vcquery: vcquery.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $? -lvformat
 
 m_osx_addressbook: ABQuery/sym/ABQuery
 

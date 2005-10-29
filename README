@@ -172,6 +172,11 @@ m_evolution
        This module queries the Ximian Evolution address book using the
        evolution-addressbook-export application.
 
+m_vcf
+       This module uses libvformat to search for addresses from the
+       space-separated set of vCard files defined in $VCF_FILES.
+
+
 Feel free to create your own modules to query other kinds of
 databases.  m_finger should be a good example of how to do it.
 
@@ -196,7 +201,7 @@ for putting the query functionality into mutt.
 Many thanks to the authors of the several modules and extensions:
 - Ross Campbell <rcampbel@us.oracle.com>           (m_abook, m_yppasswd)
 - Marc de Courville <marc@courville.org>           (m_ldap, mutt_ldap_query)
-- Brendan Cully <brendan@kublai.com>		   (m_osx_addressbook)
+- Brendan Cully <brendan@kublai.com>		   (m_osx_addressbook, m_vcf)
 - Gabor Fleischer <flocsy@mtesz.hu>                (m_pine)
 - Rick Frankel <rick@rickster.com>		   (m_gnomecard)
 - Guido Guenther <agx@sigxcpu.org>                 (m_evolution)

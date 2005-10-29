@@ -1,0 +1,30 @@
+#! @SH@
+
+m_vcf_query()
+{
+  VCQ=@libdir@/vcquery
+
+  QUERY="$1"
+
+  for file in $VCF_FILES
+  do
+    if test -r $file.cache -a $file.cache -nt $file
+    then
+      cmd="cat $file.cache"
+    else
+      if $VCQ $file > $file.cache
+      then
+        cmd="cat $file.cache"
+      else
+        cmd="$VCQ $file"
+      fi
+    fi
+
+    $cmd | grep -i "$QUERY" | (
+      while read match
+      do
+        echo "$match	(VCF)"
+      done
+    )
+  done
+}

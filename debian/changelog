@@ -4,6 +4,7 @@ lbdb (0.31) unstable; urgency=low
     bug and sending a patch.
   * Apply patch by Brendan Cully to follow the Apple build system changes
     used to build ABQuery module.
+  * Add m_vcf provided by Brendan Cully.
 
  --
 
