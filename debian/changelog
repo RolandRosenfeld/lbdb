@@ -8,8 +8,9 @@ lbdb (0.31) unstable; urgency=low
   * Add authentication (bind_dn, bind_password) to mutt_ldap_query. Based
     on an idea of Jan-Benedict Glaw (Closes: #324655, #286163).
   * Update FSF address in nearly all files.
+  * Upgrade to standards-version 3.6.2 (no changes).
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 29 Oct 2005 16:49:58 +0200
 
 lbdb (0.30) unstable; urgency=low
 
