@@ -30,6 +30,8 @@ $Id$
 - Optimize munge/munge-keeporder to work case-insensitive (at least on
   the domain part of the addresses).
 
+- Add UTF-8 support.
+
 Roland Rosenfeld <roland@spinnaker.de>
 $Id$
 
