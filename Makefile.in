@@ -145,7 +145,7 @@ ABQuery/sym/ABQuery: ABQuery/pbxbuild.sh ABQuery/ABQuery.m
 
 ABQuery/pbxbuild.sh:
 	if [ "$(XCODEBUILD)" != "no" ]; then \
-		(cd ABQuery; xcodebuild -buildstyle Deployment; printf '#!/bin/sh\nmkdir ABQuery/sym; cp ABQuery/build/ABQuery ABQuery/sym\n' > pbxbuild.sh; chmod a+x pbxbuild.sh) \
+		(cd ABQuery; xcodebuild -buildstyle Deployment; printf '#!/bin/sh\nmkdir ABQuery/sym\nEXE=ABQuery/build/ABQuery\nif test -x ABQuery/build/Deployment/ABQuery; then EXE=ABQuery/build/Deployment/ABQuery; fi\ncp $$EXE ABQuery/sym\n' > pbxbuild.sh; chmod a+x pbxbuild.sh) \
 	else \
 		(cd ABQuery; pbxbuild -buildstyle Deployment export) \
 	fi
