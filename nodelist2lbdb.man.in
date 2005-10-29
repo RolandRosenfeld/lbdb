@@ -1,5 +1,5 @@
 .\" -*-nroff-*-
-.\" Copyright (c) 1999  Roland Rosenfeld <roland@debian.org>
+.\" Copyright (c) 1999-2005  Roland Rosenfeld <roland@debian.org>
 .\"               
 .\" This manual page is free software; you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
@@ -12,10 +12,10 @@
 .\" GNU General Public License for more details.
 .\" 
 .\" You should have received a copy of the GNU General Public License
-.\" along with this program; if not, write to the Free Software
-.\" Foundation, Inc.,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+.\" along with this program; if not, write to the Free Software Foundation,
+.\" Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
 .\"
-.TH NODELIST2LBDB 1 "June 1999" Unix "User Manuals"
+.TH NODELIST2LBDB 1 "October 2005" Unix "User Manuals"
 .SH NAME
 nodelist2lbdb \- convert Fido nodelist and pointlist to lbdb format
 .SH SYNOPSIS

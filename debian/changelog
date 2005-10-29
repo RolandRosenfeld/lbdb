@@ -7,8 +7,9 @@ lbdb (0.31) unstable; urgency=low
   * Add m_vcf module for querying vcard files provided by Brendan Cully.
   * Add authentication (bind_dn, bind_password) to mutt_ldap_query. Based
     on an idea of Jan-Benedict Glaw (Closes: #324655, #286163).
+  * Update FSF address in nearly all files.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 29 Oct 2005 15:27:46 +0200
+ --
 
 lbdb (0.30) unstable; urgency=low
 
