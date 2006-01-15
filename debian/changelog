@@ -4,8 +4,11 @@ lbdb (0.31.1) unstable; urgency=low
     /usr/bin/evolution-aaddressbook-export. This package is now in testing
     (etch), so m_evolution is changed to access this program via the
     symlink to avoid trouble with various places of e-a-e.
+  * It seems, that evolution-addressbook-export now also has EMAIL entries
+    without subtype "EMAIL;TYPE=INTERNET:" vs. "EMAIL:" in it. m_evolution
+    now supports both variants (Closes: #347971).
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 15 Jan 2006 15:07:56 +0100
 
 lbdb (0.31) unstable; urgency=low
 
