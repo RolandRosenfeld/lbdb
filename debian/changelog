@@ -1,3 +1,12 @@
+lbdb (0.31.1) unstable; urgency=low
+
+  * Since evolution 2.2.3-2 (2005-08-01) there exists a symlink
+    /usr/bin/evolution-aaddressbook-export. This package is now in testing
+    (etch), so m_evolution is changed to access this program via the
+    symlink to avoid trouble with various places of e-a-e.
+
+ --
+
 lbdb (0.31) unstable; urgency=low
 
   * m_pine: Double-quote parens. Thanks to Stefan Mätje for reporting this
