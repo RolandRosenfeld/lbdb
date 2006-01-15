@@ -7,8 +7,9 @@ lbdb (0.31.1) unstable; urgency=low
   * It seems, that evolution-addressbook-export now also has EMAIL entries
     without subtype "EMAIL;TYPE=INTERNET:" vs. "EMAIL:" in it. m_evolution
     now supports both variants (Closes: #347971).
+  * Remove backslash from comment in m_evolution.
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 15 Jan 2006 15:07:56 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 15 Jan 2006 15:26:49 +0100
 
 lbdb (0.31) unstable; urgency=low
 
