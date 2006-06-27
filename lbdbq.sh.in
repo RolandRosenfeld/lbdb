@@ -1,7 +1,7 @@
 #! @SH@
 #
 #     Copyright (C) 1998-2000  Thomas Roessler <roessler@guug.de>
-#                   1998-2005  Roland Rosenfeld <roland@spinnaker.de>
+#                   1998-2006  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -90,10 +90,10 @@ case "$SORT_OUTPUT" in
 	$MUNGE_KEEPORDER $collection | $TAC > $collection.uniq
 	;;
     *name)
-	$MUNGE $collection | sort -f +1 > $collection.uniq
+	$MUNGE $collection | sort -f -k2 > $collection.uniq
 	;;
     comment)
-        $MUNGE $collection | sort -f +2 -t'	' > $collection.uniq
+        $MUNGE $collection | sort -f -k3 -t'	' > $collection.uniq
 	;;
     *)
 	$MUNGE $collection | sort -f > $collection.uniq

@@ -31,7 +31,7 @@ m_muttalias_query()
 	    file=$MUTT_DIRECTORY/$file
 	fi
 
-	if [ -f $file ]
+	if [ -f "$file" ]
 	then
 	    grep -ia "$@" $file \
 	    | grep -a '^alias[ 	][ 	]*[^,][^,]*[ 	][ 	]*[^,]*$' \

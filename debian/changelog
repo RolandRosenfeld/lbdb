@@ -1,7 +1,14 @@
+lbdb (0.31.2) unstable; urgency=low
+
+  * Change sort(1) syntax to cope with new versions of coreutils 
+    (Closes: #368917).
+
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 27 Jun 2006 13:04:48 +0200
+
 lbdb (0.31.1) unstable; urgency=low
 
   * Since evolution 2.2.3-2 (2005-08-01) there exists a symlink
-    /usr/bin/evolution-aaddressbook-export. This package is now in testing
+    /usr/bin/evolution-addressbook-export. This package is now in testing
     (etch), so m_evolution is changed to access this program via the
     symlink to avoid trouble with various places of e-a-e.
   * It seems, that evolution-addressbook-export now also has EMAIL entries
