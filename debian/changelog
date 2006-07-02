@@ -1,9 +1,11 @@
-lbdb (0.31.2) unstable; urgency=low
+lbdb (0.32) unstable; urgency=low
 
   * Change sort(1) syntax to cope with new versions of coreutils 
     (Closes: #368917).
+  * New version of mutt_ldap_query by Marc de Courville
+    <marc@courville.org> and other contributors.
 
- -- Roland Rosenfeld <roland@debian.org>  Tue, 27 Jun 2006 13:04:48 +0200
+ --
 
 lbdb (0.31.1) unstable; urgency=low
 

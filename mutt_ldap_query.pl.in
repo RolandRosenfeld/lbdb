@@ -1,7 +1,7 @@
 #! @PERL@ -w
 #
-#     Copyright (C) 2000-2003 Marc de Courville <marc@courville.org>
-#     Copyright (C) 2005      Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 2000-2006 Marc de Courville <marc@courville.org>
+#     Copyright (C) 2005-2006 Roland Rosenfeld <roland@spinnaker.de>
 #
 #     $Id$
 #
@@ -195,27 +195,35 @@ foreach my $askfor ( @ARGV ) {
       $ldap->bind;
   }
   my $mesg = $ldap->search( base => $search_base, filter => $query ) or die $@;
-  $mesg->code && die "Search failed. LDAP server returned an error : ", $mesg->code, ", description: ", $mesg->error;
+  if ($mesg->code && ($mesg->code ne '4')) {
+    die "Search failed. LDAP server returned an error : ", $mesg->code, ", description: ", $mesg->error;
+  }
   my @entries = $mesg->entries;
   map { $_->dump } $mesg->all_entries if ($DEBUG);
   my $entry;
   foreach $entry (@entries) {
     print "DEBUG: processing $entry->dn\n" if ($DEBUG);
 # prepare the results
-    my $email = $ldap_result_email;
+    my @emails = ();
     my $realname = $ldap_result_realname;
     my $comment = $ldap_result_comment;
     foreach my $answer (split / /, $ldap_expected_answers) {
       my $result = '';
+# if this is email we take all the values
+      if( $ldap_result_email =~ /\${$answer}/ ) {
+        @emails = $entry->get_value($answer);
+      } 
+      else {
+        my $result = '';
 # if there is no answer must return the null otherwise we get an uninitialized variable error
-      ($result = $entry->get_value($answer)) || ($result = '');
+        ($result = $entry->get_value($answer)) || ($result = '');
 # replace the containers with the results of the query
-      $email =~ s/\${$answer}/$result/g;
-      $realname =~ s/\${$answer}/$result/g;
-      $comment =~ s/\${$answer}/$result/g;
+        $realname =~ s/\${$answer}/$result/g;
+        $comment =~ s/\${$answer}/$result/g;
+      }
     }
-    if ($email ne '') {
-       push @results, "$email\t$realname\t$comment\n";
+    foreach my $ema (@emails)  {
+       push @results, "$ema\t$realname\t$comment\n";
     }
   }
   $ldap->unbind;
@@ -254,25 +262,25 @@ F<$HOME/.mutt_ldap_query.rc>).
 
 =item B<--server=ldap_server> or B<-ls ldap_server>
 
-hostname of your ldap server
+hostname of your ldap server.
 
 =item B<--search_base=ldap_search_base> or B<-sb ldap_search_base>
 
-use <search_base> as the starting point for the search instead of the default
+use <search_base> as the starting point for the search instead of the default.
 
 =item B<--search_fields=ldap_search_fields> or B<-sf ldap_search_fields>
 
-list of the fields on which the query will be performed
+list of the fields on which the query will be performed.
 
 =item B<--expected_answers=ldap_expected_answers> or B<-ea ldap_expected_answers>
 
 list of the fields expected as the answer of the ldap server that will
-be used for composing the output of the script
+be used for composing the output of the script.
 
 =item B<--format_email=result_format_email> or B<-fe result_format_email>
 
-format to be used for composing the email output result. It has to
-be based on the expected ldap server answers and can use variable
+format to be used for composing the email output result. It has to be
+based on the expected ldap server answers and can use variable
 containers of the form ${variable} where variable belongs to the
 <ldap_expected_answers> set.
 
@@ -281,12 +289,14 @@ containers of the form ${variable} where variable belongs to the
 format to be used for composing the realname output result. It has to
 be based on the expected ldap server answers and can use variable
 containers of the form ${variable} where variable belongs to the
+<ldap_expected_answers> set.
 
 =item B<--format_comment=result_format_comment> or B<-fc result_format_comment>
 
 format to be used for composing the comment output result. It has to
 be based on the expected ldap server answers and can use variable
 containers of the form ${variable} where variable belongs to the
+<ldap_expected_answers> set.
 
 =item B<--bind_dn=bind_distinguished_name> or B<-bd bind_distinguished_name>
 
@@ -307,23 +317,25 @@ performing a <lbdb_server_nickname> lookup.
 
 =item B<--debug> or B<-d>
 
-turn on debugging messages
+turn on debugging messages.
 
 =item B<--help> or B<-?> or B<-h> or B<--man> or B<-m>
 
-generates this help message
+generates this help message.
 
 =item B<--ignorant> or B<-i>
 
-ignorant mode: search using wildcard for *name_to_query* (requires a longer processing from LDAP server but is quite convenient :)
+ignorant mode: search using wildcard for *name_to_query* (requires a
+longer processing from LDAP server but is quite convenient :).
 
 =item B<--lbdb_output> or B<-l>
 
-suppress number of matches output (suited for interfacing with little brother database http://www.spinnaker.de/lbdb/)
+suppress number of matches output (suited for interfacing with little
+brother database http://www.spinnaker.de/lbdb/).
 
 =item B<--version> or B<-v>
 
-show the version
+show the version.
 
 =back
 
