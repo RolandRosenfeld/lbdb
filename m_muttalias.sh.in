@@ -3,7 +3,7 @@
 # -*-sh-*-
 #
 #     Copyright (C) 2000  Brian Salter-Duke <b_duke@octa4.net.au>
-#                   2000-2005  Roland Rosenfeld <roland@spinnaker.de>
+#                   2000-2006  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -34,11 +34,13 @@ m_muttalias_query()
 	if [ -f "$file" ]
 	then
 	    grep -ia "$@" $file \
-	    | grep -a '^alias[ 	][ 	]*[^,][^,]*[ 	][ 	]*[^,]*$' \
+	    | grep -a '^alias[ 	][ 	]*[^,][^,]*[ 	][ 	]*\([^,]\|\\\".*\\\"\)*$' \
 	    | sed -e 's/^alias[ 	][ 	]*\([^ 	][^ 	]*\)[ 	][ 	]*<\([^ 	>][^ 	>]*\)>[ 	][ 	]*(\([^<>()]*\))[^()<>]*$/\2	\3	alias \1/' \
-		  -e 's/^alias[ 	][ 	]*\([^ 	][^ 	]*\)[ 	][ 	]*\([^<>()]*\)<\([^<>()]*\)>[^<>]*$/\3	\2	alias \1/' \
-	          -e 's/^alias[ 	][ 	]*\([^ 	][^ 	]*\)[ 	][ 	]*\([^<>()]*\)(\([^<>()]*\))[^()<>]*$/\2	\3	alias \1/' \
+		  -e 's/^alias[ 	][ 	]*\([^ 	][^ 	]*\)[ 	][ 	]*\(\\\".*\\\"[^<>()]*\|[^<>()]*\)<\([^<>()]*\)>[^<>]*$/\3	\2	alias \1/' \
+	          -e 's/^alias[ 	][ 	]*\([^ 	][^ 	]*\)[ 	][ 	]*\([^<>()]*\)(\(\\\".*\\\"[^<>()]*\|[^<>()]*\))[^()<>]*$/\2	\3	alias \1/' \
+		  -e 's/\\\"//g' \
 	    | grep -va '^alias[ 	][ 	]*[^,][^,]*[ 	][ 	]*[^,]*$'
 	fi  
     done
 }
+

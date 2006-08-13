@@ -6,8 +6,10 @@ lbdb (0.32) unstable; urgency=low
     <marc@courville.org> and other contributors.
   * Extend lbdb_hostname() to get the domain name from resolv.conf.  Thanks
     to Gary Johnson <garyjohn@spk.agilent.com> for prividing this patch.
+  * m_muttalias: Allow \"...\" around real names of aliases.  Thanks to
+    Erik Shirokoff <shiro@berkeley.edu> for providing this patch.
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 13 Aug 2006 10:53:00 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 13 Aug 2006 11:02:24 +0200
 
 lbdb (0.31.1) unstable; urgency=low
 
