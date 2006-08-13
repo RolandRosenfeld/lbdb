@@ -3,7 +3,7 @@ Section: mail
 Priority: optional
 Maintainer: Roland Rosenfeld <roland@debian.org>
 Standards-Version: 3.7.2
-Build-Depends: debhelper (>= 4.0.0), perl, libvformat1-dev
+Build-Depends: debhelper (>= 5), perl, libvformat1-dev
 
 Package: lbdb
 Architecture: any

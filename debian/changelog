@@ -9,8 +9,9 @@ lbdb (0.32) unstable; urgency=low
   * m_muttalias: Allow \"...\" around real names of aliases.  Thanks to
     Erik Shirokoff <shiro@berkeley.edu> for providing this patch.
   * Upgrade to Standards-Version 3.7.2 (no changes).
+  * Upgrade to debhelper (>= 5)
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 13 Aug 2006 11:09:43 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 13 Aug 2006 11:13:54 +0200
 
 lbdb (0.31.1) unstable; urgency=low
 
