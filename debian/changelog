@@ -8,8 +8,9 @@ lbdb (0.32) unstable; urgency=low
     to Gary Johnson <garyjohn@spk.agilent.com> for prividing this patch.
   * m_muttalias: Allow \"...\" around real names of aliases.  Thanks to
     Erik Shirokoff <shiro@berkeley.edu> for providing this patch.
+  * Upgrade to Standards-Version 3.7.2 (no changes).
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 13 Aug 2006 11:02:24 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 13 Aug 2006 11:09:43 +0200
 
 lbdb (0.31.1) unstable; urgency=low
 
