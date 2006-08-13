@@ -4,8 +4,10 @@ lbdb (0.32) unstable; urgency=low
     (Closes: #368917).
   * New version of mutt_ldap_query by Marc de Courville
     <marc@courville.org> and other contributors.
+  * Extend lbdb_hostname() to get the domain name from resolv.conf.  Thanks
+    to Gary Johnson <garyjohn@spk.agilent.com> for prividing this patch.
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 13 Aug 2006 10:53:00 +0200
 
 lbdb (0.31.1) unstable; urgency=low
 

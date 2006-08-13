@@ -3,7 +3,7 @@
 # -*-sh-mode-*-
 #
 #     Copyright (C) 1998  Thomas Roessler <roessler@guug.de>
-#     Copyright (C) 1999-2005  Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 1999-2006  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -57,14 +57,23 @@ lbdb_hostname()
 	elif test -f /etc/mailname; then
 		hn=`cat /etc/mailname`
 	else
-		hn=`lbdb_hn_sendmail`
-		if test "x$hn" = "xNONE" ; then
-			for i in /etc/HOSTNAME /etc/hostname ; do
-				if test -f $i ; then
-					hn="`cat $i`"
-					break;
-				fi
-			done
+		hn=""
+		if test -r /etc/resolv.conf ; then
+			hn="`sed -n -e 's/^[ 	]*domain[ 	]\{1,\}\([^ ]*\)/\1/p' /etc/resolv.conf`"
+			if test "x$hn" = "x" ; then
+				hn="`sed -n -e 's/^[ 	]*search[ 	]\{1,\}\([^ ]*\)/\1/p' /etc/resolv.conf`"
+			fi
+		fi
+		if test "x$hn" = "x" ; then
+			hn=`lbdb_hn_sendmail`
+			if test "x$hn" = "xNONE" ; then
+				for i in /etc/HOSTNAME /etc/hostname ; do
+					if test -f $i ; then
+						hn="`cat $i`"
+						break;
+					fi
+				done
+			fi
 		fi
 	fi
 	echo "$hn"
