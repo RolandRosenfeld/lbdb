@@ -8,7 +8,7 @@
 # ~/.lbdb/rc
 # (evaluated with ascending priority!)
 # 
-# (c) 1999-2005 Roland Rosenfeld <roland@spinnaker.de>
+# (c) 1999-2006 Roland Rosenfeld <roland@spinnaker.de>
 #
 # $Id$
 #
@@ -176,6 +176,8 @@ LDAP_NICKS="debian bigfoot"
 # address in m_inmail database is first).
 # If you set this to "name", lbdbq sorts the output by real name.
 # If you set this to "comment", lbdbq sorts the output by comment (column 3).
+# If you set this to "reverse_comment", lbdbq sorts the output by comment 
+#                                       but with reverse order (column 3).
 # If you set this to "address", lbdbq sorts the output by addresses
 # (that's the default).
 #

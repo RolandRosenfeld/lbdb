@@ -1,5 +1,5 @@
 .\" -*- nroff -*-
-.\" Copyright (c) 1998-2005  Roland Rosenfeld <roland@spinnaker.de>
+.\" Copyright (c) 1998-2006  Roland Rosenfeld <roland@spinnaker.de>
 .\"               
 .\" This program is free software; you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 .\"
 .\" $Id$
 .\"
-.TH LBDBQ 1 "October 2005" "Unix" "User Manuals"
+.TH LBDBQ 1 "August 2006" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -73,7 +73,11 @@ lbdbq sorts the output by real name.  If you set this to
 .IR comment ,
 it sort the output by the comment (for example the date in 
 .BR m_inmail ).
-If you set this to
+.I reverse_comment
+realizes the same as 
+.IR comment ,
+but in reverse order, so the most recent timestamp of m_inmail may be
+on top. If you set SORT_OUTPUT to
 .IR address ,
 lbdbq sorts the output by addresses (that's the default).
 .TP
