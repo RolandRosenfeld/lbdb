@@ -1,6 +1,6 @@
 lbdb (0.33) unstable; urgency=low
 
-  * Add SORT_ORDER=reverse_comment to do reverse sort by the third column
+  * Add SORT_OUTPUT=reverse_comment to do reverse sort by the third column
     (most recent m_inmail timestamp at the top).  Thanks to Marco d'Itri
     for this suggestion.
   * Comment out LDAP_NICKS in lbdb.rc because this should only be an
