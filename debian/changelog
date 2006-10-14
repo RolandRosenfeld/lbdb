@@ -3,8 +3,11 @@ lbdb (0.33) unstable; urgency=low
   * Add SORT_ORDER=reverse_comment to do reverse sort by the third column
     (most recent m_inmail timestamp at the top).  Thanks to Marco d'Itri
     for this suggestion.
+  * Comment out LDAP_NICKS in lbdb.rc because this should only be an
+    example and if it is set there it overrides other LDAP settings
+    (Closes: #391320).
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 19 Aug 2006 10:07:40 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 14 Oct 2006 14:10:03 +0200
 
 lbdb (0.32) unstable; urgency=low
 

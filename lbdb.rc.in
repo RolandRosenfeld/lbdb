@@ -136,7 +136,7 @@ METHODS="m_inmail m_passwd m_finger"
 # file. For this you have to define the selected enties as a space
 # separated list in the the variable LDAP_NICKS.
 #
-LDAP_NICKS="debian bigfoot"
+#LDAP_NICKS="debian bigfoot"
 
 
 # - m_abook query the abook(1) programm
