@@ -48,6 +48,7 @@ int main(int argc, char** argv)
   }
 
   while (vf_get_next_object(&vfobj)) {
+    fullname = 0;
     /* First extract name */
     if (vf_get_property(&prop, vfobj, VFGP_FIND, NULL, "FN", NULL))
       if ((fullname = vf_get_prop_value_string(prop, 0)))

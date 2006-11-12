@@ -1,3 +1,11 @@
+lbdb (0.33.1) unstable; urgency=low
+
+  * vcquery: avoid free() on unallocated memory if fullname is not set.
+    Thanks to Gregor Jasny <gjasny@web.de> for finding and applying a
+    patch (Closes: #395421).
+
+ --
+
 lbdb (0.33) unstable; urgency=low
 
   * Add SORT_OUTPUT=reverse_comment to do reverse sort by the third column
