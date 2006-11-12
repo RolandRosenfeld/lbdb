@@ -1,4 +1,4 @@
-lbdb (0.34) unstable; urgency=low
+lbdb (0.34) unstable; urgency=medium
 
   * vcquery: avoid free() on unallocated memory if fullname is not set.
     Thanks to Gregor Jasny <gjasny@web.de> for finding and providing a
@@ -7,7 +7,7 @@ lbdb (0.34) unstable; urgency=low
     Thanks to Gregor Jasny <gjasny@web.de> for providing a patch 
     (Closes: #395422).
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 12 Nov 2006 13:07:20 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 12 Nov 2006 13:09:16 +0100
 
 lbdb (0.33) unstable; urgency=low
 
