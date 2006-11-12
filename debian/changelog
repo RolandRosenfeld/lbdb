@@ -1,10 +1,13 @@
-lbdb (0.33.1) unstable; urgency=low
+lbdb (0.34) unstable; urgency=low
 
   * vcquery: avoid free() on unallocated memory if fullname is not set.
-    Thanks to Gregor Jasny <gjasny@web.de> for finding and applying a
+    Thanks to Gregor Jasny <gjasny@web.de> for finding and providing a
     patch (Closes: #395421).
+  * vcquery: Use value of concatenated N fields if FN field is missing.
+    Thanks to Gregor Jasny <gjasny@web.de> for providing a patch 
+    (Closes: #395422).
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 12 Nov 2006 13:07:20 +0100
 
 lbdb (0.33) unstable; urgency=low
 

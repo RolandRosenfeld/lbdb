@@ -54,6 +54,26 @@ int main(int argc, char** argv)
       if ((fullname = vf_get_prop_value_string(prop, 0)))
 	fullname = strdup(fullname);
 
+    /* No full name, lets try name */
+    if (!fullname 
+	&& vf_get_property(&prop, vfobj, VFGP_FIND, NULL, "N", NULL)) {
+      char name[STRING+1] = { 0 };
+      size_t available = STRING;
+      int props = 0;
+
+      while (available > 0 
+	     && (propval = vf_get_prop_value_string(prop, props++))) {
+        strncat(name, propval, available);
+        available -= strlen(propval);
+
+        if (available > 0)
+          strncat(name, " ", available--);
+      }
+
+      if (available < STRING)
+        fullname = strdup(name);
+    }
+
     if (vf_get_property(&prop, vfobj, VFGP_FIND, NULL, "EMAIL", NULL)) {
       do {
 	int props = 0;
