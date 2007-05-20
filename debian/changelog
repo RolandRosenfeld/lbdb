@@ -6,6 +6,8 @@ lbdb (0.35) unstable; urgency=low
     Tino Keitel <tino.keitel+debbugs@tikei.de> for providing a patch 
     (Closes: #405312).
   * Remove vcquery in distclean target (Closes: #405321).
+  * Use defaults for $KEEP_DUPES and $SORT_OUTPUT in lbdbq
+    (Closes: #422214).
 
  --
 

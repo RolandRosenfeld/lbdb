@@ -1,7 +1,7 @@
 #! @SH@
 #
 #     Copyright (C) 1998-2000  Thomas Roessler <roessler@guug.de>
-#                   1998-2006  Roland Rosenfeld <roland@spinnaker.de>
+#                   1998-2007  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -74,7 +74,7 @@ for method in $METHODS ; do
   eval ${method}_query \""$@"\" >> $collection || true
 done
 
-case "$KEEP_DUPES" in
+case "${KEEP_DUPES:-}" in
     true|yes)
 	MUNGE=cat
 	MUNGE_KEEPORDER=cat
@@ -85,7 +85,7 @@ case "$KEEP_DUPES" in
 	;;
 esac
 
-case "$SORT_OUTPUT" in
+case "${SORT_OUTPUT:-}" in
     false|no)
 	$MUNGE_KEEPORDER $collection | $TAC > $collection.uniq
 	;;
