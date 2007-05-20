@@ -168,6 +168,7 @@ distclean: clean
 	-rm -f config.status config.cache config.log Makefile
 	-rm -f *.sh
 	-rm -rf ABQuery/pbxbuild.data ABQuery/pbxbuild.sh
+	-rm -f vcquery
 
 Makefile: Makefile.in
 	./config.status

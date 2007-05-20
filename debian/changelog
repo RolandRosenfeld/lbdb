@@ -5,6 +5,7 @@ lbdb (0.35) unstable; urgency=low
   * Avoid loosing the first entry from VCF file.  Thanks to
     Tino Keitel <tino.keitel+debbugs@tikei.de> for providing a patch 
     (Closes: #405312).
+  * Remove vcquery in distclean target (Closes: #405321).
 
  --
 
