@@ -8,8 +8,11 @@ lbdb (0.35) unstable; urgency=low
   * Remove vcquery in distclean target (Closes: #405321).
   * Use defaults for $KEEP_DUPES and $SORT_OUTPUT in lbdbq
     (Closes: #422214).
+  * Update mutt_ldap_query.pl from
+    http://www.courville.org/mediawiki/index.php/Mutt_ldap_query which
+    adds SSL support.
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 20 May 2007 15:10:26 +0200
 
 lbdb (0.34) unstable; urgency=medium
 

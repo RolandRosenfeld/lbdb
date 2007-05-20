@@ -55,6 +55,8 @@ our $ignorant = 0;
 our $ldap_bind_dn = '';
 # LDAP bind password:
 our $ldap_bind_password = '';
+# disable LDAP ssl query by default
+our $ldap_ssl = 0;
 
 our %ldap_server_db = (
   'four11'		=> ['ldap.four11.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
@@ -116,6 +118,7 @@ GetOptions (
   'nickname|n=s'		=> \$ldap_server_nickname,
   'bind_dn|bd:s'                => \$ldap_bind_dn,
   'bind_password|bp:s'          => \$ldap_bind_password,
+  'ssl'				=> \$ldap_ssl,
   'debug'			=> sub { $DEBUG = 1 },
   'help|?|h'			=> \$help,
   'man|m'			=> \$man,
@@ -188,11 +191,17 @@ foreach my $askfor ( @ARGV ) {
 
   print "DEBUG: perl ldap module processing filter:\nDEBUG: $query\n" if ($DEBUG);
   my $ldap = Net::LDAP->new($ldap_server, Port => 389, Debug => 3) or die $@;
+  my $ldap;
+  if ($ldap_ssl) {
+    $ldap = Net::LDAPS->new($ldap_server, Port=> 636, Debug => 3) or die $@;
+  } else {
+    $ldap = Net::LDAP->new($ldap_server, Port => 389, Debug => 3) or die $@;
+  }
   if (defined($ldap_bind_dn) && $ldap_bind_dn ne ''
       && defined($ldap_bind_password) && $ldap_bind_password ne '') {
-      $ldap->bind($ldap_bind_dn, password=> $ldap_bind_password);
+    $ldap->bind($ldap_bind_dn, password=> $ldap_bind_password);
   } else {
-      $ldap->bind;
+    $ldap->bind;
   }
   my $mesg = $ldap->search( base => $search_base, filter => $query ) or die $@;
   if ($mesg->code && ($mesg->code ne '4')) {
@@ -259,6 +268,10 @@ specify an alternate resource file other than the system ones
 (F<@sysconfdir@/lbdb_ldap.rc> or F<@sysconfdir@/mutt_ldap_query.rc>)
 or default personal ones (F<$HOME/.lbdb/ldap.rc> or
 F<$HOME/.mutt_ldap_query.rc>).
+
+=item B<--ssl>
+
+use ssl connection
 
 =item B<--server=ldap_server> or B<-ls ldap_server>
 
