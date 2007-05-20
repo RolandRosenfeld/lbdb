@@ -1,3 +1,10 @@
+lbdb (0.35) unstable; urgency=low
+
+  * activate flavortest in emacen-install to avoid warnings and slow
+    upgrades (Closes: #399775).
+
+ --
+
 lbdb (0.34) unstable; urgency=medium
 
   * vcquery: avoid free() on unallocated memory if fullname is not set.
