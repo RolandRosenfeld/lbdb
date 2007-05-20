@@ -47,7 +47,7 @@ int main(int argc, char** argv)
     return 1;
   }
 
-  while (vf_get_next_object(&vfobj)) {
+  do {
     fullname = 0;
     /* First extract name */
     if (vf_get_property(&prop, vfobj, VFGP_FIND, NULL, "FN", NULL))
@@ -85,7 +85,7 @@ int main(int argc, char** argv)
 
     if (fullname)
       free(fullname);
-  }
+  } while (vf_get_next_object(&vfobj));
 
   return 0;
 }

@@ -2,6 +2,9 @@ lbdb (0.35) unstable; urgency=low
 
   * activate flavortest in emacen-install to avoid warnings and slow
     upgrades (Closes: #399775).
+  * Avoid loosing the first entry from VCF file.  Thanks to
+    Tino Keitel <tino.keitel+debbugs@tikei.de> for providing a patch 
+    (Closes: #405312).
 
  --
 
