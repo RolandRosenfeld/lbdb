@@ -1,5 +1,5 @@
 .\" -*- nroff -*-
-.\" Copyright (c) 1998-2006  Roland Rosenfeld <roland@spinnaker.de>
+.\" Copyright (c) 1998-2007  Roland Rosenfeld <roland@spinnaker.de>
 .\"               
 .\" This program is free software; you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 .\"
 .\" $Id$
 .\"
-.TH LBDBQ 1 "August 2006" "Unix" "User Manuals"
+.TH LBDBQ 1 "May 2007" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -372,7 +372,7 @@ Torsten Jerzembeck <toje@nightingale.ms.sub.org> (m_addr_email),
 Adrian Likins <alikins@redhat.com> (m_getent),
 Gergely Nagy <algernon@debian.org> (m_wanderlust),
 Dave Pearson <davep@davep.org> (m_palm, lbdb.el), and
-Brian Salter-Duke <b_duke@octa4.net.au> (m_muttalias).
+Brian Salter-Duke <b_duke@bigpond.net.au> (m_muttalias).
 .SH AUTHOR
 The lbdb package was initially written by Thomas Roessler
 <roessler@guug.de> and is now maintained and heavily extended by

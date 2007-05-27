@@ -1,3 +1,9 @@
+lbdb (0.35.1) unstable; urgency=low
+
+  * New mail address of Brian Salter-Duke <b_duke@bigpond.net.au>.
+
+ --
+
 lbdb (0.35) unstable; urgency=low
 
   * activate flavortest in emacen-install to avoid warnings and slow
