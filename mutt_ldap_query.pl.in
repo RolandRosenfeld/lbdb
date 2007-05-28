@@ -1,7 +1,7 @@
 #! @PERL@ -w
 #
 #     Copyright (C) 2000-2006 Marc de Courville <marc@courville.org>
-#     Copyright (C) 2005-2006 Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 2005-2007 Roland Rosenfeld <roland@spinnaker.de>
 #
 #     $Id$
 #
@@ -55,8 +55,6 @@ our $ignorant = 0;
 our $ldap_bind_dn = '';
 # LDAP bind password:
 our $ldap_bind_password = '';
-# disable LDAP ssl query by default
-our $ldap_ssl = 0;
 
 our %ldap_server_db = (
   'four11'		=> ['ldap.four11.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
@@ -118,7 +116,6 @@ GetOptions (
   'nickname|n=s'		=> \$ldap_server_nickname,
   'bind_dn|bd:s'                => \$ldap_bind_dn,
   'bind_password|bp:s'          => \$ldap_bind_password,
-  'ssl'				=> \$ldap_ssl,
   'debug'			=> sub { $DEBUG = 1 },
   'help|?|h'			=> \$help,
   'man|m'			=> \$man,
@@ -190,13 +187,7 @@ foreach my $askfor ( @ARGV ) {
   $query = "(|" . $query . ")";
 
   print "DEBUG: perl ldap module processing filter:\nDEBUG: $query\n" if ($DEBUG);
-  my $ldap = Net::LDAP->new($ldap_server, Port => 389, Debug => 3) or die $@;
-  my $ldap;
-  if ($ldap_ssl) {
-    $ldap = Net::LDAPS->new($ldap_server, Port=> 636, Debug => 3) or die $@;
-  } else {
-    $ldap = Net::LDAP->new($ldap_server, Port => 389, Debug => 3) or die $@;
-  }
+  my $ldap = Net::LDAP->new($ldap_server, Debug => 3) or die $@;
   if (defined($ldap_bind_dn) && $ldap_bind_dn ne ''
       && defined($ldap_bind_password) && $ldap_bind_password ne '') {
     $ldap->bind($ldap_bind_dn, password=> $ldap_bind_password);
@@ -269,13 +260,11 @@ specify an alternate resource file other than the system ones
 or default personal ones (F<$HOME/.lbdb/ldap.rc> or
 F<$HOME/.mutt_ldap_query.rc>).
 
-=item B<--ssl>
-
-use ssl connection
-
 =item B<--server=ldap_server> or B<-ls ldap_server>
 
-hostname of your ldap server.
+hostname of your ldap server.  You can also use an ldap://foo[:port]
+or ldaps://foo[:port] URL here to talk to different ports or SSL
+encrypted servers.
 
 =item B<--search_base=ldap_search_base> or B<-sb ldap_search_base>
 

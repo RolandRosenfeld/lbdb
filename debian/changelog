@@ -1,8 +1,11 @@
 lbdb (0.35.1) unstable; urgency=low
 
   * New mail address of Brian Salter-Duke <b_duke@bigpond.net.au>.
+  * Get rid of the SSL code from the previous version and add a comment to
+    the man page instead how you can use SSL (and also different ports)
+    using ldap[s]://foo[:port] URLs (Closes: #426316).
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Mon, 28 May 2007 11:03:22 +0200
 
 lbdb (0.35) unstable; urgency=low
 
