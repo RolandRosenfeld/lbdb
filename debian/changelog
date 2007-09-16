@@ -1,3 +1,9 @@
+lbdb (0.35.2) unstable; urgency=low
+
+  * Remove duplicate "See also: mutt" from lbdbq.man (Closes: #441588).
+
+ --
+
 lbdb (0.35.1) unstable; urgency=low
 
   * New mail address of Brian Salter-Duke <b_duke@bigpond.net.au>.

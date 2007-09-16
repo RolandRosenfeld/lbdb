@@ -17,7 +17,7 @@
 .\"
 .\" $Id$
 .\"
-.TH LBDBQ 1 "May 2007" "Unix" "User Manuals"
+.TH LBDBQ 1 "September 2007" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -341,7 +341,6 @@ Print short help of lbdbq.
 .BR pgp (1),
 .BR pgpk (1),
 .BR gpg (1),
-.BR mutt (1),
 .BR lbdb-fetchaddr (1),
 .BR nodelist2lbdb (1),
 .BR mutt_ldap_query (1),
