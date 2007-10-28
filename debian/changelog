@@ -1,6 +1,7 @@
 lbdb (0.35.2) unstable; urgency=low
 
   * Remove duplicate "See also: mutt" from lbdbq.man (Closes: #441588).
+  * Update configure using autconf 2.61.
 
  --
 
