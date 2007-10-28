@@ -18,6 +18,7 @@
 
 /* $Id$ */
 
+extern const char *Charset;
 void rfc2047_encode_string (char *, size_t, const unsigned char *);
 void rfc2047_encode_adrlist (ADDRESS *);
 

@@ -20,6 +20,11 @@
 
 #include <ctype.h>
 #include <string.h>
+#ifdef HAVE_ICONV
+#include <iconv.h>
+#include <errno.h>
+#include <limits.h>
+#endif
 
 #include "rfc822.h"
 #include "rfc2047.h"
@@ -36,7 +41,7 @@ enum
 };
 
 const char MimeSpecials[] = "@.,;<>[]\\\"()?/=";
-const char Charset[] = "iso-8859-1"; /* XXX - hack */
+const char *Charset = "iso-8859-15"; /* XXX - hack */
 
 
 int Index_hex[128] = {
@@ -68,12 +73,18 @@ int Index_64[128] = {
 #define hexval(c) Index_hex[(unsigned int)(c)]
 #define base64val(c) Index_64[(unsigned int)(c)]
 
-static int rfc2047_decode_word (char *d, const char *s, size_t len)
+static int rfc2047_decode_word (char *d, const char *s, size_t dlen)
 {
   char *p = safe_strdup (s);
   char *pp = p;
   char *pd = d;
+  size_t len = dlen;
   int enc = 0, filter = 0, count = 0, c1, c2, c3, c4;
+#ifdef HAVE_ICONV
+  char *fromcharset;
+  iconv_t cd;
+  size_t in;
+#endif
 
   while ((pp = strtok (pp, "?")) != NULL)
   {
@@ -82,7 +93,12 @@ static int rfc2047_decode_word (char *d, const char *s, size_t len)
     {
       case 2:
 	if (strcasecmp (pp, Charset) != 0)
+	{
 	  filter = 1;
+#ifdef HAVE_ICONV
+	  fromcharset = safe_strdup (pp);
+#endif
+	}
 	break;
       case 3:
 	if (toupper (*pp) == 'Q')
@@ -152,13 +168,42 @@ static int rfc2047_decode_word (char *d, const char *s, size_t len)
   safe_free (&p);
   if (filter)
   {
-    pd = d;
-    while (*pd)
+#ifdef HAVE_ICONV
+    if ((cd = iconv_open (Charset, fromcharset)) == (iconv_t)(-1))
     {
-      if (!IsPrint (*pd))
+#endif
+      pd = d;
+      while (*pd)
+      {
+	if (!IsPrint (*pd))
+	  *pd = '?';
+	pd++;
+      }
+#ifdef HAVE_ICONV
+    } else {
+      p = safe_strdup (d);
+      pp = p;
+      in = strlen (d) + 1;
+      pd = d;
+      /* maximum available buffer length for converted string */
+      len = dlen;
+      while (*pd && iconv (cd, &pp, &in, &pd, &len) == (size_t)(-1))
+      {
+	if (errno == E2BIG)
+	  break;
+
 	*pd = '?';
-      pd++;
+	pp++;
+	in--;
+	pd++;
+	len--;
+      }
+      iconv (cd, NULL, NULL, &pd, &len);
+      iconv_close (cd);
+      safe_free (&p);
     }
+    safe_free (&fromcharset);
+#endif
   }
   return (0);
 }

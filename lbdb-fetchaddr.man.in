@@ -24,6 +24,8 @@ lbdb-fetchaddr \- grab addresses from mails add append them to lbdb database
 .IR dateformat ]
 .RB [ -x
 .IR headerfieldlist ]
+.RB [ -c
+.IR charset ]
 .RB [ -a ]
 .br
 .B lbdb-fetchaddr
@@ -87,6 +89,12 @@ syntax.
 A colon separated list of header fields, which should be searched for
 mail addresses.  If this option isn't given, we fall back to
 .RB ` from:to:cc:resent-from:resent-to '.
+.TP
+.BI -c " charset"
+The charset which will be used to write the database. This should be
+the charset which the application expects (normally the one from your
+current locale).  If this option isn't given, we fall back to
+.RB ` iso-8859-15 '.
 .TP
 .B -a
 Also grab addresses without a real name.  Use the local part of the

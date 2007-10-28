@@ -41,6 +41,7 @@ usage() {
     echo "       -h                 this short help"
     echo "       -d 'dateformat'    select date format using strftime(3)"
     echo "       -x 'from:to:cc'    colon separated list of header fields"
+    echo "       -c 'charset'       charset for the database storage"
     echo "       -a                 also grep addresses without realname"
 }
 
@@ -67,6 +68,13 @@ do
 	then
 	    shift
 	    hdrlist="-x $1"
+	fi
+	;;
+    -c)
+	if [ $# -gt 1 ]
+	then
+	    shift
+	    charset="-c $1"
 	fi
 	;;
     -a)
@@ -112,7 +120,7 @@ else
   exit 1
 fi
 
-if $fetchaddr $additional_param -d "$datefmt" $hdrlist >> $db ; then
+if $fetchaddr $additional_param -d "$datefmt" $hdrlist $charset >> $db ; then
   touch $db.dirty
 fi
 

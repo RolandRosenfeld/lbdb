@@ -27,9 +27,17 @@
 #include "rfc822.h"
 #include "rfc2047.h"
 
-int main ()
+int main (int argc, char * argv[])
 {
   char buff[2048];
+#ifdef HAVE_ICONV
+  const char **charsetptr = &Charset;
+#endif
+
+#ifdef HAVE_ICONV
+  if (argc > 1)
+    *charsetptr = argv[1];
+#endif
 
   while (fgets (buff, sizeof (buff), stdin)) {
     rfc2047_decode (buff, buff, sizeof (buff));

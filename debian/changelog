@@ -2,8 +2,10 @@ lbdb (0.35.2) unstable; urgency=low
 
   * Remove duplicate "See also: mutt" from lbdbq.man (Closes: #441588).
   * Update configure using autconf 2.61.
+  * Apply charset conversation patch by Peter Colberg based on code by
+    Tobias Schlemmer (Closes: #355678).
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 28 Oct 2007 17:33:27 +0100
 
 lbdb (0.35.1) unstable; urgency=low
 

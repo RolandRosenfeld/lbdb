@@ -31,6 +31,7 @@ PERL=@PERL@
 XCODEBUILD=@XCODEBUILD@
 PBXBUILD=@PBXBUILD@
 VFORMAT=@VFORMAT@
+LIBICONV=@LIBICONV@
 
 prefix=@prefix@
 exec_prefix=@exec_prefix@
@@ -97,11 +98,11 @@ install: all
 
 fetchaddr: $(srcdir)/fetchaddr.o $(srcdir)/rfc822.o $(srcdir)/helpers.o  \
 	$(srcdir)/rfc2047.o
-	$(CC) $(CFLAGS) $(LDFLAGS) $? -o $@
+	$(CC) $(CFLAGS) $(LIBICONV) $(LDFLAGS) $? -o $@
 
 qpto8bit: $(srcdir)/qpto8bit.o $(srcdir)/rfc822.o $(srcdir)/helpers.o  \
 		$(srcdir)/rfc2047.o
-	$(CC) $(CFLAGS) $(LDFLAGS) $? -o $@
+	$(CC) $(CFLAGS) $(LIBICONV) $(LDFLAGS) $? -o $@
 
 fetch: $(srcdir)/fetch.sh
 

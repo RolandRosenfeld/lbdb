@@ -119,6 +119,9 @@ int main(int argc, char* argv[])
   char *headerlist = NULL;
   char *fieldname, *next;
   char create_real_name = 0;
+#ifdef HAVE_ICONV
+  const char **charsetptr = &Charset;
+#endif
 
   /* process command line arguments: */
   if (argc > 1) {
@@ -128,6 +131,10 @@ int main(int argc, char* argv[])
 	datefmt = argv[++i];
       } else if (!strcmp (argv[i], "-x") && i+1 < argc) {
 	headerlist = argv[++i];
+#ifdef HAVE_ICONV
+      } else if (!strcmp (argv[i], "-c") && i+1 < argc) {
+	*charsetptr = argv[++i];
+#endif
       } else if (!strcmp (argv[i], "-a")) {
 	create_real_name = 1;
       } else {
