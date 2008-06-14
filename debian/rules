@@ -56,8 +56,6 @@ install: build
 	$(MAKE) install_prefix=$(DROOT) install
 	install -m644 -oroot -groot lbdb.el \
 		$(DROOT)/usr/share/emacs/site-lisp/lbdb/lbdb.el
-	install -m644 -oroot -groot debian/override.Lintian \
-		$(DROOT)/usr/share/lintian/overrides/lbdb
 
 # Build architecture-independent files here.
 binary-indep: build install

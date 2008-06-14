@@ -12,8 +12,9 @@ lbdb (0.36) unstable; urgency=low
   * Upgrade to Standards-Version 3.8.0:
     - Fix Homepage header in control file.
   * Add copyright holders to debian/copyright file.
+  * Remove outdated override.Lintian.
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 14 Jun 2008 12:39:06 +0200
 
 lbdb (0.35.1+nmu1) unstable; urgency=low
 
