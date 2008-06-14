@@ -11,6 +11,7 @@ lbdb (0.36) unstable; urgency=low
   * Protect "make distclean" by checking whether makefile exists.
   * Upgrade to Standards-Version 3.8.0:
     - Fix Homepage header in control file.
+  * Add copyright holders to debian/copyright file.
 
  --
 

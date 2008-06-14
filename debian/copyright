@@ -13,6 +13,24 @@ Upstream Maintainer: Roland Rosenfeld <roland@spinnaker.de>
 
 Copyright:
 
+Copyright (C) 1998-2000  Thomas Roessler <roessler@guug.de>
+	      1996-2000  Michael R. Elkins <me@mutt.org>
+	      2000-2001  Dave Pearson <davep@davep.org>
+	      2000-2001  Ross Campbell <rcampbel@us.oracle.com>
+	      2000 	 Torsten Jerzembeck <toje@nightingale.ms.sub.org>
+	      2000 	 Rick Frankel <rick@rickster.com>
+	      2000  	 Brian Salter-Duke <b_duke@bigpond.net.au>
+	      2000  	 Gabor Fleischer <flocsy@mtesz.hu>
+	      2000-2006	 Marc de Courville <marc@courville.org>
+	      2001  	 Utz-Uwe Haus <haus@uuhaus.de>
+	      2002 	 Gergely Nagy <algernon@debian.org>
+	      2003	 Aaron Kaplan <kaplan@cs.rochester.edu>
+	      2003 	 Nikolaus Rath <Nikolaus@rath.org>
+	      2003-2005	 Brendan Cully <brendan@kublai.com>
+	      2004 	 Guido Guenther <agx@sigxcpu.org>
+	      2008 	 brian m. carlson <sandals@crustytoothpaste.ath.cx>
+              1998-2008  Roland Rosenfeld <roland@spinnaker.de>
+
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or (at
