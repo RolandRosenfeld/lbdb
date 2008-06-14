@@ -267,7 +267,9 @@ F<$HOME/.mutt_ldap_query.rc>).
 
 hostname of your ldap server.  You can also use an ldap://foo[:port]
 or ldaps://foo[:port] URL here to talk to different ports or SSL
-encrypted servers.
+encrypted servers.  Or use ldapi://%2fvar%2flib%2fldap_sock to access an
+ldap server via a socket (use %2f as as replacement for a slash in the file
+name).
 
 =item B<--search_base=ldap_search_base> or B<-sb ldap_search_base>
 
