@@ -210,7 +210,11 @@ foreach my $askfor ( @ARGV ) {
       my $result = '';
 # if this is email we take all the values
       if( $ldap_result_email =~ /\${$answer}/ ) {
-        @emails = $entry->get_value($answer);
+        foreach my $result ($entry->get_value($answer)) {
+          my $email = $ldap_result_email;
+          $email =~ s/\${$answer}/$result/g;
+          push @emails, $email;
+        }
       } 
       else {
         my $result = '';

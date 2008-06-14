@@ -5,8 +5,10 @@ lbdb (0.35.2) unstable; urgency=low
   * Apply charset conversation patch by Peter Colberg based on code by
     Tobias Schlemmer (Closes: #355678).
   * Remove duplicate declaration of $ignorant.
+  * Handle mail addresses in mutt_ldap_query correct. Thanks to Colin
+    Watson <cjwatson@debian.org> for providing a patch (Closes: #469288).
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 14 Jun 2008 12:11:27 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 14 Jun 2008 12:16:54 +0200
 
 lbdb (0.35.1+nmu1) unstable; urgency=low
 
