@@ -42,7 +42,7 @@ clean:
 	dh_testroot
 	rm -f build-stamp
 
-	-$(MAKE) distclean
+	[ ! -f Makefile ] || $(MAKE) distclean
 	rm -f lbdb.spec
 
 	dh_clean
