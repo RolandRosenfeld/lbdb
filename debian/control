@@ -2,8 +2,9 @@ Source: lbdb
 Section: mail
 Priority: optional
 Maintainer: Roland Rosenfeld <roland@debian.org>
-Standards-Version: 3.7.2
+Standards-Version: 3.8.0
 Build-Depends: debhelper (>= 5), perl, libvformat1-dev
+Homepage: http://www.spinnaker.de/lbdb/
 
 Package: lbdb
 Architecture: any
@@ -33,5 +34,3 @@ Description: The little brother's database for the mutt mail reader
   - m_ldap (query some LDAP server)
   - m_evolution (search in the Evolution addressbook)
   - m_vcf (search in vcard files using libvformat)
- .
-  Homepage: http://www.spinnaker.de/lbdb/

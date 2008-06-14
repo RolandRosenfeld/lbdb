@@ -9,6 +9,8 @@ lbdb (0.36) unstable; urgency=low
     Watson <cjwatson@debian.org> for providing a patch (Closes: #469288).
   * Mention ldapi URIs in mutt_ldap_query man page (Closes: #422730).
   * Protect "make distclean" by checking whether makefile exists.
+  * Upgrade to Standards-Version 3.8.0:
+    - Fix Homepage header in control file.
 
  --
 
