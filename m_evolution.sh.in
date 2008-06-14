@@ -2,11 +2,12 @@
 #
 # -*-sh-*-
 #
-#     m_evoltuion - Evoltuion Address book module for lbdb
+#     m_evolution - Evolution Address book module for lbdb
 #     Copyright (C) 2004 Guido Guenther <agx@sigxcpu.org>
 #     Copyright (C) 2004-2006 Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 2008 brian m. carlson <sandals@crustytoothpaste.ath.cx>
 #
-#     losely based on m_gnomecard
+#     loosely based on m_gnomecard
 #
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -31,11 +32,12 @@ m_evolution_query ()
     if [ -x $EVOLUTION_ADDRESSBOOK_EXPORT ]; then
     	$EVOLUTION_ADDRESSBOOK_EXPORT 2>/dev/null \
         | $AWK 'BEGIN {FS=":"; RS="\r\n"; name=""} \
-	      /^END:VCARD/ {name=""; fileas=""} \
+		  /^END:VCARD/ { if ((name!="" || fileas!="") && email!="") \
+		    printf("%s\t%s\tEV:%s\n",email,name,fileas); \
+			name=""; fileas=""; email=""} \
 	      /^FN:/ {name=$2; } \
 	      /^X-EVOLUTION-FILE-AS:/ {fileas=$2; gsub("\\\\", "", fileas)} \
-	      ( name!="" || fileas!="" ) && /^EMAIL[;:]/ \
-		    {email=$2; printf ("%s\t%s\tEV:%s\n",email,name,fileas)}'\
+	      /^EMAIL[;:]/ {email=$2;}'\
 	| grep -ia "$@"
     fi
 }
