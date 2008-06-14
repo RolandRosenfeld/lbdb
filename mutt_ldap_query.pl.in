@@ -29,7 +29,6 @@ use Pod::Usage;
 my $man = 0;
 my $help = 0;
 my $DEBUG = 0;
-my $ignorant = 0;
 my $lbdb_output = 0;
 my $version = 0;
 my $ldap_server_nickname = '';
