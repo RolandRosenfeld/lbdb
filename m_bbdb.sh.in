@@ -39,7 +39,7 @@ m_bbdb_query()
 		GNUCLIENT=gnuclient
 	    fi
         fi
-	if [ "$GNUCLIENT" == "no" ]; then
+	if [ "$GNUCLIENT" = "no" ]; then
 	    GNUCLIENT=
 	fi
 
@@ -50,7 +50,7 @@ m_bbdb_query()
 	       success=1
 	   fi
         fi
-	if [ $success == 0 ]; then
+	if [ $success = 0 ]; then
 	    if [ -z "$EMACS" ]
 	    then
 		if type emacs >/dev/null 2>&1; then

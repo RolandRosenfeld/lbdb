@@ -1,3 +1,9 @@
+lbdb (0.37) unstable; urgency=low
+
+  * Fix bashisms in m_bbdb (Closes: #530113).
+
+ --
+
 lbdb (0.36) unstable; urgency=low
 
   * Remove duplicate "See also: mutt" from lbdbq.man (Closes: #441588).
