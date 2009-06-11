@@ -4,8 +4,9 @@
 #
 #     m_evolution - Evolution Address book module for lbdb
 #     Copyright (C) 2004 Guido Guenther <agx@sigxcpu.org>
-#     Copyright (C) 2004-2006 Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 2004-2009 Roland Rosenfeld <roland@spinnaker.de>
 #     Copyright (C) 2008 brian m. carlson <sandals@crustytoothpaste.ath.cx>
+#     Copyright (C) 2009 Jan Larres <jan@majutsushi.net>
 #
 #     loosely based on m_gnomecard
 #
@@ -30,14 +31,44 @@ m_evolution_query ()
     EVOLUTION_ADDRESSBOOK_EXPORT=@EVOLUTION_ADDRESSBOOK_EXPORT@
 
     if [ -x $EVOLUTION_ADDRESSBOOK_EXPORT ]; then
-    	$EVOLUTION_ADDRESSBOOK_EXPORT 2>/dev/null \
-        | $AWK 'BEGIN {FS=":"; RS="\r\n"; name=""} \
-		  /^END:VCARD/ { if ((name!="" || fileas!="") && email!="") \
-		    printf("%s\t%s\tEV:%s\n",email,name,fileas); \
-			name=""; fileas=""; email=""} \
-	      /^FN:/ {name=$2; } \
-	      /^X-EVOLUTION-FILE-AS:/ {fileas=$2; gsub("\\\\", "", fileas)} \
-	      /^EMAIL[;:]/ {email=$2;}'\
-	| grep -ia "$@" || :
+        $EVOLUTION_ADDRESSBOOK_EXPORT 2>/dev/null \
+        | $AWK 'BEGIN {
+                    FS = ":"
+                    RS = "\r\n"
+                    name = ""
+                    emails = ""
+                    last_email = 0
+                }
+                /^END:VCARD/ {
+                    if ((name != "" || fileas != "") && emails != "") {
+                        sub("^#", "", emails)
+                        split(emails, emails_arr, "#")
+                        for (email in emails_arr)
+                            printf("%s\t%s\tEV:%s\n",emails_arr[email],name,fileas)
+                    }
+                    name = ""; fileas = ""; emails = ""
+                }
+                /^FN:/ {
+                    name = $2
+                }
+                /^X-EVOLUTION-FILE-AS:/ {
+                    fileas = $2
+                    gsub("\\\\", "", fileas)
+                }
+                # DEST-EMAIL is needed to skip addresses in list contacts
+                /^EMAIL[;:]/ && ! /X-EVOLUTION-DEST-EMAIL/ {
+                    emails = emails "#" $2
+                    last_email = 1
+                }
+                # only join email lines for performance reasons
+                /^ [^ ]/ && last_email == 1 {
+                    cont = $1
+                    sub("^ ", "", cont)
+                    emails = emails cont
+                }
+                ! /^EMAIL[;:]/ && ! /^ [^ ]/ {
+                    last_email = 0
+                }' \
+        | grep -ia "$@" || :
     fi
 }
