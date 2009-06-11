@@ -28,6 +28,6 @@ m_wanderlust_query()
     then
 	grep -ia "$@" $addresses \
 	| sed -e 's,^\([^ 	]\+\)[ 	]\+"\([^"]*\)"[ 	]\+"\([^"]\+\)",\1	\3	wl \2,g' \
-	| grep -a '^[^	][^	]*	[^	][^	]*	wl '
+	| grep -a '^[^	][^	]*	[^	][^	]*	wl ' || :
     fi
 }

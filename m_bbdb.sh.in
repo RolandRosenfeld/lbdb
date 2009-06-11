@@ -64,5 +64,5 @@ m_bbdb_query()
 		    --eval "$form"  2>/dev/null
 	    fi
 	fi
-    fi |  grep -va '^$'
+    fi |  grep -va '^$' || :
 }

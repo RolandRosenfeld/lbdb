@@ -38,6 +38,6 @@ m_evolution_query ()
 	      /^FN:/ {name=$2; } \
 	      /^X-EVOLUTION-FILE-AS:/ {fileas=$2; gsub("\\\\", "", fileas)} \
 	      /^EMAIL[;:]/ {email=$2;}'\
-	| grep -ia "$@"
+	| grep -ia "$@" || :
     fi
 }

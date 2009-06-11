@@ -26,5 +26,5 @@ m_fido_db=$HOME/.lbdb/nodelist
 m_fido_query()
 {
     test -f $m_fido_db || return
-    grep -ia "$@." $m_fido_db
+    grep -ia "$@." $m_fido_db || :
 }

@@ -33,7 +33,7 @@ m_addr_email_query()
     then
 	$ADDR_EMAIL "$@" \
 	| sed -e 's/^\([^,]*\), \([^:]*\):	\(.*\)$/\3	\1	\2/' \
-	| grep -a '@'
+	| grep -a '@' || :
 #	| sed -e 's/\(.*\):[ 	]\([^ 	].*$\)/\2	\1	addr-email/'
     fi
 }

@@ -1,6 +1,9 @@
 lbdb (0.37) unstable; urgency=low
 
   * Fix bashisms in m_bbdb (Closes: #530113).
+  * Fix query shell functions to catch non-zero exit status in case they
+    get invoked in set -e context.  Thanks to martin f. krafft
+    <madduck@debian.org> for providing a patch (Closes: #515076).
 
  --
 

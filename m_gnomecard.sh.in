@@ -65,7 +65,7 @@ m_gnomecard_query ()
 					 type=substr($1,7); \
 					 printf ("%s\t%s\tGC:%s\n", \
 						 email, name, type) }' \
-            < $file | grep -ia "$@"
+            < $file | grep -ia "$@" || :
 	fi
     done
 }

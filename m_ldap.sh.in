@@ -31,9 +31,9 @@ m_ldap_query ()
     then
 	for NICK in $LDAP_NICKS
 	do
-	    $libdir/mutt_ldap_query --lbdb_output --nickname=$NICK "$@"
+	    $libdir/mutt_ldap_query --lbdb_output --nickname=$NICK "$@" || :
 	done
     else
-	$libdir/mutt_ldap_query --lbdb_output "$@"
+	$libdir/mutt_ldap_query --lbdb_output "$@" || :
     fi
 }

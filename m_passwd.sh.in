@@ -34,5 +34,5 @@ m_passwd_query()
     esac
 
     sed -e "s/^\([^:]*\):[^:]*:\([^:]*\):[^:]*:\([^:,]*\)[,:].*\$/\1@$HOST	\3	UID \2/" /etc/passwd \
-    | grep -ia "$@" | grep -a "$IGNORESYS"
+    | grep -ia "$@" | grep -a "$IGNORESYS" || :
 }

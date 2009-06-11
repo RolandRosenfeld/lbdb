@@ -45,8 +45,7 @@ m_finger_query()
 	    $FINGER $f_user$athost 2> /dev/null \
 	    | sed -n -e "s/^Login: *\([^ ]*\)[ 	]*Name: \(.*\)$/\1@$mailhost	\2	(finger)/p" \
 		     -e "s/^Login name: *\([^ ]*\)[ 	]*In real life: \(.*\)$/\1@$mailhost	\2	(finger)/p" \
-	    | grep -av 'In real life: ???' \
-			|| true
+	    | grep -av 'In real life: ???' || :
 	 done
     fi
 }
