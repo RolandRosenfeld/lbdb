@@ -6,6 +6,7 @@ lbdb (0.37) unstable; urgency=low
     <madduck@debian.org> for providing a patch (Closes: #515076).
   * m_evolution: support line breaks and long lines.  Thanks to Jan Larres
     <jan@majutsushi.net> for providing a patch (Closes: #505540).
+  * Fix documentation concerning the quotes on lbdbq call (Closes: #542012).
 
  --
 

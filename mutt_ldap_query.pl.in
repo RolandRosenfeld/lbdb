@@ -359,7 +359,7 @@ email address, the name of the person and a comment.
 
 This perl script can be interfaced with mutt by defining in your .muttrc:
 
-    set query_command = "mutt_ldap_query.pl '%s'"
+    set query_command = "mutt_ldap_query.pl %s"
 
 Multiple requests are supported: the "Q" command of mutt accepts as argument
 a list of queries (e.g. "Gosse de\ Courville").
@@ -368,7 +368,7 @@ Alternatively mutt_ldap_query can be interfaced with the more generic
 little brother database query program (http://www.spinnaker.de/lbdb/)
 using:
 
-    set query_command = "lbdbq '%s'"
+    set query_command = "lbdbq %s"
 
 and by specifying in your ~/.lbdb/lbdbrc file another method of query
 just adding to the METHODS variable the m_ldap module e.g.:

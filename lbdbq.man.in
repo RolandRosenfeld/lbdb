@@ -312,7 +312,7 @@ Finally, to use
 from mutt, add the following line to your
 .I $HOME/.muttrc:
 .nf
-    set query_command="lbdbq '%s'"
+    set query_command="lbdbq %s"
 .fi
 .SH OPTIONS
 .IP "-v | --version"
