@@ -8,7 +8,7 @@ lbdb (0.37) unstable; urgency=low
     <jan@majutsushi.net> for providing a patch (Closes: #505540).
   * Fix documentation concerning the quotes on lbdbq call (Closes: #542012).
 
- --
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 18 May 2010 19:58:20 +0200
 
 lbdb (0.36) unstable; urgency=low
 
