@@ -9,8 +9,10 @@ lbdb (0.38) unstable; urgency=low
   * vcquery: Apply patch by martin f krafft <madduck@debian.org> to search
     in NICKNAME field, too. (Closes: #586300).
   * Add debian/source/format (1.0).
+  * Upgrade to Standards-Version 3.9.2:
+    - Add line break to Suggests.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 25 Jun 2011 16:24:41 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 25 Jun 2011 16:29:29 +0200
 
 lbdb (0.37+nmu1) unstable; urgency=low
 
