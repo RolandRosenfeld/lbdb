@@ -1,3 +1,11 @@
+lbdb (0.37+nmu1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Build-Depend on libvformat-dev instead of libvformat1-dev
+    (Closes: #583073).
+
+ -- Thomas Preud'homme <robotux@celest.fr>  Sun, 05 Jun 2011 21:03:08 +0200
+
 lbdb (0.37) unstable; urgency=low
 
   * Fix bashisms in m_bbdb (Closes: #530113).
