@@ -12,8 +12,9 @@ lbdb (0.38) unstable; urgency=low
   * Upgrade to Standards-Version 3.9.2:
     - Add line break to Suggests.
   * Remove "the" from description synopsis to make lintian happy.
+  * Fix some typos in changelog.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 25 Jun 2011 16:30:47 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 25 Jun 2011 16:39:11 +0200
 
 lbdb (0.37+nmu1) unstable; urgency=low
 
@@ -117,7 +118,7 @@ lbdb (0.32) unstable; urgency=low
   * New version of mutt_ldap_query by Marc de Courville
     <marc@courville.org> and other contributors.
   * Extend lbdb_hostname() to get the domain name from resolv.conf.  Thanks
-    to Gary Johnson <garyjohn@spk.agilent.com> for prividing this patch.
+    to Gary Johnson <garyjohn@spk.agilent.com> for providing this patch.
   * m_muttalias: Allow \"...\" around real names of aliases.  Thanks to
     Erik Shirokoff <shiro@berkeley.edu> for providing this patch.
   * Upgrade to Standards-Version 3.7.2 (no changes).
@@ -140,8 +141,8 @@ lbdb (0.31.1) unstable; urgency=low
 
 lbdb (0.31) unstable; urgency=low
 
-  * m_pine: Double-quote parens. Thanks to Stefan Mätje for reporting this
-    bug and sending a patch.
+  * m_pine: Double-quote parentheses.  Thanks to Stefan Mätje for reporting
+    this bug and sending a patch.
   * Apply patch by Brendan Cully to follow the Apple build system changes
     used to build ABQuery module.
   * Add m_vcf module for querying vcard files provided by Brendan Cully.
