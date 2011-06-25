@@ -4,8 +4,10 @@ lbdb (0.38) unstable; urgency=low
     evolution-addressbook-export at runtime, since it is no longer
     available in /usr/bin since evolution 2.30.1.2-3 
     (Closes: #583851, #598380).
-  * m_vcf: Apply patch Jamey Sharp to support VCF contacts without real
-    name (Closes: #624590).
+  * m_vcf: Apply patch by Jamey Sharp <jamey@minilop.net> to support VCF
+    contacts without real name (Closes: #624590).
+  * vcquery: Apply patch by martin f krafft <madduck@debian.org> to search
+    in NICKNAME field, too. (Closes: #586300).
 
  -- Roland Rosenfeld <roland@debian.org>  Sat, 25 Jun 2011 15:48:15 +0200
 

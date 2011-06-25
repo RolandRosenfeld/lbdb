@@ -37,7 +37,8 @@ int main(int argc, char** argv)
   VF_OBJECT_T*  vfobj;
   VF_PROP_T* prop;
   char* propval;
-  char* fullname;
+  char* fullname; /* TODO: initialise */
+  char* nickname;
 
   if (parse_opts(&opts, argc, argv))
     return 1;
@@ -73,18 +74,32 @@ int main(int argc, char** argv)
       if (available < STRING)
         fullname = strdup(name);
     }
+    /* TODO: fullname may actually still be NULL! */
+
+    nickname = NULL;
+    if (vf_get_property(&prop, vfobj, VFGP_FIND, NULL, "NICKNAME", NULL)) {
+      propval = vf_get_prop_value_string(prop, 0);
+      if (propval)
+        nickname = strdup(propval);
+    }
 
     if (vf_get_property(&prop, vfobj, VFGP_FIND, NULL, "EMAIL", NULL)) {
       do {
 	int props = 0;
 
-	while ((propval = vf_get_prop_value_string(prop, props++)))
-	  printf("%s\t%s\n", propval, fullname);
+	while ((propval = vf_get_prop_value_string(prop, props++))) {
+	  printf("%s\t%s", propval, fullname);
+	  if (nickname) printf("\t%s", nickname);
+	  putchar('\n');
+	}
       } while (vf_get_next_property(&prop));
     }
 
     if (fullname)
       free(fullname);
+    if (nickname)
+      free(nickname);
+
   } while (vf_get_next_object(&vfobj));
 
   return 0;
