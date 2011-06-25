@@ -8,8 +8,9 @@ lbdb (0.38) unstable; urgency=low
     contacts without real name (Closes: #624590).
   * vcquery: Apply patch by martin f krafft <madduck@debian.org> to search
     in NICKNAME field, too. (Closes: #586300).
+  * Add debian/source/format (1.0).
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 25 Jun 2011 15:48:15 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 25 Jun 2011 16:24:41 +0200
 
 lbdb (0.37+nmu1) unstable; urgency=low
 
