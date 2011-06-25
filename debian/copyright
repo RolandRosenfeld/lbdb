@@ -29,7 +29,7 @@ Copyright (C) 1998-2000  Thomas Roessler <roessler@guug.de>
 	      2003-2005	 Brendan Cully <brendan@kublai.com>
 	      2004 	 Guido Guenther <agx@sigxcpu.org>
 	      2008 	 brian m. carlson <sandals@crustytoothpaste.ath.cx>
-              1998-2008  Roland Rosenfeld <roland@spinnaker.de>
+              1998-2011  Roland Rosenfeld <roland@spinnaker.de>
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -43,7 +43,7 @@ General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software Foundation,
-Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
+Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 
 See /usr/share/common-licenses/GPL for the complete GNU General Public
 License.

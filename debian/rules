@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# (c) 1998-2006  Roland Rosenfeld <roland@debian.org>
+# (c) 1998-2011  Roland Rosenfeld <roland@debian.org>
 # Sample debian/rules that uses debhelper.
 # This file is public domain software, originally written by Joey Hess. 
 
@@ -31,7 +31,7 @@ build-stamp:
 		        --with-gpg=/usr/bin/gpg \
 		        --with-pgpk=/usr/bin/pgpk \
 		        --with-pgp=/usr/bin/pgp \
-		        --with-evolution-addressbook-export=/usr/bin/evolution-addressbook-export
+		        --with-evolution-addressbook-export=auto
 
 	$(MAKE) CFLAGS="$(OPTIMIZE) -Wall -g"
 

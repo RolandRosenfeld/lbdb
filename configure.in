@@ -1,3 +1,19 @@
+dnl Copyright (c) 1998-2011 Roland Rosenfeld <roland@spinnaker.de>
+dnl 
+dnl This program is free software; you can redistribute it and/or modify
+dnl it under the terms of the GNU General Public License as published by
+dnl the Free Software Foundation; either version 2 of the License, or
+dnl (at your option) any later version.
+dnl 
+dnl This program is distributed in the hope that it will be useful,
+dnl but WITHOUT ANY WARRANTY; without even the implied warranty of
+dnl MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+dnl GNU General Public License for more details.
+dnl 
+dnl You should have received a copy of the GNU General Public License
+dnl along with this program; if not, write to the Free Software Foundation,
+dnl Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+dnl 
 dnl $Id$
 
 AC_INIT(fetchaddr.c)
@@ -158,7 +174,7 @@ LBDB_ARG_WITH(GPG, gpg, m_gpg, [with GnuPG support])
 LBDB_ARG_WITH(PGPK, pgpk, m_pgp5, [with PGP 5.* support])
 LBDB_ARG_WITH(PGP, pgp, m_pgp2, [with PGP 2.* support])
 LBDB_ARG_WITH(EVOLUTION_ADDRESSBOOK_EXPORT, evolution-addressbook-export,
-              m_evolution, [with Ximan Evolution support])
+              m_evolution, [with Evolution support ('auto' searchs at runtime)])
 
 AC_PATH_PROG(PERL, perl, "no")
 if test "x$PERL" != xno ; then

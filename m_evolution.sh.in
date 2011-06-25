@@ -4,7 +4,7 @@
 #
 #     m_evolution - Evolution Address book module for lbdb
 #     Copyright (C) 2004 Guido Guenther <agx@sigxcpu.org>
-#     Copyright (C) 2004-2009 Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 2004-2011 Roland Rosenfeld <roland@spinnaker.de>
 #     Copyright (C) 2008 brian m. carlson <sandals@crustytoothpaste.ath.cx>
 #     Copyright (C) 2009 Jan Larres <jan@majutsushi.net>
 #
@@ -22,13 +22,22 @@
 # 
 #     You should have received a copy of the GNU General Public License
 #     along with this program; if not, write to the Free Software Foundation,
-#     Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
+#     Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 #
 
 m_evolution_query ()
 {
     AWK=@AWK@
     EVOLUTION_ADDRESSBOOK_EXPORT=@EVOLUTION_ADDRESSBOOK_EXPORT@
+
+    if [ "$EVOLUTION_ADDRESSBOOK_EXPORT" = "auto" ]; then
+	for e in /usr/lib/evolution/*/evolution-addressbook-export
+	do
+	    if [ -x $e ]; then
+		EVOLUTION_ADDRESSBOOK_EXPORT=$e
+	    fi
+	done
+    fi
 
     if [ -x $EVOLUTION_ADDRESSBOOK_EXPORT ]; then
         $EVOLUTION_ADDRESSBOOK_EXPORT 2>/dev/null \
