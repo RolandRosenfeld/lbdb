@@ -11,8 +11,9 @@ lbdb (0.38) unstable; urgency=low
   * Add debian/source/format (1.0).
   * Upgrade to Standards-Version 3.9.2:
     - Add line break to Suggests.
+  * Remove "the" from description synopsis to make lintian happy.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 25 Jun 2011 16:29:29 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 25 Jun 2011 16:30:47 +0200
 
 lbdb (0.37+nmu1) unstable; urgency=low
 
