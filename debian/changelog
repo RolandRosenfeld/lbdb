@@ -1,10 +1,13 @@
 lbdb (0.38) unstable; urgency=low
 
-  * Try to evaluate the location of evolution-addressbook-export at
-    runtime, since it is no longer availiable in /usr/bin since evolution
-    2.30.1.2-3 (Closes: #583851, #598380).
+  * m_evolution: Try to evaluate the location of
+    evolution-addressbook-export at runtime, since it is no longer
+    available in /usr/bin since evolution 2.30.1.2-3 
+    (Closes: #583851, #598380).
+  * m_vcf: Apply patch Jamey Sharp to support VCF contacts without real
+    name (Closes: #624590).
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 25 Jun 2011 15:28:40 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 25 Jun 2011 15:48:15 +0200
 
 lbdb (0.37+nmu1) unstable; urgency=low
 
