@@ -1,5 +1,7 @@
 /*
  *     Copyright (C) 2005  Brendan Cully <brendan@kublai.com>
+ *     Copyright (C) 2010  martin f krafft <madduck@debian.org>
+ *     Copyright (C) 2011  Roland Rosenfeld <roland@spinnaker.de>
  * 
  *     This program is free software; you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -89,7 +91,11 @@ int main(int argc, char** argv)
 
 	while ((propval = vf_get_prop_value_string(prop, props++))) {
 	  printf("%s\t%s", propval, fullname);
-	  if (nickname) printf("\t%s", nickname);
+	  if (nickname) {
+	    printf("\t%s", nickname);
+	  } else {
+	    putchar('\t');
+	  }
 	  putchar('\n');
 	}
       } while (vf_get_next_property(&prop));

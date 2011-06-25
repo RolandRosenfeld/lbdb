@@ -39,6 +39,6 @@ m_vcf_query()
       fi
     fi
 
-    $cmd | grep -ie "$QUERY" | sed 's/(null)$/ /; s/$/\t(VCF)/'
+    $cmd | grep -ie "$QUERY" | sed 's/(null)$/ /; s/	$/(VCF)/'
   done
 }
