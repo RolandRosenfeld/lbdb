@@ -8,6 +8,8 @@
 
 DROOT=`pwd`/debian/lbdb
 
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
 %:
 	dh $@ --with autotools_dev
 
