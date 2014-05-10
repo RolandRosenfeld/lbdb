@@ -4,8 +4,9 @@ lbdb (0.39) unstable; urgency=low
   * Update packaged autotools files.
   * Change debian/source-format to 3.0 (native).
   * Remove mutt-ja from Suggests, since this no longer exists.
+  * Migrate to debhelper >=9.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 10 May 2014 14:49:27 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 10 May 2014 14:56:31 +0200
 
 lbdb (0.38) unstable; urgency=low
 

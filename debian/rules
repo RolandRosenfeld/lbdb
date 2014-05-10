@@ -8,18 +8,10 @@
 
 DROOT=`pwd`/debian/lbdb
 
-OPTIMIZE=
-ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
-        OPTIMIZE=-O0
-else
-        OPTIMIZE=-O2
-endif
+%:
+	dh $@ --with autotools_dev
 
-build: build-stamp
-build-stamp:
-	dh_testdir
-
-	dh_autotools-dev_updateconfig
+override_dh_auto_configure:
 	env SH=/bin/sh MAWK=/usr/bin/awk \
 		./configure --prefix=/usr --libdir='$${prefix}/lib/lbdb' \
 			--mandir='$${prefix}/share/man' --sysconfdir=/etc \
@@ -34,65 +26,7 @@ build-stamp:
 		        --with-pgp=/usr/bin/pgp \
 		        --with-evolution-addressbook-export=auto
 
-	$(MAKE) CFLAGS="$(OPTIMIZE) -Wall -g"
-
-	touch build-stamp
-
-clean:
-	dh_testdir
-	dh_testroot
-	rm -f build-stamp
-
-	[ ! -f Makefile ] || $(MAKE) distclean
-	rm -f lbdb.spec
-
-	dh_autotools-dev_restoreconfig
-	dh_clean
-
-install: build
-	dh_testdir
-	dh_testroot
-	dh_clean -k
-	dh_installdirs
-
+override_dh_auto_install:
 	$(MAKE) install_prefix=$(DROOT) install
 	install -m644 -oroot -groot lbdb.el \
 		$(DROOT)/usr/share/emacs/site-lisp/lbdb/lbdb.el
-
-# Build architecture-independent files here.
-binary-indep: build install
-# We have nothing to do by default.
-
-# Build architecture-dependent files here.
-binary-arch: build install
-	dh_testdir
-	dh_testroot
-	dh_installchangelogs
-	dh_installdocs
-	dh_installexamples
-#	dh_install
-#	dh_installmenu
-#	dh_installdebconf	
-#	dh_installlogrotate
-	dh_installemacsen
-#	dh_installpam
-#	dh_installmime
-#	dh_installinit
-#	dh_installcron
-#	dh_installinfo
-#	dh_undocumented
-	dh_installman
-	dh_link
-	dh_strip
-	dh_compress
-	dh_fixperms
-#	dh_makeshlibs
-	dh_installdeb
-	dh_perl
-	dh_shlibdeps
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
-
-binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install
