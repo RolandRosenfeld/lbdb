@@ -2,6 +2,7 @@ lbdb (0.39) unstable; urgency=low
 
   * Use dh_autotools-dev (Closes: #727289).
   * Update packaged autotools files.
+  * Rebuild autoheader/autoconf.
   * Change debian/source-format to 3.0 (native).
   * Remove mutt-ja from Suggests, since this no longer exists.
   * Upgrade build depenency to debhelper (>= 9).
@@ -9,7 +10,7 @@ lbdb (0.39) unstable; urgency=low
   * Complete rewrite of debian/rules.
   * Now uses hardening via debhelper.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 10 May 2014 14:57:57 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 10 May 2014 15:02:38 +0200
 
 lbdb (0.38) unstable; urgency=low
 
