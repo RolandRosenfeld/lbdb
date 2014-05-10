@@ -1,8 +1,9 @@
 lbdb (0.39) unstable; urgency=low
 
   * Use dh_autotools-dev (Closes: #727289).
+  * Update packaged autotools files.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 10 May 2014 14:38:31 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 10 May 2014 14:40:14 +0200
 
 lbdb (0.38) unstable; urgency=low
 
