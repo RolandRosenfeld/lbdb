@@ -1,7 +1,8 @@
 #! @PERL@ -w
 #
 #     Copyright (C) 2000-2006 Marc de Courville <marc@courville.org>
-#     Copyright (C) 2005-2007 Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 2009      "Alexandra N. Kossovsky" <sasha@oktetlabs.ru>
+#     Copyright (C) 2005-2014 Roland Rosenfeld <roland@spinnaker.de>
 #
 #     $Id$
 #
@@ -23,6 +24,8 @@ use strict;
 use Getopt::Long;
 use Net::LDAP;
 use Pod::Usage;
+# install libgssapi-perl libauthen-sasl-perl
+use Authen::SASL qw(Perl);
 
 #------8<------8<------8<------8<---cut here--->8------>8------>8------>8------
 # The defaults
@@ -54,6 +57,10 @@ our $ignorant = 0;
 our $ldap_bind_dn = '';
 # LDAP bind password:
 our $ldap_bind_password = '';
+# LDAP TLS
+our $ldap_tls = 0;
+# LDAP SASL mechanism
+our $ldap_sasl_mech = '';
 
 our %ldap_server_db = (
   'four11'		=> ['ldap.four11.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
@@ -115,6 +122,8 @@ GetOptions (
   'nickname|n=s'		=> \$ldap_server_nickname,
   'bind_dn|bd:s'                => \$ldap_bind_dn,
   'bind_password|bp:s'          => \$ldap_bind_password,
+  'tls:s'                       => \$ldap_tls,
+  'sasl_mech|sm:s'              => \$ldap_sasl_mech,
   'debug'			=> sub { $DEBUG = 1 },
   'help|?|h'			=> \$help,
   'man|m'			=> \$man,
@@ -164,6 +173,12 @@ if ($ldap_server_nickname) {
   if (defined($option_array->[9])) {
      $ldap_bind_password = $option_array->[9];
   }
+  if (defined($option_array->[10])) {
+     $ldap_tls = $option_array->[10];
+  }
+  if (defined($option_array->[11])) {
+     $ldap_sasl_mech = $option_array->[11];
+  }
 }
 
 print "DEBUG: ldap_server='$ldap_server' search_base='$search_base' search_fields='$ldap_search_fields'\
@@ -187,7 +202,16 @@ foreach my $askfor ( @ARGV ) {
 
   print "DEBUG: perl ldap module processing filter:\nDEBUG: $query\n" if ($DEBUG);
   my $ldap = Net::LDAP->new($ldap_server, Debug => 3) or die $@;
-  if (defined($ldap_bind_dn) && $ldap_bind_dn ne ''
+  if (defined($ldap_tls) && $ldap_tls) {
+    my $mesg = $ldap->start_tls();
+    die $mesg->error if $mesg->is_error;
+  }
+  if (defined($ldap_sasl_mech) && $ldap_sasl_mech ne '') {
+    my $sasl = Authen::SASL->new(mechanism => 'GSSAPI') or die $@;
+    my $mesg =$ldap->bind(sasl => $sasl);
+    die $mesg->error if $mesg->is_error;
+  }
+  elsif (defined($ldap_bind_dn) && $ldap_bind_dn ne ''
       && defined($ldap_bind_password) && $ldap_bind_password ne '') {
     $ldap->bind($ldap_bind_dn, password=> $ldap_bind_password);
   } else {
@@ -315,6 +339,14 @@ Leave it empty for an anonmyous bind.
 the bind password for binding to the LDAP server.
 Leave it empty for an anonmyous bind.
 
+=item B<--tls=1> or B<--tls=0>
+
+enable or diable transport layer security (TLS).
+
+=item B<--sasl_mech=mechanism> or B<-sm mechanism>
+
+the SASL mechanism, for example GSSAPI (empty string to turn off).
+
 =item B<--nickname=ldap_server_nickname> or B<-n ldap_server_nickname>
 
 shortcut for avoiding to use all the previous options by using the
@@ -403,7 +435,7 @@ site configuration.  A file example is provided below:
     #                   'LDAP_RESULT_EMAIL',
     #                   'LDAP_RESULT_REALNAME',
     #                   'LDAP_RESULT_COMMENT'],
-    
+
     # a practical illustrating example being:
     #  debian	=> ['db.debian.org',
     #               'ou=users,dc=debian,dc=org',
@@ -414,7 +446,7 @@ site configuration.  A file example is provided below:
     #               '${ircnick}'],
     # the output of the query will be then: 
     # ${uid}@debian.org\t${cn} ${sn}\t${ircnick} (i.e.: email name comment)
-    
+
     # warning this database will erase default script builtin
     %ldap_server_db = (
       'four11'		=> ['ldap.four11.com',
@@ -460,7 +492,7 @@ site configuration.  A file example is provided below:
                             '${givenname} ${sn}',
                             '${o}' ],
     );
-    
+
     # hostname of your ldap server
     $ldap_server = 'ldap.four11.com';
     # ldap base search
