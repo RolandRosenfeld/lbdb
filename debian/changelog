@@ -17,8 +17,10 @@ lbdb (0.39) unstable; urgency=low
   * m_abook: fix formatting (Thanks to Alfredo Finelli) (Closes: #681526).
   * mutt-ldap-query: Add parameters for TLS and SASL_MECH (Thanks to
     Alexandra N. Kossovsky) (Closes: #512074).
+  * Mention user mutt-ldap-query configuration files in lbdbq(1) man page
+    (Closes: #534710).
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 10 May 2014 16:58:22 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 10 May 2014 17:18:48 +0200
 
 lbdb (0.38) unstable; urgency=low
 

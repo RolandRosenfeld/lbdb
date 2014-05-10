@@ -1,5 +1,5 @@
 .\" -*- nroff -*-
-.\" Copyright (c) 1998-2007  Roland Rosenfeld <roland@spinnaker.de>
+.\" Copyright (c) 1998-2014  Roland Rosenfeld <roland@spinnaker.de>
 .\"               
 .\" This program is free software; you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 .\"
 .\" $Id$
 .\"
-.TH LBDBQ 1 "September 2007" "Unix" "User Manuals"
+.TH LBDBQ 1 "May 2014" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -268,6 +268,10 @@ This module queries an LDAP server using the
 Perl modules from CPAN.  It can be configured using an external
 resource file 
 .I @sysconfdir@/lbdb_ldap.rc
+or
+.I $HOME/.lbdb/ldap.rc
+or
+.IR $HOME/.mutt_ldap_query.rc .
 You can explicity define a LDAP query in this file or you can use one
 or more of the predefined queries from the 
 .B %ldap_server_db
