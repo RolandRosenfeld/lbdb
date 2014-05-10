@@ -13,8 +13,9 @@ lbdb (0.39) unstable; urgency=low
   * Upgrade to Standards-Version 3.9.5 (no changes).
   * m_vcf: Optimize missing names handling (Thanks to Jamey Sharp)
     (Closes: #624590).
+  * Made debian/copyright machine readable.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 10 May 2014 16:13:26 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 10 May 2014 16:26:35 +0200
 
 lbdb (0.38) unstable; urgency=low
 
