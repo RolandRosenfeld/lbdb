@@ -9,8 +9,9 @@ lbdb (0.39) unstable; urgency=low
   * Change debian/compat to "9".
   * Complete rewrite of debian/rules.
   * Now uses hardening via debhelper.
+  * Add $CPPFLAGS to compiler flags to really use hardening.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 10 May 2014 15:02:38 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 10 May 2014 15:18:36 +0200
 
 lbdb (0.38) unstable; urgency=low
 

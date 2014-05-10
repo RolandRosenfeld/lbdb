@@ -1,5 +1,5 @@
 #     Copyright (C) 1998       Thomas Roessler <roessler@guug.de>
-#     Copyright (C) 1999-2005  Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 1999-2014  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -98,11 +98,11 @@ install: all
 
 fetchaddr: $(srcdir)/fetchaddr.o $(srcdir)/rfc822.o $(srcdir)/helpers.o  \
 	$(srcdir)/rfc2047.o
-	$(CC) $(CFLAGS) $(LIBICONV) $(LDFLAGS) $? -o $@
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(LIBICONV) $(LDFLAGS) $? -o $@
 
 qpto8bit: $(srcdir)/qpto8bit.o $(srcdir)/rfc822.o $(srcdir)/helpers.o  \
 		$(srcdir)/rfc2047.o
-	$(CC) $(CFLAGS) $(LIBICONV) $(LDFLAGS) $? -o $@
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(LIBICONV) $(LDFLAGS) $? -o $@
 
 fetch: $(srcdir)/fetch.sh
 
@@ -120,7 +120,7 @@ mutt_ldap_query: $(srcdir)/mutt_ldap_query.pl
 	cat mutt_ldap_query.pl > $@
 
 lbdb_dotlock: $(srcdir)/dotlock.o $(srcdir)/helpers.o
-	$(CC) $(CFLAGS) $(LDFLAGS) $? -o $@
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $? -o $@
 
 dotlock.o: $(srcdir)/dotlock.h $(srcdir)/dotlock.c
 
@@ -146,7 +146,7 @@ mutt_ldap_query.man: $(srcdir)/mutt_ldap_query.pl
 m_vcf: vcquery
 
 vcquery: vcquery.o
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $? -lvformat
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $? -lvformat
 
 m_osx_addressbook: ABQuery/sym/ABQuery
 
