@@ -10,8 +10,9 @@ lbdb (0.39) unstable; urgency=low
   * Complete rewrite of debian/rules.
   * Now uses hardening via debhelper.
   * Add $CPPFLAGS to $CFLAGS to really use hardening.
+  * Upgrade to Standards-Version 3.9.5 (no changes).
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 10 May 2014 15:18:36 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 10 May 2014 15:23:40 +0200
 
 lbdb (0.38) unstable; urgency=low
 
