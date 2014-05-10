@@ -14,8 +14,9 @@ lbdb (0.39) unstable; urgency=low
   * m_vcf: Optimize missing names handling (Thanks to Jamey Sharp)
     (Closes: #624590).
   * Made debian/copyright machine readable.
+  * m_abook: fix formatting (Thanks to Alfredo Finelli) (Closes: #681526).
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 10 May 2014 16:26:35 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 10 May 2014 16:35:18 +0200
 
 lbdb (0.38) unstable; urgency=low
 
