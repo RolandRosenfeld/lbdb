@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
-# (c) 1998-2011  Roland Rosenfeld <roland@debian.org>
-# Sample debian/rules that uses debhelper.
+# (c) 1998-2014  Roland Rosenfeld <roland@debian.org>
+# Based on sample debian/rules that uses debhelper.
 # This file is public domain software, originally written by Joey Hess. 
 
 # Uncomment this to turn on verbose mode.
@@ -19,6 +19,7 @@ build: build-stamp
 build-stamp:
 	dh_testdir
 
+	dh_autotools-dev_updateconfig
 	env SH=/bin/sh MAWK=/usr/bin/awk \
 		./configure --prefix=/usr --libdir='$${prefix}/lib/lbdb' \
 			--mandir='$${prefix}/share/man' --sysconfdir=/etc \
@@ -45,6 +46,7 @@ clean:
 	[ ! -f Makefile ] || $(MAKE) distclean
 	rm -f lbdb.spec
 
+	dh_autotools-dev_restoreconfig
 	dh_clean
 
 install: build
