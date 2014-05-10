@@ -11,8 +11,10 @@ lbdb (0.39) unstable; urgency=low
   * Now uses hardening via debhelper.
   * Add $CPPFLAGS to $CFLAGS to really use hardening.
   * Upgrade to Standards-Version 3.9.5 (no changes).
+  * m_vcf: Optimize missing names handling (Thanks to Jamey Sharp)
+    (Closes: #624590).
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 10 May 2014 15:23:40 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 10 May 2014 16:13:26 +0200
 
 lbdb (0.38) unstable; urgency=low
 
