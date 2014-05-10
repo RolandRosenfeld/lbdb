@@ -19,8 +19,8 @@
 
 CC=@CC@
 LDFLAGS=@LDFLAGS@
-CFLAGS=@CFLAGS@
 CPPFLAGS=@CPPFLAGS@
+CFLAGS=@CFLAGS@ $(CPPFLAGS)
 DEFS=@DEFS@
 INSTALL=@INSTALL@
 MODULES=@MODULES@
@@ -98,11 +98,11 @@ install: all
 
 fetchaddr: $(srcdir)/fetchaddr.o $(srcdir)/rfc822.o $(srcdir)/helpers.o  \
 	$(srcdir)/rfc2047.o
-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LIBICONV) $(LDFLAGS) $? -o $@
+	$(CC) $(CFLAGS) $(LIBICONV) $(LDFLAGS) $? -o $@
 
 qpto8bit: $(srcdir)/qpto8bit.o $(srcdir)/rfc822.o $(srcdir)/helpers.o  \
 		$(srcdir)/rfc2047.o
-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LIBICONV) $(LDFLAGS) $? -o $@
+	$(CC) $(CFLAGS) $(LIBICONV) $(LDFLAGS) $? -o $@
 
 fetch: $(srcdir)/fetch.sh
 
@@ -120,7 +120,7 @@ mutt_ldap_query: $(srcdir)/mutt_ldap_query.pl
 	cat mutt_ldap_query.pl > $@
 
 lbdb_dotlock: $(srcdir)/dotlock.o $(srcdir)/helpers.o
-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $? -o $@
+	$(CC) $(CFLAGS) $(LDFLAGS) $? -o $@
 
 dotlock.o: $(srcdir)/dotlock.h $(srcdir)/dotlock.c
 
@@ -146,7 +146,7 @@ mutt_ldap_query.man: $(srcdir)/mutt_ldap_query.pl
 m_vcf: vcquery
 
 vcquery: vcquery.o
-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $? -lvformat
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $? -lvformat
 
 m_osx_addressbook: ABQuery/sym/ABQuery
 
