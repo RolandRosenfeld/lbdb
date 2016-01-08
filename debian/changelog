@@ -4,8 +4,10 @@ lbdb (0.40) unstable; urgency=medium
   * Avoid gpg trustdb check in m_gpg, since this may take a long time
     while lbdb is not responsible.  Thanks to Gregor Zattler for providing
     a patch (Closes: #805235).
+  * mutt_ldap_query: escape parentheses, since perl 5.22 complains about
+    this otherwise.  Thanks to Olivier Mehani.
 
- -- Roland Rosenfeld <roland@debian.org>  Fri, 08 Jan 2016 18:04:32 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Fri, 08 Jan 2016 18:25:05 +0100
 
 lbdb (0.39) unstable; urgency=low
 
