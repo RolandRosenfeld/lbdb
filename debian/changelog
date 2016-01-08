@@ -1,8 +1,11 @@
 lbdb (0.40) unstable; urgency=medium
 
   * Upgrade to Standards-Version 3.9.6 (no changes).
+  * Avoid gpg trustdb check in m_gpg, since this may take a long time
+    while lbdb is not responsible.  Thanks to Gregor Zattler for providing
+    a patch (Closes: #805235).
 
- -- Roland Rosenfeld <roland@debian.org>  Fri, 08 Jan 2016 17:48:29 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Fri, 08 Jan 2016 18:04:32 +0100
 
 lbdb (0.39) unstable; urgency=low
 
@@ -18,7 +21,7 @@ lbdb (0.39) unstable; urgency=low
   * Add $CPPFLAGS to $CFLAGS to really use hardening.
   * Upgrade to Standards-Version 3.9.5 (no changes).
   * m_vcf: Optimize missing names handling (Thanks to Jamey Sharp)
-    (Closes: #624590).
+    (Closes: #633920).
   * Made debian/copyright machine readable.
   * m_abook: fix formatting (Thanks to Alfredo Finelli) (Closes: #681526).
   * mutt-ldap-query: Add parameters for TLS and SASL_MECH (Thanks to
