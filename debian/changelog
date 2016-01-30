@@ -8,8 +8,11 @@ lbdb (0.40) unstable; urgency=medium
     this otherwise.  Thanks to Olivier Mehani and Francois Charlier.
     (Closes: #812785).  This also solves launcpad bug 1539774 and RedHat
     bug 1259881.
+  * Update emacs support (Add dependency on emacsen-common >=2.0.8, add
+    emacsen-compat).
+  * Run wrap-and-sort.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 30 Jan 2016 09:02:07 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 30 Jan 2016 09:11:42 +0100
 
 lbdb (0.39) unstable; urgency=low
 

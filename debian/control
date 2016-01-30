@@ -3,14 +3,22 @@ Section: mail
 Priority: optional
 Maintainer: Roland Rosenfeld <roland@debian.org>
 Standards-Version: 3.9.6
-Build-Depends: debhelper (>= 9), perl, libvformat-dev, autotools-dev
+Build-Depends: autotools-dev, debhelper (>= 9), libvformat-dev, perl
 Homepage: http://www.spinnaker.de/lbdb/
 
 Package: lbdb
 Architecture: any
-Depends: ${shlibs:Depends}, ${perl:Depends}, ${misc:Depends}
-Suggests: mutt, procmail, finger, abook, libpalm-perl,
- libnet-ldap-perl, libauthen-sasl-perl
+Depends: emacsen-common (>= 2.0.8),
+         ${misc:Depends},
+         ${perl:Depends},
+         ${shlibs:Depends}
+Suggests: abook,
+          finger,
+          libauthen-sasl-perl,
+          libnet-ldap-perl,
+          libpalm-perl,
+          mutt,
+          procmail
 Description: Little Brother's DataBase for the mutt mail reader
  This package consists of a set of small tools, which collect mail
  addresses from several sources and offer these addresses to the mutt
