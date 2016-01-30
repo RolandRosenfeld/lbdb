@@ -341,7 +341,7 @@ Leave it empty for an anonmyous bind.
 
 =item B<--tls=1> or B<--tls=0>
 
-enable or diable transport layer security (TLS).
+enable or disable transport layer security (TLS).
 
 =item B<--sasl_mech=mechanism> or B<-sm mechanism>
 

@@ -1,9 +1,9 @@
 .\" -*-nroff-*-
 .\"
 .\"
-.\"     Copyright (C) 1996-8 Michael R. Elkins <me@cs.hmc.edu>
-.\"	Copyright (C) 1998-9 Thomas Roessler <roessler@guug.de>
-.\"	Copyright (C) 2005   Roland Rosenfeld <roland@spinnaker.de>
+.\"     Copyright (C) 1996-1998 Michael R. Elkins <me@cs.hmc.edu>
+.\"	Copyright (C) 1998-1999 Thomas Roessler <roessler@guug.de>
+.\"	Copyright (C) 2005-2016 Roland Rosenfeld <roland@spinnaker.de>
 .\" 
 .\"     This program is free software; you can redistribute it and/or modify
 .\"     it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 .\"     along with this program; if not, write to the Free Software Foundation,
 .\"     Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
 .\"
-.TH dotlock 1 "OCTOBER 2005" Unix "User Manuals"
+.TH dotlock 1 "JANUARY 2016" Unix "User Manuals"
 .SH NAME
 .PP
 lbdb_dotlock \- Lock mail spool files.
@@ -86,7 +86,7 @@ The program was successful.
 .TP 
 .B "1 \- DL_EX_ERROR"
 An unspecified error such as bad command line parameters,
-lack of system memory and the like has occured.
+lack of system memory and the like has occurred.
 .TP 
 .B "3 \- DL_EX_EXIST"
 The 

@@ -11,8 +11,9 @@ lbdb (0.40) unstable; urgency=medium
   * Update emacs support (Add dependency on emacsen-common >=2.0.8, add
     emacsen-compat).
   * Run wrap-and-sort.
+  * Fix several man page typos.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 30 Jan 2016 09:11:42 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 30 Jan 2016 09:21:41 +0100
 
 lbdb (0.39) unstable; urgency=low
 
