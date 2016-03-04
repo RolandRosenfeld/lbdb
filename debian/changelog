@@ -1,8 +1,13 @@
 lbdb (0.41) unstable; urgency=medium
 
   * Remove CVS $Id$ tags and the like, which don't work with git.
+  * Apply several patches by Lucas Hoffmann:
+    - m_wanderlust: Fix variable name.
+    - m_gnomecard, m_pine: Remove needless backslashes from embedded AWK.
+    - lbdbq: Optimize counting lines.
+    - lbdbq: Remove unreached break after exit.
 
- -- Roland Rosenfeld <roland@debian.org>  Fri, 04 Mar 2016 12:41:45 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Fri, 04 Mar 2016 13:16:03 +0100
 
 lbdb (0.40) unstable; urgency=medium
 
