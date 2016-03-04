@@ -7,8 +7,9 @@ lbdb (0.41) unstable; urgency=medium
     - lbdbq: Optimize counting lines.
     - lbdbq: Remove unreached break after exit.
   * Upgrade to Standards-Version 3.9.7 (no changes).
+  * Update debian/copyright.
 
- -- Roland Rosenfeld <roland@debian.org>  Fri, 04 Mar 2016 13:50:07 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Fri, 04 Mar 2016 13:53:02 +0100
 
 lbdb (0.40) unstable; urgency=medium
 
