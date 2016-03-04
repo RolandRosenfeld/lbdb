@@ -101,9 +101,9 @@ case "${SORT_OUTPUT:-}" in
 	;;
 esac
 
-lines=`wc -l $collection.uniq | awk '{print $1}'`
+lines=`wc -l < $collection.uniq`
 
-if [ $lines = "0" ]
+if [ $lines -eq 0 ]
 then
     echo "lbdbq: no matches"
     exit 1
