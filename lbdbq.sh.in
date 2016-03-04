@@ -32,14 +32,14 @@ case "$1" in
     -v|--version)
 	echo "lbdbq version $LBDB_VERSION"
 	exit 0
-	break;;
+	;;
     -h|--help)
 	PROG=`basename $0`
 	echo "Usage: $PROG 'something'   search addresses matching 'something'"
 	echo "       $PROG -v|--version  print version of lbdbq"
 	echo "       $PROG -h|--help     this short help"
 	exit 0
-	break;;
+	;;
 esac
 
 . $libdir/lbdb_lib
