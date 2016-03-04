@@ -1,5 +1,5 @@
 #     Copyright (C) 1998       Thomas Roessler <roessler@guug.de>
-#     Copyright (C) 1999-2014  Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 1999-2016  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -96,11 +96,11 @@ install: all
 
 fetchaddr: $(srcdir)/fetchaddr.o $(srcdir)/rfc822.o $(srcdir)/helpers.o  \
 	$(srcdir)/rfc2047.o
-	$(CC) $(CFLAGS) $(LIBICONV) $(LDFLAGS) $? -o $@
+	$(CC) $(CFLAGS) $(LDFLAGS) $? -o $@ $(LIBICONV)
 
 qpto8bit: $(srcdir)/qpto8bit.o $(srcdir)/rfc822.o $(srcdir)/helpers.o  \
 		$(srcdir)/rfc2047.o
-	$(CC) $(CFLAGS) $(LIBICONV) $(LDFLAGS) $? -o $@
+	$(CC) $(CFLAGS) $(LDFLAGS) $? -o $@ $(LIBICONV)
 
 fetch: $(srcdir)/fetch.sh
 
