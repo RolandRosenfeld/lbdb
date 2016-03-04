@@ -40,6 +40,11 @@ int main(int argc, char** argv)
   char* propval;
   char* fullname; /* TODO: initialise */
   char* nickname;
+  const unsigned int namemap[5] = {3, 1, 2, 0, 4};
+  /* RFC 2426 defines N: field with 5 components:
+   * Family Name (3), Given Name (1), Additional Names (2), 
+   * Honorific Prefixes (0), Honorific Suffixes (4)
+   */
 
   if (parse_opts(&opts, argc, argv))
     return 1;
@@ -63,13 +68,14 @@ int main(int argc, char** argv)
       size_t available = STRING;
       int props = 0;
 
-      while (available > 0 
-	     && (propval = vf_get_prop_value_string(prop, props++))) {
-        strncat(name, propval, available);
-        available -= strlen(propval);
+      while (available > 0 && props < 5) {
+	if (propval = vf_get_prop_value_string(prop, namemap[props++])) {
+	  strncat(name, propval, available);
+	  available -= strlen(propval);
 
-        if (available > 0)
-          strncat(name, " ", available--);
+	  if (available > 0)
+	    strncat(name, " ", available--);
+	}
       }
 
       if (available < STRING)
