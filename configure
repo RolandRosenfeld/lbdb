@@ -623,6 +623,7 @@ ac_subst_vars='LTLIBOBJS
 LIBOBJS
 MODULES
 LBDB_VERSION
+SYSCONF_DIR
 VFORMAT
 PBXBUILD
 XCODEBUILD
@@ -6248,6 +6249,10 @@ MODULES_SH=""
 for i in $MODULES ; do
 	MODULES_SH="$MODULES_SH $i.sh"
 done
+
+# some voodoo to replace ${prefix} in perl script (mutt_ldap_query.pl):
+SYSCONF_DIR=`test "$prefix" = NONE && prefix=$ac_default_prefix; eval echo "${sysconfdir}"`
+
 
 LBDB_VERSION=`sed -e '2,10000d;s/^.*(\(.*\)).*$/\1/' < debian/changelog`
 

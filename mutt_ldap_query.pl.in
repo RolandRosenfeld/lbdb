@@ -92,8 +92,8 @@ sub process_file {
 }
 
 # first we need to apply defaults
-process_file("@sysconfdir@/lbdb_ldap.rc",
-             "@sysconfdir@/mutt_ldap_query.rc",
+process_file("@SYSCONF_DIR@/lbdb_ldap.rc",
+             "@SYSCONF_DIR@/mutt_ldap_query.rc",
              "$ENV{HOME}/.lbdb/ldap.rc",
 	     "$ENV{HOME}/.mutt_ldap_query.rc");
 
@@ -271,7 +271,7 @@ mutt_ldap_query.pl [options] <name_to_query> [[<other_name_to_query>] ...]
 =item B<--config=config_file> or B<-c config_file>
 
 specify an alternate resource file other than the system ones
-(F<@sysconfdir@/lbdb_ldap.rc> or F<@sysconfdir@/mutt_ldap_query.rc>)
+(F<@SYSCONF_DIR@/lbdb_ldap.rc> or F<@SYSCONF_DIR@/mutt_ldap_query.rc>)
 or default personal ones (F<$HOME/.lbdb/ldap.rc> or
 F<$HOME/.mutt_ldap_query.rc>).
 
