@@ -22,7 +22,7 @@ m_wanderlust_query()
 {
     addresses=${WANDERLUST_ADDRESSES:-${HOME}/.addresses}
 
-    if [ -f $addesses ]
+    if [ -f $addresses ]
     then
 	grep -ia "$@" $addresses \
 	| sed -e 's,^\([^ 	]\+\)[ 	]\+"\([^"]*\)"[ 	]\+"\([^"]\+\)",\1	\3	wl \2,g' \
