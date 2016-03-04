@@ -58,20 +58,20 @@ m_pine_query()
 	    fi
 	    if [ -f $pinerc ] ; then
 		addressbook=`\
-		    $AWK 'BEGIN {SPACE="";} \
-		    /^(global-)?address-book[ 	]*=/ { \
-			sub("^(global-)?address-book[ 	]*=",""); \
-			while (/[ 	]*[^ 	]+[ 	]+([^ ,	]+)[ 	]*,/) { \
-			    sub("[ 	]*[^ 	]+[ 	]+",""); \
-			    sub("[ ,	].*",""); \
-			    printf("%s%s",SPACE,$0); \
-			    SPACE=" "; \
-			    getline; \
-			} \
-			sub("[ 	]*[^ 	]+[ 	]+",""); \
-			sub("[ 	].*",""); \
-			printf("%s%s",SPACE,$0); \
-			SPACE=" "; \
+		    $AWK 'BEGIN {SPACE="";}
+		    /^(global-)?address-book[ 	]*=/ {
+			sub("^(global-)?address-book[ 	]*=","");
+			while (/[ 	]*[^ 	]+[ 	]+([^ ,	]+)[ 	]*,/) {
+			    sub("[ 	]*[^ 	]+[ 	]+","");
+			    sub("[ ,	].*","");
+			    printf("%s%s",SPACE,$0);
+			    SPACE=" ";
+			    getline;
+			}
+			sub("[ 	]*[^ 	]+[ 	]+","");
+			sub("[ 	].*","");
+			printf("%s%s",SPACE,$0);
+			SPACE=" ";
 		    }' < $pinerc`
 	    fi
 	    addressbooks="${addressbook# } ${addressbooks# }"
@@ -85,45 +85,45 @@ m_pine_query()
 	fi
 	if [ -f $file ]
 	then
-	    cat $file | $qpto8bit | $AWK -v find="$@" '\
-	    function out() { \
+	    cat $file | $qpto8bit | $AWK -v find="$@" '
+	    function out() {
 		if (match(tolower(line),low_find)) {
-		    #order: nick full addr fcc comm \
-		    R[1] = "^[^	]*"; \
-		    R[2] = "^[^	]*	[^	]*"; \
-		    R[3] = "^[^	]*	[^	]*	\\(?[^	]*\\)?"; \
-		    R[4] = "^[^	]*	[^	]*	[^	]*	[^	]*"; \
-		    R[5] = "^[^	]*	[^	]*	[^	]*	[^	]*	[^	]*"; \
-		    beg = 1; \
-		    for (i=1;i<=5;i++) { \
-			match(line,R[i]); \
-			A[i] = substr(line,beg,RLENGTH-beg+1); \
-			beg = RLENGTH+2; \
-		    } \
-		    if (A[2] == "") {A[2] = " "} \
-		    if (match(A[3],/\(.*\)/)) {A[3] = substr(A[3],2,length(A[3])-2)} \
-		    if (A[5] != "") {A[5] = " [" A[5] "]"} \
-		    printf "%s	%s	%s%s (pine)\n",A[3],A[2],A[1],A[5]; \
-		} \
-	    } \
-	    BEGIN { \
-		FS="	"; \
-		low_find = tolower(find); \
-		getline; \
-		while (/^#DELETED/) {getline} ; \
-		line = $0 \
-	    } \
-	    $0 !~ /^#DELETED/ { \
-		if (/^   /) { \
-		    gsub("   ",""); \
-		    line = line $0; \
-		} else { \
-		    out(); \
-		    line = $0; \
-		} \
-	    } \
-	    END { \
-		out() \
+		    #order: nick full addr fcc comm
+		    R[1] = "^[^	]*";
+		    R[2] = "^[^	]*	[^	]*";
+		    R[3] = "^[^	]*	[^	]*	\\(?[^	]*\\)?";
+		    R[4] = "^[^	]*	[^	]*	[^	]*	[^	]*";
+		    R[5] = "^[^	]*	[^	]*	[^	]*	[^	]*	[^	]*";
+		    beg = 1;
+		    for (i=1;i<=5;i++) {
+			match(line,R[i]);
+			A[i] = substr(line,beg,RLENGTH-beg+1);
+			beg = RLENGTH+2;
+		    }
+		    if (A[2] == "") {A[2] = " "}
+		    if (match(A[3],/\(.*\)/)) {A[3] = substr(A[3],2,length(A[3])-2)}
+		    if (A[5] != "") {A[5] = " [" A[5] "]"}
+		    printf "%s	%s	%s%s (pine)\n",A[3],A[2],A[1],A[5];
+		}
+	    }
+	    BEGIN {
+		FS="	";
+		low_find = tolower(find);
+		getline;
+		while (/^#DELETED/) {getline} ;
+		line = $0
+	    }
+	    $0 !~ /^#DELETED/ {
+		if (/^   /) {
+		    gsub("   ","");
+		    line = line $0;
+		} else {
+		    out();
+		    line = $0;
+		}
+	    }
+	    END {
+		out()
 	    }'
 	fi
     done

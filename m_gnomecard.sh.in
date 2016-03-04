@@ -55,13 +55,14 @@ m_gnomecard_query ()
 
 	if [ -f $file ]
 	then
-	    $AWK 'BEGIN {FS=":"; RS="\r\n"; name=""} \
-		  /^END:VCARD/ {name=""} \
-		  /^FN[:;]/ {name=$2} \
-		  name!="" && /^EMAIL;/ {email=$2; \
-					 type=substr($1,7); \
-					 printf ("%s\t%s\tGC:%s\n", \
-						 email, name, type) }' \
+	    $AWK 'BEGIN {FS=":"; RS="\r\n"; name=""}
+		  /^END:VCARD/ {name=""}
+		  /^FN[:;]/ {name=$2}
+		  name!="" && /^EMAIL;/ {
+		      email=$2;
+		      type=substr($1,7);
+		      printf ("%s\t%s\tGC:%s\n", email, name, type)
+		  }' \
             < $file | grep -ia "$@" || :
 	fi
     done
