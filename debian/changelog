@@ -1,3 +1,9 @@
+lbdb (0.41) unstable; urgency=medium
+
+  * Remove CVS $Id$ tags and the like, which don't work with git.
+
+ -- Roland Rosenfeld <roland@debian.org>  Fri, 04 Mar 2016 12:41:45 +0100
+
 lbdb (0.40) unstable; urgency=medium
 
   * Upgrade to Standards-Version 3.9.6 (no changes).

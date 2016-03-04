@@ -16,8 +16,6 @@
  *     Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
  */ 
 
-/* $Id$ */
-
 extern const char *Charset;
 void rfc2047_encode_string (char *, size_t, const unsigned char *);
 void rfc2047_encode_adrlist (ADDRESS *);

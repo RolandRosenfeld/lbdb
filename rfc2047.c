@@ -16,8 +16,6 @@
  *     Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
  */ 
 
-/* $Id$ */
-
 #include <ctype.h>
 #include <string.h>
 #ifdef HAVE_ICONV

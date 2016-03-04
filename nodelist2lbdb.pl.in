@@ -2,8 +2,6 @@
 #
 # -*-perl-*-
 #
-# $Id$
-#
 # This little script reads Fido nodelist.XXX (and points24.YYY) in and
 # generates a list with the following format from it: 
 # <mailaddress> TAB <realname> TAB <comment>

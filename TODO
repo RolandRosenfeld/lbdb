@@ -1,5 +1,3 @@
-$Id$
-
 - Add new modules:
     - Add m_pgp6 for PGP 6.5.1.
 
@@ -33,7 +31,6 @@ $Id$
 - Add UTF-8 support.
 
 Roland Rosenfeld <roland@spinnaker.de>
-$Id$
 
 Local variables:
 mode: text

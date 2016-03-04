@@ -28,8 +28,6 @@
  *     Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
  */
 
-/* $Id$ */
-
 #ifndef _HELPERS_H
 #define _HELPERS_H
 

@@ -4,8 +4,6 @@
 #     Copyright (C) 2009      "Alexandra N. Kossovsky" <sasha@oktetlabs.ru>
 #     Copyright (C) 2005-2016 Roland Rosenfeld <roland@spinnaker.de>
 #
-#     $Id$
-#
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
 #     the Free Software Foundation; either version 2 of the License, or
@@ -72,17 +70,8 @@ our %ldap_server_db = (
 );
 #------8<------8<------8<------8<---cut here--->8------>8------>8------>8------
 
-# Return version string from CVS tag
 sub versionstring {
-  my $ver = ' $Name$ ';
-  $ver =~ s/Name//g;
-  $ver =~ s/[:\$]//g;
-  $ver =~ s/\s+//g;
-  $ver =~ s/^v//g;
-  $ver =~ s/_/\./g;
-  if ($ver eq '') {
-    $ver = "devel";
-  }
+  my $ver = '@LBDB_VERSION@';
   return($ver . " <marc\@courville.org>");
 }
 
@@ -140,7 +129,6 @@ pod2usage(-verbose => 2) if $man;
 
 if ($version) {
   print "mutt_ldap_query version " . &versionstring() . "\n";
-  print '$Id$ ' . "\n";
   exit(0);
 }
 

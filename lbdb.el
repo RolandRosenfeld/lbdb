@@ -1,6 +1,5 @@
 ;;; lbdb.el - Little Brother's Database interface.
 ;; Copyright 2000,2001 by Dave Pearson <davep@davep.org>
-;; $Revision$
 
 ;; lbdb.el is free software distributed under the terms of the GNU
 ;; General Public Licence, version 2. For details see the file COPYING.

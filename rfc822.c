@@ -16,8 +16,6 @@
  *     Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
  */ 
 
-/* $Id$ */
-
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>

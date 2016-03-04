@@ -1,7 +1,5 @@
 # -*- perl -*-
 #
-# $Id$
-#
 # The format of each entry of the ldap server database is the following:
 # LDAP_NICKNAME => ['LDAP_SERVER',
 #                   'LDAP_SEARCH_BASE',

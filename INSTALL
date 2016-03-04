@@ -17,5 +17,3 @@ installed to use the m_palm module.
 
 You need to have the Net::LDAP Perl module installed to use the m_ldap
 module.
-
-$Id$
