@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 1998-2000  Thomas Roessler <roessler@guug.de>
- *  Copyright (C) 2000       Roland Rosenfeld <roland@spinnaker.de>
+ *  Copyright (C) 2000-2016  Roland Rosenfeld <roland@spinnaker.de>
  *
  *  This program is free software; you can redistribute
  *  it and/or modify it under the terms of the GNU
@@ -202,8 +202,10 @@ int main(int argc, char* argv[])
       {
 	safe_free(&cur_hdr->value);
 	cur_hdr->value = safe_strdup(buff + cur_hdr->taglen);
-	cur_hdr->len = strlen(cur_hdr->value);
-	chop(cur_hdr);
+	if (cur_hdr->value) {
+	  cur_hdr->len = strlen(cur_hdr->value);
+	  chop(cur_hdr);
+	}
       }
     }
     
