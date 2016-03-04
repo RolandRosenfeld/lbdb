@@ -25,7 +25,7 @@ lbdb (0.40) unstable; urgency=medium
     a patch (Closes: #805235).
   * mutt_ldap_query: escape parentheses, since perl 5.22 complains about
     this otherwise.  Thanks to Olivier Mehani and Francois Charlier.
-    (Closes: #812785).  This also solves launcpad bug 1539774 and RedHat
+    (Closes: #812785).  This also solves launchpad bug 1539774 and RedHat
     bug 1259881.
   * Update emacs support (Add dependency on emacsen-common >=2.0.8, add
     emacsen-compat).
