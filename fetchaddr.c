@@ -30,7 +30,8 @@
 #include "rfc2047.h"
 
 #define MAXHDRS 21
-
+ /* max personal length in bytes */
+#define MAX_PERSONAL_LENGTH 70
 struct header
 {
   char *tag;
@@ -86,8 +87,10 @@ int writeout(struct header *h, const char *datefmt,
     }
     if(!p->group && p->mailbox && *p->mailbox && p->personal)
     {
-      if(p->personal && strlen(p->personal) > 30)
-	strcpy(p->personal + 27, "...");
+      const char end[] = "...";
+
+      if(p->personal && strlen(p->personal) > MAX_PERSONAL_LENGTH)
+	strcpy(p->personal + MAX_PERSONAL_LENGTH - strlen(end), end);
 
       if ((c=strchr(p->mailbox,'@')))
 	for(c++; *c; c++)
