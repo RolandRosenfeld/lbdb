@@ -153,7 +153,8 @@ ABQuery: ABQuery.m
 
 clean:
 	-rm -f *.o *~ $(ALL) munge.awk munge-keeporder.awk tac.awk ABQuery \
-		nodelist2lbdb.pl palm_lsaddr.pl mutt_ldap_query.pl lbdb_dotlock
+		nodelist2lbdb.pl palm_lsaddr.pl mutt_ldap_query.pl \
+		lbdb_dotlock lbdb.spec
 	-rm -rf ABQuery.dSYM
 
 distclean: clean
