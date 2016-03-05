@@ -17,8 +17,9 @@ lbdb (0.41) unstable; urgency=medium
   * Move LIBICONV linking to the end of the cc call to make cygwin happy.
   * Substitute ${prefix} in @sysconfdir@ in mutt_ldap_query.pl.
   * Fix more bashisms (Thanks to Thorsten Glaser).
+  * Update config.guess and config.sub.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 05 Mar 2016 01:01:09 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 05 Mar 2016 10:44:28 +0100
 
 lbdb (0.40) unstable; urgency=medium
 
