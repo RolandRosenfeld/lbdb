@@ -18,8 +18,9 @@ lbdb (0.41) unstable; urgency=medium
   * Substitute ${prefix} in @sysconfdir@ in mutt_ldap_query.pl.
   * Fix more bashisms (Thanks to Thorsten Glaser).
   * Update config.guess and config.sub.
+  * Optimize autoconf to get version from Debian changelog.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 05 Mar 2016 10:44:28 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 05 Mar 2016 11:54:15 +0100
 
 lbdb (0.40) unstable; urgency=medium
 

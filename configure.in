@@ -214,7 +214,7 @@ done
 SYSCONF_DIR=`test "$prefix" = NONE && prefix=$ac_default_prefix; eval echo "${sysconfdir}"`
 AC_SUBST(SYSCONF_DIR)
 
-LBDB_VERSION=`sed -e '2,10000d;s/^.*(\(.*\)).*$/\1/' < debian/changelog`
+LBDB_VERSION=`sed -e 's/^.*(\(.*\)).*$/\1/;q' < debian/changelog`
 AC_SUBST(LBDB_VERSION)
 
 AC_SUBST(MODULES)
