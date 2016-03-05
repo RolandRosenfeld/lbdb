@@ -4,7 +4,7 @@
 #
 #     Copyright (c) 2001  Utz-Uwe Haus <haus@uuhaus.de> 2001
 #     Copyright (c) 2003  Aaron Kaplan <kaplan@cs.rochester.edu> 
-#     Copyright (c) 2005  Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (c) 2005-2016  Roland Rosenfeld <roland@spinnaker.de>
 #
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ m_bbdb_query()
                      (lbdb-bbdb-query \"$@\"))"
 	if [ -z "$GNUCLIENT" ]
 	then
-	    if type gnuclient >/dev/null 2>&1; then
+	    if which gnuclient >/dev/null 2>&1; then
 		GNUCLIENT=gnuclient
 	    fi
         fi
@@ -51,9 +51,9 @@ m_bbdb_query()
 	if [ $success = 0 ]; then
 	    if [ -z "$EMACS" ]
 	    then
-		if type emacs >/dev/null 2>&1; then
+		if which emacs >/dev/null 2>&1; then
 		    EMACS=emacs
-		elif type xemacs >/dev/null 2>&1; then
+		elif which xemacs >/dev/null 2>&1; then
 		    EMACS=xemacs
 		fi
 	    fi
