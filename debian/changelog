@@ -1,3 +1,10 @@
+lbdb (0.42) unstable; urgency=medium
+
+  * m_gpg, m_pgp[25]: extend allowed real name length from 27 to 47 chars
+    (Closes: #825333).
+
+ -- Roland Rosenfeld <roland@debian.org>  Fri, 27 May 2016 19:52:06 +0200
+
 lbdb (0.41) unstable; urgency=medium
 
   * Remove CVS $Id$ tags and the like, which don't work with git.
