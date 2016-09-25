@@ -24,7 +24,10 @@ function print_line (line, lastdate, count)
 {
     if (line == "") return;
     if (limitdate != "" && lastdate < limitdate && count < limitcount) return;
-    print line, FS, count;
+    if (limitcount == 0)
+	print line;
+    else 
+	print line, FS, count;
 }
 
 BEGIN {

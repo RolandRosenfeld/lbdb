@@ -41,8 +41,10 @@ then
     munge_options="keeporder=1"
 fi
 
-if [ ! -z "$MUNGE_LIMITCOUNT" ]
+if [ -z "$MUNGE_LIMITCOUNT" ]
 then
+    munge_options="$munge_options limitcount=1"
+else
     munge_options="$munge_options limitcount=$MUNGE_LIMITCOUNT"
 fi
 
