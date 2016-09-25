@@ -11,8 +11,10 @@ lbdb (0.42) unstable; urgency=medium
      cd $HOME/.lbdb
      iconv -f iso-8859-15 -t utf-8 < m_inmail.list >> m_inmail.utf-8
   * Update autotools.
+  * Allow to remove outdated or infrequently used entries from m_inmail.
+    Thanks to Yaroslav Halchenko for providing a patch (Closes: #406232).
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 25 Sep 2016 14:47:58 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 25 Sep 2016 14:49:59 +0200
 
 lbdb (0.41) unstable; urgency=medium
 

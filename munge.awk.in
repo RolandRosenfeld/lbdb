@@ -3,7 +3,8 @@
 # -*-awk-*-
 #
 #     Copyright (C) 1998-2000  Thomas Roessler <roessler@guug.de>
-#                   2000-2005  Roland Rosenfeld <roland@spinnaker.de>
+#                   2000-2016  Roland Rosenfeld <roland@spinnaker.de>
+#                   2007       Yaroslav Halchenko <debian@onerussian.com>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -19,16 +20,53 @@
 #     along with this program; if not, write to the Free Software Foundation,
 #     Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
 
+function print_line (line, lastdate, count)
+{
+    if (line == "") return;
+    if (limitdate != "" && lastdate < limitdate && count < limitcount) return;
+    print line, FS, count;
+}
+
 BEGIN {
+    # initialization
     FS = "\t";
+    i = 0;
+
+    # default settings
+    keeporder = 0;                  # do not keep order by default
+    limitdate = "0000-00-00_00:00"; # keep all dates by default
+    limitcount = 0;                 # and do not limit by count by default
 }
 
 {
-    line[$1] = $0;
+    line[$1] = ($1 FS $2 FS $3);
+
+    if (lastdate[$1] == "" || lastdate[$1] < $3)
+        lastdate[$1] = $3;
+
+    line[$1] = ($1 FS $2 FS lastdate[$1]);
+
+    if (line[$4] != "")
+	cnt[$1] += line[$4];
+    else
+        cnt[$1]++;
+
+    if (keeporder == 1)
+    {
+        pos[$1] = i;
+        idx[i++] = $1;
+    }
 }
 
 END {
-    for (a in line) {
-	print line[a];
-    }
+    if (keeporder == 1)
+       for (j = 0; j < i; j++) {
+            if (pos[idx[j]] == j) {
+                print_line(line[idx[j]], lastdate[idx[j]], cnt[idx[j]]);
+            }
+        }
+    else
+        for (a in line) {
+            print_line(line[a], lastdate[a], cnt[a]);
+        }
 }

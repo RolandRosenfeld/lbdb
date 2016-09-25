@@ -1,4 +1,4 @@
-dnl Copyright (c) 1998-2011 Roland Rosenfeld <roland@spinnaker.de>
+dnl Copyright (c) 1998-2016 Roland Rosenfeld <roland@spinnaker.de>
 dnl 
 dnl This program is free software; you can redistribute it and/or modify
 dnl it under the terms of the GNU General Public License as published by
@@ -219,7 +219,7 @@ LBDB_VERSION=`sed -e 's/^.*(\(.*\)).*$/\1/;q' < debian/changelog`
 AC_SUBST(LBDB_VERSION)
 
 AC_SUBST(MODULES)
-AC_CONFIG_FILES([Makefile lbdbq.sh munge.awk munge-keeporder.awk lbdb-fetchaddr.sh \
+AC_CONFIG_FILES([Makefile lbdbq.sh munge.awk lbdb-fetchaddr.sh \
 	lbdb-munge.sh lbdb_lib.sh nodelist2lbdb.pl palm_lsaddr.pl \
 	mutt_ldap_query.pl $MODULES_SH $TACAWK lbdb.spec lbdb.rc])
 AC_OUTPUT

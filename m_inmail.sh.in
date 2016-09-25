@@ -25,7 +25,7 @@ m_inmail_db=$HOME/.lbdb/m_inmail.utf-8
 
 m_inmail_query()
 {
-	export SORT_OUTPUT
+	export SORT_OUTPUT MUNGE_LIMITDATE MUNGE_LIMITCOUNT
 	$libdir/lbdb-munge
 	test -f $m_inmail_db  || return
 	grep -ia "$@." $m_inmail_db || :

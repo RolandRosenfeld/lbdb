@@ -40,7 +40,7 @@ mandir=@mandir@
 sysconfdir=@sysconfdir@
 
 ALL=lbdbq lbdb_lib lbdb-fetchaddr lbdb-munge fetchaddr qpto8bit munge \
-	munge-keeporder	nodelist2lbdb palm_lsaddr mutt_ldap_query lbdbq.man \
+	nodelist2lbdb palm_lsaddr mutt_ldap_query lbdbq.man \
 	lbdb-fetchaddr.man nodelist2lbdb.man mutt_ldap_query.man lbdb.rc \
 	$(MODULES) $(DOTLOCK_TARGET) $(TACTARGET)
 
@@ -60,7 +60,6 @@ install: all
 	$(INSTALL) -m 755 lbdb_lib $(install_prefix)$(libdir)
 	$(INSTALL) -m 755 munge $(install_prefix)$(libdir)
 	$(INSTALL) -m 644 lbdb_bbdb_query.el $(install_prefix)$(libdir)
-	$(INSTALL) -m 755 munge-keeporder $(install_prefix)$(libdir)
 	if [ "$(PERL)" != "no" ]; then \
 		$(INSTALL) -m 755 nodelist2lbdb $(install_prefix)$(bindir); \
 		$(INSTALL) -m 644 nodelist2lbdb.man \
@@ -130,10 +129,6 @@ munge: $(srcdir)/munge.awk
 	cat munge.awk > $@
 	chmod a+x $@
 
-munge-keeporder: $(srcdir)/munge-keeporder.awk
-	cat munge-keeporder.awk > $@
-	chmod a+x $@
-
 mutt_ldap_query.man: $(srcdir)/mutt_ldap_query.pl
 	if [ "$(PERL)" != "no" ]; then \
 		pod2man mutt_ldap_query.pl > $@; \
@@ -152,7 +147,7 @@ ABQuery: ABQuery.m
 	$(CC) $(CFLAGS) $(DEFS) -framework Foundation -framework AddressBook -o $@ $^
 
 clean:
-	-rm -f *.o *~ $(ALL) munge.awk munge-keeporder.awk tac.awk ABQuery \
+	-rm -f *.o *~ $(ALL) munge.awk tac.awk ABQuery \
 		nodelist2lbdb.pl palm_lsaddr.pl mutt_ldap_query.pl \
 		lbdb_dotlock lbdb.spec
 	-rm -rf ABQuery.dSYM

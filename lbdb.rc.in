@@ -186,3 +186,18 @@ METHODS="m_inmail m_passwd m_finger"
 # names or different comment fields)?  Default is "no".
 #
 #KEEP_DUPES=no
+
+#
+# Do you want to automatically remove outdated and infrequently used
+# entries collected by m_inmail?
+# Following date parameter specify the date before which (ie being
+# older) only those entries survive, which were seen by m_inmail more
+# than a specified times. Since rc is parsed on every libdbq
+# invocation, we can use date command to specify dynamic range as "-1
+# month". By default we keep entries which were seen at 3 times,
+# or younger than 1 month
+#
+# Note: KEEP_DUPES must be "no"
+#
+#MUNGE_LIMITCOUNT=3
+#MUNGE_LIMITDATE=`date --date='-1 month' +"%F %R"

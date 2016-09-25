@@ -6295,7 +6295,7 @@ LBDB_VERSION=`sed -e 's/^.*(\(.*\)).*$/\1/;q' < debian/changelog`
 
 
 
-ac_config_files="$ac_config_files Makefile lbdbq.sh munge.awk munge-keeporder.awk lbdb-fetchaddr.sh lbdb-munge.sh lbdb_lib.sh nodelist2lbdb.pl palm_lsaddr.pl mutt_ldap_query.pl $MODULES_SH $TACAWK lbdb.spec lbdb.rc"
+ac_config_files="$ac_config_files Makefile lbdbq.sh munge.awk lbdb-fetchaddr.sh lbdb-munge.sh lbdb_lib.sh nodelist2lbdb.pl palm_lsaddr.pl mutt_ldap_query.pl $MODULES_SH $TACAWK lbdb.spec lbdb.rc"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -7006,7 +7006,6 @@ do
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "lbdbq.sh") CONFIG_FILES="$CONFIG_FILES lbdbq.sh" ;;
     "munge.awk") CONFIG_FILES="$CONFIG_FILES munge.awk" ;;
-    "munge-keeporder.awk") CONFIG_FILES="$CONFIG_FILES munge-keeporder.awk" ;;
     "lbdb-fetchaddr.sh") CONFIG_FILES="$CONFIG_FILES lbdb-fetchaddr.sh" ;;
     "lbdb-munge.sh") CONFIG_FILES="$CONFIG_FILES lbdb-munge.sh" ;;
     "lbdb_lib.sh") CONFIG_FILES="$CONFIG_FILES lbdb_lib.sh" ;;

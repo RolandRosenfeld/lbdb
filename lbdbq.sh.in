@@ -79,7 +79,7 @@ case "${KEEP_DUPES:-}" in
 	;;
     *)
 	MUNGE=$libdir/munge
-	MUNGE_KEEPORDER=$libdir/munge-keeporder
+	MUNGE_KEEPORDER="$libdir/munge keeporder=1"
 	;;
 esac
 
