@@ -1,12 +1,3 @@
-- Add new modules:
-    - Add m_pgp6 for PGP 6.5.1.
-
-- lbdb_dotlock: Have a deep look into the locking mechanism.  Over NFS
-  dotlocking may not be enough, it should be combined with fcntl()
-  (this should be possible to disable via configure option).  This
-  means that we may no longer use mutt_dotlock but always use a
-  private lbdb_dotlock.
-
 - fetchaddr: Find out why fetchaddr sometimes runs forever on Solaris 2.6.
 
 - Add man page for configuration file lbdbrc(5) or something like
@@ -28,10 +19,4 @@
 - Optimize munge/munge-keeporder to work case-insensitive (at least on
   the domain part of the addresses).
 
-- Add UTF-8 support.
-
 Roland Rosenfeld <roland@spinnaker.de>
-
-Local variables:
-mode: text
-End:
