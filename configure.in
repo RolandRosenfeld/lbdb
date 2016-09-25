@@ -14,7 +14,8 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program; if not, write to the Free Software Foundation,
 dnl Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 
-AC_INIT(fetchaddr.c)
+AC_INIT
+AC_CONFIG_SRCDIR([fetchaddr.c])
 
 AC_MSG_CHECKING(for prefix)
 if test x$prefix = xNONE; then
@@ -218,6 +219,7 @@ LBDB_VERSION=`sed -e 's/^.*(\(.*\)).*$/\1/;q' < debian/changelog`
 AC_SUBST(LBDB_VERSION)
 
 AC_SUBST(MODULES)
-AC_OUTPUT(Makefile lbdbq.sh munge.awk munge-keeporder.awk lbdb-fetchaddr.sh \
+AC_CONFIG_FILES([Makefile lbdbq.sh munge.awk munge-keeporder.awk lbdb-fetchaddr.sh \
 	lbdb-munge.sh lbdb_lib.sh nodelist2lbdb.pl palm_lsaddr.pl \
-	mutt_ldap_query.pl $MODULES_SH $TACAWK lbdb.spec lbdb.rc)
+	mutt_ldap_query.pl $MODULES_SH $TACAWK lbdb.spec lbdb.rc])
+AC_OUTPUT
