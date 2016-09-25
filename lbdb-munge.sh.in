@@ -2,7 +2,7 @@
 #
 # -*-sh-*-
 #
-#     Copyright (C) 1999-2005  Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 1999-2016  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ prefix=@prefix@
 exec_prefix=@exec_prefix@
 dotlock=@DOTLOCK@
 fetchaddr=@libdir@/fetchaddr
-db=$HOME/.lbdb/m_inmail.list
+db=$HOME/.lbdb/m_inmail.utf-8
 
 if [ "$SORT_OUTPUT" = "false" -o "$SORT_OUTPUT" = "no" ]
 then

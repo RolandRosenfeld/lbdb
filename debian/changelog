@@ -2,8 +2,16 @@ lbdb (0.42) unstable; urgency=medium
 
   * m_gpg, m_pgp[25]: extend allowed real name length from 27 to 47 chars
     (Closes: #825333).
+  * Change lbdb-fetchaddr/m_inmail default charset to UTF-8
+    (Closes: #600462).
+    To avoid problems on upgrading, the database file name was changed
+    from $HOME/.lbdb/m_inmail.list to $HOME/.lbdb/m_inmail.utf-8.  If you
+    want to keep your old (ISO-8859-15 encoded) database, you can just
+    append it to the new file by
+     cd $HOME/.lbdb
+     iconv -f iso-8859-15 -t utf-8 < m_inmail.list >> m_inmail.utf-8
 
- -- Roland Rosenfeld <roland@debian.org>  Fri, 27 May 2016 19:52:06 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 25 Sep 2016 13:41:56 +0200
 
 lbdb (0.41) unstable; urgency=medium
 

@@ -1,5 +1,5 @@
 .\" -*- nroff -*-
-.\" Copyright (c) 1998-2005  Roland Rosenfeld <roland@spinnaker.de>
+.\" Copyright (c) 1998-2016  Roland Rosenfeld <roland@spinnaker.de>
 .\"               
 .\" This program is free software; you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 .\" along with this program; if not, write to the Free Software Foundation,
 .\" Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
 .\"
-.TH LBDB-FETCHADDR 1 "October 2005" "Unix" "User Manuals"
+.TH LBDB-FETCHADDR 1 "September 2016" "Unix" "User Manuals"
 .SH NAME
 lbdb-fetchaddr \- grab addresses from mails add append them to lbdb database
 .SH SYNOPSIS
@@ -42,7 +42,7 @@ and
 .RB ` Resent-To: ')
 from the mail header (only addresses with a real name) and appends
 them to 
-.IR $HOME/.lbdb/m_inmail.list .
+.IR $HOME/.lbdb/m_inmail.utf-8 .
 For performance issues 
 .B lbdb-fetchaddr
 appends new addresses to this file without removing duplicates. To get
@@ -94,13 +94,16 @@ mail addresses.  If this option isn't given, we fall back to
 The charset which will be used to write the database. This should be
 the charset which the application expects (normally the one from your
 current locale).  If this option isn't given, we fall back to
-.RB ` iso-8859-15 '.
+.RB ` utf-8 '.
 .TP
 .B -a
 Also grab addresses without a real name.  Use the local part of the
 mail address as real name.
 .SH FILES
-.I $HOME/.lbdb/m_inmail.list
+.I $HOME/.lbdb/m_inmail.utf-8
+.br
+.IR $HOME/.lbdb/m_inmail.list " (old version used for ISO-8859-15 encoded addresses)"
+
 .br
 .I @libdir@/fetchaddr
 .br
