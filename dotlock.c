@@ -409,6 +409,7 @@ dotlock_lock (const char *realpath)
   int hard_count = 0;
   struct stat sb;
   time_t t;
+  int i;
   
   sprintf (nfslockfile, "%s.%s.%d", realpath, Hostname, (int) getpid ());
   sprintf (lockfile, "%s.lock", realpath);
@@ -431,7 +432,7 @@ dotlock_lock (const char *realpath)
   
   while (hard_count++ < HARDMAXATTEMPTS)
   {
-    link (nfslockfile, lockfile);
+    i = link (nfslockfile, lockfile);
 
     if (stat (nfslockfile, &sb) != 0)
     {
