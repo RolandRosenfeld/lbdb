@@ -14,6 +14,7 @@ Depends: emacsen-common (>= 2.0.8),
          ${shlibs:Depends}
 Suggests: abook,
           finger,
+          goobook,
           libauthen-sasl-perl,
           libnet-ldap-perl,
           libpalm-perl,
@@ -33,6 +34,7 @@ Description: Little Brother's DataBase for the mutt mail reader
   - m_pgp2, m_pgp5, m_gpg (searches your PGP or GnuPG keyrings)
   - m_fido (searches the Fidonet nodelist)
   - m_abook (uses the address book application abook(1))
+  - m_goobook (uses goobook to read Google contacts)
   - m_addr_email (uses addr-email from the addressbook Tk program)
   - m_muttalias (searches your Mutt mail aliases)
   - m_pine (searches your Pine addressbook files)

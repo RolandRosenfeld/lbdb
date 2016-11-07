@@ -103,6 +103,11 @@ m_abook
        define multiple abook address books by setting the variable
        ABOOK_FILES to a space separated list.
 
+m_goobook
+       This module uses the program goobook
+       (https://pypi.python.org/pypi/goobook), a program to access
+       your Google contacts via command line client.
+
 m_addr_email
        This module uses addr-email from the addressbook
        (http://red.roses.de/~clemens/addressbook/) Tk program to
@@ -208,3 +213,4 @@ Many thanks to the authors of the several modules and extensions:
 - Gergely Nagy <algernon@debian.org>               (m_wanderlust)
 - Dave Pearson <davep@davep.org>                   (m_palm, lbdb.el)
 - Brian Salter-Duke <b_duke@bigpond.net.au>        (m_muttalias)
+- François Charlier <fcharlier@ploup.net>          (m_goobook)

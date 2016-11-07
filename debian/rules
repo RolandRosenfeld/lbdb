@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# (c) 1998-2014  Roland Rosenfeld <roland@debian.org>
+# (c) 1998-2016  Roland Rosenfeld <roland@debian.org>
 # Based on sample debian/rules that uses debhelper.
 # This file is public domain software, originally written by Joey Hess. 
 
@@ -20,6 +20,7 @@ override_dh_auto_configure:
 			--enable-lbdb-dotlock \
 			--with-finger=/usr/bin/finger \
 		        --with-abook=/usr/bin/abook \
+		        --with-goobook=/usr/bin/goobook \
 		        --with-addr-email=/usr/bin/addr-email \
 		        --with-ypcat=/usr/bin/ypcat \
 		        --with-getent=/usr/bin/getent \

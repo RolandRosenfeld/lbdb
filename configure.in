@@ -165,6 +165,7 @@ MODULES="m_inmail m_passwd m_muttalias m_pine m_gnomecard m_bbdb m_wanderlust"
 
 LBDB_ARG_WITH(FINGER, finger, m_finger, [with finger support])
 LBDB_ARG_WITH(ABOOK, abook, m_abook, [with abook support])
+LBDB_ARG_WITH(GOOBOOK, goobook, m_goobook, [with goobook support])
 LBDB_ARG_WITH(ADDR_EMAIL, addr-email, m_addr_email, [with addressbook support])
 LBDB_ARG_WITH(YPCAT, ypcat, m_yppasswd, [with ypcat passwd support])
 LBDB_ARG_WITH(NISCAT, niscat, m_nispasswd, [with niscat passwd support])

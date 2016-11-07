@@ -8,7 +8,7 @@
 # ~/.lbdb/rc
 # (evaluated with ascending priority!)
 # 
-# (c) 1999-2006 Roland Rosenfeld <roland@spinnaker.de>
+# (c) 1999-2016 Roland Rosenfeld <roland@spinnaker.de>
 #
 
 #
@@ -26,6 +26,7 @@
 # - m_gpg	 search your GnuPG keyring
 # - m_fido	 search the Fido nodelist converted by nodelist2lbdb(1)
 # - m_abook	 query abook(1), the text based address book application.
+# - m_goobook	 query goobook(1), a command line interface to Google contacts.
 # - m_addr_email query addr-email(1) from addressbook Tk-program.
 # - m_muttalias  search $MUTTALIAS_FILES for aliases.
 # - m_pine	 search pine(1) addressbook files for aliases.

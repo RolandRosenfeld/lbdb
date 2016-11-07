@@ -15,7 +15,7 @@
 .\" along with this program; if not, write to the Free Software Foundation,
 .\" Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
 .\"
-.TH LBDBQ 1 "January 2016" "Unix" "User Manuals"
+.TH LBDBQ 1 "November 2016" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -172,6 +172,11 @@ a text based address book application to search for addresses.  You
 can define multiple abook address books by setting the variable
 .B ABOOK_FILES
 to a space separated list.
+.TP
+.BR m_goobook
+This module uses the program
+.BR goobook (1),
+a tool to access Google contacts via command line.
 .TP
 .BR m_addr_email
 This module uses the program
@@ -347,6 +352,7 @@ Print short help of lbdbq.
 .BR nodelist2lbdb (1),
 .BR mutt_ldap_query (1),
 .BR abook (1),
+.BR goobook (1),
 .BR addr-email (1),
 .BR addressbook (1),
 .BR mutt (1),
@@ -372,8 +378,9 @@ Utz-Uwe Haus <haus@uuhaus.de> (m_bbdb, m_nispasswd),
 Torsten Jerzembeck <toje@nightingale.ms.sub.org> (m_addr_email),
 Adrian Likins <alikins@redhat.com> (m_getent),
 Gergely Nagy <algernon@debian.org> (m_wanderlust),
-Dave Pearson <davep@davep.org> (m_palm, lbdb.el), and
-Brian Salter-Duke <b_duke@bigpond.net.au> (m_muttalias).
+Dave Pearson <davep@davep.org> (m_palm, lbdb.el),
+Brian Salter-Duke <b_duke@bigpond.net.au> (m_muttalias), and
+François Charlier <fcharlier@ploup.net> (m_goobook)
 .SH AUTHOR
 The lbdb package was initially written by Thomas Roessler
 <roessler@guug.de> and is now maintained and heavily extended by
