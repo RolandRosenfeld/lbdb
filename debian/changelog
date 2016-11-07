@@ -16,8 +16,9 @@ lbdb (0.42) unstable; urgency=medium
   * Upgrade to Standards-Version 3.9.8 (no changes).
   * Add new module m_goobook, which reads addresses from Google contacts
     using goobook package.  Thanks for providing this to François Charlier.
+  * Merge changes from mutt 1.7.1 dotlock.c.
 
- -- Roland Rosenfeld <roland@debian.org>  Mon, 07 Nov 2016 13:27:44 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Mon, 07 Nov 2016 15:09:55 +0100
 
 lbdb (0.41) unstable; urgency=medium
 

@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 1996-2000 Michael R. Elkins <me@mutt.org>
- * Copyright (C) 1998-2000 Thomas Roessler <roessler@does-not-exist.org>
+ * Copyright (C) 1998-2001,2007 Thomas Roessler <roessler@does-not-exist.org>
  * 
  *     This program is free software; you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -13,8 +13,8 @@
  *     GNU General Public License for more details.
  * 
  *     You should have received a copy of the GNU General Public License
- *     along with this program; if not, write to the Free Software Foundation,
- *     Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
+ *     along with this program; if not, write to the Free Software
+ *     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */ 
 
 /*
@@ -36,7 +36,7 @@
 #include <limits.h>
 
 #ifndef _POSIX_PATH_MAX
-#include <posix1_lim.h>
+#include <limits.h>
 #endif
 
 #include "dotlock.h"
@@ -368,7 +368,7 @@ dotlock_deference_symlink (char *d, size_t l, const char *path)
       char linkpath[_POSIX_PATH_MAX];
       int len;
 
-      if ((len = readlink (pathptr, linkfile, sizeof (linkfile))) == -1)
+      if ((len = readlink (pathptr, linkfile, sizeof (linkfile) - 1)) == -1)
       {
 	/* perror (pathptr); */
 	return -1;
