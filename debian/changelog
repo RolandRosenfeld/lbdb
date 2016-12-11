@@ -1,3 +1,9 @@
+lbdb (0.42.1) unstable; urgency=medium
+
+  * lbdb-munge: fix autoconf libdir path (Closes: #847735).
+
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 11 Dec 2016 12:14:13 +0100
+
 lbdb (0.42) unstable; urgency=medium
 
   * m_gpg, m_pgp[25]: extend allowed real name length from 27 to 47 chars

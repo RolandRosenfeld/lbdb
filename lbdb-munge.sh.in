@@ -26,9 +26,8 @@ umask 077
 prefix=@prefix@
 exec_prefix=@exec_prefix@
 dotlock=@DOTLOCK@
-fetchaddr=@libdir@/fetchaddr
 db=$HOME/.lbdb/m_inmail.utf-8
-munge="${prefix}/lib/lbdb/munge"
+munge=@libdir@/munge
 
 if [ ! -f $db.dirty ]
 then
