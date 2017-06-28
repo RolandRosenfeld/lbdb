@@ -1,3 +1,9 @@
+lbdb (0.42.2) unstable; urgency=medium
+
+  * Rebuild aclocal with version 1.15.
+
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 11 Jun 2017 14:26:06 +0200
+
 lbdb (0.42.1) unstable; urgency=medium
 
   * lbdb-munge: fix autoconf libdir path (Closes: #847735).
