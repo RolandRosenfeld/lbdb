@@ -15,6 +15,7 @@ Depends: emacsen-common (>= 2.0.8),
 Suggests: abook,
           finger,
           goobook,
+          khard,
           libauthen-sasl-perl,
           libnet-ldap-perl,
           libpalm-perl,
@@ -45,3 +46,4 @@ Description: Little Brother's DataBase for the mutt mail reader
   - m_ldap (query some LDAP server)
   - m_evolution (search in the Evolution addressbook)
   - m_vcf (search in vcard files using libvformat)
+  - m_khard (search a CardDAV address book via khard)

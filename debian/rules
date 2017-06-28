@@ -27,7 +27,8 @@ override_dh_auto_configure:
 		        --with-gpg=/usr/bin/gpg \
 		        --with-pgpk=/usr/bin/pgpk \
 		        --with-pgp=/usr/bin/pgp \
-		        --with-evolution-addressbook-export=auto
+		        --with-evolution-addressbook-export=auto \
+			--with-khard=/usr/bin/khard
 
 override_dh_auto_install:
 	$(MAKE) install_prefix=$(DROOT) install

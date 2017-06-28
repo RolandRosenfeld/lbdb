@@ -175,6 +175,7 @@ LBDB_ARG_WITH(PGPK, pgpk, m_pgp5, [with PGP 5.* support])
 LBDB_ARG_WITH(PGP, pgp, m_pgp2, [with PGP 2.* support])
 LBDB_ARG_WITH(EVOLUTION_ADDRESSBOOK_EXPORT, evolution-addressbook-export,
               m_evolution, [with Evolution support ('auto' searchs at runtime)])
+LBDB_ARG_WITH(KHARD, khard, m_khard, [with khard support])
 
 AC_PATH_PROG(PERL, perl, "no")
 if test "x$PERL" != xno ; then

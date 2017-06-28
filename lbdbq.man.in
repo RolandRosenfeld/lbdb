@@ -304,6 +304,10 @@ which is shipped with evolution.
 This module uses libvformat to search for addresses from the
 space\-separated set of vCard files defined in
 .IR $VCF_FILES .
+.TP
+.BR m_khard
+This module searches a CardDAV address book via
+.BR khard (1).
 .PP
 Feel free to create your own modules to query other database resources,
 YP maps, and the like.
@@ -379,8 +383,9 @@ Torsten Jerzembeck <toje@nightingale.ms.sub.org> (m_addr_email),
 Adrian Likins <alikins@redhat.com> (m_getent),
 Gergely Nagy <algernon@debian.org> (m_wanderlust),
 Dave Pearson <davep@davep.org> (m_palm, lbdb.el),
-Brian Salter-Duke <b_duke@bigpond.net.au> (m_muttalias), and
-François Charlier <fcharlier@ploup.net> (m_goobook)
+Brian Salter-Duke <b_duke@bigpond.net.au> (m_muttalias),
+François Charlier <fcharlier@ploup.net> (m_goobook), and
+Colin Watson <cjwatson@debian.org> (m_khard)
 .SH AUTHOR
 The lbdb package was initially written by Thomas Roessler
 <roessler@guug.de> and is now maintained and heavily extended by

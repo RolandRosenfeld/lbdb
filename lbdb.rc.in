@@ -38,6 +38,7 @@
 # - m_osx_addressbook  search the OS X addressbook (only available on OS X).
 # - m_evolution  search in the Ximan Evolution addressbook.
 # - m_vcf        search a vcard (according to RFC2426) file.
+# - m_khard      search a CardDAV address book via khard
 
 METHODS="m_inmail m_passwd m_finger"
 

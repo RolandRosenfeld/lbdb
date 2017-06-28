@@ -179,6 +179,9 @@ m_vcf
        This module uses libvformat to search for addresses from the
        space-separated set of vCard files defined in $VCF_FILES.
 
+m_khard
+       This module searches a CardDAV address book via khard.
+
 
 Feel free to create your own modules to query other kinds of
 databases.  m_finger should be a good example of how to do it.
@@ -214,3 +217,4 @@ Many thanks to the authors of the several modules and extensions:
 - Dave Pearson <davep@davep.org>                   (m_palm, lbdb.el)
 - Brian Salter-Duke <b_duke@bigpond.net.au>        (m_muttalias)
 - François Charlier <fcharlier@ploup.net>          (m_goobook)
+- Colin Watson <cjwatson@debian.org>               (m_khard)
