@@ -2,8 +2,10 @@ lbdb (0.42.2) unstable; urgency=medium
 
   * Rebuild aclocal with version 1.15.
   * Update config.guess and config.sub from autotools-dev 20161112.1
+  * m_khard: New CardDAV module using khard.  Thanks to Colin Watson for
+    providing the patch (Closes: #866178).
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 11 Jun 2017 16:07:55 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Wed, 28 Jun 2017 08:55:00 +0200
 
 lbdb (0.42.1) unstable; urgency=medium
 
