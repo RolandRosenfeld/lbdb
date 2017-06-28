@@ -1,8 +1,9 @@
 lbdb (0.42.2) unstable; urgency=medium
 
   * Rebuild aclocal with version 1.15.
+  * Update config.guess and config.sub from autotools-dev 20161112.1
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 11 Jun 2017 14:26:06 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 11 Jun 2017 16:07:55 +0200
 
 lbdb (0.42.1) unstable; urgency=medium
 
