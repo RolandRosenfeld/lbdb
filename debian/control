@@ -3,7 +3,7 @@ Section: mail
 Priority: optional
 Maintainer: Roland Rosenfeld <roland@debian.org>
 Standards-Version: 4.0.0
-Build-Depends: autotools-dev, debhelper (>= 9), libvformat-dev, perl
+Build-Depends: autotools-dev, debhelper (>= 10), libvformat-dev, perl
 Homepage: http://www.spinnaker.de/lbdb/
 
 Package: lbdb

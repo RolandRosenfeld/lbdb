@@ -5,8 +5,9 @@ lbdb (0.42.2) unstable; urgency=medium
   * m_khard: New CardDAV module using khard.  Thanks to Colin Watson for
     providing the patch (Closes: #866178).
   * Upgrade to Standards-Version 4.0.0 (https in copyright format).
+  * Upgrade to debhelper 10.
 
- -- Roland Rosenfeld <roland@debian.org>  Fri, 30 Jun 2017 14:32:15 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Fri, 30 Jun 2017 14:36:20 +0200
 
 lbdb (0.42.1) unstable; urgency=medium
 
