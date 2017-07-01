@@ -1,4 +1,4 @@
-lbdb (0.42.2) unstable; urgency=medium
+lbdb (0.43) unstable; urgency=medium
 
   * Rebuild aclocal with version 1.15.
   * Update config.guess and config.sub from autotools-dev 20161112.1
@@ -6,8 +6,9 @@ lbdb (0.42.2) unstable; urgency=medium
     providing the patch (Closes: #866178).
   * Upgrade to Standards-Version 4.0.0 (https in copyright format).
   * Upgrade to debhelper 10.
+  * Update TODO list.
 
- -- Roland Rosenfeld <roland@debian.org>  Fri, 30 Jun 2017 14:36:20 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 01 Jul 2017 13:10:13 +0200
 
 lbdb (0.42.1) unstable; urgency=medium
 
