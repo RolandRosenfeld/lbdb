@@ -19,4 +19,15 @@
 - Optimize munge/munge-keeporder to work case-insensitive (at least on
   the domain part of the addresses).
 
+- Add support for XDG_CONFIG_HOME/XDG_DATA_HOME
+  https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
+  https://bugs.debian.org/843917
+
+- Add support for "notmuchmail".
+
+- Add testsuite.
+
+- Support DEB_BUILD_OPTIONS nodoc (using debhelper >= 10.6)
+
+
 Roland Rosenfeld <roland@spinnaker.de>
