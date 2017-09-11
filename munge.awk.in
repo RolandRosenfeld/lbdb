@@ -42,6 +42,7 @@ BEGIN {
 }
 
 {
+    sub(/ +$/, "", $3); # strip trailing spaces (as of former bug)
     line[$1] = ($1 FS $2 FS $3);
 
     if (lastdate[$1] == "" || lastdate[$1] < $3)
