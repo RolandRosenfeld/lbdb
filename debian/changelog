@@ -1,8 +1,9 @@
 lbdb (0.44) unstable; urgency=medium
 
   * Fix count in m_inmail munge.
+  * Stop adding trailing spaces to date in m_inmail.utf-8.
 
- -- Roland Rosenfeld <roland@debian.org>  Mon, 11 Sep 2017 18:08:54 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Mon, 11 Sep 2017 18:12:13 +0200
 
 lbdb (0.43) unstable; urgency=medium
 

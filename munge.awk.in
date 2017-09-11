@@ -27,7 +27,7 @@ function print_line (line, lastdate, count)
     if (limitcount == 0)
 	print line;
     else 
-	print line, FS, count;
+	print line FS count;
 }
 
 BEGIN {
