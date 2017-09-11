@@ -3,7 +3,7 @@
 # -*-awk-*-
 #
 #     Copyright (C) 1998-2000  Thomas Roessler <roessler@guug.de>
-#                   2000-2016  Roland Rosenfeld <roland@spinnaker.de>
+#                   2000-2017  Roland Rosenfeld <roland@spinnaker.de>
 #                   2007       Yaroslav Halchenko <debian@onerussian.com>
 # 
 #     This program is free software; you can redistribute it and/or modify
@@ -49,8 +49,8 @@ BEGIN {
 
     line[$1] = ($1 FS $2 FS lastdate[$1]);
 
-    if (line[$4] != "")
-	cnt[$1] += line[$4];
+    if ($4 != "")
+	cnt[$1] += $4;
     else
         cnt[$1]++;
 

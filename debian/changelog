@@ -1,3 +1,9 @@
+lbdb (0.44) unstable; urgency=medium
+
+  * Fix count in m_inmail munge.
+
+ -- Roland Rosenfeld <roland@debian.org>  Mon, 11 Sep 2017 18:08:54 +0200
+
 lbdb (0.43) unstable; urgency=medium
 
   * Rebuild aclocal with version 1.15.
