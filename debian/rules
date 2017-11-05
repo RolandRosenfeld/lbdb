@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# (c) 1998-2016  Roland Rosenfeld <roland@debian.org>
+# (c) 1998-2017  Roland Rosenfeld <roland@debian.org>
 # Based on sample debian/rules that uses debhelper.
 # This file is public domain software, originally written by Joey Hess. 
 
@@ -11,7 +11,7 @@ DROOT=`pwd`/debian/lbdb
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
 %:
-	dh $@ --with autotools_dev
+	dh $@
 
 override_dh_auto_configure:
 	env SH=/bin/sh MAWK=/usr/bin/awk \
