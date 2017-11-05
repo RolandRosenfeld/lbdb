@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 # (c) 1998-2017  Roland Rosenfeld <roland@debian.org>
 # Based on sample debian/rules that uses debhelper.
-# This file is public domain software, originally written by Joey Hess. 
+# This file is public domain software, originally written by Joey Hess.
 
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
