@@ -11,7 +11,7 @@ DROOT=`pwd`/debian/lbdb
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
 %:
-	dh $@
+	dh $@ --with elpa
 
 override_dh_auto_configure:
 	env SH=/bin/sh MAWK=/usr/bin/awk \
@@ -32,5 +32,3 @@ override_dh_auto_configure:
 
 override_dh_auto_install:
 	$(MAKE) install_prefix=$(DROOT) install
-	install -m644 -oroot -groot lbdb.el \
-		$(DROOT)/usr/share/emacs/site-lisp/lbdb/lbdb.el

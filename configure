@@ -6538,7 +6538,7 @@ LBDB_VERSION=`sed -e 's/^.*(\(.*\)).*$/\1/;q' < debian/changelog`
 
 
 
-ac_config_files="$ac_config_files Makefile lbdbq.sh munge.awk lbdb-fetchaddr.sh lbdb-munge.sh lbdb_lib.sh nodelist2lbdb.pl palm_lsaddr.pl mutt_ldap_query.pl $MODULES_SH $TACAWK lbdb.spec lbdb.rc"
+ac_config_files="$ac_config_files Makefile lbdbq.sh munge.awk lbdb-fetchaddr.sh lbdb-munge.sh lbdb_lib.sh nodelist2lbdb.pl palm_lsaddr.pl mutt_ldap_query.pl $MODULES_SH $TACAWK lbdb.spec lbdb.rc lbdb-pkg.el"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -7259,6 +7259,7 @@ do
     "$TACAWK") CONFIG_FILES="$CONFIG_FILES $TACAWK" ;;
     "lbdb.spec") CONFIG_FILES="$CONFIG_FILES lbdb.spec" ;;
     "lbdb.rc") CONFIG_FILES="$CONFIG_FILES lbdb.rc" ;;
+    "lbdb-pkg.el") CONFIG_FILES="$CONFIG_FILES lbdb-pkg.el" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac

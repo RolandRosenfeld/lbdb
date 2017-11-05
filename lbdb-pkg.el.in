@@ -1,0 +1,5 @@
+(define-package
+  "lbdb"
+  "@LBDB_VERSION@"
+  "Little Brother's Database interface."
+  nil)
