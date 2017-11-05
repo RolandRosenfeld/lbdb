@@ -3,8 +3,9 @@ lbdb (0.45) unstable; urgency=medium
   * Upgrade to Standards-Version 4.1.1 (no changes).
   * Remove autotools-dev, since this is included in debhelper v10.
   * Convert elisp code to dh-elpa.
+  * lbdb Enhances: mutt.
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 05 Nov 2017 14:18:38 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 05 Nov 2017 16:39:49 +0100
 
 lbdb (0.44) unstable; urgency=medium
 

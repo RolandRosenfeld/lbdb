@@ -22,6 +22,7 @@ Suggests: abook,
           libpalm-perl,
           mutt,
           procmail
+Enhances: mutt
 Built-Using: ${misc:Built-Using}
 Description: Little Brother's DataBase for the mutt mail reader
  This package consists of a set of small tools, which collect mail
