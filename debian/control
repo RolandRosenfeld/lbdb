@@ -8,7 +8,8 @@ Homepage: http://www.spinnaker.de/lbdb/
 
 Package: lbdb
 Architecture: any
-Depends: emacsen-common (>= 2.0.8),
+Depends: bbdb,
+         emacsen-common (>= 2.0.8),
          ${elpa:Depends},
          ${misc:Depends},
          ${perl:Depends},
