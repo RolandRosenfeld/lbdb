@@ -233,7 +233,7 @@ Because there's more than one true emacs."
 (defun lbdb (query)
   "Interactively query the Little Brother's Database."
   (interactive "sQuery: ")
-  (lbdb-present-results (lbdbq query (interactive-p))))
+  (lbdb-present-results (lbdbq query (called-interactively-p 'any))))
 
 ;;;###autoload
 (defun lbdb-region (start end)
