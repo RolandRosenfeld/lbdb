@@ -29,6 +29,5 @@
 
 - Support DEB_BUILD_OPTIONS nodoc (using debhelper >= 10.6)
 
-- Change handling of lbdb.el to dh_elpa.
 
 Roland Rosenfeld <roland@spinnaker.de>

@@ -4,8 +4,10 @@ lbdb (0.45.2) unstable; urgency=medium
   * debian/lbdb.maintscript: rm_conffile 50lbdb.el.
   * Rename configure.in to configure.ac to make autoconf happy.
   * lbdb.el: Replace obsolete (as of 23.2) function interactive-p.
+  * Move Emacs lisp code (lbdb.el and m_bbdb) into new separate package
+    elpa-lbdb (Closes: #880976).
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 12 Nov 2017 13:50:23 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 12 Nov 2017 13:51:24 +0100
 
 lbdb (0.45.1) unstable; urgency=medium
 

@@ -8,13 +8,9 @@ Homepage: http://www.spinnaker.de/lbdb/
 
 Package: lbdb
 Architecture: any
-Depends: bbdb,
-         emacsen-common (>= 2.0.8),
-         ${elpa:Depends},
-         ${misc:Depends},
-         ${perl:Depends},
-         ${shlibs:Depends}
+Depends: ${misc:Depends}, ${perl:Depends}, ${shlibs:Depends}
 Suggests: abook,
+          elpa-lbdb,
           finger,
           goobook,
           khard,
@@ -24,7 +20,6 @@ Suggests: abook,
           mutt,
           procmail
 Enhances: mutt
-Built-Using: ${misc:Built-Using}
 Description: Little Brother's DataBase for the mutt mail reader
  This package consists of a set of small tools, which collect mail
  addresses from several sources and offer these addresses to the mutt
@@ -46,8 +41,26 @@ Description: Little Brother's DataBase for the mutt mail reader
   - m_wanderlust (search the WanderLust alias database)
   - m_palm (uses your Palm database; needs libpalm-perl package)
   - m_gnomecard (uses GnomeCard database files)
-  - m_bbdb (search your BBDB (big brother database))
   - m_ldap (query some LDAP server)
   - m_evolution (search in the Evolution addressbook)
   - m_vcf (search in vcard files using libvformat)
   - m_khard (search a CardDAV address book via khard)
+
+Package: elpa-lbdb
+Architecture: all
+Depends: bbdb,
+         emacsen-common (>= 2.0.8),
+         lbdb,
+         ${elpa:Depends},
+         ${misc:Depends}
+Breaks: lbdb (<< 0.45.2)
+Replaces: lbdb (<< 0.45.2)
+Enhances: lbdb
+Section: lisp
+Built-Using: ${misc:Built-Using}
+Description: Little Brother's DataBase Emacs extensions
+ This package is an extension of the lbdb package, which contains
+ ldbd.el, an Emacs interface to the Little Brother's Datebase lbdb.
+ .
+ Additionally it contains the lbdb module m_bbdb, which allows lbdb to
+ access addresses in BBDB (big brother database).

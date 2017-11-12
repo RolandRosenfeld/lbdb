@@ -1,3 +1,10 @@
+lbdb (0.45.2) unstable; urgency=medium
+
+  lbdb.el and m_bbdb where moved into separate package elpa-lbdb.
+  If you use one of these, please install elpa-lbdb.
+
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 12 Nov 2017 14:15:52 +0100
+
 lbdb (0.42) unstable; urgency=medium
 
   lbdb-fetchaddr/m_inmail default charset was changed to UTF-8.

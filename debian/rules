@@ -7,6 +7,7 @@
 #export DH_VERBOSE=1
 
 DROOT=`pwd`/debian/lbdb
+EROOT=`pwd`/debian/elpa-lbdb
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
@@ -32,3 +33,5 @@ override_dh_auto_configure:
 
 override_dh_auto_install:
 	$(MAKE) install_prefix=$(DROOT) install
+	mv $(DROOT)/usr/lib/lbdb/lbdb_bbdb_query.el $(EROOT)/usr/lib/lbdb/
+	mv $(DROOT)/usr/lib/lbdb/m_bbdb $(EROOT)/usr/lib/lbdb/
