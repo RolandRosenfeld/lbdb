@@ -6,8 +6,9 @@ lbdb (0.45.2) unstable; urgency=medium
   * lbdb.el: Replace obsolete (as of 23.2) function interactive-p.
   * Move Emacs lisp code (lbdb.el and m_bbdb) into new separate package
     elpa-lbdb (Closes: #880976).
+  * lbdb_bbdb_query.el: Fix emacs warning.
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 12 Nov 2017 13:51:24 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 12 Nov 2017 23:34:49 +0100
 
 lbdb (0.45.1) unstable; urgency=medium
 

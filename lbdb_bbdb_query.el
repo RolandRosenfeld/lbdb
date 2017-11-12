@@ -15,7 +15,7 @@ where <comment> is BBDB:timestamp."
   (let ((matches
 	 (bbdb-search (bbdb-records) string string string nil nil))
 	(result ""))
-    (mapcar 
+    (mapc
      (lambda (record) 
        (let ((name (bbdb-record-name record))
 	     (timestamp (bbdb-record-getprop record 'timestamp)))
