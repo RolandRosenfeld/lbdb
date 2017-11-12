@@ -1,3 +1,9 @@
+lbdb (0.45.2) unstable; urgency=medium
+
+  * Remove ldbd-pkg.el in clean target.
+
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 12 Nov 2017 13:50:23 +0100
+
 lbdb (0.45.1) unstable; urgency=medium
 
   * Add bbdb dependency (required for m_bbdb) (Closes: #880961).

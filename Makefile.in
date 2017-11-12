@@ -1,5 +1,5 @@
 #     Copyright (C) 1998       Thomas Roessler <roessler@guug.de>
-#     Copyright (C) 1999-2016  Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 1999-2017  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -149,7 +149,7 @@ ABQuery: ABQuery.m
 clean:
 	-rm -f *.o *~ $(ALL) munge.awk tac.awk ABQuery \
 		nodelist2lbdb.pl palm_lsaddr.pl mutt_ldap_query.pl \
-		lbdb_dotlock lbdb.spec
+		lbdb_dotlock lbdb.spec lbdb-pkg.el
 	-rm -rf ABQuery.dSYM
 
 distclean: clean
