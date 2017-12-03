@@ -5,6 +5,8 @@ Maintainer: Roland Rosenfeld <roland@debian.org>
 Standards-Version: 4.1.1
 Build-Depends: debhelper (>= 10), dh-elpa, libvformat-dev, perl
 Homepage: http://www.spinnaker.de/lbdb/
+Vcs-Browser: https://github.com/RolandRosenfeld/lbdb
+Vcs-Git: https://github.com/RolandRosenfeld/lbdb.git
 
 Package: lbdb
 Architecture: any
