@@ -1,8 +1,9 @@
 lbdb (0.45.3) UNRELEASED; urgency=medium
 
   * Add Vcs-* headers pointing to github repository.
+  * Fix file move from lbdb to elpa-lbdb on binary-arch build target.
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 03 Dec 2017 10:40:48 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Mon, 04 Dec 2017 19:53:37 +0100
 
 lbdb (0.45.2) unstable; urgency=medium
 

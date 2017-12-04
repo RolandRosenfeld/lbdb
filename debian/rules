@@ -33,5 +33,12 @@ override_dh_auto_configure:
 
 override_dh_auto_install:
 	$(MAKE) install_prefix=$(DROOT) install
-	mv $(DROOT)/usr/lib/lbdb/lbdb_bbdb_query.el $(EROOT)/usr/lib/lbdb/
-	mv $(DROOT)/usr/lib/lbdb/m_bbdb $(EROOT)/usr/lib/lbdb/
+
+#	move from lbdb to elpa-lbdb, but not on binary-arch target:
+	if [ -d $(EROOT)/usr/lib/lbdb/ ]; then \
+	   mv $(DROOT)/usr/lib/lbdb/lbdb_bbdb_query.el $(EROOT)/usr/lib/lbdb/;\
+	   mv $(DROOT)/usr/lib/lbdb/m_bbdb $(EROOT)/usr/lib/lbdb/;\
+	else \
+	   rm -f $(DROOT)/usr/lib/lbdb/lbdb_bbdb_query.el;\
+	   rm -f $(DROOT)/usr/lib/lbdb/m_bbdb;\
+        fi
