@@ -28,6 +28,7 @@
 # - m_abook	 query abook(1), the text based address book application.
 # - m_goobook	 query goobook(1), a command line interface to Google contacts.
 # - m_addr_email query addr-email(1) from addressbook Tk-program.
+# - m_mu         query mu-cfind(1) from the mu Maildir indexer.
 # - m_muttalias  search $MUTTALIAS_FILES for aliases.
 # - m_pine	 search pine(1) addressbook files for aliases.
 # - m_palm	 search your Palm addressbook file.
