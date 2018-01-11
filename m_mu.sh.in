@@ -25,6 +25,6 @@ m_mu_query()
     if [ -x "$MU" ]                # check whether mu is installed
     then
         $MU cfind --format=csv "$@" \
-        | sed -e '/^,/d' -e 's/\(..*\),\([^,]*\)/\2	\1	mu cfind/'
+        | sed -e '/^,/d' -e 's/\(.*\),\([^,]*\)/\2	\1	mu cfind/'
     fi
 }
