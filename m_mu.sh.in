@@ -21,10 +21,21 @@
 m_mu_query()
 {
     MU=@MU@
+    MU_OPTIONS=
+
+    if [ "$MU_AFTER" -eq "$MU_AFTER" ] 2>/dev/null # test integer
+    then
+	MU_OPTIONS="$MU_OPTIONS --after=$MU_AFTER"
+    fi
+
+    if [ "$MU_PERSONAL" = "yes" ] || [ "$MU_PERSONAL" = "true" ]
+    then
+	MU_OPTIONS="$MU_OPTIONS --personal"
+    fi
 
     if [ -x "$MU" ]                # check whether mu is installed
     then
-        $MU cfind --format=csv "$@" \
+	$MU cfind --format=csv $MU_OPTIONS "$@" \
         | sed -e '/^,/d' -e 's/\(.*\),\([^,]*\)/\2	\1	mu cfind/'
     fi
 }

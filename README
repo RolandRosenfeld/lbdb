@@ -116,7 +116,9 @@ m_addr_email
 m_mu
        This module uses the program mu
        (http://www.linuxstart.com/~jheinonen/abook/), a tool for
-       indexing and searching Maildir directories.
+       indexing and searching Maildir directories. You can set
+       MU_AFTER to a timestamp value and MU_PERSONAL to "yes" or
+       "true" to filter the results.
 
 m_muttalias
        This module searches the variable MUTTALIAS_FILES (a space
