@@ -113,13 +113,6 @@ m_addr_email
        (http://red.roses.de/~clemens/addressbook/) Tk program to
        search for addresses.
 
-m_mu
-       This module uses the program mu
-       (http://www.djcbsoftware.nl/code/mu/), a tool for indexing and
-       searching Maildir directories.  You can set MU_AFTER to a
-       timestamp value and MU_PERSONAL to "yes" or "true" to filter
-       the results.
-
 m_muttalias
        This module searches the variable MUTTALIAS_FILES (a space
        separated list) of files in MUTT_DIRECTORY that contain mutt
@@ -189,6 +182,12 @@ m_vcf
 m_khard
        This module searches a CardDAV address book via khard.
 
+m_mu
+       This module uses the program mu
+       (http://www.djcbsoftware.nl/code/mu/), a tool for indexing and
+       searching Maildir directories.  You can set MU_AFTER to a
+       timestamp value and MU_PERSONAL to "yes" or "true" to filter
+       the results.
 
 Feel free to create your own modules to query other kinds of
 databases.  m_finger should be a good example of how to do it.
