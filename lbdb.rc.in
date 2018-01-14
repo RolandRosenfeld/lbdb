@@ -8,32 +8,32 @@
 # ~/.lbdb/rc
 # (evaluated with ascending priority!)
 # 
-# (c) 1999-2016 Roland Rosenfeld <roland@spinnaker.de>
+# (c) 1999-2018 Roland Rosenfeld <roland@spinnaker.de>
 #
 
 #
 # Select which methods you want to use in which order (ascending priority):
 # (a space separated list)
 #
-# - m_inmail	 search the database created by lbdb-fetchaddr(1)
-# - m_finger	 finger some hosts defined in variable M_FINGER_HOSTS
-# - m_passwd	 search the local /etc/passwd file.
-# - m_yppasswd	 search the NIS password database.
-# - m_nispasswd	 search the NIS+ password database.
-# - m_getent	 search the password database (whatever is configured).
-# - m_pgp2	 search your PGP 2.* keyring
-# - m_pgp5	 search your PGP 5.* keyring
-# - m_gpg	 search your GnuPG keyring
-# - m_fido	 search the Fido nodelist converted by nodelist2lbdb(1)
-# - m_abook	 query abook(1), the text based address book application.
-# - m_goobook	 query goobook(1), a command line interface to Google contacts.
+# - m_inmail     search the database created by lbdb-fetchaddr(1)
+# - m_finger     finger some hosts defined in variable M_FINGER_HOSTS
+# - m_passwd     search the local /etc/passwd file.
+# - m_yppasswd   search the NIS password database.
+# - m_nispasswd  search the NIS+ password database.
+# - m_getent     search the password database (whatever is configured).
+# - m_pgp2       search your PGP 2.* keyring
+# - m_pgp5       search your PGP 5.* keyring
+# - m_gpg        search your GnuPG keyring
+# - m_fido       search the Fido nodelist converted by nodelist2lbdb(1)
+# - m_abook      query abook(1), the text based address book application.
+# - m_goobook    query goobook(1), a command line interface to Google contacts.
 # - m_addr_email query addr-email(1) from addressbook Tk-program.
 # - m_mu         query mu-cfind(1) from the mu Maildir indexer.
 # - m_muttalias  search $MUTTALIAS_FILES for aliases.
-# - m_pine	 search pine(1) addressbook files for aliases.
-# - m_palm	 search your Palm addressbook file.
-# - m_gnomecard	 search your GnomeCard address database files.
-# - m_bbdb	 search your BBDB (big brother database).
+# - m_pine       search pine(1) addressbook files for aliases.
+# - m_palm       search your Palm addressbook file.
+# - m_gnomecard  search your GnomeCard address database files.
+# - m_bbdb       search your BBDB (big brother database).
 # - m_ldap       query an LDAP server 
 # - m_wanderlust search your wanderlust ~/.addresses file.
 # - m_osx_addressbook  search the OS X addressbook (only available on OS X).
@@ -70,7 +70,7 @@ METHODS="m_inmail m_passwd m_finger"
 #MUTTALIAS_FILES=".muttrc .mail_aliases muttrc aliases"
 
 
-# - m_pine	search pine addressbook files for aliases:
+# - m_pine      search pine addressbook files for aliases:
 #
 # This module first inspects the variable PINERC. If it isn't set, the
 # default `/etc/pine.conf /etc/pine.conf.fixed .pinerc' is used. To
@@ -94,7 +94,7 @@ METHODS="m_inmail m_passwd m_finger"
 #WANDERLUST_ADDRESSES="$HOME/.addresses"
 
 
-# - m_palm	search your Palm addressbook file:
+# - m_palm      search your Palm addressbook file:
 #
 # This module searches the Palm address database using the Palm::PDB
 # and Palm::Address Perl modules from CPAN. It searches in the
@@ -104,7 +104,7 @@ METHODS="m_inmail m_passwd m_finger"
 #PALM_ADDRESS_DATABASE="$HOME/.jpilot/AddressDB.pdb"
 
 
-# - m_gnomecard	 search your GnomeCard address database files.
+# - m_gnomecard  search your GnomeCard address database files.
 #
 # This module searches for addresses in your GnomeCard database files.
 # The variable GNOMECARD_FILES is a whitespace separated list of
