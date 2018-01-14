@@ -204,3 +204,13 @@ METHODS="m_inmail m_passwd m_finger"
 #
 #MUNGE_LIMITCOUNT=3
 #MUNGE_LIMITDATE=`date --date='-1 month' +"%F %R"
+
+#
+# If you only want to find addresses seen in messages where one of
+# 'my' e-mail addresses was seen in one of the address fields in m_mu,
+# set MU_PERSONAL to true or yes.
+# If you only want to see addresses seen in messages after a given
+# UNIX timestamp, set the limiting timestamp in MU_AFTER.
+#
+#MU_PERSONAL=true
+#MU_AFTER=$(date --date='-1 year' +%s)
