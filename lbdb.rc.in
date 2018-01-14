@@ -132,15 +132,15 @@ METHODS="m_inmail m_passwd m_finger"
 #
 # This module queries an LDAP server using the Net::LDAP Perl modules
 # from CPAN. It can be configured using an external resource file. You
-# can explicity define a LDAP query in this file or you can use one or
+# can explicitly define a LDAP query in this file or you can use one or
 # more of the predefined queries from the %ldap_server_db in this
-# file. For this you have to define the selected enties as a space
+# file. For this you have to define the selected entries as a space
 # separated list in the the variable LDAP_NICKS.
 #
 #LDAP_NICKS="debian bigfoot"
 
 
-# - m_abook query the abook(1) programm
+# - m_abook query the abook(1) program
 #
 # if you have more than one abook addressbook, use the ABOOK_FILES
 # variable. It contains a space separated list of all your files. 
@@ -195,7 +195,7 @@ METHODS="m_inmail m_passwd m_finger"
 # entries collected by m_inmail?
 # Following date parameter specify the date before which (ie being
 # older) only those entries survive, which were seen by m_inmail more
-# than a specified times. Since rc is parsed on every libdbq
+# than a specified times. Since rc is parsed on every lbdbq
 # invocation, we can use date command to specify dynamic range as "-1
 # month". By default we keep entries which were seen at 3 times,
 # or younger than 1 month
