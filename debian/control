@@ -19,6 +19,7 @@ Suggests: abook,
           libauthen-sasl-perl,
           libnet-ldap-perl,
           libpalm-perl,
+          maildir-utils,
           mutt,
           procmail
 Enhances: mutt
@@ -47,6 +48,7 @@ Description: Little Brother's DataBase for the mutt mail reader
   - m_evolution (search in the Evolution addressbook)
   - m_vcf (search in vcard files using libvformat)
   - m_khard (search a CardDAV address book via khard)
+  - m_mu (search maidir-utils using mu-cfind)
 
 Package: elpa-lbdb
 Architecture: all

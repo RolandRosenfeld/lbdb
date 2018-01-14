@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# (c) 1998-2017  Roland Rosenfeld <roland@debian.org>
+# (c) 1998-2018  Roland Rosenfeld <roland@debian.org>
 # Based on sample debian/rules that uses debhelper.
 # This file is public domain software, originally written by Joey Hess.
 
@@ -29,7 +29,8 @@ override_dh_auto_configure:
 		        --with-pgpk=/usr/bin/pgpk \
 		        --with-pgp=/usr/bin/pgp \
 		        --with-evolution-addressbook-export=auto \
-			--with-khard=/usr/bin/khard
+			--with-khard=/usr/bin/khard \
+			--with-mu=/usr/bin/mu
 
 override_dh_auto_install:
 	$(MAKE) install_prefix=$(DROOT) install
