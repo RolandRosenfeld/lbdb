@@ -1,4 +1,4 @@
-dnl Copyright (c) 1998-2017 Roland Rosenfeld <roland@spinnaker.de>
+dnl Copyright (c) 1998-2018 Roland Rosenfeld <roland@spinnaker.de>
 dnl 
 dnl This program is free software; you can redistribute it and/or modify
 dnl it under the terms of the GNU General Public License as published by
@@ -176,6 +176,7 @@ LBDB_ARG_WITH(PGP, pgp, m_pgp2, [with PGP 2.* support])
 LBDB_ARG_WITH(EVOLUTION_ADDRESSBOOK_EXPORT, evolution-addressbook-export,
               m_evolution, [with Evolution support ('auto' searchs at runtime)])
 LBDB_ARG_WITH(KHARD, khard, m_khard, [with khard support])
+LBDB_ARG_WITH(MU, mu, m_mu, [with mu (maildir-utils) support])
 
 AC_PATH_PROG(PERL, perl, "no")
 if test "x$PERL" != xno ; then
