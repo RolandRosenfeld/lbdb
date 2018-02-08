@@ -1,3 +1,9 @@
+lbdb (0.46.1) UNRELEASED; urgency=medium
+
+  * Add .gitignore based on code by Lucas Hoffmann.
+
+ -- Roland Rosenfeld <roland@debian.org>  Thu, 08 Feb 2018 11:51:18 +0100
+
 lbdb (0.46) unstable; urgency=medium
 
   * Add new module m_mu (maildir-utils), provided by Timothy Bourke.
