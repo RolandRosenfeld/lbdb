@@ -1,8 +1,9 @@
 lbdb (0.46.1) UNRELEASED; urgency=medium
 
   * Add .gitignore based on code by Lucas Hoffmann.
+  * Upgrade debhelper to v11.
 
- -- Roland Rosenfeld <roland@debian.org>  Thu, 08 Feb 2018 11:51:18 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 24 Feb 2018 16:17:52 +0100
 
 lbdb (0.46) unstable; urgency=medium
 
