@@ -27,6 +27,8 @@
 
 - Add testsuite.
 
+- Run shellcheck on all sh scripts and fix warnings.
+
 - Support DEB_BUILD_OPTIONS nodoc (using debhelper >= 10.6)
 
 - Change m_vcf to use a better supported library than libvformat,
