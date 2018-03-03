@@ -1,7 +1,7 @@
 /*
  *     Copyright (C) 2005  Brendan Cully <brendan@kublai.com>
  *     Copyright (C) 2010  martin f krafft <madduck@debian.org>
- *     Copyright (C) 2011  Roland Rosenfeld <roland@spinnaker.de>
+ *     Copyright (C) 2011-2018  Roland Rosenfeld <roland@spinnaker.de>
  * 
  *     This program is free software; you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by

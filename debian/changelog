@@ -3,8 +3,9 @@ lbdb (0.46.1) UNRELEASED; urgency=medium
   * Add .gitignore based on code by Lucas Hoffmann.
   * Upgrade debhelper to v11.
   * Replace legacy `...` by $(...) in sh scripts.
+  * Update copyright notice.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 03 Mar 2018 13:26:37 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 03 Mar 2018 13:38:44 +0100
 
 lbdb (0.46) unstable; urgency=medium
 
