@@ -15,7 +15,7 @@
 .\" along with this program; if not, write to the Free Software Foundation,
 .\" Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
 .\"
-.TH LBDBQ 1 "January 2018" "Unix" "User Manuals"
+.TH LBDBQ 1 "March 2018" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -358,7 +358,7 @@ Print short help of lbdbq.
 .br
 .I @libdir@/*
 .br
-.I $HOME/.lbdb/m_inmail.list
+.I $HOME/.lbdb/m_inmail.utf-8
 .br
 .I $HOME/.lbdb/nodelist
 .SH "SEE ALSO"
