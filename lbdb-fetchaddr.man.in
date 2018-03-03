@@ -15,9 +15,9 @@
 .\" along with this program; if not, write to the Free Software Foundation,
 .\" Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
 .\"
-.TH LBDB-FETCHADDR 1 "September 2016" "Unix" "User Manuals"
+.TH LBDB-FETCHADDR 1 "March 2018" "Unix" "User Manuals"
 .SH NAME
-lbdb-fetchaddr \- grab addresses from mails add append them to lbdb database
+lbdb-fetchaddr \- grab addresses from mails and append them to lbdb database
 .SH SYNOPSIS
 .B lbdb-fetchaddr
 .RB [ -d 
