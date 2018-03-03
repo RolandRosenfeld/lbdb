@@ -43,6 +43,11 @@
 
 METHODS="m_inmail m_passwd m_finger"
 
+#
+# If you want to use a different database file for m_inmail, you can
+# define it in INMAIL_DB (defaults to $HOME/.lbdb/m_inmail.utf-8)
+#
+#INMAIL_DB="$HOME/.lbdb/m_inmail.utf-8"
 
 #
 # If you want m_finger to ask other host then localhost, create a list here:

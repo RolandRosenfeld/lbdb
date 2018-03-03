@@ -128,6 +128,13 @@ variable. If this variable is set by you, no probing will be done by
 This module will look up user name fragments in a list of mail
 addresses created by
 .BR lbdb-fetchaddr (1).
+By default this uses
+.I $HOME/.lbdb/m_inmail.utf-8
+as its database file, but this can be changed using
+.B INMAIL_DB
+variable (but do not forget to change this in the
+.BR lbdb-fetchaddr (1)
+call using option \-f, too).
 .TP
 .B m_passwd
 This module searches for matching entries in your local /etc/passwd

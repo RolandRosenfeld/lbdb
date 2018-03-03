@@ -27,6 +27,8 @@ lbdb-fetchaddr \- grab addresses from mails and append them to lbdb database
 .RB [ -c
 .IR charset ]
 .RB [ -a ]
+.RB [ -f
+.IR databasefile ]
 .br
 .B lbdb-fetchaddr
 .RB [ -v | -h ]
@@ -41,7 +43,7 @@ contents of some header fields (default:
 and
 .RB ` Resent-To: ')
 from the mail header (only addresses with a real name) and appends
-them to 
+them to the database file, which defaults to
 .IR $HOME/.lbdb/m_inmail.utf-8 .
 For performance issues 
 .B lbdb-fetchaddr
@@ -99,6 +101,11 @@ current locale).  If this option isn't given, we fall back to
 .B -a
 Also grab addresses without a real name.  Use the local part of the
 mail address as real name.
+.TP
+.BI -f " databasefile"
+Use the given file for storing the grabbed addresses instead of using
+the default
+.IR $HOME/.lbdb/m_inmail.utf-8 .
 .SH FILES
 .I $HOME/.lbdb/m_inmail.utf-8
 .br

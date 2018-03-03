@@ -26,8 +26,8 @@ prefix=@prefix@
 exec_prefix=@exec_prefix@
 dotlock=@DOTLOCK@
 fetchaddr=@libdir@/fetchaddr
-db=$HOME/.lbdb/m_inmail.utf-8
 
+db=$HOME/.lbdb/m_inmail.utf-8
 datefmt='%Y-%m-%d %H:%M'
 additional_param=""
 
@@ -41,6 +41,8 @@ usage() {
     echo "       -x 'from:to:cc'    colon separated list of header fields"
     echo "       -c 'charset'       charset for the database storage"
     echo "       -a                 also grep addresses without realname"
+    echo "       -f 'filename'      database filename defaults to"
+    echo "                          \$HOME/.lbdb/m_inmail.utf-8"
 }
 
 while [ $# -gt 0 ]
@@ -75,6 +77,13 @@ do
 	    charset="-c $1"
 	fi
 	;;
+    -f)
+	if [ $# -gt 1 ]
+	then
+	    shift
+	    db="$1"
+	fi
+	;;
     -a)
 	additional_param="$additional_param $1"
 	;;
@@ -94,23 +103,23 @@ do
     shift
 done
 
-if [ ! -f $db ]; then
-  dbdir=$(dirname $db)
-  if [ ! -d $dbdir ]; then
-    mkdir -p $dbdir
-    if [ ! -d $dbdir ]; then
+if [ ! -f "$db" ]; then
+  dbdir=$(dirname "$db")
+  if [ ! -d "$dbdir" ]; then
+    mkdir -p "$dbdir"
+    if [ ! -d "$dbdir" ]; then
       echo "Can't create $dbdir" >&2
       exit 1
     fi
   fi
-  touch $db
-  if [ ! -f $db ]; then
+  touch "$db"
+  if [ ! -f "$db" ]; then
     echo "Can't create $db" >&2
     exit 1
   fi
 fi
 
-if $dotlock -r 10 -f $db
+if $dotlock -r 10 -f "$db"
 then
   : # okay, do nothing
 else
@@ -118,8 +127,8 @@ else
   exit 1
 fi
 
-if $fetchaddr $additional_param -d "$datefmt" $hdrlist $charset >> $db ; then
-  touch $db.dirty
+if $fetchaddr $additional_param -d "$datefmt" $hdrlist $charset >> "$db" ; then
+  touch "$db.dirty"
 fi
 
-$dotlock -u $db
+$dotlock -u "$db"

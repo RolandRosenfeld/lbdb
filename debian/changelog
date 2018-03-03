@@ -6,8 +6,9 @@ lbdb (0.46.1) UNRELEASED; urgency=medium
   * Update copyright notice.
   * Add test_perl to check perl syntax.
   * Replace undefined $rv by $?.
+  * Make the database file for m_inmail/lbdb-fetchaddr configurable.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 03 Mar 2018 14:54:11 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 03 Mar 2018 15:35:40 +0100
 
 lbdb (0.46) unstable; urgency=medium
 
