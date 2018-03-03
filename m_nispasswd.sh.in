@@ -26,8 +26,8 @@ m_nispasswd_query()
 
     if [ -x "$NISCAT" ]	#check for niscat
     then
-	f_user="`echo \"$@\" | sed -e 's/@.*//'`"
-	HOST="`lbdb_hostname`"
+	f_user="$(echo \"$@\" | sed -e 's/@.*//')"
+	HOST="$(lbdb_hostname)"
 
 	$NISCAT passwd.org_dir \
 	| grep -ia "$f_user" \

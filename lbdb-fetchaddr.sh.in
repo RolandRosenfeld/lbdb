@@ -95,7 +95,7 @@ do
 done
 
 if [ ! -f $db ]; then
-  dbdir=`dirname $db`
+  dbdir=$(dirname $db)
   if [ ! -d $dbdir ]; then
     mkdir -p $dbdir
     if [ ! -d $dbdir ]; then

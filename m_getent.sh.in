@@ -25,8 +25,8 @@ m_getent_query()
 
     if [ -x "$GETENT" ]	#check for getent
     then
-	f_user="`echo \"$@\" | sed -e 's/@.*//'`"
-	HOST="`lbdb_hostname`"
+	f_user="$(echo \"$@\" | sed -e 's/@.*//')"
+	HOST="$(lbdb_hostname)"
 
 	$GETENT passwd \
 	| grep -ia "$f_user" \

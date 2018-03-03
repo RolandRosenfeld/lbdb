@@ -26,8 +26,8 @@ m_yppasswd_query()
 
     if [ -x "$YPCAT" ]	#check for ypcat
     then
-	f_user="`echo \"$@\" | sed -e 's/@.*//'`"
-	HOST="`lbdb_hostname`"
+	f_user="$(echo \"$@\" | sed -e 's/@.*//')"
+	HOST="$(lbdb_hostname)"
 
 	$YPCAT passwd \
 	| grep -ia "$f_user" \

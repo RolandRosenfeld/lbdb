@@ -33,12 +33,12 @@ m_gnomecard_query ()
     then 
 	if [ -r "$rcfile" ]
 	then
-	    GNOMECARD_FILES=`\
+	    GNOMECARD_FILES=$(\
 		$AWK 'BEGIN {FS="="; infile=0} \
 		      /^\[.*\]/ {infile=0} \
 		      /^\[file\]/ {infile=1} \
 		      infile && /^open=/ {print $2}' \
-		    < $rcfile`
+		    < $rcfile)
 	fi
 	if [ -z "$GNOMECARD_FILES" ]
 	then

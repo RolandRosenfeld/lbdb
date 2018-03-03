@@ -20,7 +20,7 @@
 
 m_passwd_query()
 {
-    HOST="`lbdb_hostname`"
+    HOST="$(lbdb_hostname)"
     case "$PASSWD_IGNORESYS" in
 	true|yes|1)
 	    IGNORESYS='UID \([12]....\|....\)$'

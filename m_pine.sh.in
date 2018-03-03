@@ -57,7 +57,7 @@ m_pine_query()
 	        pinerc=$HOME/$pinerc
 	    fi
 	    if [ -f $pinerc ] ; then
-		addressbook=`\
+		addressbook=$(\
 		    $AWK 'BEGIN {SPACE="";}
 		    /^(global-)?address-book[ 	]*=/ {
 			sub("^(global-)?address-book[ 	]*=","");
@@ -72,7 +72,7 @@ m_pine_query()
 			sub("[ 	].*","");
 			printf("%s%s",SPACE,$0);
 			SPACE=" ";
-		    }' < $pinerc`
+		    }' < $pinerc)
 	    fi
 	    addressbooks="${addressbook# } ${addressbooks# }"
         done

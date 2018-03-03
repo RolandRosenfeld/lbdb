@@ -34,7 +34,7 @@ case "$1" in
 	exit 0
 	;;
     -h|--help)
-	PROG=`basename $0`
+	PROG=$(basename $0)
 	echo "Usage: $PROG 'something'   search addresses matching 'something'"
 	echo "       $PROG -v|--version  print version of lbdbq"
 	echo "       $PROG -h|--help     this short help"
@@ -44,7 +44,7 @@ esac
 
 . $libdir/lbdb_lib
 
-tmpdir=${TMPDIR-/tmp}/query.`hostname`.$$
+tmpdir=${TMPDIR-/tmp}/query.$(hostname).$$
 mkdir $tmpdir || exit 1
 trap "rm -rf $tmpdir ; trap '' 0; exit 1" HUP INT QUIT TERM
 trap "rm -rf $tmpdir ; trap '' 0" EXIT
@@ -101,7 +101,7 @@ case "${SORT_OUTPUT:-}" in
 	;;
 esac
 
-lines=`wc -l < $collection.uniq`
+lines=$(wc -l < $collection.uniq)
 
 if [ $lines -eq 0 ]
 then

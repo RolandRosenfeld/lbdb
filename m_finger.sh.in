@@ -26,7 +26,7 @@ m_finger_query()
     if [ -x "$FINGER" ]		# check whether finger in installed
     then
 
-	f_user="`echo \"$@\" | sed 's/@.*//'`"
+	f_user="$(echo \"$@\" | sed 's/@.*//')"
 	
 	if test "x$M_FINGER_HOSTS" = x ; then
 		M_FINGER_HOSTS="localhost"
@@ -35,7 +35,7 @@ m_finger_query()
 	for host in $M_FINGER_HOSTS ; do
 	    if test "$host" = "localhost" ; then
 		athost=""
-		mailhost="`lbdb_hostname`"
+		mailhost="$(lbdb_hostname)"
 	    else
 		athost="@$host"
 		mailhost="$host"
