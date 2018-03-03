@@ -43,3 +43,8 @@ override_dh_auto_install:
 	   rm -f $(DROOT)/usr/lib/lbdb/lbdb_bbdb_query.el;\
 	   rm -f $(DROOT)/usr/lib/lbdb/m_bbdb;\
         fi
+
+override_dh_elpa_test:
+#	reenable dh_auto_test (this is usually otherwise by dh-elpa)
+	dh_elpa_test
+	dh_auto_test
