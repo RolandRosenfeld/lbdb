@@ -23,6 +23,7 @@ m_muttalias_query()
 {
     [ -d ${MUTT_DIRECTORY:=$HOME/.mutt} ] || MUTT_DIRECTORY=$HOME
 
+    MUTTALIAS_FILES=${OVERRIDE_MUTTALIAS_FILES:-$MUTTALIAS_FILES}
     for file in ${MUTTALIAS_FILES:-.muttrc .mail_aliases muttrc aliases} ; do
 	if [ $file = ${file#/} ]
 	then

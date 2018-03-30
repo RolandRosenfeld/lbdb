@@ -9,8 +9,9 @@ lbdb (0.46.1) UNRELEASED; urgency=medium
     perl syntax check.
   * Replace undefined $rv by $?.
   * Make the database file for m_inmail/lbdb-fetchaddr configurable.
+  * Add LBDB_OVERRIDE_METHODS, OVERIDE_MUTTALIAS_FILES variables for testing.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 03 Mar 2018 15:40:59 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Fri, 30 Mar 2018 20:25:27 +0200
 
 lbdb (0.46) unstable; urgency=medium
 

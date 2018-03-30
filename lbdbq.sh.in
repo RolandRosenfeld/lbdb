@@ -59,6 +59,7 @@ for conffile in $sysconfdir/lbdb.rc $HOME/.lbdbrc \
 
 done
 
+METHODS=${LBDB_OVERRIDE_METHODS:-$METHODS}
 for method in $METHODS ; do
   for CURRENT_MODULE_DIR in $MODULES_PATH ; do
     if test -f $CURRENT_MODULE_DIR/$method ; then
