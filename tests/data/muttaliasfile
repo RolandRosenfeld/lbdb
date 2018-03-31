@@ -1,0 +1,21 @@
+# Some mutt aliases, that should partly be parsed by m_muttalias.
+
+# first with spaces:
+alias test1 First1 Family1 <foo1@example.com>
+alias test2 foo2@example.com (First2 Family2)
+alias test3 <foo3@example.com> (First3 Family3)
+alias test4 "First4 Family4" <foo4@example.com>
+alias test5 foo5@example.com ("First5 Family5")
+alias test6 <foo6@example.com> ("First6 Family6")
+
+# second with tabs:
+alias	test7	First7 Family7	<foo7@example.com>
+alias	test8	foo8@example.com	(First8 Family8)
+alias	test9	<foo9@example.com>	(First9 Family9)
+alias	testA	"FirstA FamilyA"	<fooA@example.com>
+alias	testB	fooB@example.com	("FirstB FamilyB")
+alias	testC	<fooC@example.com>	("FirstC FamilyC")
+
+# some other stuff, that should be ignored:
+alias group test1, test2, test3, test4
+alias NoTST FirstZ FamilyZ <fooZ@example.com>

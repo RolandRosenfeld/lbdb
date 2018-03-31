@@ -14,7 +14,11 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program; if not, write to the Free Software Foundation,
 dnl Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 
-AC_INIT
+AC_INIT([lbdb],
+	m4_esyscmd_s([sed -e 's/^.*(\(.*\)).*$/\1/;q' < debian/changelog]),
+	[roland@spinnaker.de],
+	[],
+	[https://www.spinnaker.de/lbdb/])
 AC_CONFIG_SRCDIR([fetchaddr.c])
 
 AC_MSG_CHECKING(for prefix)
@@ -218,11 +222,17 @@ done
 SYSCONF_DIR=`test "$prefix" = NONE && prefix=$ac_default_prefix; eval echo "${sysconfdir}"`
 AC_SUBST(SYSCONF_DIR)
 
-LBDB_VERSION=`sed -e 's/^.*(\(.*\)).*$/\1/;q' < debian/changelog`
+LBDB_VERSION=$PACKAGE_VERSION
 AC_SUBST(LBDB_VERSION)
 
 AC_SUBST(MODULES)
+
+AC_CONFIG_TESTDIR([tests])
+AC_PATH_PROG(AUTOM4TE, autom4te, autom4te)
+AC_SUBST(AUTOM4TE)
+
 AC_CONFIG_FILES([Makefile lbdbq.sh munge.awk lbdb-fetchaddr.sh \
 	lbdb-munge.sh lbdb_lib.sh nodelist2lbdb.pl palm_lsaddr.pl \
-	mutt_ldap_query.pl $MODULES_SH $TACAWK lbdb.spec lbdb.rc lbdb-pkg.el])
+	mutt_ldap_query.pl $MODULES_SH $TACAWK lbdb.spec lbdb.rc lbdb-pkg.el \
+	tests/Makefile tests/atlocal])
 AC_OUTPUT
