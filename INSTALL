@@ -4,6 +4,8 @@ Installation notes
 To install the Little Brother's database, type:
 
 	./configure
+	make
+	make test
 	make install
 
 Note that this will put quite a few auxiliary files into
