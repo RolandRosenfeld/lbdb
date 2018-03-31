@@ -1,4 +1,4 @@
-lbdb (0.46.1) UNRELEASED; urgency=medium
+lbdb (0.47) UNRELEASED; urgency=medium
 
   * Add .gitignore based on code by Lucas Hoffmann.
   * Upgrade debhelper to v11.
@@ -14,7 +14,7 @@ lbdb (0.46.1) UNRELEASED; urgency=medium
   * Add a test suite.
     - Add a test for m_muttalias.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 31 Mar 2018 20:41:40 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 31 Mar 2018 20:43:34 +0200
 
 lbdb (0.46) unstable; urgency=medium
 
