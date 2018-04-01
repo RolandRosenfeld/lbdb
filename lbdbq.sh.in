@@ -104,7 +104,7 @@ case "${SORT_OUTPUT:-}" in
 	;;
 esac
 
-lines=$(wc -l < $collection.uniq)
+lines=$(wc -l < $collection.uniq | sed -E 's/[[:blank:]]+//')
 
 if [ $lines -eq 0 ]
 then
