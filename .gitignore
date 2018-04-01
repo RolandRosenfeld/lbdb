@@ -56,7 +56,6 @@ ABQuery
 tests/atconfig
 tests/atlocal
 tests/package.m4
-tests/testsuite
 tests/testsuite.dir
 tests/testsuite.log
 

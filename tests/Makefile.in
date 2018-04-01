@@ -54,4 +54,4 @@ clean:
 	-rm -rf testsuite.dir
 
 distclean:
-	-rm -f atlocal atconfig Makefile testsuite
+	-rm -f atlocal atconfig Makefile
