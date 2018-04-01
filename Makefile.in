@@ -55,9 +55,9 @@ testinstalled:
 	$(MAKE) -C tests installcheck-local
 
 test_perl:
-	[ "$(PERL)" != "no" ] && perl -wc nodelist2lbdb
-	[ "$(PERL)" != "no" ] && perl -wc palm_lsaddr
-	[ "$(PERL)" != "no" ] && perl -wc mutt_ldap_query
+	[ "$(PERL)" = "no" ] || perl -wc nodelist2lbdb
+	[ "$(PERL)" = "no" ] || perl -wc palm_lsaddr
+	[ "$(PERL)" = "no" ] || perl -wc mutt_ldap_query
 
 install: all
 	$(srcdir)/mkinstalldirs $(install_prefix)$(bindir)
