@@ -16,6 +16,7 @@
 
 srcdir = @srcdir@
 top_srcdir = @top_srcdir@
+abs_top_srcdir = @abs_top_srcdir@
 AUTOM4TE = @AUTOM4TE@
 
 TESTSUITE_AT = m_muttalias.at
@@ -33,7 +34,13 @@ $(srcdir)/package.m4: $(top_srcdir)/configure.ac
 	  echo 'm4_define([AT_PACKAGE_BUGREPORT], [@PACKAGE_BUGREPORT@])'; \
 	} >$(srcdir)/package.m4
 
+# use just build lbdbq binary:
 check-local: atconfig atlocal $(TESTSUITE)
+	$(SHELL) $(TESTSUITE) AUTOTEST_PATH=$(abs_top_srcdir) \
+		USE_LOCAL_LIB=$(abs_top_srcdir)
+
+# use installed lbdbq binary:
+installcheck-local: atconfig atlocal $(TESTSUITE)
 	$(SHELL) $(TESTSUITE)
 
 AUTOTEST = $(AUTOM4TE) --language=autotest

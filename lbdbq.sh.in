@@ -42,6 +42,7 @@ case "$1" in
 	;;
 esac
 
+libdir=${USE_LOCAL_LIB:-$libdir}
 . $libdir/lbdb_lib
 
 tmpdir=${TMPDIR-/tmp}/query.$(hostname).$$
@@ -60,6 +61,7 @@ for conffile in $sysconfdir/lbdb.rc $HOME/.lbdbrc \
 done
 
 METHODS=${LBDB_OVERRIDE_METHODS:-$METHODS}
+MODULES_PATH=${USE_LOCAL_LIB:-$MODULES_PATH}
 for method in $METHODS ; do
   for CURRENT_MODULE_DIR in $MODULES_PATH ; do
     if test -f $CURRENT_MODULE_DIR/$method ; then

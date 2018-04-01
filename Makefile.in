@@ -51,6 +51,9 @@ all: Makefile $(ALL)
 test: all test_perl
 	$(MAKE) -C tests check-local
 
+testinstalled:
+	$(MAKE) -C tests installcheck-local
+
 test_perl:
 	[ "$(PERL)" != "no" ] && perl -wc nodelist2lbdb
 	[ "$(PERL)" != "no" ] && perl -wc palm_lsaddr
