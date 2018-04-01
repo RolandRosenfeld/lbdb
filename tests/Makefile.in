@@ -50,7 +50,7 @@ $(TESTSUITE): $(srcdir)/testsuite.at $(srcdir)/package.m4 $(TESTSUITE_AT)
 	mv $@.tmp $@
 
 clean:
-	-rm -f *~ testsuite.log package.m4
+	-rm -f *~ testsuite.log
 	-rm -rf testsuite.dir
 
 distclean:
