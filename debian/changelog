@@ -13,8 +13,10 @@ lbdb (0.47) UNRELEASED; urgency=medium
     testing.
   * Add a test suite.
     - Add a test for m_muttalias.
+  * m_muttalias: rewrite sed regex as ERE, which should be more POSIX
+    compatible and should work on non GNU sed, too.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 31 Mar 2018 20:43:34 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 01 Apr 2018 22:50:31 +0200
 
 lbdb (0.46) unstable; urgency=medium
 
