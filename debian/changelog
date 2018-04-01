@@ -17,8 +17,9 @@ lbdb (0.47) UNRELEASED; urgency=medium
     compatible and should work on non GNU sed, too.
   * lbdbq: Remove whitespace from number of matches to become more
     portable.
+  * Add debian testsuite, calling lbdb testsuite.
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 01 Apr 2018 23:09:51 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 01 Apr 2018 23:22:33 +0200
 
 lbdb (0.46) unstable; urgency=medium
 
