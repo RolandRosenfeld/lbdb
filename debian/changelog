@@ -1,4 +1,4 @@
-lbdb (0.47) UNRELEASED; urgency=medium
+lbdb (0.47) unstable; urgency=medium
 
   * Add .gitignore based on code by Lucas Hoffmann.
   * Upgrade debhelper to v11.
@@ -19,7 +19,7 @@ lbdb (0.47) UNRELEASED; urgency=medium
     portable.
   * Add debian testsuite, calling lbdb testsuite.
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 01 Apr 2018 23:22:33 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Mon, 02 Apr 2018 18:35:21 +0200
 
 lbdb (0.46) unstable; urgency=medium
 
