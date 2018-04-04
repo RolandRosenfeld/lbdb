@@ -21,11 +21,11 @@
 
 m_muttalias_query()
 {
-    [ -d ${MUTT_DIRECTORY:=$HOME/.mutt} ] || MUTT_DIRECTORY=$HOME
+    [ -d "${MUTT_DIRECTORY:=$HOME/.mutt}" ] || MUTT_DIRECTORY=$HOME
 
     MUTTALIAS_FILES=${OVERRIDE_MUTTALIAS_FILES:-$MUTTALIAS_FILES}
     for file in ${MUTTALIAS_FILES:-.muttrc .mail_aliases muttrc aliases} ; do
-	if [ $file = ${file#/} ]
+	if [ "$file" = "${file#/}" ]
 	then
 	    file=$MUTT_DIRECTORY/$file
 	fi
@@ -36,7 +36,7 @@ m_muttalias_query()
 	    # 1. alias nick Foo Bar <foo@example.com>
 	    # 2. alias nick foo@example.com (Foo Bar)
 	    # 3. alias nick <foo@example.com> (Foo Bar)
-	    grep -ia "$@" $file \
+	    grep -ia "$@" "$file" \
 	    | grep -a '^alias[ 	][ 	]*[^,][^,]*[ 	][ 	]*\([^,]\|\\\".*\\\"\)*$' \
 	    | sed -E -e 's/^alias[[:blank:]]+([^[:blank:]]+)[[:blank:]]+("[^"]+"|[^<>()]+)[[:blank:]]+<([^<>()]+)>.*$/\3	\2	alias \1/' \
 		     -e 's/^alias[[:blank:]]+([^[:blank:]]+)[[:blank:]]+([^<>()]+)[[:blank:]]+\(([^()<>]+)\).*$/\2	\3	alias \1/' \

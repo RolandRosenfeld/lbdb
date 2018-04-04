@@ -1,3 +1,9 @@
+lbdb (0.48) UNRELEASED; urgency=medium
+
+  * m_muttalias: Fix some shellcheck warnings.
+
+ -- Roland Rosenfeld <roland@debian.org>  Wed, 04 Apr 2018 22:18:23 +0200
+
 lbdb (0.47) unstable; urgency=medium
 
   * Add .gitignore based on code by Lucas Hoffmann.
