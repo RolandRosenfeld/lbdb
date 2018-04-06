@@ -1,8 +1,9 @@
 lbdb (0.48) UNRELEASED; urgency=medium
 
   * m_muttalias: Fix some shellcheck warnings.
+  * Upgrade to Standards-Version 4.1.4 (no changes).
 
- -- Roland Rosenfeld <roland@debian.org>  Wed, 04 Apr 2018 22:18:23 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Fri, 06 Apr 2018 14:33:37 +0200
 
 lbdb (0.47) unstable; urgency=medium
 
