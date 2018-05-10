@@ -358,7 +358,7 @@ longer processing from LDAP server but is quite convenient :).
 =item B<--lbdb_output> or B<-l>
 
 suppress number of matches output (suited for interfacing with little
-brother database http://www.spinnaker.de/lbdb/).
+brother database http://www.spinnaker.de/lbdb/)
 
 =item B<--version> or B<-v>
 
