@@ -2,8 +2,9 @@ lbdb (0.48) UNRELEASED; urgency=medium
 
   * m_muttalias: Fix some shellcheck warnings.
   * Upgrade to Standards-Version 4.1.4 (no changes).
+  * Change project homepage URL to https.
 
- -- Roland Rosenfeld <roland@debian.org>  Fri, 06 Apr 2018 14:33:37 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Mon, 21 May 2018 18:17:50 +0200
 
 lbdb (0.47) unstable; urgency=medium
 

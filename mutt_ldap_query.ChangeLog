@@ -12,7 +12,7 @@
 * 3.1 (03/10/2000): 
   - added the -l option that suppresses the number of matches output 
   - for better interfacing with little brother database 
-  - http://www.spinnaker.de/lbdb/
+  - https://www.spinnaker.de/lbdb/
 * 3.0 (12/29/1999): 
   - implemented another query method using perl-ldap module enabled by 
   - the -p boolean flag

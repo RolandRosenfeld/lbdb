@@ -7,7 +7,7 @@
 ;;; Commentary:
 ;;
 ;; lbdb.el is an emacs interface to the Little Brother's Database. You can
-;; find out more about LBDB at <URL:http://www.spinnaker.de/lbdb/>.
+;; find out more about LBDB at <URL:https://www.spinnaker.de/lbdb/>.
 ;;
 ;; A number of commands are provided, they are:
 ;;

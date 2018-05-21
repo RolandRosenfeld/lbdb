@@ -358,7 +358,7 @@ longer processing from LDAP server but is quite convenient :).
 =item B<--lbdb_output> or B<-l>
 
 suppress number of matches output (suited for interfacing with little
-brother database http://www.spinnaker.de/lbdb/)
+brother database https://www.spinnaker.de/lbdb/)
 
 =item B<--version> or B<-v>
 
@@ -385,7 +385,7 @@ Multiple requests are supported: the "Q" command of mutt accepts as argument
 a list of queries (e.g. "Gosse de\ Courville").
 
 Alternatively mutt_ldap_query can be interfaced with the more generic
-little brother database query program (http://www.spinnaker.de/lbdb/)
+little brother database query program (https://www.spinnaker.de/lbdb/)
 using:
 
     set query_command = "lbdbq %s"
@@ -536,7 +536,7 @@ The latest version can be retrieved at
 or
   http://www.courville.org/
 
-Note that now the script is integrated in the latest version of the little brother database available at http://www.spinnaker.de/lbdb/.  It is thus easier to use through this standard package than to hand customize it to fit your system/distribution needs.
+Note that now the script is integrated in the latest version of the little brother database available at https://www.spinnaker.de/lbdb/.  It is thus easier to use through this standard package than to hand customize it to fit your system/distribution needs.
 
 =head1 REFERENCES
 
@@ -562,7 +562,7 @@ historical Brandon Blong's "External Address Query" feature patch for mutt
 little brother database is an interface query program for mutt that allow
 multiple searches for email addresses based on external query scripts
 just like this one 8-)
- http://www.spinnaker.de/lbdb/
+ https://www.spinnaker.de/lbdb/
 
 =back
 

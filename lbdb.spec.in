@@ -7,11 +7,11 @@ Name: lbdb
 Version: %ver
 Release: %rel
 Copyright: GNU General Public Licence
-URL: http://www.spinnaker.de/lbdb/
+URL: https://www.spinnaker.de/lbdb/
 Packager: Horms <horms@vergenet.net>
 Vendor: Horms
 Group: Applications/Databases
-Source: http://www.spinnaker.de/debian/lbdb_%{ver}.tar.gz
+Source: https://www.spinnaker.de/lbdb/download/lbdb_%{ver}.tar.gz
 NoSource: 0
 BuildRoot: /var/tmp/lbdb-%{PACKAGE_VERSION}-root
 Docdir: %{prefix}/doc

@@ -10,7 +10,7 @@ Build-Depends: debhelper (>= 11~),
                libpalm-perl <!nocheck>,
                libvformat-dev <!nocheck>,
                perl
-Homepage: http://www.spinnaker.de/lbdb/
+Homepage: https://www.spinnaker.de/lbdb/
 Vcs-Browser: https://github.com/RolandRosenfeld/lbdb
 Vcs-Git: https://github.com/RolandRosenfeld/lbdb.git
 
