@@ -20,7 +20,6 @@
 LBDB_VERSION=@LBDB_VERSION@
 
 prefix=@prefix@
-exec_prefix=@exec_prefix@
 libdir=@libdir@
 sysconfdir=@sysconfdir@
 
@@ -34,7 +33,7 @@ case "$1" in
 	exit 0
 	;;
     -h|--help)
-	PROG=$(basename $0)
+	PROG=$(basename "$0")
 	echo "Usage: $PROG 'something'   search addresses matching 'something'"
 	echo "       $PROG -v|--version  print version of lbdbq"
 	echo "       $PROG -h|--help     this short help"
@@ -43,10 +42,10 @@ case "$1" in
 esac
 
 libdir=${USE_LOCAL_LIB:-$libdir}
-. $libdir/lbdb_lib
+. "$libdir"/lbdb_lib
 
 tmpdir=${TMPDIR-/tmp}/query.$(hostname).$$
-mkdir $tmpdir || exit 1
+mkdir "$tmpdir" || exit 1
 trap "rm -rf $tmpdir ; trap '' 0; exit 1" HUP INT QUIT TERM
 trap "rm -rf $tmpdir ; trap '' 0" EXIT
 collection=$tmpdir/coll
@@ -54,8 +53,8 @@ collection=$tmpdir/coll
 for conffile in $sysconfdir/lbdb.rc $HOME/.lbdbrc \
 	$HOME/.lbdb/lbdbrc $HOME/.lbdb/rc ; do
 	
-  if test -f $conffile ; then
-    . $conffile
+  if test -f "$conffile" ; then
+    . "$conffile"
   fi
 
 done
@@ -64,15 +63,15 @@ METHODS=${LBDB_OVERRIDE_METHODS:-$METHODS}
 MODULES_PATH=${USE_LOCAL_LIB:-$MODULES_PATH}
 for method in $METHODS ; do
   for CURRENT_MODULE_DIR in $MODULES_PATH ; do
-    if test -f $CURRENT_MODULE_DIR/$method ; then
-      . $CURRENT_MODULE_DIR/$method
+    if test -f "$CURRENT_MODULE_DIR/$method" ; then
+      . "$CURRENT_MODULE_DIR/$method"
       break
     fi
   done
 done
 
 for method in $METHODS ; do
-  eval ${method}_query \""$@"\" >> $collection || true
+  eval ${method}_query \""$@"\" >> "$collection" || true
 done
 
 case "${KEEP_DUPES:-}" in
@@ -88,25 +87,25 @@ esac
 
 case "${SORT_OUTPUT:-}" in
     false|no)
-	$MUNGE_KEEPORDER $collection | $TAC > $collection.uniq
+	$MUNGE_KEEPORDER "$collection" | $TAC > "$collection.uniq"
 	;;
     *name)
-	$MUNGE $collection | sort -f -k2 > $collection.uniq
+	$MUNGE "$collection" | sort -f -k2 > "$collection.uniq"
 	;;
     reverse_comment)
-        $MUNGE $collection | sort -f -k3 -t'	' -r > $collection.uniq
+        $MUNGE "$collection" | sort -f -k3 -t'	' -r > "$collection.uniq"
 	;;
     comment)
-        $MUNGE $collection | sort -f -k3 -t'	' > $collection.uniq
+        $MUNGE "$collection" | sort -f -k3 -t'	' > "$collection.uniq"
 	;;
     *)
-	$MUNGE $collection | sort -f > $collection.uniq
+	$MUNGE "$collection" | sort -f > "$collection.uniq"
 	;;
 esac
 
-lines=$(wc -l < $collection.uniq | sed -E 's/[[:blank:]]+//')
+lines=$(wc -l < "$collection.uniq" | sed -E 's/[[:blank:]]+//')
 
-if [ $lines -eq 0 ]
+if [ "$lines" -eq 0 ]
 then
     echo "lbdbq: no matches"
     exit 1
@@ -114,4 +113,4 @@ else
     echo "lbdbq: $lines matches"
 fi
 
-cat $collection.uniq
+cat "$collection.uniq"

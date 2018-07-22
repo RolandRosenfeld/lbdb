@@ -9,8 +9,9 @@ lbdb (0.48) UNRELEASED; urgency=medium
     - Declare Rules-Requires-Root: no.
   * Add update-version target to update version in all autotool files.
   * m_abook: Fix a shellcheck warning.
+  * lbdbq, lbdb-fetchaddr: Fix some shellcheck warnings.
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 22 Jul 2018 16:12:24 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 22 Jul 2018 16:57:40 +0200
 
 lbdb (0.47) unstable; urgency=medium
 
