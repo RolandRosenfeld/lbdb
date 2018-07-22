@@ -5,8 +5,9 @@ lbdb (0.48) UNRELEASED; urgency=medium
   * Change project homepage URL to https.
   * Use literal tab characters in order to make m_abook and m_goobook
     modules work without requiring GNU sed(1).  Thanks to Raf Czlonka.
+  * Add tests for m_abook.
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 22 Jul 2018 12:06:46 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 22 Jul 2018 12:08:08 +0200
 
 lbdb (0.47) unstable; urgency=medium
 

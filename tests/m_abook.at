@@ -14,9 +14,14 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program; if not, write to the Free Software Foundation,
 dnl Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 
-AT_INIT
-AT_COLOR_TESTS
-AT_TESTED(lbdbq)
+AT_BANNER([Test m_abook])
 
-m4_include(m_muttalias.at)
-m4_include(m_abook.at)
+AT_SETUP(m_abook)
+
+AT_SKIP_IF([! which abook])
+AT_CHECK([cat $abs_srcdir/data/m_abook.expected > expout])
+AT_CHECK([env LBDB_OVERRIDE_METHODS=m_abook \
+	      OVERRIDE_ABOOK_FILES=$abs_srcdir/data/abook.addressbook \
+	  lbdbq First1], [], [expout])
+
+AT_CLEANUP

@@ -1,0 +1,26 @@
+# abook addressbook file
+
+[format]
+program=abook
+version=0.6.1
+
+
+[0]
+name=First1 Family1
+email=foo1@example.com,foo1@example.net
+address=Street 1
+city=Village
+state=AA
+zip=12345
+country=Germany
+phone=+49-2345-6789
+workphone=+49-2345-7890
+fax=+49-2345-5790
+mobile=+49-170-12345678
+nick=nick1
+url=https://www.example.com
+
+[1]
+name=First2 Family2
+email=foo2@example.com
+

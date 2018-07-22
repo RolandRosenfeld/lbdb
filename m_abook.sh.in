@@ -26,6 +26,7 @@ m_abook_query()
 
     if [ -x "$ABOOK" ]		# check whether abook in installed
     then
+	ABOOK_FILES=${OVERRIDE_ABOOK_FILES:-$ABOOK_FILES}
 	for book in ${ABOOK_FILES:-$HOME/.abook/addressbook $HOME/.abook.addressbook}
 	do
 	    if [ -f "$book" ]

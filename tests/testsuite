@@ -591,6 +591,7 @@ at_tested='lbdbq'
 at_format='?'
 # Description of all the test groups.
 at_help_all="1;m_muttalias.at:19;m_muttalias;;
+2;m_abook.at:19;m_abook;;
 "
 # List of the all the test groups.
 at_groups_all=`$as_echo "$at_help_all" | sed 's/;.*//'`
@@ -604,7 +605,7 @@ at_fn_validate_ranges ()
   for at_grp
   do
     eval at_value=\$$at_grp
-    if test $at_value -lt 1 || test $at_value -gt 1; then
+    if test $at_value -lt 1 || test $at_value -gt 2; then
       $as_echo "invalid test group: $at_value" >&2
       exit 1
     fi
@@ -963,6 +964,9 @@ esac
 # Banner 1. m_muttalias.at:17
 # Category starts at test group 1.
 at_banner_text_1="Test m_muttalias"
+# Banner 2. m_abook.at:17
+# Category starts at test group 2.
+at_banner_text_2="Test m_abook"
 
 # Take any -C into account.
 if $at_change_dir ; then
@@ -2030,3 +2034,51 @@ $at_traceon; }
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
 #AT_STOP_1
+#AT_START_2
+at_fn_group_banner 2 'm_abook.at:19' \
+  "m_abook" "                                        " 2
+at_xfail=no
+(
+  $as_echo "2. $at_setup_line: testing $at_desc ..."
+  $at_traceon
+
+
+$as_echo "m_abook.at:21" >"$at_check_line_file"
+(! which abook) \
+  && at_fn_check_skip 77 "$at_srcdir/m_abook.at:21"
+{ set +x
+$as_echo "$at_srcdir/m_abook.at:22: cat \$abs_srcdir/data/m_abook.expected > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_abook.expected > expout" "m_abook.at:22"
+( $at_check_trace; cat $abs_srcdir/data/m_abook.expected > expout
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_abook.at:22"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+$as_echo "$at_srcdir/m_abook.at:23: env LBDB_OVERRIDE_METHODS=m_abook \\
+	      OVERRIDE_ABOOK_FILES=\$abs_srcdir/data/abook.addressbook \\
+	  lbdbq First1"
+at_fn_check_prepare_notrace 'an embedded newline' "m_abook.at:23"
+( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_abook \
+	      OVERRIDE_ABOOK_FILES=$abs_srcdir/data/abook.addressbook \
+	  lbdbq First1
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+$at_diff expout "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_abook.at:23"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+
+  set +x
+  $at_times_p && times >"$at_times_file"
+) 5>&1 2>&1 7>&- | eval $at_tee_pipe
+read at_status <"$at_status_file"
+#AT_STOP_2
