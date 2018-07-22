@@ -28,6 +28,6 @@ m_goobook_query()
     if [ -x "$GOOBOOK" ]		# check whether goobook in installed
     then
         $GOOBOOK query "$@" \
-            | sed -e '1d;s/\([^\t]*\t[^\t]*\).*/\1\tgoobook/'
+            | sed -e '1d;s/\([^	]*	[^	]*\).*/\1	goobook/'
     fi
 }
