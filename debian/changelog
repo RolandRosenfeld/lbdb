@@ -3,8 +3,10 @@ lbdb (0.48) UNRELEASED; urgency=medium
   * m_muttalias: Fix some shellcheck warnings.
   * Upgrade to Standards-Version 4.1.4 (no changes).
   * Change project homepage URL to https.
+  * Use literal tab characters in order to make m_abook and m_goobook
+    modules work without requiring GNU sed(1).  Thanks to Raf Czlonka.
 
- -- Roland Rosenfeld <roland@debian.org>  Mon, 21 May 2018 18:17:50 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 22 Jul 2018 12:06:46 +0200
 
 lbdb (0.47) unstable; urgency=medium
 
