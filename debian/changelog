@@ -8,8 +8,9 @@ lbdb (0.48) UNRELEASED; urgency=medium
   * Upgrade Standards-Version to 4.1.5.
     - Declare Rules-Requires-Root: no.
   * Add update-version target to update version in all autotool files.
+  * m_abook: Fix a shellcheck warning.
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 22 Jul 2018 16:06:52 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 22 Jul 2018 16:12:24 +0200
 
 lbdb (0.47) unstable; urgency=medium
 

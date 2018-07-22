@@ -31,7 +31,7 @@ m_abook_query()
 	do
 	    if [ -f "$book" ]
 	    then
-		$ABOOK --datafile $book --mutt-query "$@" \
+		$ABOOK --datafile "$book" --mutt-query "$@" \
 		| sed -e '1d;s/\([^	]*	[^	]*\).*/\1	abook/'
 	    fi
 	done
