@@ -159,6 +159,13 @@ m_osx_addressbook: ABQuery
 ABQuery: ABQuery.m
 	$(CC) $(CFLAGS) $(DEFS) -framework Foundation -framework AddressBook -o $@ $^
 
+update-version:
+	-rm -f configure tests/package.m4 tests/testsuite
+	autoconf
+	./configure
+	$(MAKE) test
+	$(MAKE) distclean
+
 clean:
 	-rm -f *.o *~ $(ALL) munge.awk tac.awk ABQuery \
 		nodelist2lbdb.pl palm_lsaddr.pl mutt_ldap_query.pl \
@@ -192,4 +199,4 @@ Makefile: Makefile.in
 %.o: %.c
 	$(CC) $(CFLAGS) $(DEFS) -c $<
 
-.PHONY: test test_perl
+.PHONY: test test_perl update-version
