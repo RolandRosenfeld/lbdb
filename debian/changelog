@@ -5,13 +5,13 @@ lbdb (0.48) UNRELEASED; urgency=medium
   * Use literal tab characters in order to make m_abook and m_goobook
     modules work without requiring GNU sed(1).  Thanks to Raf Czlonka.
   * Add tests for m_abook.
-  * Upgrade Standards-Version to 4.1.5.
-    - Declare Rules-Requires-Root: no.
   * Add update-version target to update version in all autotool files.
   * m_abook: Fix a shellcheck warning.
   * lbdbq, lbdb-fetchaddr: Fix some shellcheck warnings.
+  * Upgrade Standards-Version to 4.2.0.
+    - Declare Rules-Requires-Root: no.
 
- -- Roland Rosenfeld <roland@debian.org>  Sun, 22 Jul 2018 16:57:40 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Fri, 10 Aug 2018 16:51:28 +0200
 
 lbdb (0.47) unstable; urgency=medium
 
