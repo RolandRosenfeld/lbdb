@@ -8,10 +8,10 @@ lbdb (0.48) UNRELEASED; urgency=medium
   * Add update-version target to update version in all autotool files.
   * m_abook: Fix a shellcheck warning.
   * lbdbq, lbdb-fetchaddr: Fix some shellcheck warnings.
-  * Upgrade Standards-Version to 4.2.0.
+  * Upgrade Standards-Version to 4.2.1.
     - Declare Rules-Requires-Root: no.
 
- -- Roland Rosenfeld <roland@debian.org>  Fri, 10 Aug 2018 16:51:28 +0200
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 25 Aug 2018 22:19:32 +0200
 
 lbdb (0.47) unstable; urgency=medium
 
