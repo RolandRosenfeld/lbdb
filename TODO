@@ -8,10 +8,6 @@
   work as usual and the error messages (and debug informations) are
   written to the logfile (maybe ~/.lbdb/debug).
 
-- lbdb-fetchaddr/m_inmail: Make the database file configurable.  This
-  can be realized in lbdb-fetchaddr via a new option, while m_inmail
-  needs a new lbdbrc-variable for this.
-
 - replace m_passwd and m_yppasswd by m_getent, if getent(1) is
   supported by all UNIXes.  Otherwise we need some autoconf magic to
   do the right thing...
@@ -34,6 +30,8 @@
 - Change m_vcf to use a better supported library than libvformat,
   maybe libvcflib or libvc.  Or switch to some other meta tool as
   m_vcf backend like mutt-vc-query or vcftools.
+
+- Write tests for lbdb-fetchaddr / m_inmail.
 
 
 Roland Rosenfeld <roland@spinnaker.de>
