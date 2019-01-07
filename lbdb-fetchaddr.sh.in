@@ -127,7 +127,7 @@ else
   exit 1
 fi
 
-if $fetchaddr $additional_param -d "$datefmt" "$hdrlist" "$charset" >> "$db"
+if $fetchaddr $additional_param -d "$datefmt" $hdrlist $charset >> "$db"
 then
   touch "$db.dirty"
 fi
