@@ -2,7 +2,7 @@
 #
 # Run the lbdb testsuite
 #
-# (c) 2018 Roland Rosenfeld <roland@debian.org>
+# (c) 2018-2019 Roland Rosenfeld <roland@debian.org>
 
 echo "Running dh_auto_configure"
 dh_auto_configure >/dev/null 2>&1
@@ -10,3 +10,6 @@ dh_auto_configure >/dev/null 2>&1
 echo "Running testsuite"
 cd tests
 ./testsuite
+
+# Place testsuite output into artifacts:
+cp -a testsuite.log testsuite.dir $AUTOPKGTEST_ARTIFACTS/
