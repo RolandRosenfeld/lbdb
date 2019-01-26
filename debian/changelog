@@ -1,8 +1,9 @@
 lbdb (0.49) UNRELEASED; urgency=medium
 
   * Backup testuite output into artifacts.
+  * Add buildlog to gitlab-ci test pipeline.
 
- -- Roland Rosenfeld <roland@debian.org>  Sat, 26 Jan 2019 16:23:50 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 26 Jan 2019 16:24:37 +0100
 
 lbdb (0.48.1) unstable; urgency=medium
 
