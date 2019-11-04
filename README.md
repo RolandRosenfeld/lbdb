@@ -26,6 +26,7 @@ The behavior is configurable: Upon startup, lbdbq will source the
 shell scripts
 
 - `/usr/local/etc/lbdb.rc` (or where your sysconfdir points to)
+- `$XDG_CONFIG_HOME/lbdb/config`
 - `$HOME/.lbdbrc`
 - `$HOME/.lbdb/lbdbrc`
 - `$HOME/.lbdb/rc`
