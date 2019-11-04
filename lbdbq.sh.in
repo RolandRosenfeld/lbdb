@@ -51,7 +51,9 @@ trap "rm -rf $tmpdir ; trap '' 0; exit 1" HUP INT QUIT TERM
 trap "rm -rf $tmpdir ; trap '' 0" EXIT
 collection=$tmpdir/coll
 
-for conffile in $sysconfdir/lbdb.rc $HOME/.lbdbrc \
+xdg_home=${XDG_CONFIG_HOME:=$HOME/.config}
+
+for conffile in $sysconfdir/lbdb.rc $xdg_home/lbdb/config $HOME/.lbdbrc \
 	$HOME/.lbdb/lbdbrc $HOME/.lbdb/rc ; do
 	
   if test -f "$conffile" ; then

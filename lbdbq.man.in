@@ -40,6 +40,8 @@ will source the shell scripts:
 .RS
 .I @sysconfdir@/lbdb.rc
 .br
+.I $XDG_CONFIG_HOME/lbdb/config
+.br
 .I $HOME/.lbdbrc
 .br
 .I $HOME/.lbdb/lbdbrc

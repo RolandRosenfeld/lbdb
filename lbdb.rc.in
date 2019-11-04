@@ -3,6 +3,7 @@
 #
 # Everything you configure here can be overridden by the users config
 # file which can be found at
+# $XDG_CONFIG_HOME/lbdb/config
 # ~/.lbdbrc
 # ~/.lbdb/lbdbrc
 # ~/.lbdb/rc
