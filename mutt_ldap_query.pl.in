@@ -91,9 +91,18 @@ sub process_file {
   }
 }
 
+sub xdg_home {
+  my $xdg_home = $ENV{XDG_CONFIG_HOME};
+  if(not length($xdg_home)) {
+    $xdg_home = $ENV{HOME} . "/.config";
+  }
+  return($xdg_home);
+}
+
 # first we need to apply defaults
 process_file("@SYSCONF_DIR@/lbdb_ldap.rc",
              "@SYSCONF_DIR@/mutt_ldap_query.rc",
+             xdg_home() . "/lbdb/ldap.rc",
              "$ENV{HOME}/.lbdb/ldap.rc",
 	     "$ENV{HOME}/.mutt_ldap_query.rc");
 
@@ -272,8 +281,8 @@ mutt_ldap_query.pl [options] <name_to_query> [[<other_name_to_query>] ...]
 
 specify an alternate resource file other than the system ones
 (F<@SYSCONF_DIR@/lbdb_ldap.rc> or F<@SYSCONF_DIR@/mutt_ldap_query.rc>)
-or default personal ones (F<$HOME/.lbdb/ldap.rc> or
-F<$HOME/.mutt_ldap_query.rc>).
+or default personal ones (F<$XDG_CONFIG_HOME/lbdb/ldap.rc>,
+F<$HOME/.lbdb/ldap.rc> or F<$HOME/.mutt_ldap_query.rc>).
 
 =item B<--server=ldap_server> or B<-ls ldap_server>
 

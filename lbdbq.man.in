@@ -281,6 +281,8 @@ Perl modules from CPAN.  It can be configured using an external
 resource file 
 .I @sysconfdir@/lbdb_ldap.rc
 or
+.I $XDG_CONFIG_HOME/lbdb/ldap.rc
+or
 .I $HOME/.lbdb/ldap.rc
 or
 .IR $HOME/.mutt_ldap_query.rc .
