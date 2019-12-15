@@ -1,4 +1,4 @@
-dnl Copyright (c) 1998-2018 Roland Rosenfeld <roland@spinnaker.de>
+dnl Copyright (c) 1998-2019 Roland Rosenfeld <roland@spinnaker.de>
 dnl 
 dnl This program is free software; you can redistribute it and/or modify
 dnl it under the terms of the GNU General Public License as published by
@@ -224,6 +224,9 @@ AC_SUBST(SYSCONF_DIR)
 
 LBDB_VERSION=$PACKAGE_VERSION
 AC_SUBST(LBDB_VERSION)
+
+LBDB_ELPA_VERSION=`echo $PACKAGE_VERSION|sed 's/+.*$//'`
+AC_SUBST(LBDB_ELPA_VERSION)
 
 AC_SUBST(MODULES)
 
