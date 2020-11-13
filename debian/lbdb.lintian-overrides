@@ -1,0 +1,3 @@
+# False positive, see https://bugs.debian.org/974677
+lbdb: bin-sbin-mismatch usr/bin/lbdb-fetchaddr bin/lbdb_dotlock -> usr/bin/lbdb_dotlock
+lbdb: bin-sbin-mismatch usr/lib/lbdb/lbdb-munge bin/lbdb_dotlock -> usr/bin/lbdb_dotlock
