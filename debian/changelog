@@ -7,6 +7,7 @@ lbdb (0.49) UNRELEASED; urgency=medium
   * Strip suffixes starting with "+" from elpa version.
   * Forward INMAIL_DB default from m_inmail to lbdb-munge.
   * Build-Depends on dh-elpa >= 1.16 to avoid path injection (Closes: #973971)
+  * Upgrade to debhelper v13 and use debhelper-compat instead of d/compat.
 
  -- Roland Rosenfeld <roland@debian.org>  Mon, 11 Mar 2019 16:04:05 +0100
 

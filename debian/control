@@ -3,7 +3,7 @@ Section: mail
 Priority: optional
 Maintainer: Roland Rosenfeld <roland@debian.org>
 Standards-Version: 4.3.0
-Build-Depends: debhelper (>= 12~),
+Build-Depends: debhelper-compat (= 13),
                dh-elpa (>= 1.16),
                libauthen-sasl-perl <!nocheck>,
                libnet-ldap-perl <!nocheck>,
