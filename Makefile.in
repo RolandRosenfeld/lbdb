@@ -1,5 +1,5 @@
 #     Copyright (C) 1998       Thomas Roessler <roessler@guug.de>
-#     Copyright (C) 1999-2018  Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 1999-2020  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -78,7 +78,7 @@ install: all
 		$(INSTALL) -m 644 nodelist2lbdb.man \
 			$(install_prefix)$(mandir)/man1/nodelist2lbdb.1; \
 		$(INSTALL) -m 755 palm_lsaddr $(install_prefix)$(libdir); \
-		$(INSTALL) -m 755 mutt_ldap_query $(install_prefix)$(libdir); \
+		$(INSTALL) -m 755 mutt_ldap_query $(install_prefix)$(bindir); \
 		$(INSTALL) -m 644 mutt_ldap_query.man \
 			$(install_prefix)$(mandir)/man1/mutt_ldap_query.1; \
 		$(INSTALL) -m 644 lbdb_ldap.rc \

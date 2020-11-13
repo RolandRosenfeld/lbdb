@@ -4,6 +4,7 @@
 #
 #     m_ldap - ldap module for lbdb
 #     Copyright (C) 2001 Marc de Courville <marc@courville.org>
+#     Copyright (C) 2020 Roland Rosenfeld <roland@spinnaker.de>
 #
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -21,7 +22,7 @@
 
 prefix=@prefix@
 exec_prefix=@exec_prefix@
-libdir=@libdir@
+bindir=@bindir@
 
 m_ldap_query ()
 {
@@ -29,9 +30,9 @@ m_ldap_query ()
     then
 	for NICK in $LDAP_NICKS
 	do
-	    $libdir/mutt_ldap_query --lbdb_output --nickname=$NICK "$@" || :
+	    $bindir/mutt_ldap_query --lbdb_output --nickname=$NICK "$@" || :
 	done
     else
-	$libdir/mutt_ldap_query --lbdb_output "$@" || :
+	$bindir/mutt_ldap_query --lbdb_output "$@" || :
     fi
 }
