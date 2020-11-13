@@ -1,4 +1,4 @@
-lbdb (0.49) UNRELEASED; urgency=medium
+lbdb (0.49) unstable; urgency=medium
 
   * Backup testuite output into artifacts.
   * Add buildlog to gitlab-ci test pipeline.
@@ -13,7 +13,7 @@ lbdb (0.49) UNRELEASED; urgency=medium
   * Move mutt_ldap_query to /usr/bin, since it can be called separately.
   * Linitian override for false positive bin-sbin-mismatch.
 
- -- Roland Rosenfeld <roland@debian.org>  Mon, 11 Mar 2019 16:04:05 +0100
+ -- Roland Rosenfeld <roland@debian.org>  Fri, 13 Nov 2020 17:56:04 +0100
 
 lbdb (0.48.1) unstable; urgency=medium
 
