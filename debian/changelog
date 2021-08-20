@@ -1,3 +1,9 @@
+lbdb (0.50) UNRELEASED; urgency=medium
+
+  * Update to Standards-Version 4.6.0 (no changes).
+
+ -- Roland Rosenfeld <roland@debian.org>  Fri, 20 Aug 2021 14:33:06 +0200
+
 lbdb (0.49) unstable; urgency=medium
 
   * Backup testuite output into artifacts.
