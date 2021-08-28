@@ -1,6 +1,7 @@
 lbdb (0.50) UNRELEASED; urgency=medium
 
   * Update to Standards-Version 4.6.0 (no changes).
+  * Create empty config.rpath to make autoconf 2.71 happy (no gettxt).
 
  -- Roland Rosenfeld <roland@debian.org>  Fri, 20 Aug 2021 14:33:06 +0200
 
