@@ -1,3 +1,0 @@
-Tests: lbdb-testsuite
-Restrictions: rw-build-tree
-Depends: abook, debhelper, @
