@@ -20,3 +20,4 @@ AT_TESTED(lbdbq)
 
 m4_include(m_muttalias.at)
 m4_include(m_abook.at)
+m4_include(m_inmail.at)

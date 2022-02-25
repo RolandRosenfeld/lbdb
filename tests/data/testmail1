@@ -1,0 +1,20 @@
+Return-Path: <returnpath@example.com>
+X-Original-To: foobar@host.example.com
+Delivered-To: foobar@host.example.com
+From: =?iso-8859-1?Q?G=FCnther?= Family1 <foo1@example.com>
+To: foo2@example.com (=?UTF-8?Q?G=C3=BCnther?= Family2)
+Cc: <foo3@example.com> (First3 Family3)
+Resent-From: "First4 Family4" <foo4@example.com>
+Resent-To: foo5@example.com ("First5 Family5")
+X-Header1: <foo6@example.com> ("First6 Family6")
+X-Header2: <foo7@example.com>
+X-Header3: foo8@example.com
+Subject: lorem ipsum
+Message-ID: <1234567890@example.com>
+References: <0987654321@example.net>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <abcdefghi@example.de>
+

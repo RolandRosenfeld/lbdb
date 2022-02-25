@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 - Add support for running testsuite on local built code (via $USE_LOCAL_LIB).
+- Add testsuite for m_inmail/lbdb-fetchaddr.
 
 ## [0.50] - 2022-02-25
 

@@ -592,6 +592,8 @@ at_format='?'
 # Description of all the test groups.
 at_help_all="1;m_muttalias.at:19;m_muttalias;;
 2;m_abook.at:19;m_abook;;
+3;m_inmail.at:19;lbdb-fetchmail;;
+4;m_inmail.at:28;m_inmail;;
 "
 # List of the all the test groups.
 at_groups_all=`$as_echo "$at_help_all" | sed 's/;.*//'`
@@ -605,7 +607,7 @@ at_fn_validate_ranges ()
   for at_grp
   do
     eval at_value=\$$at_grp
-    if test $at_value -lt 1 || test $at_value -gt 2; then
+    if test $at_value -lt 1 || test $at_value -gt 4; then
       $as_echo "invalid test group: $at_value" >&2
       exit 1
     fi
@@ -967,6 +969,9 @@ at_banner_text_1="Test m_muttalias"
 # Banner 2. m_abook.at:17
 # Category starts at test group 2.
 at_banner_text_2="Test m_abook"
+# Banner 3. m_inmail.at:17
+# Category starts at test group 3.
+at_banner_text_3="Test m_inmail/fetchmail"
 
 # Take any -C into account.
 if $at_change_dir ; then
@@ -2082,3 +2087,139 @@ $at_traceon; }
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
 #AT_STOP_2
+#AT_START_3
+at_fn_group_banner 3 'm_inmail.at:19' \
+  "lbdb-fetchmail" "                                 " 3
+at_xfail=no
+(
+  $as_echo "3. $at_setup_line: testing $at_desc ..."
+  $at_traceon
+
+{ set +x
+$as_echo "$at_srcdir/m_inmail.at:20: cat \$abs_srcdir/data/m_inmail.utf8.expected1 > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.utf8.expected1 > expout" "m_inmail.at:20"
+( $at_check_trace; cat $abs_srcdir/data/m_inmail.utf8.expected1 > expout
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:20"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+$as_echo "$at_srcdir/m_inmail.at:21: cat \$abs_srcdir/data/testmail1 > testmail1"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/testmail1 > testmail1" "m_inmail.at:21"
+( $at_check_trace; cat $abs_srcdir/data/testmail1 > testmail1
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:21"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+$as_echo "$at_srcdir/m_inmail.at:22: lbdb-fetchaddr -f m_inmail.utf8 -d \"NO DATE\" < testmail1 && \\
+ 	  lbdb-fetchaddr -f m_inmail.utf8 -d \"NO DATE\" \\
+			 -x x-header1:x-header2:x-header3 < testmail1 && \\
+	  cat m_inmail.utf8"
+at_fn_check_prepare_notrace 'an embedded newline' "m_inmail.at:22"
+( $at_check_trace; lbdb-fetchaddr -f m_inmail.utf8 -d "NO DATE" < testmail1 && \
+ 	  lbdb-fetchaddr -f m_inmail.utf8 -d "NO DATE" \
+			 -x x-header1:x-header2:x-header3 < testmail1 && \
+	  cat m_inmail.utf8
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+$at_diff expout "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:22"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+  set +x
+  $at_times_p && times >"$at_times_file"
+) 5>&1 2>&1 7>&- | eval $at_tee_pipe
+read at_status <"$at_status_file"
+#AT_STOP_3
+#AT_START_4
+at_fn_group_banner 4 'm_inmail.at:28' \
+  "m_inmail" "                                       " 3
+at_xfail=no
+(
+  $as_echo "4. $at_setup_line: testing $at_desc ..."
+  $at_traceon
+
+{ set +x
+$as_echo "$at_srcdir/m_inmail.at:29: cat \$abs_srcdir/data/m_inmail.utf8.expected2 > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.utf8.expected2 > expout" "m_inmail.at:29"
+( $at_check_trace; cat $abs_srcdir/data/m_inmail.utf8.expected2 > expout
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:29"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+$as_echo "$at_srcdir/m_inmail.at:30: cat \$abs_srcdir/data/testmail1 > testmail1"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/testmail1 > testmail1" "m_inmail.at:30"
+( $at_check_trace; cat $abs_srcdir/data/testmail1 > testmail1
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:30"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+$as_echo "$at_srcdir/m_inmail.at:31: lbdb-fetchaddr -f m_inmail.utf8 -d \"NO DATE\" < testmail1 && \\
+ 	  lbdb-fetchaddr -f m_inmail.utf8 -d \"NO DATE\" < testmail1"
+at_fn_check_prepare_notrace 'an embedded newline' "m_inmail.at:31"
+( $at_check_trace; lbdb-fetchaddr -f m_inmail.utf8 -d "NO DATE" < testmail1 && \
+ 	  lbdb-fetchaddr -f m_inmail.utf8 -d "NO DATE" < testmail1
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:31"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+$as_echo "$at_srcdir/m_inmail.at:33: env LBDB_OVERRIDE_METHODS=m_inmail \\
+	      OVERRIDE_M_INMAIL_DB=m_inmail.utf8 \\
+	      OVERRIDE_LIMITDATE=\"0000-00-00_00:00\" \\
+	      OVERRIDE_LIMITCOUNT=0 \\
+	      OVERRIDE_SORT_OUTPUT=no \\
+          lbdbq Günther"
+at_fn_check_prepare_notrace 'an embedded newline' "m_inmail.at:33"
+( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_inmail \
+	      OVERRIDE_M_INMAIL_DB=m_inmail.utf8 \
+	      OVERRIDE_LIMITDATE="0000-00-00_00:00" \
+	      OVERRIDE_LIMITCOUNT=0 \
+	      OVERRIDE_SORT_OUTPUT=no \
+          lbdbq Günther
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+$at_diff expout "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:33"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+
+  set +x
+  $at_times_p && times >"$at_times_file"
+) 5>&1 2>&1 7>&- | eval $at_tee_pipe
+read at_status <"$at_status_file"
+#AT_STOP_4
