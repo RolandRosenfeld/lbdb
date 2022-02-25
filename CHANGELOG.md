@@ -68,7 +68,7 @@
 - Update copyright notice.
 - Add test_perl to check perl syntax.
 - Replace undefined $rv by $?.
-- Add LBDB_OVERRIDE_METHODS, OVERIDE_MUTTALIAS_FILES variables for
+- Add LBDB_OVERRIDE_METHODS, OVERRIDE_MUTTALIAS_FILES variables for
   testing.
 - m_muttalias: rewrite sed regex as ERE, which should be more POSIX
   compatible and should work on non GNU sed, too.
