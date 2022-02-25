@@ -1,7 +1,7 @@
 #! @SH@
 #
 #     Copyright (C) 1998-2000  Thomas Roessler <roessler@guug.de>
-#                   1998-2019  Roland Rosenfeld <roland@spinnaker.de>
+#                   1998-2022  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -81,8 +81,8 @@ case "${KEEP_DUPES:-}" in
 	MUNGE_KEEPORDER=cat
 	;;
     *)
-	MUNGE=$libdir/munge
-	MUNGE_KEEPORDER="$libdir/munge keeporder=1"
+	MUNGE=${USE_LOCAL_LIB:-$libdir}/munge
+	MUNGE_KEEPORDER="${USE_LOCAL_LIB:-$libdir}/munge keeporder=1"
 	;;
 esac
 

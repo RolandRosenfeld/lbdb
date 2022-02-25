@@ -1,5 +1,9 @@
 # Changelog
 
+## [Unreleased]
+
+- Add support for running testsuite on local built code (via $USE_LOCAL_LIB).
+
 ## [0.50] - 2022-02-25
 
 ### Changed

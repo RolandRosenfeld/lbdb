@@ -1,7 +1,7 @@
 #! @SH@
 #
 #     Copyright (C) 1998-2000  Thomas Roessler <roessler@guug.de>
-#                   1999-2020  Roland Rosenfeld <roland@spinnaker.de>
+#                   1999-2022  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ M_INMAIL_DB=${INMAIL_DB:-$HOME/.lbdb/m_inmail.utf-8}
 m_inmail_query()
 {
 	export SORT_OUTPUT MUNGE_LIMITDATE MUNGE_LIMITCOUNT M_INMAIL_DB
-	$libdir/lbdb-munge
-	test -f $M_INMAIL_DB  || return
+	${USE_LOCAL_LIB:-$libdir}/lbdb-munge
+	test -f "$M_INMAIL_DB" || return
 	grep -ia "$@." $M_INMAIL_DB || :
 }

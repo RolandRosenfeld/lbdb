@@ -2,7 +2,7 @@
 #
 # -*-sh-*-
 #
-#     Copyright (C) 1999-2020  Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 1999-2022  Roland Rosenfeld <roland@spinnaker.de>
 #     Copyright (C) 2007       Yaroslav Halchenko <debian@onerussian.com>
 # 
 #     This program is free software; you can redistribute it and/or modify
@@ -27,7 +27,7 @@ prefix=@prefix@
 exec_prefix=@exec_prefix@
 dotlock=@DOTLOCK@
 db=$M_INMAIL_DB
-munge=@libdir@/munge
+munge=${USE_LOCAL_LIB:-@libdir@}/munge
 
 if [ ! -f $db.dirty ]
 then

@@ -2,7 +2,7 @@
 #
 # -*-sh-*-
 #     Copyright (C) 1998-2000  Thomas Roessler <roessler@guug.de>
-#                   1999-2018  Roland Rosenfeld <roland@spinnaker.de>
+#                   1999-2022  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ umask 077
 prefix=@prefix@
 exec_prefix=@exec_prefix@
 dotlock=@DOTLOCK@
-fetchaddr=@libdir@/fetchaddr
+fetchaddr=${USE_LOCAL_LIB:-@libdir@}/fetchaddr
 
 db=$HOME/.lbdb/m_inmail.utf-8
 datefmt='%Y-%m-%d %H:%M'
