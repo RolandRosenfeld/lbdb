@@ -9,3 +9,10 @@ jobs:
       - run: ./configure
       - run: make
       - run: make test
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: testsuite
+          path: |
+            tests/testsuite.dir
+            tests/testsuite.log
