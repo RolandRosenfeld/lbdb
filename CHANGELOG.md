@@ -10,6 +10,7 @@
 ### Fixed
 
 - Fix example of MUNGE_LIMITDATE in lbdb.rc.
+- Ignore case and non alphanumeric chars in SORT_OUTPUT=name.
 
 ## [0.50] - 2022-02-25
 

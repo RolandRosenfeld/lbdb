@@ -91,7 +91,7 @@ case "${SORT_OUTPUT:-}" in
 	$MUNGE_KEEPORDER "$collection" | $TAC > "$collection.uniq"
 	;;
     *name)
-	$MUNGE "$collection" | sort -f -k2 > "$collection.uniq"
+	$MUNGE "$collection" | sort -f -k2 -d -f > "$collection.uniq"
 	;;
     reverse_comment)
         $MUNGE "$collection" | sort -f -k3 -t'	' -r > "$collection.uniq"
