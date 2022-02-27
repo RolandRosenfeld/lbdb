@@ -8,7 +8,7 @@
 # ~/.lbdb/rc
 # (evaluated with ascending priority!)
 # 
-# (c) 1999-2018 Roland Rosenfeld <roland@spinnaker.de>
+# (c) 1999-2022 Roland Rosenfeld <roland@spinnaker.de>
 #
 
 #
@@ -208,7 +208,7 @@ METHODS="m_inmail m_passwd m_finger"
 # Note: KEEP_DUPES must be "no"
 #
 #MUNGE_LIMITCOUNT=3
-#MUNGE_LIMITDATE=`date --date='-1 month' +"%F %R"
+#MUNGE_LIMITDATE=$(date --date='-1 month' +"%F %R")
 
 #
 # If you only want to find addresses seen in messages where one of

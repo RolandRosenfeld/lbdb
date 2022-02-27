@@ -2,8 +2,14 @@
 
 ## [Unreleased]
 
+### Added
+
 - Add support for running testsuite on local built code (via $USE_LOCAL_LIB).
 - Add testsuite for m_inmail/lbdb-fetchaddr.
+
+### Fixed
+
+- Fix example of MUNGE_LIMITDATE in lbdb.rc.
 
 ## [0.50] - 2022-02-25
 
