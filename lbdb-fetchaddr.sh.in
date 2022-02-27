@@ -25,7 +25,7 @@ umask 077
 prefix=@prefix@
 exec_prefix=@exec_prefix@
 dotlock=@DOTLOCK@
-[ -z "$USE_LOCAL_LIB" ] || dotlock=$USE_LOCAL_LIB/lbdb_dotlock
+[ -n "$USE_LOCAL_LIB" ] && [ -x $USE_LOCAL_LIB/lbdb_dotlock ] && dotlock=$USE_LOCAL_LIB/lbdb_dotlock
 fetchaddr=${USE_LOCAL_LIB:-@libdir@}/fetchaddr
 
 db=$HOME/.lbdb/m_inmail.utf-8

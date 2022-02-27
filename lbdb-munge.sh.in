@@ -26,7 +26,7 @@ umask 077
 prefix=@prefix@
 exec_prefix=@exec_prefix@
 dotlock=@DOTLOCK@
-[ -z "$USE_LOCAL_LIB" ] || dotlock=$USE_LOCAL_LIB/lbdb_dotlock
+[ -n "$USE_LOCAL_LIB" ] && [ -x $USE_LOCAL_LIB/lbdb_dotlock ] && dotlock=$USE_LOCAL_LIB/lbdb_dotlock
 db=$M_INMAIL_DB
 munge=${USE_LOCAL_LIB:-@libdir@}/munge
 
