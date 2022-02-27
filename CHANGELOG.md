@@ -12,6 +12,7 @@
 - Fix example of MUNGE_LIMITDATE in lbdb.rc.
 - Ignore case and non alphanumeric chars in SORT_OUTPUT=name.
 - Update dotlock code from mutt 2.2.1 (uses snprintf now).
+- Update rfc822 code from mutt 2.2.1.
 
 ## [0.50] - 2022-02-25
 

@@ -118,3 +118,51 @@ char *safe_strdup (const char *s)
   return (p);
 }
 
+size_t safe_strlen(const char *a)
+{
+  return a ? strlen (a) : 0;
+}
+
+int safe_strcmp(const char *a, const char *b)
+{
+  return strcmp(NONULL(a), NONULL(b));
+}
+
+
+static inline int ascii_isupper (int c)
+{
+  return (c >= 'A') && (c <= 'Z');
+}
+
+static inline int ascii_tolower (int c)
+{
+  if (ascii_isupper (c))
+    return c | 32;
+
+  return c;
+}
+
+int ascii_strcasecmp (const char *a, const char *b)
+{
+  int i;
+
+  if (a == b)
+    return 0;
+  if (a == NULL && b)
+    return -1;
+  if (b == NULL && a)
+    return 1;
+
+  for (;; a++, b++)
+  {
+    if ((i = ascii_tolower (*a) - ascii_tolower (*b)))
+      return i;
+    /* test for NUL here rather that in the for loop in order to detect unqual
+     * length strings (see http://dev.mutt.org/trac/ticket/3601)
+     */
+    if (!*a)
+      break;
+  }
+
+  return 0;
+}
