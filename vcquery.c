@@ -69,7 +69,7 @@ int main(int argc, char** argv)
       int props = 0;
 
       while (available > 0 && props < 5) {
-	if (propval = vf_get_prop_value_string(prop, namemap[props++])) {
+	if ((propval = vf_get_prop_value_string(prop, namemap[props++]))) {
 	  strncat(name, propval, available);
 	  available -= strlen(propval);
 
