@@ -13,6 +13,7 @@
 - Ignore case and non alphanumeric chars in SORT_OUTPUT=name.
 - Update dotlock code from mutt 2.2.1 (uses snprintf now).
 - Update rfc822 code from mutt 2.2.1.
+- Fix quoting of grep Regex in m_muttalias.
 
 ## [0.50] - 2022-02-25
 

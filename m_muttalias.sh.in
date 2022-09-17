@@ -3,7 +3,7 @@
 # -*-sh-*-
 #
 #     Copyright (C) 2000  Brian Salter-Duke <b_duke@bigpond.net.au>
-#                   2000-2018  Roland Rosenfeld <roland@spinnaker.de>
+#                   2000-2022  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ m_muttalias_query()
 	    # 2. alias nick foo@example.com (Foo Bar)
 	    # 3. alias nick <foo@example.com> (Foo Bar)
 	    grep -ia "$@" "$file" \
-	    | grep -a '^alias[ 	][ 	]*[^,][^,]*[ 	][ 	]*\([^,]\|\\\".*\\\"\)*$' \
+	    | grep -a '^alias[ 	][ 	]*[^,][^,]*[ 	][ 	]*\([^,]\|".*"\)*$' \
 	    | sed -E -e 's/^alias[[:blank:]]+([^[:blank:]]+)[[:blank:]]+("[^"]+"|[^<>()]+)[[:blank:]]+<([^<>()]+)>.*$/\3	\2	alias \1/' \
 		     -e 's/^alias[[:blank:]]+([^[:blank:]]+)[[:blank:]]+([^<>()]+)[[:blank:]]+\(([^()<>]+)\).*$/\2	\3	alias \1/' \
 		     -e 's/^alias[[:blank:]]+([^[:blank:]]+)[[:blank:]]+<([^<>()]+)>[[:blank:]]+\(([^()<>]+)\).*$/\2	\3	alias \1/' \
