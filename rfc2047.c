@@ -19,6 +19,7 @@
 
 #include <ctype.h>
 #include <string.h>
+#include <stdio.h>
 #ifdef HAVE_ICONV
 #include <iconv.h>
 #include <errno.h>
@@ -227,7 +228,7 @@ void rfc2047_decode (char *d, const char *s, size_t dlen)
     {
       /* no encoded words */
       if (d != s)
-	strfcpy (d, s, dlen + 1);
+	snprintf(d, dlen, "%s", s);
       return;
     }
 

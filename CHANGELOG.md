@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Fixed
+
+- Repair missing 7bit name part in rfc2047 on arm and mips architecture.
+
 ## [0.51] - 2022-09-17
 
 ### Added
