@@ -21,7 +21,7 @@ AT_CHECK([cat $abs_srcdir/data/m_inmail.utf8.expected1 > expout])
 AT_CHECK([cat $abs_srcdir/data/testmail1 > testmail1])
 AT_CHECK([lbdb-fetchaddr -f m_inmail.utf8 -d "NO DATE" < testmail1 && \
  	  lbdb-fetchaddr -f m_inmail.utf8 -d "NO DATE" \
-			 -x x-header1:x-header2:x-header3 < testmail1 && \
+			 -x x-header1:x-header2:x-header3:x-header4 < testmail1 && \
 	  cat m_inmail.utf8], [], [expout])
 AT_CLEANUP
 

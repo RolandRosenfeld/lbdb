@@ -2128,12 +2128,12 @@ $at_traceon; }
 { set +x
 $as_echo "$at_srcdir/m_inmail.at:22: lbdb-fetchaddr -f m_inmail.utf8 -d \"NO DATE\" < testmail1 && \\
  	  lbdb-fetchaddr -f m_inmail.utf8 -d \"NO DATE\" \\
-			 -x x-header1:x-header2:x-header3 < testmail1 && \\
+			 -x x-header1:x-header2:x-header3:x-header4 < testmail1 && \\
 	  cat m_inmail.utf8"
 at_fn_check_prepare_notrace 'an embedded newline' "m_inmail.at:22"
 ( $at_check_trace; lbdb-fetchaddr -f m_inmail.utf8 -d "NO DATE" < testmail1 && \
  	  lbdb-fetchaddr -f m_inmail.utf8 -d "NO DATE" \
-			 -x x-header1:x-header2:x-header3 < testmail1 && \
+			 -x x-header1:x-header2:x-header3:x-header4 < testmail1 && \
 	  cat m_inmail.utf8
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false

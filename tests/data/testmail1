@@ -9,6 +9,7 @@ Resent-To: foo5@example.com ("First5 Family5")
 X-Header1: <foo6@example.com> ("First6 Family6")
 X-Header2: <foo7@example.com>
 X-Header3: foo8@example.com
+X-Header4: foo9@example.com (First9 =?UTF-8?Q?G=C3=BCnther?=)
 Subject: lorem ipsum
 Message-ID: <1234567890@example.com>
 References: <0987654321@example.net>
