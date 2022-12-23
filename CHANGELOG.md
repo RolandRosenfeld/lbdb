@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased]
+
+### Fixed
+
+- lbdb-fetchaddr: discard stdin at the end to avoid problems with
+  tee(1) and command substitution
+  (https://github.com/RolandRosenfeld/lbdb/issues/7)
+
 ## [0.51.1] - 2022-09-18
 
 ### Fixed
