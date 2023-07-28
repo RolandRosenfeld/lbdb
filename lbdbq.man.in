@@ -1,5 +1,5 @@
 .\" -*- nroff -*-
-.\" Copyright (c) 1998-2018  Roland Rosenfeld <roland@spinnaker.de>
+.\" Copyright (c) 1998-2023  Roland Rosenfeld <roland@spinnaker.de>
 .\"               
 .\" This program is free software; you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
@@ -360,6 +360,8 @@ Print version number of lbdbq.
 Print short help of lbdbq.
 .SH FILES
 .I @sysconfdir@/lbdb.rc
+.br
+.I $XDG_CONFIG_HOME/lbdb/config
 .br
 .I $HOME/.lbdbrc
 .br

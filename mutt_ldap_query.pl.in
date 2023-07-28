@@ -2,7 +2,7 @@
 #
 #     Copyright (C) 2000-2006 Marc de Courville <marc@courville.org>
 #     Copyright (C) 2009      "Alexandra N. Kossovsky" <sasha@oktetlabs.ru>
-#     Copyright (C) 2005-2018 Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 2005-2023 Roland Rosenfeld <roland@spinnaker.de>
 #
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -93,9 +93,7 @@ sub process_file {
 
 sub xdg_home {
   my $xdg_home = $ENV{XDG_CONFIG_HOME};
-  if(not length($xdg_home)) {
-    $xdg_home = $ENV{HOME} . "/.config";
-  }
+  $xdg_home = $ENV{HOME} . "/.config" unless defined $xdg_home;
   return($xdg_home);
 }
 

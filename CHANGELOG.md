@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+### Added
+
+- Add $XDG_CONFIG_HOME/lbdb/config as additional ldbdrc file location,
+  and $XDG_CONFIG_HOME/lbdb/ldap.rc as additional ldaprc file location
+  (Thanks to Michael Tretter <michael.tretter@posteo.net>)
+  (https://github.com/RolandRosenfeld/lbdb/pull/5)
+
 ### Fixed
 
 - lbdb-fetchaddr: discard stdin at the end to avoid problems with
