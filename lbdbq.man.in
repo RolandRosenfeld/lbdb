@@ -131,8 +131,11 @@ This module will look up user name fragments in a list of mail
 addresses created by
 .BR lbdb-fetchaddr (1).
 By default this uses
+.IR $XDG_DATA_HOME/lbdb/m_inmail.db ,
+which is overridden, if 
 .I $HOME/.lbdb/m_inmail.utf-8
-as its database file, but this can be changed using
+exists (the old default) as its database file, but this can be changed
+using
 .B INMAIL_DB
 variable (but do not forget to change this in the
 .BR lbdb-fetchaddr (1)
@@ -370,6 +373,8 @@ Print short help of lbdbq.
 .I $HOME/.lbdb/rc
 .br
 .I @libdir@/*
+.br
+.I $XDG_DATA_HOME/lbdb/m_inmail.db
 .br
 .I $HOME/.lbdb/m_inmail.utf-8
 .br

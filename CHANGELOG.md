@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+### Changed
+
+- The m_inmail DB is now located by default in
+  $XDG_DATA_HOME/lbdb/m_inmail.db.  For backward compatibility an
+  already existing $HOME/.lbdb/m_inmail.utf-8 file is used as first
+  preference (https://bugs.debian.org/843917)
+
 ### Added
 
 - Add $XDG_CONFIG_HOME/lbdb/config as additional ldbdrc file location,

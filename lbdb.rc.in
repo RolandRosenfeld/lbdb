@@ -8,8 +8,8 @@
 # ~/.lbdb/lbdbrc
 # ~/.lbdb/rc
 # (evaluated with ascending priority!)
-# 
-# (c) 1999-2022 Roland Rosenfeld <roland@spinnaker.de>
+#
+# (c) 1999-2023 Roland Rosenfeld <roland@spinnaker.de>
 #
 
 #
@@ -35,7 +35,7 @@
 # - m_palm       search your Palm addressbook file.
 # - m_gnomecard  search your GnomeCard address database files.
 # - m_bbdb       search your BBDB (big brother database).
-# - m_ldap       query an LDAP server 
+# - m_ldap       query an LDAP server
 # - m_wanderlust search your wanderlust ~/.addresses file.
 # - m_osx_addressbook  search the OS X addressbook (only available on OS X).
 # - m_evolution  search in the Ximan Evolution addressbook.
@@ -46,9 +46,10 @@ METHODS="m_inmail m_passwd m_finger"
 
 #
 # If you want to use a different database file for m_inmail, you can
-# define it in INMAIL_DB (defaults to $HOME/.lbdb/m_inmail.utf-8)
+# define it in INMAIL_DB (defaults to $XDG_DATA_HOME/lbdb/m_inmail.db or
+# $HOME/.lbdb/m_inmail.utf-8 if the latter exists)
 #
-#INMAIL_DB="$HOME/.lbdb/m_inmail.utf-8"
+#INMAIL_DB="${XDG_DATA_HOME:-$HOME/.local/share}/lbdb/m_inmail.db"
 
 #
 # If you want m_finger to ask other host then localhost, create a list here:
@@ -149,7 +150,7 @@ METHODS="m_inmail m_passwd m_finger"
 # - m_abook query the abook(1) program
 #
 # if you have more than one abook addressbook, use the ABOOK_FILES
-# variable. It contains a space separated list of all your files. 
+# variable. It contains a space separated list of all your files.
 # Default is $HOME/.abook/addressbook $HOME/.abook.addressbook
 # ABOOK_FILES="$HOME/.abook/friends $HOME/.abook/work"
 
@@ -183,7 +184,7 @@ METHODS="m_inmail m_passwd m_finger"
 # address in m_inmail database is first).
 # If you set this to "name", lbdbq sorts the output by real name.
 # If you set this to "comment", lbdbq sorts the output by comment (column 3).
-# If you set this to "reverse_comment", lbdbq sorts the output by comment 
+# If you set this to "reverse_comment", lbdbq sorts the output by comment
 #                                       but with reverse order (column 3).
 # If you set this to "address", lbdbq sorts the output by addresses
 # (that's the default).

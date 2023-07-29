@@ -2,18 +2,18 @@
 #
 # -*-sh-*-
 #     Copyright (C) 1998-2000  Thomas Roessler <roessler@guug.de>
-#                   1999-2022  Roland Rosenfeld <roland@spinnaker.de>
-# 
+#                   1999-2023  Roland Rosenfeld <roland@spinnaker.de>
+#
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
 #     the Free Software Foundation; either version 2 of the License, or
 #     (at your option) any later version.
-# 
+#
 #     This program is distributed in the hope that it will be useful,
 #     but WITHOUT ANY WARRANTY; without even the implied warranty of
 #     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #     GNU General Public License for more details.
-# 
+#
 #     You should have received a copy of the GNU General Public License
 #     along with this program; if not, write to the Free Software Foundation,
 #     Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
@@ -28,7 +28,9 @@ dotlock=@DOTLOCK@
 [ -n "$USE_LOCAL_LIB" ] && [ -x $USE_LOCAL_LIB/lbdb_dotlock ] && dotlock=$USE_LOCAL_LIB/lbdb_dotlock
 fetchaddr=${USE_LOCAL_LIB:-@libdir@}/fetchaddr
 
-db=$HOME/.lbdb/m_inmail.utf-8
+db=${XDG_DATA_HOME:-$HOME/.local/share}/lbdb/m_inmail.db
+[ -f $HOME/.lbdb/m_inmail.utf-8 ] && db=$HOME/.lbdb/m_inmail.utf-8
+
 datefmt='%Y-%m-%d %H:%M'
 additional_param=""
 
@@ -43,17 +45,18 @@ usage() {
     echo "       -c 'charset'       charset for the database storage"
     echo "       -a                 also grep addresses without realname"
     echo "       -f 'filename'      database filename defaults to"
-    echo "                          \$HOME/.lbdb/m_inmail.utf-8"
+    echo "                          \$XDG_DATA_HOME/lbdb/m_inmail.db or"
+    echo "                          \$HOME/.lbdb/m_inmail.utf-8 if already exists"
 }
 
 while [ $# -gt 0 ]
 do
     case "$1" in
-    -v) 
+    -v)
 	echo "lbdb-fetchaddr version $LBDB_VERSION"
 	exit 0
 	;;
-    -h) 
+    -h)
 	usage
 	exit 0
 	;;
@@ -103,6 +106,8 @@ do
     esac
     shift
 done
+
+
 
 if [ ! -f "$db" ]; then
   dbdir=$(dirname "$db")
