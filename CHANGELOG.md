@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.52] - 2023-07-29
+
 ### Changed
 
 - The m_inmail DB is now located by default in
