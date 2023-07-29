@@ -1,6 +1,12 @@
 # Changelog
 
-## [0.52.2]
+## [0.52.1] - 2023-07-29
+
+### Fixed
+
+- Fix version information.
+
+## [0.52] - 2023-07-29
 
 ### Changed
 
