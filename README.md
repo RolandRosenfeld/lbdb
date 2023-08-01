@@ -240,6 +240,7 @@ Download and Repository:
 ------------------------
 
 - [Download page](https://www.spinnaker.de/lbdb/download)
+- [Changelog](https://www.spinnaker.de/lbdb/changelog)
 - [Debian package](https://www.spinnaker.de/debian/lbdb.html)
 - [Git repository](https://github.com/RolandRosenfeld/lbdb)
 
