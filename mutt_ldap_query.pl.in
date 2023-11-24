@@ -60,7 +60,7 @@ our $ldap_tls = 0;
 # LDAP SASL mechanism
 our $ldap_sasl_mech = '';
 # option to restrict the scope of the LDAP search
-our $scope = undef;
+our $ldap_scope = undef;
 
 our %ldap_server_db = (
   'four11'		=> ['ldap.four11.com', 'c=US', 'givenname sn cn mail', 'givenname cn sn mail o', '${mail}', '${givenname} ${sn}', '${o}' ],
@@ -122,7 +122,7 @@ GetOptions (
   'bind_password|bp:s'          => \$ldap_bind_password,
   'tls:s'                       => \$ldap_tls,
   'sasl_mech|sm:s'              => \$ldap_sasl_mech,
-  'scope=s'                     => \$scope,
+  'scope=s'                     => \$ldap_scope,
   'debug'			=> sub { $DEBUG = 1 },
   'help|?|h'			=> \$help,
   'man|m'			=> \$man,
@@ -215,7 +215,7 @@ foreach my $askfor ( @ARGV ) {
   } else {
     $ldap->bind;
   }
-  my $mesg = $ldap->search( base => $search_base, filter => $query, $scope ? (scope => $scope) : () ) or die $@;
+  my $mesg = $ldap->search( base => $search_base, filter => $query, $ldap_scope ? (scope => $ldap_scope) : () ) or die $@;
   if ($mesg->code && ($mesg->code ne '4')) {
     die "Search failed. LDAP server returned an error : ", $mesg->code, ", description: ", $mesg->error;
   }
@@ -344,6 +344,13 @@ enable or disable transport layer security (TLS).
 =item B<--sasl_mech=mechanism> or B<-sm mechanism>
 
 the SASL mechanism, for example GSSAPI (empty string to turn off).
+
+=item B<--scope=ldap_scope>
+
+The default search applies to the whole tree. Specifying the optional scope
+parameter allows the search to be limited in various ways. Some valid values
+include: 'base', 'one', 'sub', 'subtree', 'children'. See the Net::LDAP CPAN
+documentation for more information.
 
 =item B<--nickname=ldap_server_nickname> or B<-n ldap_server_nickname>
 
