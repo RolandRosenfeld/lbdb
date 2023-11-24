@@ -177,6 +177,9 @@ if ($ldap_server_nickname) {
   if (defined($option_array->[11])) {
      $ldap_sasl_mech = $option_array->[11];
   }
+  if (defined($option_array->[12])) {
+     $ldap_scope = $option_array->[12];
+  }
 }
 
 print "DEBUG: ldap_server='$ldap_server' search_base='$search_base' search_fields='$ldap_search_fields'\
