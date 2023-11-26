@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased]
+
+### Changed
+
+- Add scope option to mutt-ldap-query (m_ldap).  Thanks to Ben
+  Collerson <benc@benc.cc>
+  (https://github.com/RolandRosenfeld/lbdb/pull/9)
+
 ## [0.52.1] - 2023-07-29
 
 ### Fixed
