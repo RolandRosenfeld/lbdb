@@ -13,14 +13,14 @@
 #                   'LDAP_BIND_PASSWORD' (optional),
 #                   'LDAP_TLS' (optional),
 #                   'LDAP_SASL_MECH' (optional),
-#                   'SCOPE' (optional)],
+#                   'LDAP_SCOPE' (optional)],
 # (IGNORANT is an optional argument. If you set it to 1, mutt_ldap_query
 # uses wildcards *foo* for searching).
 # (LDAP_BIND_DN and LDAP_BIND_PASSWORD are optional arguments. Leave them
 # out or empty to use and anonymous bind)
 # (LDAP_TLS is optional, set it to 0 to disable)
 # (LDAP_SASL_MECH is optional, set it to '' to disable)
-# (SCOPE is optional, set it to undef to use default scope)
+# (LDAP_SCOPE is optional, set it to undef to use default scope)
 # A practical illustrating example being:
 #  debian	=> ['db.debian.org', 'ou=users,dc=debian,dc=org',
 #                   'uid cn sn ircnick', 'uid cn sn ircnick',
