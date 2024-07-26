@@ -8,6 +8,8 @@
   Collerson <benc@benc.cc>
   (https://github.com/RolandRosenfeld/lbdb/pull/9)
 - Add testsuite for m_vcf.
+- Add support to m_vcf for running testsuite on local built code (via
+  $USE_LOCAL_LIB).
 
 ## [0.52.1] - 2023-07-29
 
