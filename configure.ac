@@ -1,4 +1,4 @@
-dnl Copyright (c) 1998-2023 Roland Rosenfeld <roland@spinnaker.de>
+dnl Copyright (c) 1998-2024 Roland Rosenfeld <roland@spinnaker.de>
 dnl 
 dnl This program is free software; you can redistribute it and/or modify
 dnl it under the terms of the GNU General Public License as published by
@@ -204,14 +204,46 @@ else
 	fi
 fi
 
-VFORMAT="no"
-AC_CHECK_HEADER([vf_iface.h], [
-  AC_CHECK_LIB([vformat], [vf_read_file], [
-    MODULES="$MODULES m_vcf"
-    VFORMAT="yes"
-  ])
-])
-AC_SUBST(VFORMAT)
+AC_CHECK_HEADER([vc.h], [has_vc_h=yes], [has_vc_h=no])
+AC_CHECK_LIB([vc], [parse_vcard_file], [has_vc_lib=yes], [has_vc_lib=no])
+AC_CHECK_HEADER([vf_iface.h], [has_vf_iface_h=yes], [has_vf_iface_h=no])
+AC_CHECK_LIB([vformat], [vf_read_file], [has_vformat_lib=yes], [has_vformat_lib=no])
+VCLIB="NO"
+AC_ARG_WITH([vclib],
+    [AS_HELP_STRING([--with-vclib=[[vc,vformat]]],
+        [with m_vcf support based on libvc or vformat backend (defaults to libvc over libvformat)])],
+    [case "${withval}" in
+        no)
+            VCLIB=no ;;
+        vc)
+            if test "x$has_vc_h" = "xyes" && test "x$has_vc_lib" = "xyes"; then
+               VCLIB="vc"
+               MODULES="$MODULES m_vcf"
+            else
+               AC_MSG_ERROR([libvc is not found])
+            fi ;;
+        vformat)
+            if test "x$has_vf_iface_h" = "xyes" && test "x$has_vformat_lib" = "xyes"; then
+               VCLIB="vformat"
+               MODULES="$MODULES m_vcf"
+            else
+               AC_MSG_ERROR([libvformat not found])
+            fi ;;
+        *)
+            AC_MSG_ERROR([Invalid value for --with-vclib: ${withval}. Use 'no', 'vc', or 'vformat'.])
+    esac],
+    [if test "x$has_vc_h" = "xyes" && test "x$has_vc_lib" = "xyes"; then
+       VCLIB="vc"
+       MODULES="$MODULES m_vcf"
+     elif test "x$has_vf_iface_h" = "xyes" && test "x$has_vformat_lib" = "xyes"; then
+       VCLIB="vformat"
+       MODULES="$MODULES m_vcf"
+     else
+       VCLIB="no"
+     fi
+    ]
+)
+AC_SUBST(VCLIB)
 
 MODULES_SH=""
 for i in $MODULES ; do

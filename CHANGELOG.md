@@ -4,6 +4,9 @@
 
 ### Changed
 
+- m_vcf (vcquery) can be build with libvc (--with-libvc=vc) as an
+  alternative to libvformat (--with-libvc-vformat) now.  In auto-mode
+  libvc is preferred over libvformat.
 - Add scope option to mutt-ldap-query (m_ldap).  Thanks to Ben
   Collerson <benc@benc.cc>
   (https://github.com/RolandRosenfeld/lbdb/pull/9)
