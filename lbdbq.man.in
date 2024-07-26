@@ -1,5 +1,5 @@
 .\" -*- nroff -*-
-.\" Copyright (c) 1998-2023  Roland Rosenfeld <roland@spinnaker.de>
+.\" Copyright (c) 1998-2024  Roland Rosenfeld <roland@spinnaker.de>
 .\"               
 .\" This program is free software; you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
@@ -315,7 +315,7 @@ the program
 which is shipped with evolution.
 .TP
 .B m_vcf
-This module uses libvformat to search for addresses from the
+This module uses libvc or libvformat to search for addresses from the
 space\-separated set of vCard files defined in
 .IR $VCF_FILES .
 .TP

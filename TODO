@@ -23,10 +23,6 @@
 
 - Support DEB_BUILD_OPTIONS nodoc (using debhelper >= 10.6)
 
-- Change m_vcf to use a better supported library than libvformat,
-  maybe libvc (C) or Text::vCard (Perl). Or switch to some other meta
-  tool as m_vcf backend like mutt-vc-query.
-
 - Write tests for lbdb-fetchaddr / m_inmail.
 
 
