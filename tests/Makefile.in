@@ -1,4 +1,4 @@
-#     Copyright (C) 2018  Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 2018-2024  Roland Rosenfeld <roland@spinnaker.de>
 #
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@ top_srcdir = @top_srcdir@
 abs_top_srcdir = @abs_top_srcdir@
 AUTOM4TE = @AUTOM4TE@
 
-TESTSUITE_AT = m_muttalias.at m_abook.at m_inmail.at
+TESTSUITE_AT = m_muttalias.at m_abook.at m_inmail.at m_vcf.at
 EXTRA_DIST = testsuite.at testsuite $(TESTSUITE_AT)
 TESTSUITE = $(srcdir)/testsuite
 
