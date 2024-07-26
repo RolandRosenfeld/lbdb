@@ -1,21 +1,21 @@
 .\" -*- nroff -*-
 .\" Copyright (c) 1998-2024  Roland Rosenfeld <roland@spinnaker.de>
-.\"               
+.\"
 .\" This program is free software; you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
 .\" the Free Software Foundation; either version 2 of the License, or
 .\" (at your option) any later version.
-.\" 
+.\"
 .\" This program is distributed in the hope that it will be useful,
 .\" but WITHOUT ANY WARRANTY; without even the implied warranty of
 .\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 .\" GNU General Public License for more details.
-.\" 
+.\"
 .\" You should have received a copy of the GNU General Public License
 .\" along with this program; if not, write to the Free Software Foundation,
 .\" Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
 .\"
-.TH LBDBQ 1 "March 2018" "Unix" "User Manuals"
+.TH LBDBQ 1 "July 2024" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -34,7 +34,7 @@ E.g., it may look at a list of addresses from which you have received
 mail, it may look at YP maps, or it may try to finger
 .IR something @ "<various hosts>" .
 .PP
-The behavior is configurable: Upon startup, 
+The behavior is configurable: Upon startup,
 .B lbdbq
 will source the shell scripts:
 .RS
@@ -53,7 +53,7 @@ if they exist.
 They can be used to set the following global variables:
 .TP
 .B MODULES_PATH
-a space separated list of directories, where 
+a space separated list of directories, where
 .B lbdbq
 should look for modules.
 .TP
@@ -61,20 +61,20 @@ should look for modules.
 a space separated list of the modules to use.
 .TP
 .B SORT_OUTPUT
-If you set this to 
+If you set this to
 .I false
-or 
+or
 .IR no ,
 lbdbq won't sort the addresses but returns them in reverse order
 (which means that the most recent address in m_inmail database is
-first). If you set this to 
+first). If you set this to
 .IR name ,
-lbdbq sorts the output by real name.  If you set this to 
+lbdbq sorts the output by real name.  If you set this to
 .IR comment ,
-it sort the output by the comment (for example the date in 
+it sort the output by the comment (for example the date in
 .BR m_inmail ).
 .I reverse_comment
-realizes the same as 
+realizes the same as
 .IR comment ,
 but in reverse order, so the most recent timestamp of m_inmail may be
 on top. If you set SORT_OUTPUT to
@@ -89,7 +89,7 @@ or
 lbdbq won't remove duplicate addresses with different real name
 comment fields.
 .PP
-Note that there 
+Note that there
 .I are
 defaults, so you should most
 probably modify these variables using constructs like this:
@@ -104,7 +104,7 @@ Currently, the following modules are supplied with lbdb:
 .TP
 .B m_finger
 This module will use finger to find out something more about a person.
-The list of hosts do be asked is configurable; use the 
+The list of hosts do be asked is configurable; use the
 .B M_FINGER_HOSTS
 variable. Note that "localhost" will mean an invocation of your local
 .BR finger (1)
@@ -132,7 +132,7 @@ addresses created by
 .BR lbdb-fetchaddr (1).
 By default this uses
 .IR $XDG_DATA_HOME/lbdb/m_inmail.db ,
-which is overridden, if 
+which is overridden, if
 .I $HOME/.lbdb/m_inmail.utf-8
 exists (the old default) as its database file, but this can be changed
 using
@@ -143,7 +143,7 @@ call using option \-f, too).
 .TP
 .B m_passwd
 This module searches for matching entries in your local /etc/passwd
-file. It evaluates the local machine mail domain in the same way 
+file. It evaluates the local machine mail domain in the same way
 .B m_finger
 does.  If you set
 .BR PASSWD_IGNORESYS=true ,
@@ -193,25 +193,25 @@ a tool to access Google contacts via command line.
 .B m_addr_email
 This module uses the program
 .BR addr-email (1),
-a text based frontend to the Tk 
+a text based frontend to the Tk
 .BR addressbook (1)
 application.
 .TP
 .B m_muttalias
 This module searches the variable
 .B MUTTALIAS_FILES
-(a space separated list) of files in 
+(a space separated list) of files in
 .B MUTT_DIRECTORY
 that contain mutt aliases.  File names without leading slash will have
 .B MUTT_DIRECTORY
-(defaults to 
+(defaults to
 .BI $HOME /.mutt
 or
 .BR $HOME ,
 if
 .BI $HOME /.mutt
 does not exist) prepended before the file name.  Absolute file names
-(beginning with 
+(beginning with
 .IR / )
 will be taken direct.
 .TP
@@ -221,13 +221,13 @@ This module searches
 addressbook files for aliases.  To realize this it first inspects the
 variable
 .BR PINERC .
-If it isn't set, the default 
+If it isn't set, the default
 .RI ` "/etc/pine.conf /etc/pine.conf.fixed .pinerc" '
 is used.  To suppress inspecting the
 .B PINERC
 variable, set it to
 .IR no .
-It than takes all 
+It than takes all
 .B address-book
 and
 .B global-address-book
@@ -240,19 +240,19 @@ without leading slash are searched in
 .BR $HOME .
 .TP
 .B m_palm
-This module searches the Palm address database using the 
+This module searches the Palm address database using the
 .BR Palm::PDB (3pm)
 and
 .BR Palm::Address (3pm)
 Perl modules from CPAN.
 It searches in the variable
 .B PALM_ADDRESS_DATABASE
-or if this isn't set in 
+or if this isn't set in
 .IR $HOME/.jpilot/AddressDB.pdb .
 .TP
 .B m_gnomecard
 This module searches for addresses in your GnomeCard database files.
-The variable 
+The variable
 .B GNOMECARD_FILES
 is a whitespace separated list of GnomeCard data files.  If this
 variable isn't defined, the module searches in
@@ -272,16 +272,16 @@ with a special mode to get the information (so don't expect too much
 performance in this module).  You can configure the
 .B EMACS
 variable to tell this module which emacsen to use.  Otherwise it will
-fall back to 
+fall back to
 .B emacs
 or
 .BR xemacs.
 .TP
 .B m_ldap
-This module queries an LDAP server using the 
+This module queries an LDAP server using the
 .BR Net::LDAP (3pm)
 Perl modules from CPAN.  It can be configured using an external
-resource file 
+resource file
 .I @sysconfdir@/lbdb_ldap.rc
 or
 .I $XDG_CONFIG_HOME/lbdb/ldap.rc
@@ -290,7 +290,7 @@ or
 or
 .IR $HOME/.mutt_ldap_query.rc .
 You can explicitly define a LDAP query in this file or you can use one
-or more of the predefined queries from the 
+or more of the predefined queries from the
 .B %ldap_server_db
 in this file.  For this you have to define a space separated list of
 nicknames from entries in the variable
@@ -298,8 +298,8 @@ nicknames from entries in the variable
 .TP
 .B m_wanderlust
 This module searches for addresses stored in your
-.I $WANDERLUST_ADDRESSES 
-(or by default in 
+.I $WANDERLUST_ADDRESSES
+(or by default in
 .IR $HOME/.addresses )
 file, an addressbook of
 .BR WanderLust .
@@ -346,7 +346,7 @@ YP maps, and the like.
 should be a good example of how to do it.
 .PP
 If you create your own modules or have other changes and feel that
-they could be helpful for others, don't hesitate to submit them to the 
+they could be helpful for others, don't hesitate to submit them to the
 author for inclusion in later releases.
 .PP
 Finally, to use
