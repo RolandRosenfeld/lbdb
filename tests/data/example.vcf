@@ -1,0 +1,24 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Max Mustermann
+ORG:Beispiel GmbH
+TEL;TYPE=WORK,VOICE:+49 123 456789
+ADR;TYPE=WORK:;;Musterstraße 1;Köln;Nordrhein-Westfalen;50667;Deutschland
+EMAIL:max.mustermann@example.com
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+FN:Erika Musterfrau
+ORG:Beispiel AG
+TEL;TYPE=WORK,VOICE:+49 987 654321
+ADR;TYPE=HOME:;;Musterweg 2;Köln;Nordrhein-Westfalen;50668;Deutschland
+EMAIL;TYPE=WORK:erika.musterfrau@example.com
+EMAIL;TYPE=HOME:erika.home@example.com
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+FN:Nomail Musterfrau
+ORG:Beispiel AG
+TEL;TYPE=WORK,VOICE:+49 987 654321
+ADR;TYPE=HOME:;;Musterweg 2;Köln;Nordrhein-Westfalen;50668;Deutschland
+END:VCARD
