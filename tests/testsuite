@@ -2536,7 +2536,7 @@ at_xfail=no
   $at_traceon
 
 printf "%s\n" "m_vcf.at:20" >"$at_check_line_file"
-(test "x$VFORMAT" = "xno") \
+(test "x$VCLIB" = "xno") \
   && at_fn_check_skip 77 "$at_srcdir/m_vcf.at:20"
 { set +x
 printf "%s\n" "$at_srcdir/m_vcf.at:21: cat \$abs_srcdir/data/m_vcf.expected > expout"
@@ -2595,7 +2595,7 @@ at_xfail=no
   $at_traceon
 
 printf "%s\n" "m_vcf.at:29" >"$at_check_line_file"
-(test "x$VFORMAT" = "xno") \
+(test "x$VCLIB" = "xno") \
   && at_fn_check_skip 77 "$at_srcdir/m_vcf.at:29"
 { set +x
 printf "%s\n" "$at_srcdir/m_vcf.at:30: cat \$abs_srcdir/data/m_vcf.expected.nickname > expout"
@@ -2654,7 +2654,7 @@ at_xfail=no
   $at_traceon
 
 printf "%s\n" "m_vcf.at:38" >"$at_check_line_file"
-(test "x$VFORMAT" = "xno") \
+(test "x$VCLIB" = "xno") \
   && at_fn_check_skip 77 "$at_srcdir/m_vcf.at:38"
 { set +x
 printf "%s\n" "$at_srcdir/m_vcf.at:39: cat \$abs_srcdir/data/m_vcf.expected.namecomponents > expout"
@@ -2713,7 +2713,7 @@ at_xfail=no
   $at_traceon
 
 printf "%s\n" "m_vcf.at:47" >"$at_check_line_file"
-(test "x$VFORMAT" = "xno") \
+(test "x$VCLIB" = "xno") \
   && at_fn_check_skip 77 "$at_srcdir/m_vcf.at:47"
 { set +x
 printf "%s\n" "$at_srcdir/m_vcf.at:48: cat \$abs_srcdir/data/m_vcf.expected.norealname > expout"
