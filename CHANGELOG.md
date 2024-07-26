@@ -1,5 +1,11 @@
 # Changelog
 
+## [unreleased] - xxxx-xx-xx
+
+### Changed
+
+- Remove .git* from archives using .gitattributes.
+
 ## [0.53] - 2024-07-26
 
 ### Changed
