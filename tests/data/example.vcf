@@ -28,3 +28,7 @@ VERSION:3.0
 N:Family;Given;Additional;HonPrefix;HonSuffix
 EMAIL;TYPE=HOME:complexname@example.com
 END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+EMAIL;TYPE=HOME:norealname@example.com
+END:VCARD
