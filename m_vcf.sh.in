@@ -2,6 +2,7 @@
 #
 #     Copyright (C) 2005  Brendan Cully <brendan@kublai.com>
 #     Copyright (C) 2011  Jamey Sharp <jamey@minilop.net>
+#                   2024  Roland Rosenfeld <roland@spinanker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -23,7 +24,7 @@ m_vcf_query()
 
   QUERY="$1"
 
-  for file in $VCF_FILES
+  for file in ${OVERRIDE_VCF_FILES:-$VCF_FILES}
   do
     if test -r $file.cache -a $file.cache -nt $file
     then
