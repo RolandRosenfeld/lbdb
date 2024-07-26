@@ -23,3 +23,8 @@ ORG:Beispiel AG
 TEL;TYPE=WORK,VOICE:+49 987 654321
 ADR;TYPE=HOME:;;Musterweg 2;Köln;Nordrhein-Westfalen;50668;Deutschland
 END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+N:Family;Given;Additional;HonPrefix;HonSuffix
+EMAIL;TYPE=HOME:complexname@example.com
+END:VCARD
