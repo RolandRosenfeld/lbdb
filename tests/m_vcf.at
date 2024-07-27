@@ -47,3 +47,11 @@ AT_CHECK([env LBDB_OVERRIDE_METHODS=m_vcf \
               OVERRIDE_VCF_FILES=example.vcf \
           lbdbq norealname], [], [expout])
 AT_CLEANUP
+
+AT_SETUP(m_vcf crlf lineending)
+AT_CHECK([cat $abs_srcdir/data/m_vcf.expected > expout])
+AT_CHECK([sed 's/$/\r/' < $abs_srcdir/data/example.vcf > example.vcf])
+AT_CHECK([env LBDB_OVERRIDE_METHODS=m_vcf \
+              OVERRIDE_VCF_FILES=example.vcf \
+          lbdbq muster], [], [expout])
+AT_CLEANUP
