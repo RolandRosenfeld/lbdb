@@ -9,6 +9,11 @@ EMAIL:max.mustermann@example.com
 END:VCARD
 BEGIN:VCARD
 VERSION:3.0
+FN:
+EMAIL:b@example.com
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
 FN:Erika Musterfrau
 ORG:Beispiel AG
 TEL;TYPE=WORK,VOICE:+49 987 654321
