@@ -656,7 +656,6 @@ MODULES
 LBDB_ELPA_VERSION
 LBDB_VERSION
 SYSCONF_DIR
-VCLIB
 PBXBUILD
 XCODEBUILD
 PERL
@@ -770,7 +769,6 @@ with_pgp
 with_evolution_addressbook_export
 with_khard
 with_mu
-with_vclib
 '
       ac_precious_vars='build_alias
 host_alias
@@ -1427,9 +1425,6 @@ Optional Packages:
                           with Evolution support ('auto' searchs at runtime)
   --with-khard            with khard support
   --with-mu               with mu (maildir-utils) support
-  --with-vclib=[vc,vformat]
-                          with m_vcf support based on libvc or vformat backend
-                          (defaults to libvc over libvformat)
 
 Some influential environment variables:
   CC          C compiler command
@@ -7179,8 +7174,9 @@ fi
 if test "x$PERL" != xno ; then
 	# m_fido needs nodelist2lbdb, which needs perl
 	# m_palm needs palm_lsaddr, which needs perl
-	# m_ldap needs mutt_ldap_query which is written in perl
-	MODULES="$MODULES m_fido m_palm m_ldap"
+	# m_ldap needs mutt_ldap_query, which is written in perl
+	# m_vcf needs vcquery, which is written in perl
+	MODULES="$MODULES m_fido m_palm m_ldap m_vcf"
 
 fi
 
@@ -7287,147 +7283,6 @@ fi
 	fi
 fi
 
-ac_fn_c_check_header_compile "$LINENO" "vc.h" "ac_cv_header_vc_h" "$ac_includes_default"
-if test "x$ac_cv_header_vc_h" = xyes
-then :
-  has_vc_h=yes
-else $as_nop
-  has_vc_h=no
-fi
-
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for parse_vcard_file in -lvc" >&5
-printf %s "checking for parse_vcard_file in -lvc... " >&6; }
-if test ${ac_cv_lib_vc_parse_vcard_file+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  ac_check_lib_save_LIBS=$LIBS
-LIBS="-lvc  $LIBS"
-cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-
-/* Override any GCC internal prototype to avoid an error.
-   Use char because int might match the return type of a GCC
-   builtin and then its argument prototype would still apply.  */
-char parse_vcard_file ();
-int
-main (void)
-{
-return parse_vcard_file ();
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-  ac_cv_lib_vc_parse_vcard_file=yes
-else $as_nop
-  ac_cv_lib_vc_parse_vcard_file=no
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-LIBS=$ac_check_lib_save_LIBS
-fi
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_vc_parse_vcard_file" >&5
-printf "%s\n" "$ac_cv_lib_vc_parse_vcard_file" >&6; }
-if test "x$ac_cv_lib_vc_parse_vcard_file" = xyes
-then :
-  has_vc_lib=yes
-else $as_nop
-  has_vc_lib=no
-fi
-
-ac_fn_c_check_header_compile "$LINENO" "vf_iface.h" "ac_cv_header_vf_iface_h" "$ac_includes_default"
-if test "x$ac_cv_header_vf_iface_h" = xyes
-then :
-  has_vf_iface_h=yes
-else $as_nop
-  has_vf_iface_h=no
-fi
-
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for vf_read_file in -lvformat" >&5
-printf %s "checking for vf_read_file in -lvformat... " >&6; }
-if test ${ac_cv_lib_vformat_vf_read_file+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  ac_check_lib_save_LIBS=$LIBS
-LIBS="-lvformat  $LIBS"
-cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-
-/* Override any GCC internal prototype to avoid an error.
-   Use char because int might match the return type of a GCC
-   builtin and then its argument prototype would still apply.  */
-char vf_read_file ();
-int
-main (void)
-{
-return vf_read_file ();
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"
-then :
-  ac_cv_lib_vformat_vf_read_file=yes
-else $as_nop
-  ac_cv_lib_vformat_vf_read_file=no
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-LIBS=$ac_check_lib_save_LIBS
-fi
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_vformat_vf_read_file" >&5
-printf "%s\n" "$ac_cv_lib_vformat_vf_read_file" >&6; }
-if test "x$ac_cv_lib_vformat_vf_read_file" = xyes
-then :
-  has_vformat_lib=yes
-else $as_nop
-  has_vformat_lib=no
-fi
-
-VCLIB="NO"
-
-# Check whether --with-vclib was given.
-if test ${with_vclib+y}
-then :
-  withval=$with_vclib; case "${withval}" in
-        no)
-            VCLIB=no ;;
-        vc)
-            if test "x$has_vc_h" = "xyes" && test "x$has_vc_lib" = "xyes"; then
-               VCLIB="vc"
-               MODULES="$MODULES m_vcf"
-            else
-               as_fn_error $? "libvc is not found" "$LINENO" 5
-            fi ;;
-        vformat)
-            if test "x$has_vf_iface_h" = "xyes" && test "x$has_vformat_lib" = "xyes"; then
-               VCLIB="vformat"
-               MODULES="$MODULES m_vcf"
-            else
-               as_fn_error $? "libvformat not found" "$LINENO" 5
-            fi ;;
-        *)
-            as_fn_error $? "Invalid value for --with-vclib: ${withval}. Use 'no', 'vc', or 'vformat'." "$LINENO" 5
-    esac
-else $as_nop
-  if test "x$has_vc_h" = "xyes" && test "x$has_vc_lib" = "xyes"; then
-       VCLIB="vc"
-       MODULES="$MODULES m_vcf"
-     elif test "x$has_vf_iface_h" = "xyes" && test "x$has_vformat_lib" = "xyes"; then
-       VCLIB="vformat"
-       MODULES="$MODULES m_vcf"
-     else
-       VCLIB="no"
-     fi
-
-
-fi
-
-
-
 MODULES_SH=""
 for i in $MODULES ; do
 	MODULES_SH="$MODULES_SH $i.sh"
@@ -7495,7 +7350,7 @@ fi
 
 
 
-ac_config_files="$ac_config_files Makefile lbdbq.sh munge.awk lbdb-fetchaddr.sh lbdb-munge.sh lbdb_lib.sh nodelist2lbdb.pl palm_lsaddr.pl mutt_ldap_query.pl $MODULES_SH $TACAWK lbdb.spec lbdb.rc lbdb-pkg.el tests/Makefile tests/atlocal"
+ac_config_files="$ac_config_files Makefile lbdbq.sh munge.awk lbdb-fetchaddr.sh vcquery.pl lbdb-munge.sh lbdb_lib.sh nodelist2lbdb.pl palm_lsaddr.pl mutt_ldap_query.pl $MODULES_SH $TACAWK lbdb.spec lbdb.rc lbdb-pkg.el tests/Makefile tests/atlocal"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -8214,6 +8069,7 @@ do
     "lbdbq.sh") CONFIG_FILES="$CONFIG_FILES lbdbq.sh" ;;
     "munge.awk") CONFIG_FILES="$CONFIG_FILES munge.awk" ;;
     "lbdb-fetchaddr.sh") CONFIG_FILES="$CONFIG_FILES lbdb-fetchaddr.sh" ;;
+    "vcquery.pl") CONFIG_FILES="$CONFIG_FILES vcquery.pl" ;;
     "lbdb-munge.sh") CONFIG_FILES="$CONFIG_FILES lbdb-munge.sh" ;;
     "lbdb_lib.sh") CONFIG_FILES="$CONFIG_FILES lbdb_lib.sh" ;;
     "nodelist2lbdb.pl") CONFIG_FILES="$CONFIG_FILES nodelist2lbdb.pl" ;;
