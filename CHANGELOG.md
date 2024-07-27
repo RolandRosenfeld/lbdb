@@ -4,6 +4,8 @@
 
 ### Changed
 
+- Rewrite of vcquey (m_vcf backend) in Perl to get rid of broken
+  libraries libvc and libvformat).
 - Remove .git* from archives using .gitattributes.
 
 ## [0.53] - 2024-07-26

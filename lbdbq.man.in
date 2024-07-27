@@ -315,8 +315,8 @@ the program
 which is shipped with evolution.
 .TP
 .B m_vcf
-This module uses libvc or libvformat to search for addresses from the
-space\-separated set of vCard files defined in
+This module uses a bundled little perl program named vcquery to search
+for addresses from the space\-separated set of vCard files defined in
 .IR $VCF_FILES .
 .TP
 .B m_khard

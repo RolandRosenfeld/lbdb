@@ -209,8 +209,9 @@ evolution-addressbook-export application.
 
 ### m_vcf
 
-This module uses libvc or libvformat to search for addresses from the
-space-separated set of vCard files defined in `$VCF_FILES`.
+This module uses a bundled little perl program named vcquery to search
+for addresses from the space-separated set of vCard files defined in
+`$VCF_FILES`.
 
 ### m_khard
 

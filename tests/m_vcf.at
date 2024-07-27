@@ -17,7 +17,6 @@ dnl Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 AT_BANNER([Test m_vcf])
 
 AT_SETUP(m_vcf)
-AT_SKIP_IF([test "x$VCLIB" = "xno"])
 AT_CHECK([cat $abs_srcdir/data/m_vcf.expected > expout])
 AT_CHECK([cat $abs_srcdir/data/example.vcf > example.vcf])
 AT_CHECK([env LBDB_OVERRIDE_METHODS=m_vcf \
@@ -26,7 +25,6 @@ AT_CHECK([env LBDB_OVERRIDE_METHODS=m_vcf \
 AT_CLEANUP
 
 AT_SETUP(m_vcf nickname)
-AT_SKIP_IF([test "x$VCLIB" = "xno"])
 AT_CHECK([cat $abs_srcdir/data/m_vcf.expected.nickname > expout])
 AT_CHECK([cat $abs_srcdir/data/example.vcf > example.vcf])
 AT_CHECK([env LBDB_OVERRIDE_METHODS=m_vcf \
@@ -35,7 +33,6 @@ AT_CHECK([env LBDB_OVERRIDE_METHODS=m_vcf \
 AT_CLEANUP
 
 AT_SETUP(m_vcf name components)
-AT_SKIP_IF([test "x$VCLIB" = "xno"])
 AT_CHECK([cat $abs_srcdir/data/m_vcf.expected.namecomponents > expout])
 AT_CHECK([cat $abs_srcdir/data/example.vcf > example.vcf])
 AT_CHECK([env LBDB_OVERRIDE_METHODS=m_vcf \
@@ -44,7 +41,6 @@ AT_CHECK([env LBDB_OVERRIDE_METHODS=m_vcf \
 AT_CLEANUP
 
 AT_SETUP(m_vcf no realname)
-AT_SKIP_IF([test "x$VCLIB" = "xno"])
 AT_CHECK([cat $abs_srcdir/data/m_vcf.expected.norealname > expout])
 AT_CHECK([cat $abs_srcdir/data/example.vcf > example.vcf])
 AT_CHECK([env LBDB_OVERRIDE_METHODS=m_vcf \

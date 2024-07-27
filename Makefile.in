@@ -1,5 +1,5 @@
 #     Copyright (C) 1998       Thomas Roessler <roessler@guug.de>
-#     Copyright (C) 1999-2020  Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 1999-2024  Roland Rosenfeld <roland@spinnaker.de>
 # 
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -28,7 +28,6 @@ TACTARGET=@TACTARGET@
 PERL=@PERL@
 XCODEBUILD=@XCODEBUILD@
 PBXBUILD=@PBXBUILD@
-VCLIB=@VCLIB@
 LIBICONV=@LIBICONV@
 
 prefix=@prefix@
@@ -42,7 +41,7 @@ sysconfdir=@sysconfdir@
 SUBDIRS=tests
 
 ALL=lbdbq lbdb_lib lbdb-fetchaddr lbdb-munge fetchaddr qpto8bit munge \
-	nodelist2lbdb palm_lsaddr mutt_ldap_query lbdbq.man \
+	nodelist2lbdb palm_lsaddr mutt_ldap_query vcquery lbdbq.man \
 	lbdb-fetchaddr.man nodelist2lbdb.man mutt_ldap_query.man lbdb.rc \
 	$(MODULES) $(DOTLOCK_TARGET) $(TACTARGET)
 
@@ -58,6 +57,7 @@ test_perl:
 	[ "$(PERL)" = "no" ] || perl -wc nodelist2lbdb
 	[ "$(PERL)" = "no" ] || perl -wc palm_lsaddr
 	[ "$(PERL)" = "no" ] || perl -wc mutt_ldap_query
+	[ "$(PERL)" = "no" ] || perl -wc vcquery
 
 install: all
 	$(srcdir)/mkinstalldirs $(install_prefix)$(bindir)
@@ -83,12 +83,10 @@ install: all
 			$(install_prefix)$(mandir)/man1/mutt_ldap_query.1; \
 		$(INSTALL) -m 644 lbdb_ldap.rc \
 			$(install_prefix)$(sysconfdir)/lbdb_ldap.rc; \
+		$(INSTALL) -m 755 vcquery $(install_prefix)$(libdir); \
 	fi
 	if [ "$(XCODEBUILD)" != "no" -o "$(PBXBUILD)" != "no" ]; then \
 		$(INSTALL) -m 755 ABQuery $(install_prefix)$(libdir); \
-	fi
-	if [ "$(VCLIB)" != "no" ]; then \
-		$(INSTALL) -m 755 vcquery $(install_prefix)$(libdir); \
 	fi
 	for i in $(MODULES); do \
 		$(INSTALL) -m 755 $$i $(install_prefix)$(libdir); \
@@ -151,17 +149,8 @@ mutt_ldap_query.man: $(srcdir)/mutt_ldap_query.pl
 
 m_vcf: vcquery
 
-vcquery.o: vcquery-vc.c vcquery-vformat.c
-	if [ "$(VCLIB)" != "no" ]; then \
-		$(CC) $(CFLAGS) $(DEFS) -c vcquery-$(VCLIB).c -o $@; \
-	fi
-
-vcquery: vcquery.o
-	if [ "$(VCLIB)" = "vc" ]; then \
-		$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $? -lvc; \
-	else \
-		$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $? -lvformat; \
-	fi
+vcquery: $(srcdir)/vcquery.pl
+	$(INSTALL) vcquery.pl $@
 
 m_osx_addressbook: ABQuery
 
@@ -178,14 +167,13 @@ update-version:
 clean:
 	-rm -f *.o *~ $(ALL) munge.awk tac.awk ABQuery \
 		nodelist2lbdb.pl palm_lsaddr.pl mutt_ldap_query.pl \
-		lbdb_dotlock lbdb.spec lbdb-pkg.el
+		lbdb_dotlock lbdb.spec lbdb-pkg.el vcquery.pl
 	-rm -rf ABQuery.dSYM autom4te.cache
 	$(MAKE) -C tests clean
 
 distclean: clean
 	-rm -f config.status config.cache config.log Makefile
 	-rm -f *.sh
-	-rm -f vcquery
 	$(MAKE) -C tests distclean
 
 Makefile: Makefile.in

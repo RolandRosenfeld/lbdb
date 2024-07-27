@@ -1,0 +1,86 @@
+#! @PERL@
+#
+#     Copyright (c) 2024  Roland Rosenfeld <roland@spinnaker.de>
+#
+#     This program is free software; you can redistribute it and/or modify
+#     it under the terms of the GNU General Public License as published by
+#     the Free Software Foundation; either version 2 of the License, or
+#     (at your option) any later version.
+#
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+#
+#     You should have received a copy of the GNU General Public License
+#     along with this program; if not, write to the Free Software Foundation,
+#     Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
+
+use strict;
+use warnings;
+
+my ($fn, $n, $nickname) = ('', '', '');
+my @email = ();
+my $last = '';
+while (<>) {
+   chomp;
+   s/\r//g;
+   if (/^BEGIN:VCARD/) {
+      # new record
+      ($fn, $n, $nickname) = ('', '', '');
+      @email = ();
+      $last = '';
+   } elsif (/^END:VCARD/) {
+      # print output
+      my $name = '';
+      if ($fn ne '') {
+         $name = $fn;
+      } elsif ($n =~ /^(.*);(.*);(.*);(.*);(.*)$/) {
+         # RFC 2426 defines N: field with 5 components:
+         # Family Name (4), Given Name (2), Additional Names (3),
+         # Honorific Prefixes (1), Honorific Suffixes (5)
+         $name = "$4 $2 $3 $1 $5";
+         $name =~ s/^\s+//; # remove leeding space
+         $name =~ s/\s+$//; # remove trailing space
+         $name =~s /\s+/ /; # reduce multiple spaces
+      } else {
+         $name = '(null)';
+      }
+      foreach my $addr (@email) {
+         printf "%s\t%s\t%s\n", $addr, $name, $nickname;
+      }
+      # reset data
+      ($fn, $n, $nickname) = ('', '', '');
+      @email = ();
+   } elsif (/^FN:(.*)$/) {
+      $fn = $1;
+      $last = 'fn';
+   } elsif (/^N:(.*)$/) {
+      $n = $1;
+      $last = 'n';
+   } elsif (/^NICKNAME:(.*)$/) {
+      $nickname = $1;
+      $last = 'nickname';
+   } elsif (/^([^:]+\.)?EMAIL[^ ]*:(.*)$/) {
+      push @email, $2;
+      $last = 'email';
+   } elsif (/^\s(.*)$/) {
+      my $cont = $1;
+      # continues line
+      if ($last eq 'fn') {
+         $fn .= $cont;
+      } elsif ($last eq 'n') {
+         $n .= $cont;
+      } elsif ($last eq 'nickname') {
+         $nickname .= $cont;
+      } elsif ($last eq 'email') {
+         my $addr = pop @email;
+         print STDERR "Prefix: $addr\n";
+         $addr .= $cont;
+         print STDERR "concated: $addr\n";
+         push @email, $addr;
+      }
+   } else {
+      $last = '';
+   }
+}

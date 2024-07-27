@@ -186,8 +186,9 @@ AC_PATH_PROG(PERL, perl, "no")
 if test "x$PERL" != xno ; then
 	# m_fido needs nodelist2lbdb, which needs perl
 	# m_palm needs palm_lsaddr, which needs perl
-	# m_ldap needs mutt_ldap_query which is written in perl
-	MODULES="$MODULES m_fido m_palm m_ldap"
+	# m_ldap needs mutt_ldap_query, which is written in perl
+	# m_vcf needs vcquery, which is written in perl
+	MODULES="$MODULES m_fido m_palm m_ldap m_vcf"
 	AC_SUBST(PERL)
 fi
 
@@ -203,47 +204,6 @@ else
 		AC_SUBST(PBXBUILD)
 	fi
 fi
-
-AC_CHECK_HEADER([vc.h], [has_vc_h=yes], [has_vc_h=no])
-AC_CHECK_LIB([vc], [parse_vcard_file], [has_vc_lib=yes], [has_vc_lib=no])
-AC_CHECK_HEADER([vf_iface.h], [has_vf_iface_h=yes], [has_vf_iface_h=no])
-AC_CHECK_LIB([vformat], [vf_read_file], [has_vformat_lib=yes], [has_vformat_lib=no])
-VCLIB="NO"
-AC_ARG_WITH([vclib],
-    [AS_HELP_STRING([--with-vclib=[[vc,vformat]]],
-        [with m_vcf support based on libvc or vformat backend (defaults to libvc over libvformat)])],
-    [case "${withval}" in
-        no)
-            VCLIB=no ;;
-        vc)
-            if test "x$has_vc_h" = "xyes" && test "x$has_vc_lib" = "xyes"; then
-               VCLIB="vc"
-               MODULES="$MODULES m_vcf"
-            else
-               AC_MSG_ERROR([libvc is not found])
-            fi ;;
-        vformat)
-            if test "x$has_vf_iface_h" = "xyes" && test "x$has_vformat_lib" = "xyes"; then
-               VCLIB="vformat"
-               MODULES="$MODULES m_vcf"
-            else
-               AC_MSG_ERROR([libvformat not found])
-            fi ;;
-        *)
-            AC_MSG_ERROR([Invalid value for --with-vclib: ${withval}. Use 'no', 'vc', or 'vformat'.])
-    esac],
-    [if test "x$has_vc_h" = "xyes" && test "x$has_vc_lib" = "xyes"; then
-       VCLIB="vc"
-       MODULES="$MODULES m_vcf"
-     elif test "x$has_vf_iface_h" = "xyes" && test "x$has_vformat_lib" = "xyes"; then
-       VCLIB="vformat"
-       MODULES="$MODULES m_vcf"
-     else
-       VCLIB="no"
-     fi
-    ]
-)
-AC_SUBST(VCLIB)
 
 MODULES_SH=""
 for i in $MODULES ; do
@@ -266,7 +226,7 @@ AC_CONFIG_TESTDIR([tests])
 AC_PATH_PROG(AUTOM4TE, autom4te, autom4te)
 AC_SUBST(AUTOM4TE)
 
-AC_CONFIG_FILES([Makefile lbdbq.sh munge.awk lbdb-fetchaddr.sh \
+AC_CONFIG_FILES([Makefile lbdbq.sh munge.awk lbdb-fetchaddr.sh vcquery.pl \
 	lbdb-munge.sh lbdb_lib.sh nodelist2lbdb.pl palm_lsaddr.pl \
 	mutt_ldap_query.pl $MODULES_SH $TACAWK lbdb.spec lbdb.rc lbdb-pkg.el \
 	tests/Makefile tests/atlocal])
