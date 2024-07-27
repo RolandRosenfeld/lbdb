@@ -1,27 +1,12 @@
 name: buildtest
 on: [push]
 jobs:
-  buildandtest-vformat:
+  buildandtest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: sudo apt install libauthen-sasl-perl libnet-ldap-perl libpalm-perl libvformat-dev abook
-      - run: ./configure --with-libvc=vformat
-      - run: make
-      - run: make test
-      - uses: actions/upload-artifact@v2
-        if: failure()
-        with:
-          name: testsuite
-          path: |
-            tests/testsuite.dir
-            tests/testsuite.log
-  buildandtest-vc:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: sudo apt install libauthen-sasl-perl libnet-ldap-perl libpalm-perl libvc-dev abook
-      - run: ./configure --with-libvc=vc
+      - run: sudo apt install libauthen-sasl-perl libnet-ldap-perl libpalm-perl abook
+      - run: ./configure
       - run: make
       - run: make test
       - uses: actions/upload-artifact@v2
