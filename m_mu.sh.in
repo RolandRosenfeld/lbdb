@@ -3,17 +3,18 @@
 # -*-sh-mode-*-
 #
 #     Copyright (C) 2018      Timothy Bourke <tim@tbrk.org>
-# 
+#               (c) 2024      Roland Rosenfeld <roland@spinnaker.de>
+#
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
 #     the Free Software Foundation; either version 2 of the License, or
 #     (at your option) any later version.
-# 
+#
 #     This program is distributed in the hope that it will be useful,
 #     but WITHOUT ANY WARRANTY; without even the implied warranty of
 #     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #     GNU General Public License for more details.
-# 
+#
 #     You should have received a copy of the GNU General Public License
 #     along with this program; if not, write to the Free Software Foundation,
 #     Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
@@ -25,17 +26,17 @@ m_mu_query()
 
     if [ "$MU_AFTER" -eq "$MU_AFTER" ] 2>/dev/null # test integer
     then
-	MU_OPTIONS="$MU_OPTIONS --after=$MU_AFTER"
+        MU_OPTIONS="$MU_OPTIONS --after=$MU_AFTER"
     fi
 
     if [ "$MU_PERSONAL" = "yes" ] || [ "$MU_PERSONAL" = "true" ]
     then
-	MU_OPTIONS="$MU_OPTIONS --personal"
+        MU_OPTIONS="$MU_OPTIONS --personal"
     fi
 
     if [ -x "$MU" ]                # check whether mu is installed
     then
-	$MU cfind --format=csv $MU_OPTIONS "$@" \
+        $MU cfind --format=csv $MU_OPTIONS "$@" \
         | sed -e '/^,/d' -e 's/\(.*\),\([^,]*\)/\2	\1	mu cfind/'
     fi
 }
