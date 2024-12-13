@@ -9,7 +9,7 @@
 # ~/.lbdb/rc
 # (evaluated with ascending priority!)
 #
-# (c) 1999-2023 Roland Rosenfeld <roland@spinnaker.de>
+# (c) 1999-2024 Roland Rosenfeld <roland@spinnaker.de>
 #
 
 #
@@ -218,6 +218,8 @@ METHODS="m_inmail m_passwd m_finger"
 # set MU_PERSONAL to true or yes.
 # If you only want to see addresses seen in messages after a given
 # UNIX timestamp, set the limiting timestamp in MU_AFTER.
+# You can override the MU homedir using MU_HOME.
 #
 #MU_PERSONAL=true
 #MU_AFTER=$(date --date='-1 year' +%s)
+#MU_HOME="$HOME/.mu"

@@ -1,5 +1,11 @@
 # Changelog
 
+## [x.xx] -
+
+### Added
+
+- m_mu: Add option MU_HOME to override MU homedir.
+
 ## [0.54] - 2024-07-27
 
 ### Changed

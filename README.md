@@ -224,6 +224,7 @@ This module uses the program
 [mu](http://www.djcbsoftware.nl/code/mu/), a tool for indexing and
 searching Maildir directories.  You can set `MU_AFTER` to a timestamp
 value and `MU_PERSONAL` to "yes" or "true" to filter the results.
+You can override the MU homedir using `MU_HOME`.
 
 -----
 

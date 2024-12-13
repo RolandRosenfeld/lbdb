@@ -23,6 +23,11 @@ m_mu_query()
 {
     MU=@MU@
     MU_OPTIONS=
+    MU_HOME=${OVERRIDE_MU_HOME:-$MU_HOME}
+    if [ "x$MU_HOME" != "x" ]
+    then
+        MU_OPTIONS="$MU_OPTIONS --muhome=$MU_HOME"
+    fi
 
     if [ "$MU_AFTER" -eq "$MU_AFTER" ] 2>/dev/null # test integer
     then
