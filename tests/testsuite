@@ -623,6 +623,9 @@ at_help_all="1;m_muttalias.at:19;m_muttalias;;
 11;m_vcf.at:35;m_vcf name components;;
 12;m_vcf.at:43;m_vcf no realname;;
 13;m_vcf.at:51;m_vcf crlf lineending;;
+14;m_mu.at:19;m_mu;;
+15;m_mu.at:34;m_mu personal;;
+16;m_mu.at:59;m_mu after;;
 "
 # List of the all the test groups.
 at_groups_all=`printf "%s\n" "$at_help_all" | sed 's/;.*//'`
@@ -636,7 +639,7 @@ at_fn_validate_ranges ()
   for at_grp
   do
     eval at_value=\$$at_grp
-    if test $at_value -lt 1 || test $at_value -gt 13; then
+    if test $at_value -lt 1 || test $at_value -gt 16; then
       printf "%s\n" "invalid test group: $at_value" >&2
       exit 1
     fi
@@ -1006,6 +1009,9 @@ at_banner_text_3="Test m_inmail/fetchmail"
 # Banner 4. m_vcf.at:17
 # Category starts at test group 9.
 at_banner_text_4="Test m_vcf"
+# Banner 5. m_mu.at:17
+# Category starts at test group 14.
+at_banner_text_5="Test m_mu"
 
 # Take any -C into account.
 if $at_change_dir ; then
@@ -2808,3 +2814,300 @@ $at_traceon; }
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
 #AT_STOP_13
+#AT_START_14
+at_fn_group_banner 14 'm_mu.at:19' \
+  "m_mu" "                                           " 5
+at_xfail=no
+(
+  printf "%s\n" "14. $at_setup_line: testing $at_desc ..."
+  $at_traceon
+
+printf "%s\n" "m_mu.at:20" >"$at_check_line_file"
+(! which mu) \
+  && at_fn_check_skip 77 "$at_srcdir/m_mu.at:20"
+{ set +x
+printf "%s\n" "$at_srcdir/m_mu.at:21: perl \$abs_srcdir/gen-maildir \$abs_srcdir/data"
+at_fn_check_prepare_dynamic "perl $abs_srcdir/gen-maildir $abs_srcdir/data" "m_mu.at:21"
+( $at_check_trace; perl $abs_srcdir/gen-maildir $abs_srcdir/data
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:21"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_mu.at:22: mu init --maildir=maildir --muhome=muhome \\
+                  --my-address=me@example.org >/dev/null"
+at_fn_check_prepare_notrace 'an embedded newline' "m_mu.at:22"
+( $at_check_trace; mu init --maildir=maildir --muhome=muhome \
+                  --my-address=me@example.org >/dev/null
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:22"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_mu.at:24: mu index --muhome=muhome >/dev/null"
+at_fn_check_prepare_trace "m_mu.at:24"
+( $at_check_trace; mu index --muhome=muhome >/dev/null
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:24"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_mu.at:25: cat \$abs_srcdir/data/m_mu.expected > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_mu.expected > expout" "m_mu.at:25"
+( $at_check_trace; cat $abs_srcdir/data/m_mu.expected > expout
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:25"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_mu.at:26: env LBDB_OVERRIDE_METHODS=m_mu \\
+              OVERRIDE_MU_HOME=muhome \\
+              OVERRIDE_MU_PERSONAL='' \\
+              OVERRIDE_MU_AFTER='' \\
+          lbdbq example"
+at_fn_check_prepare_notrace 'an embedded newline' "m_mu.at:26"
+( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_mu \
+              OVERRIDE_MU_HOME=muhome \
+              OVERRIDE_MU_PERSONAL='' \
+              OVERRIDE_MU_AFTER='' \
+          lbdbq example
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+$at_diff expout "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:26"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+  set +x
+  $at_times_p && times >"$at_times_file"
+) 5>&1 2>&1 7>&- | eval $at_tee_pipe
+read at_status <"$at_status_file"
+#AT_STOP_14
+#AT_START_15
+at_fn_group_banner 15 'm_mu.at:34' \
+  "m_mu personal" "                                  " 5
+at_xfail=no
+(
+  printf "%s\n" "15. $at_setup_line: testing $at_desc ..."
+  $at_traceon
+
+printf "%s\n" "m_mu.at:35" >"$at_check_line_file"
+(! which mu) \
+  && at_fn_check_skip 77 "$at_srcdir/m_mu.at:35"
+# mu before 1.8 has broken --personal switch, so skip this test
+muversion=`mu --version | head -n 1 \
+           | sed -n 's/.* \([0-9]\+\.[0-9]\+\).*/\1/p'`
+muversionstate=1
+case "$muversion" in
+     1.[0-7]) muversionstate=0;;
+     2-9.*) muversionstate=0;;
+esac
+printf "%s\n" "m_mu.at:44" >"$at_check_line_file"
+(exit $muversionstate) \
+  && at_fn_check_skip 77 "$at_srcdir/m_mu.at:44"
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_mu.at:46: perl \$abs_srcdir/gen-maildir \$abs_srcdir/data"
+at_fn_check_prepare_dynamic "perl $abs_srcdir/gen-maildir $abs_srcdir/data" "m_mu.at:46"
+( $at_check_trace; perl $abs_srcdir/gen-maildir $abs_srcdir/data
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:46"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_mu.at:47: mu init --maildir=maildir --muhome=muhome \\
+                  --my-address=me@example.org >/dev/null"
+at_fn_check_prepare_notrace 'an embedded newline' "m_mu.at:47"
+( $at_check_trace; mu init --maildir=maildir --muhome=muhome \
+                  --my-address=me@example.org >/dev/null
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:47"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_mu.at:49: mu index --muhome=muhome >/dev/null"
+at_fn_check_prepare_trace "m_mu.at:49"
+( $at_check_trace; mu index --muhome=muhome >/dev/null
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:49"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_mu.at:50: cat \$abs_srcdir/data/m_mu-personal.expected > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_mu-personal.expected > expout" "m_mu.at:50"
+( $at_check_trace; cat $abs_srcdir/data/m_mu-personal.expected > expout
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:50"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_mu.at:51: env LBDB_OVERRIDE_METHODS=m_mu \\
+              OVERRIDE_MU_HOME=muhome \\
+              OVERRIDE_MU_PERSONAL=true \\
+              OVERRIDE_MU_AFTER='' \\
+          lbdbq example"
+at_fn_check_prepare_notrace 'an embedded newline' "m_mu.at:51"
+( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_mu \
+              OVERRIDE_MU_HOME=muhome \
+              OVERRIDE_MU_PERSONAL=true \
+              OVERRIDE_MU_AFTER='' \
+          lbdbq example
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+$at_diff expout "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:51"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+  set +x
+  $at_times_p && times >"$at_times_file"
+) 5>&1 2>&1 7>&- | eval $at_tee_pipe
+read at_status <"$at_status_file"
+#AT_STOP_15
+#AT_START_16
+at_fn_group_banner 16 'm_mu.at:59' \
+  "m_mu after" "                                     " 5
+at_xfail=no
+(
+  printf "%s\n" "16. $at_setup_line: testing $at_desc ..."
+  $at_traceon
+
+printf "%s\n" "m_mu.at:60" >"$at_check_line_file"
+(! which mu) \
+  && at_fn_check_skip 77 "$at_srcdir/m_mu.at:60"
+# mu before 1.8 seems to have broken --after switch, so skip this test
+muversion=`mu --version | head -n 1 \
+           | sed -n 's/.* \([0-9]\+\.[0-9]\+\).*/\1/p'`
+muversionstate=1
+case "$muversion" in
+     1.[0-7]) muversionstate=0;;
+     2-9.*) muversionstate=0;;
+esac
+printf "%s\n" "m_mu.at:69" >"$at_check_line_file"
+(exit $muversionstate) \
+  && at_fn_check_skip 77 "$at_srcdir/m_mu.at:69"
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_mu.at:71: perl \$abs_srcdir/gen-maildir \$abs_srcdir/data"
+at_fn_check_prepare_dynamic "perl $abs_srcdir/gen-maildir $abs_srcdir/data" "m_mu.at:71"
+( $at_check_trace; perl $abs_srcdir/gen-maildir $abs_srcdir/data
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:71"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_mu.at:72: mu init --maildir=maildir --muhome=muhome \\
+                  --my-address=me@example.org >/dev/null"
+at_fn_check_prepare_notrace 'an embedded newline' "m_mu.at:72"
+( $at_check_trace; mu init --maildir=maildir --muhome=muhome \
+                  --my-address=me@example.org >/dev/null
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:72"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_mu.at:74: mu index --muhome=muhome >/dev/null"
+at_fn_check_prepare_trace "m_mu.at:74"
+( $at_check_trace; mu index --muhome=muhome >/dev/null
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:74"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_mu.at:75: cat \$abs_srcdir/data/m_mu-after.expected > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_mu-after.expected > expout" "m_mu.at:75"
+( $at_check_trace; cat $abs_srcdir/data/m_mu-after.expected > expout
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:75"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_mu.at:76: env LBDB_OVERRIDE_METHODS=m_mu \\
+              OVERRIDE_MU_HOME=muhome \\
+              OVERRIDE_MU_PERSONAL='' \\
+              OVERRIDE_MU_AFTER='1684195200' \\
+          lbdbq example"
+at_fn_check_prepare_notrace 'an embedded newline' "m_mu.at:76"
+( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_mu \
+              OVERRIDE_MU_HOME=muhome \
+              OVERRIDE_MU_PERSONAL='' \
+              OVERRIDE_MU_AFTER='1684195200' \
+          lbdbq example
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+$at_diff expout "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:76"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+  set +x
+  $at_times_p && times >"$at_times_file"
+) 5>&1 2>&1 7>&- | eval $at_tee_pipe
+read at_status <"$at_status_file"
+#AT_STOP_16

@@ -1,0 +1,64 @@
+#!/usr/bin/perl
+#
+#     Copyright (c) 2024  Roland Rosenfeld <roland@spinnaker.de>
+#
+#     This program is free software; you can redistribute it and/or modify
+#     it under the terms of the GNU General Public License as published by
+#     the Free Software Foundation; either version 2 of the License, or
+#     (at your option) any later version.
+#
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+#
+#     You should have received a copy of the GNU General Public License
+#     along with this program; if not, write to the Free Software Foundation,
+#     Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
+
+use strict;
+use warnings;
+
+if ($#ARGV != 0) {
+   die "Usage: $0 datainputdir\n";
+}
+
+my $maildir = "maildir";
+my $muhome = "muhome";
+my $mailaddrfile = "$ARGV[0]/from-addresses";
+
+system "rm -rf $maildir $muhome";
+mkdir $maildir;
+
+for my $d ('cur', 'new', 'tmp') {
+   mkdir "$maildir/$d";
+}
+
+open (my $fhfrom, "<", "$mailaddrfile") || die "cannot open $mailaddrfile";
+my $count = 0;
+my $epoch = 1672531200;
+while (<$fhfrom>) {
+   chomp;
+   my $filename = "$maildir/cur/$count.test";
+   open (my $fhmail, ">", "$filename") || die "cannot write $filename";
+   print $fhmail "From: $_\n";
+   if ($count % 2 == 0) {
+      print $fhmail "To: me\@example.org\n";
+   } else {
+      print $fhmail "To: other\@example.org\n";
+   }
+   print $fhmail "Subject: test $count\n";
+   my @days   = qw(Sun Mon Tue Wed Thu Fri Sat);
+   my @months = qw(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec);
+   my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst)
+     = gmtime($epoch);
+   my $rfc822_date = sprintf("%s, %02d %s %04d %02d:%02d:%02d %s",
+                             $days[$wday], $mday, $months[$mon],
+                             $year+1900, $hour, $min, $sec, '+0100');
+   print $fhmail "Date: $rfc822_date\n";
+   print $fhmail "\n\nbody\n";
+   close $fhmail;
+   $count++;
+   $epoch += 60*60*24*30;
+}
+close $fhfrom;

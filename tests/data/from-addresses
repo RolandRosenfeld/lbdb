@@ -1,0 +1,16 @@
+First1 Family1 <foo1@example.com>
+foo2@example.com (First2 Family2)
+<foo3@example.com> (First3 Family3)
+"First4 Family4" <foo4@example.com>
+foo5@example.com ("First5 Family5")
+<foo6@example.com> ("First6 Family6")
+<foo7@example.com>
+foo8@example.com
+foo9@example.com ()
+"" <foo10@example.com>
+Short11 <foo11@example.com>
+"Short12" <foo12@example.com>
+foo13@example.com (Short13)
+foo14@example.com ("Short14")
+"Last15, First15" <foo15@example.com>
+Other Other <other@example.net>

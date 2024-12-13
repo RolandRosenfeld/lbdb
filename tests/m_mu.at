@@ -1,0 +1,81 @@
+dnl Copyright (c) 2024 Roland Rosenfeld <roland@spinnaker.de>
+dnl
+dnl This program is free software; you can redistribute it and/or modify
+dnl it under the terms of the GNU General Public License as published by
+dnl the Free Software Foundation; either version 2 of the License, or
+dnl (at your option) any later version.
+dnl
+dnl This program is distributed in the hope that it will be useful,
+dnl but WITHOUT ANY WARRANTY; without even the implied warranty of
+dnl MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+dnl GNU General Public License for more details.
+dnl
+dnl You should have received a copy of the GNU General Public License
+dnl along with this program; if not, write to the Free Software Foundation,
+dnl Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+
+AT_BANNER([Test m_mu])
+
+AT_SETUP(m_mu)
+AT_SKIP_IF([! which mu])
+AT_CHECK([perl $abs_srcdir/gen-maildir $abs_srcdir/data])
+AT_CHECK([mu init --maildir=maildir --muhome=muhome \
+                  --my-address=me@example.org >/dev/null])
+AT_CHECK([mu index --muhome=muhome >/dev/null])
+AT_CHECK([cat $abs_srcdir/data/m_mu.expected > expout])
+AT_CHECK([env LBDB_OVERRIDE_METHODS=m_mu \
+              OVERRIDE_MU_HOME=muhome \
+              OVERRIDE_MU_PERSONAL='' \
+              OVERRIDE_MU_AFTER='' \
+          lbdbq example], [], [expout])
+AT_CLEANUP
+
+
+AT_SETUP(m_mu personal)
+AT_SKIP_IF([! which mu])
+# mu before 1.8 has broken --personal switch, so skip this test
+muversion=`mu --version | head -n 1 \
+           | sed -n 's/.* \([[0-9]]\+\.[[0-9]]\+\).*/\1/p'`
+muversionstate=1
+case "$muversion" in
+     1.[[0-7]]) muversionstate=0;;
+     [2-9].*) muversionstate=0;;
+esac
+AT_SKIP_IF([exit $muversionstate])
+
+AT_CHECK([perl $abs_srcdir/gen-maildir $abs_srcdir/data])
+AT_CHECK([mu init --maildir=maildir --muhome=muhome \
+                  --my-address=me@example.org >/dev/null])
+AT_CHECK([mu index --muhome=muhome >/dev/null])
+AT_CHECK([cat $abs_srcdir/data/m_mu-personal.expected > expout])
+AT_CHECK([env LBDB_OVERRIDE_METHODS=m_mu \
+              OVERRIDE_MU_HOME=muhome \
+              OVERRIDE_MU_PERSONAL=true \
+              OVERRIDE_MU_AFTER='' \
+          lbdbq example], [], [expout])
+AT_CLEANUP
+
+
+AT_SETUP(m_mu after)
+AT_SKIP_IF([! which mu])
+# mu before 1.8 seems to have broken --after switch, so skip this test
+muversion=`mu --version | head -n 1 \
+           | sed -n 's/.* \([[0-9]]\+\.[[0-9]]\+\).*/\1/p'`
+muversionstate=1
+case "$muversion" in
+     1.[[0-7]]) muversionstate=0;;
+     [2-9].*) muversionstate=0;;
+esac
+AT_SKIP_IF([exit $muversionstate])
+
+AT_CHECK([perl $abs_srcdir/gen-maildir $abs_srcdir/data])
+AT_CHECK([mu init --maildir=maildir --muhome=muhome \
+                  --my-address=me@example.org >/dev/null])
+AT_CHECK([mu index --muhome=muhome >/dev/null])
+AT_CHECK([cat $abs_srcdir/data/m_mu-after.expected > expout])
+AT_CHECK([env LBDB_OVERRIDE_METHODS=m_mu \
+              OVERRIDE_MU_HOME=muhome \
+              OVERRIDE_MU_PERSONAL='' \
+              OVERRIDE_MU_AFTER='1684195200' \
+          lbdbq example], [], [expout])
+AT_CLEANUP

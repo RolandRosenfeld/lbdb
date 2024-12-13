@@ -29,11 +29,13 @@ m_mu_query()
         MU_OPTIONS="$MU_OPTIONS --muhome=$MU_HOME"
     fi
 
+    MU_AFTER=${OVERRIDE_MU_AFTER:-$MU_AFTER}
     if [ "$MU_AFTER" -eq "$MU_AFTER" ] 2>/dev/null # test integer
     then
         MU_OPTIONS="$MU_OPTIONS --after=$MU_AFTER"
     fi
 
+    MU_PERSONAL=${OVERRIDE_MU_PERSONAL:-$MU_PERSONAL}
     if [ "$MU_PERSONAL" = "yes" ] || [ "$MU_PERSONAL" = "true" ]
     then
         MU_OPTIONS="$MU_OPTIONS --personal"

@@ -1,0 +1,7 @@
+lbdbq: 6 matches
+"foo11@example.com"	"Short11"	mu cfind
+"foo12@example.com"	"Short12"	mu cfind
+"foo13@example.com"	"Short13"	mu cfind
+"foo14@example.com"	"Short14"	mu cfind
+"foo15@example.com"	"Last15, First15"	mu cfind
+"other@example.net"	"Other Other"	mu cfind

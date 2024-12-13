@@ -5,6 +5,7 @@
 ### Added
 
 - m_mu: Add option MU_HOME to override MU homedir.
+- Add testsuite for m_mu.
 
 ## [0.54] - 2024-07-27
 
