@@ -2,6 +2,11 @@
 
 ## [x.xx] -
 
+### Changed
+
+- m_mu: Show addresses without a name, based on an idea by Samuel
+  Hierholzer (https://github.com/RolandRosenfeld/lbdb/pull/10)
+
 ### Added
 
 - m_mu: Add option MU_HOME to override MU homedir.
