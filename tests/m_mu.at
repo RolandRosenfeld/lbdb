@@ -27,6 +27,7 @@ AT_CHECK([env LBDB_OVERRIDE_METHODS=m_mu \
               OVERRIDE_MU_HOME=muhome \
               OVERRIDE_MU_PERSONAL='' \
               OVERRIDE_MU_AFTER='' \
+              OVERRIDE_MU_IGNORE_MISSINGNAME='' \
           lbdbq example], [], [expout])
 AT_CLEANUP
 
@@ -52,6 +53,7 @@ AT_CHECK([env LBDB_OVERRIDE_METHODS=m_mu \
               OVERRIDE_MU_HOME=muhome \
               OVERRIDE_MU_PERSONAL=true \
               OVERRIDE_MU_AFTER='' \
+              OVERRIDE_MU_IGNORE_MISSINGNAME='' \
           lbdbq example], [], [expout])
 AT_CLEANUP
 
@@ -77,5 +79,22 @@ AT_CHECK([env LBDB_OVERRIDE_METHODS=m_mu \
               OVERRIDE_MU_HOME=muhome \
               OVERRIDE_MU_PERSONAL='' \
               OVERRIDE_MU_AFTER='1684195200' \
+              OVERRIDE_MU_IGNORE_MISSINGNAME='' \
+          lbdbq example], [], [expout])
+AT_CLEANUP
+
+
+AT_SETUP(m_mu ignore missingname)
+AT_SKIP_IF([! which mu])
+AT_CHECK([perl $abs_srcdir/gen-maildir $abs_srcdir/data])
+AT_CHECK([mu init --maildir=maildir --muhome=muhome \
+                  --my-address=me@example.org >/dev/null])
+AT_CHECK([mu index --muhome=muhome >/dev/null])
+AT_CHECK([cat $abs_srcdir/data/m_mu-ignoremissingname.expected > expout])
+AT_CHECK([env LBDB_OVERRIDE_METHODS=m_mu \
+              OVERRIDE_MU_HOME=muhome \
+              OVERRIDE_MU_PERSONAL='' \
+              OVERRIDE_MU_AFTER='' \
+              OVERRIDE_MU_IGNORE_MISSINGNAME='true' \
           lbdbq example], [], [expout])
 AT_CLEANUP

@@ -41,11 +41,22 @@ m_mu_query()
         MU_OPTIONS="$MU_OPTIONS --personal"
     fi
 
+
     if [ -x "$MU" ]                # check whether mu is installed
     then
-        $MU cfind --format=mutt-ab $MU_OPTIONS "$@" \
-            | sed -e 1d \
-                  -e 's/\(\([^,@]*\)@[^,]*\)		/\1	\2	/' \
-                  -e 's/$/mu cfind/'
+        MU_IGNORE_MISSINGNAME=${OVERRIDE_MU_IGNORE_MISSINGNAME:-$MU_IGNORE_MISSINGNAME}
+        if [ "$MU_IGNORE_MISSINGNAME" = "yes" ] \
+               || [ "$MU_IGNORE_MISSINGNAME" = "true" ]
+        then
+            $MU cfind --format=mutt-ab $MU_OPTIONS "$@" \
+                | sed -e 1d \
+                      -e '/		/d' \
+                      -e 's/$/mu cfind/'
+        else
+            $MU cfind --format=mutt-ab $MU_OPTIONS "$@" \
+                | sed -e 1d \
+                      -e 's/\(\([^,@]*\)@[^,]*\)		/\1	\2	/' \
+                      -e 's/$/mu cfind/'
+        fi
     fi
 }

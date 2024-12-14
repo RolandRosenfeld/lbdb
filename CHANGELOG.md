@@ -6,6 +6,8 @@
 
 - m_mu: Show addresses without a name, based on an idea by Samuel
   Hierholzer (https://github.com/RolandRosenfeld/lbdb/pull/10)
+- m_mu: Add configuration option MU_IGNORE_MISSINGNAME to suppress
+  showing addesses without name (reverts to old behavior).
 
 ### Added
 
