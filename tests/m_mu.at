@@ -19,9 +19,9 @@ AT_BANNER([Test m_mu])
 AT_SETUP(m_mu)
 AT_SKIP_IF([! which mu])
 AT_CHECK([perl $abs_srcdir/gen-maildir $abs_srcdir/data])
-AT_CHECK([mu init --maildir=maildir --muhome=muhome \
+AT_CHECK([mu init --maildir=$(pwd)/maildir --muhome=$(pwd)/muhome \
                   --my-address=me@example.org >/dev/null])
-AT_CHECK([mu index --muhome=muhome >/dev/null])
+AT_CHECK([mu index --muhome=$(pwd)/muhome >/dev/null])
 AT_CHECK([cat $abs_srcdir/data/m_mu.expected > expout])
 AT_CHECK([env LBDB_OVERRIDE_METHODS=m_mu \
               OVERRIDE_MU_HOME=muhome \
@@ -45,9 +45,9 @@ esac
 AT_SKIP_IF([exit $muversionstate])
 
 AT_CHECK([perl $abs_srcdir/gen-maildir $abs_srcdir/data])
-AT_CHECK([mu init --maildir=maildir --muhome=muhome \
+AT_CHECK([mu init --maildir=$(pwd)/maildir --muhome=$(pwd)/muhome \
                   --my-address=me@example.org >/dev/null])
-AT_CHECK([mu index --muhome=muhome >/dev/null])
+AT_CHECK([mu index --muhome=$(pwd)/muhome >/dev/null])
 AT_CHECK([cat $abs_srcdir/data/m_mu-personal.expected > expout])
 AT_CHECK([env LBDB_OVERRIDE_METHODS=m_mu \
               OVERRIDE_MU_HOME=muhome \
@@ -71,9 +71,9 @@ esac
 AT_SKIP_IF([exit $muversionstate])
 
 AT_CHECK([perl $abs_srcdir/gen-maildir $abs_srcdir/data])
-AT_CHECK([mu init --maildir=maildir --muhome=muhome \
+AT_CHECK([mu init --maildir=$(pwd)/maildir --muhome=$(pwd)/muhome \
                   --my-address=me@example.org >/dev/null])
-AT_CHECK([mu index --muhome=muhome >/dev/null])
+AT_CHECK([mu index --muhome=$(pwd)/muhome >/dev/null])
 AT_CHECK([cat $abs_srcdir/data/m_mu-after.expected > expout])
 AT_CHECK([env LBDB_OVERRIDE_METHODS=m_mu \
               OVERRIDE_MU_HOME=muhome \
@@ -87,9 +87,9 @@ AT_CLEANUP
 AT_SETUP(m_mu ignore missingname)
 AT_SKIP_IF([! which mu])
 AT_CHECK([perl $abs_srcdir/gen-maildir $abs_srcdir/data])
-AT_CHECK([mu init --maildir=maildir --muhome=muhome \
+AT_CHECK([mu init --maildir=$(pwd)/maildir --muhome=$(pwd)/muhome \
                   --my-address=me@example.org >/dev/null])
-AT_CHECK([mu index --muhome=muhome >/dev/null])
+AT_CHECK([mu index --muhome=$(pwd)/muhome >/dev/null])
 AT_CHECK([cat $abs_srcdir/data/m_mu-ignoremissingname.expected > expout])
 AT_CHECK([env LBDB_OVERRIDE_METHODS=m_mu \
               OVERRIDE_MU_HOME=muhome \

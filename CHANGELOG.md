@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.55.1] - 2025-01-02
+
+### Fixed
+
+- Use absolute path names in m_mu tests, since maildir-utils 1.12.8
+  fails with relative names (https://bugs.debian.org/1091942).
+
 ## [0.55] - 2024-12-14
 
 ### Changed

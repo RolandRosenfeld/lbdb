@@ -2840,10 +2840,10 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:22: mu init --maildir=maildir --muhome=muhome \\
+printf "%s\n" "$at_srcdir/m_mu.at:22: mu init --maildir=\$(pwd)/maildir --muhome=\$(pwd)/muhome \\
                   --my-address=me@example.org >/dev/null"
-at_fn_check_prepare_notrace 'an embedded newline' "m_mu.at:22"
-( $at_check_trace; mu init --maildir=maildir --muhome=muhome \
+at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:22"
+( $at_check_trace; mu init --maildir=$(pwd)/maildir --muhome=$(pwd)/muhome \
                   --my-address=me@example.org >/dev/null
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
@@ -2855,9 +2855,9 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:24: mu index --muhome=muhome >/dev/null"
-at_fn_check_prepare_trace "m_mu.at:24"
-( $at_check_trace; mu index --muhome=muhome >/dev/null
+printf "%s\n" "$at_srcdir/m_mu.at:24: mu index --muhome=\$(pwd)/muhome >/dev/null"
+at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:24"
+( $at_check_trace; mu index --muhome=$(pwd)/muhome >/dev/null
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -2945,10 +2945,10 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:48: mu init --maildir=maildir --muhome=muhome \\
+printf "%s\n" "$at_srcdir/m_mu.at:48: mu init --maildir=\$(pwd)/maildir --muhome=\$(pwd)/muhome \\
                   --my-address=me@example.org >/dev/null"
-at_fn_check_prepare_notrace 'an embedded newline' "m_mu.at:48"
-( $at_check_trace; mu init --maildir=maildir --muhome=muhome \
+at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:48"
+( $at_check_trace; mu init --maildir=$(pwd)/maildir --muhome=$(pwd)/muhome \
                   --my-address=me@example.org >/dev/null
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
@@ -2960,9 +2960,9 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:50: mu index --muhome=muhome >/dev/null"
-at_fn_check_prepare_trace "m_mu.at:50"
-( $at_check_trace; mu index --muhome=muhome >/dev/null
+printf "%s\n" "$at_srcdir/m_mu.at:50: mu index --muhome=\$(pwd)/muhome >/dev/null"
+at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:50"
+( $at_check_trace; mu index --muhome=$(pwd)/muhome >/dev/null
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -3050,10 +3050,10 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:74: mu init --maildir=maildir --muhome=muhome \\
+printf "%s\n" "$at_srcdir/m_mu.at:74: mu init --maildir=\$(pwd)/maildir --muhome=\$(pwd)/muhome \\
                   --my-address=me@example.org >/dev/null"
-at_fn_check_prepare_notrace 'an embedded newline' "m_mu.at:74"
-( $at_check_trace; mu init --maildir=maildir --muhome=muhome \
+at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:74"
+( $at_check_trace; mu init --maildir=$(pwd)/maildir --muhome=$(pwd)/muhome \
                   --my-address=me@example.org >/dev/null
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
@@ -3065,9 +3065,9 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:76: mu index --muhome=muhome >/dev/null"
-at_fn_check_prepare_trace "m_mu.at:76"
-( $at_check_trace; mu index --muhome=muhome >/dev/null
+printf "%s\n" "$at_srcdir/m_mu.at:76: mu index --muhome=\$(pwd)/muhome >/dev/null"
+at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:76"
+( $at_check_trace; mu index --muhome=$(pwd)/muhome >/dev/null
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -3143,10 +3143,10 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:90: mu init --maildir=maildir --muhome=muhome \\
+printf "%s\n" "$at_srcdir/m_mu.at:90: mu init --maildir=\$(pwd)/maildir --muhome=\$(pwd)/muhome \\
                   --my-address=me@example.org >/dev/null"
-at_fn_check_prepare_notrace 'an embedded newline' "m_mu.at:90"
-( $at_check_trace; mu init --maildir=maildir --muhome=muhome \
+at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:90"
+( $at_check_trace; mu init --maildir=$(pwd)/maildir --muhome=$(pwd)/muhome \
                   --my-address=me@example.org >/dev/null
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
@@ -3158,9 +3158,9 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:92: mu index --muhome=muhome >/dev/null"
-at_fn_check_prepare_trace "m_mu.at:92"
-( $at_check_trace; mu index --muhome=muhome >/dev/null
+printf "%s\n" "$at_srcdir/m_mu.at:92: mu index --muhome=\$(pwd)/muhome >/dev/null"
+at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:92"
+( $at_check_trace; mu index --muhome=$(pwd)/muhome >/dev/null
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
