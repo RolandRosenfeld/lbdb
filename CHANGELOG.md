@@ -5,6 +5,7 @@
 ### Changed
 
 - Update aclocal.m4 using automake 1.16.5.
+- Update config.guess, config.sub using autotools-dev 20220109.
 
 ## [0.55.1] - 2025-01-02
 
