@@ -15,7 +15,7 @@ dnl along with this program; if not, write to the Free Software Foundation,
 dnl Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 
 AC_INIT([lbdb],
-	0.55.1,
+	0.56,
 	[roland@spinnaker.de],
 	[],
 	[https://www.spinnaker.de/lbdb/])
