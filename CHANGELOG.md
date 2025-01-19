@@ -8,6 +8,7 @@
 - Update config.guess, config.sub using autotools-dev 20220109.
 - Update configure using the updated tools.
 - Update mkinstalldirs, install-sh to 2020-11-14 version.
+- Move modules from libdir to libexecdir.
 
 ## [0.55.1] - 2025-01-02
 

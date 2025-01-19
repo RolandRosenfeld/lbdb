@@ -1,16 +1,16 @@
 #     Copyright (C) 1998       Thomas Roessler <roessler@guug.de>
-#     Copyright (C) 1999-2024  Roland Rosenfeld <roland@spinnaker.de>
-# 
+#     Copyright (C) 1999-2025  Roland Rosenfeld <roland@spinnaker.de>
+#
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
 #     the Free Software Foundation; either version 2 of the License, or
 #     (at your option) any later version.
-# 
+#
 #     This program is distributed in the hope that it will be useful,
 #     but WITHOUT ANY WARRANTY; without even the implied warranty of
 #     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #     GNU General Public License for more details.
-# 
+#
 #     You should have received a copy of the GNU General Public License
 #     along with this program; if not, write to the Free Software Foundation,
 #     Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
@@ -34,6 +34,7 @@ prefix=@prefix@
 exec_prefix=@exec_prefix@
 bindir=@bindir@
 srcdir=@srcdir@
+libexecdir=@libexecdir@
 libdir=@libdir@
 mandir=@mandir@
 sysconfdir=@sysconfdir@
@@ -61,35 +62,36 @@ test_perl:
 
 install: all
 	$(srcdir)/mkinstalldirs $(install_prefix)$(bindir)
+	$(srcdir)/mkinstalldirs $(install_prefix)$(libexecdir)
 	$(srcdir)/mkinstalldirs $(install_prefix)$(libdir)
 	$(srcdir)/mkinstalldirs $(install_prefix)$(sysconfdir)
 	$(srcdir)/mkinstalldirs $(install_prefix)$(mandir)
 	$(srcdir)/mkinstalldirs $(install_prefix)$(mandir)/man1
-	$(INSTALL) -m 755 fetchaddr $(install_prefix)$(libdir)
-	$(INSTALL) -m 755 qpto8bit $(install_prefix)$(libdir)
+	$(INSTALL) -m 755 fetchaddr $(install_prefix)$(libexecdir)
+	$(INSTALL) -m 755 qpto8bit $(install_prefix)$(libexecdir)
 	$(INSTALL) -m 755 lbdbq $(install_prefix)$(bindir)
 	$(INSTALL) -m 755 lbdb-fetchaddr $(install_prefix)$(bindir)
-	$(INSTALL) -m 755 lbdb-munge $(install_prefix)$(libdir)
-	$(INSTALL) -m 755 lbdb_lib $(install_prefix)$(libdir)
-	$(INSTALL) -m 755 munge $(install_prefix)$(libdir)
+	$(INSTALL) -m 755 lbdb-munge $(install_prefix)$(libexecdir)
+	$(INSTALL) -m 755 lbdb_lib $(install_prefix)$(libexecdir)
+	$(INSTALL) -m 755 munge $(install_prefix)$(libexecdir)
 	$(INSTALL) -m 644 lbdb_bbdb_query.el $(install_prefix)$(libdir)
 	if [ "$(PERL)" != "no" ]; then \
 		$(INSTALL) -m 755 nodelist2lbdb $(install_prefix)$(bindir); \
 		$(INSTALL) -m 644 nodelist2lbdb.man \
 			$(install_prefix)$(mandir)/man1/nodelist2lbdb.1; \
-		$(INSTALL) -m 755 palm_lsaddr $(install_prefix)$(libdir); \
+		$(INSTALL) -m 755 palm_lsaddr $(install_prefix)$(libexecdir); \
 		$(INSTALL) -m 755 mutt_ldap_query $(install_prefix)$(bindir); \
 		$(INSTALL) -m 644 mutt_ldap_query.man \
 			$(install_prefix)$(mandir)/man1/mutt_ldap_query.1; \
 		$(INSTALL) -m 644 lbdb_ldap.rc \
 			$(install_prefix)$(sysconfdir)/lbdb_ldap.rc; \
-		$(INSTALL) -m 755 vcquery $(install_prefix)$(libdir); \
+		$(INSTALL) -m 755 vcquery $(install_prefix)$(libexecdir); \
 	fi
 	if [ "$(XCODEBUILD)" != "no" -o "$(PBXBUILD)" != "no" ]; then \
-		$(INSTALL) -m 755 ABQuery $(install_prefix)$(libdir); \
+		$(INSTALL) -m 755 ABQuery $(install_prefix)$(libexecdir); \
 	fi
 	for i in $(MODULES); do \
-		$(INSTALL) -m 755 $$i $(install_prefix)$(libdir); \
+		$(INSTALL) -m 755 $$i $(install_prefix)$(libexecdir); \
 	done
 	$(INSTALL) -m 644 lbdbq.man $(install_prefix)$(mandir)/man1/lbdbq.1
 	$(INSTALL) -m 644 lbdb-fetchaddr.man \
@@ -101,7 +103,7 @@ install: all
 			$(install_prefix)$(mandir)/man1/lbdb_dotlock.1; \
 	fi
 	if [ "$(TACTARGET)" != "" ]; then \
-		$(INSTALL) -m 755 tac $(install_prefix)$(libdir)/tac; \
+		$(INSTALL) -m 755 tac $(install_prefix)$(libexecdir)/tac; \
 	fi
 
 fetchaddr: $(srcdir)/fetchaddr.o $(srcdir)/rfc822.o $(srcdir)/helpers.o  \
@@ -189,7 +191,7 @@ Makefile: Makefile.in
 	./config.status
 
 %.man: %.man.in
-	sed -e 's!@''libdir@!$(libdir)!' \
+	sed -e 's!@''libexecdir@!$(libexecdir)!' \
 	    -e 's!@''sysconfdir@!$(sysconfdir)!' \
 	    -e 's!@''dotlock@!$(DOTLOCKBASE)!' $@.in > $@
 

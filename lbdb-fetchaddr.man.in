@@ -1,5 +1,5 @@
 .\" -*- nroff -*-
-.\" Copyright (c) 1998-2023  Roland Rosenfeld <roland@spinnaker.de>
+.\" Copyright (c) 1998-2025  Roland Rosenfeld <roland@spinnaker.de>
 .\"
 .\" This program is free software; you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 .\" along with this program; if not, write to the Free Software Foundation,
 .\" Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
 .\"
-.TH LBDB-FETCHADDR 1 "March 2018" "Unix" "User Manuals"
+.TH LBDB-FETCHADDR 1 "January 2025" "Unix" "User Manuals"
 .SH NAME
 lbdb-fetchaddr \- grab addresses from mails and append them to lbdb database
 .SH SYNOPSIS
@@ -120,9 +120,9 @@ default.
 .br
 .IR $HOME/.lbdb/m_inmail.list " (old version used for ISO-8859-15 encoded addresses)"
 .br
-.I @libdir@/fetchaddr
+.I @libexecdir@/fetchaddr
 .br
-.I @libdir@/m_inmail
+.I @libexecdir@/m_inmail
 .SH "SEE ALSO"
 .BR lbdbq (1),
 .BR @dotlock@ (1),

@@ -1,18 +1,18 @@
 #! @SH@
 #
 #     Copyright (C) 1998-2000  Thomas Roessler <roessler@guug.de>
-#                   1998-2022  Roland Rosenfeld <roland@spinnaker.de>
-# 
+#                   1998-2025  Roland Rosenfeld <roland@spinnaker.de>
+#
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
 #     the Free Software Foundation; either version 2 of the License, or
 #     (at your option) any later version.
-# 
+#
 #     This program is distributed in the hope that it will be useful,
 #     but WITHOUT ANY WARRANTY; without even the implied warranty of
 #     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #     GNU General Public License for more details.
-# 
+#
 #     You should have received a copy of the GNU General Public License
 #     along with this program; if not, write to the Free Software Foundation,
 #     Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
@@ -21,11 +21,11 @@ LBDB_VERSION=@LBDB_VERSION@
 
 prefix=@prefix@
 exec_prefix=@exec_prefix@
-libdir=@libdir@
+libexecdir=@libexecdir@
 sysconfdir=@sysconfdir@
 
 METHODS="@MODULES@"
-MODULES_PATH=@libdir@
+MODULES_PATH=@libexecdir@
 TAC=@TAC@
 
 case "$1" in
@@ -42,8 +42,8 @@ case "$1" in
 	;;
 esac
 
-libdir=${USE_LOCAL_LIB:-$libdir}
-. "$libdir"/lbdb_lib
+libexecdir=${USE_LOCAL_LIB:-$libexecdir}
+. "$libexecdir"/lbdb_lib
 
 tmpdir=${TMPDIR-/tmp}/query.$(hostname).$$
 mkdir "$tmpdir" || exit 1
@@ -55,7 +55,7 @@ xdg_home=${XDG_CONFIG_HOME:=$HOME/.config}
 
 for conffile in $sysconfdir/lbdb.rc $xdg_home/lbdb/config $HOME/.lbdbrc \
 	$HOME/.lbdb/lbdbrc $HOME/.lbdb/rc ; do
-	
+
   if test -f "$conffile" ; then
     . "$conffile"
   fi
@@ -83,8 +83,8 @@ case "${KEEP_DUPES:-}" in
 	MUNGE_KEEPORDER=cat
 	;;
     *)
-	MUNGE=${USE_LOCAL_LIB:-$libdir}/munge
-	MUNGE_KEEPORDER="${USE_LOCAL_LIB:-$libdir}/munge keeporder=1"
+	MUNGE=${USE_LOCAL_LIB:-$libexecdir}/munge
+	MUNGE_KEEPORDER="${USE_LOCAL_LIB:-$libexecdir}/munge keeporder=1"
 	;;
 esac
 

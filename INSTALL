@@ -9,10 +9,10 @@ To install the Little Brother's database, type:
 	make install
 
 Note that this will put quite a few auxiliary files into
-/usr/local/lib.  You may want to put lbdb into a separate directory
+/usr/local/libexec.  You may want to put lbdb into a separate directory
 hierarchy such as /usr/local/lbdb (use the --prefix switch), or you
-may want to give it a different libdir, such as /usr/local/lib/lbdb
-(use the --libdir switch).
+may want to give it a different libdir, such as /usr/local/libexec/lbdb
+(use the --libexecdir switch).
 
 You need to have the Palm::PDB and Palm::Address Perl modules
 installed to use the m_palm module.

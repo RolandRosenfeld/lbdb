@@ -1,15 +1,15 @@
 dnl Copyright (c) 1998-2025 Roland Rosenfeld <roland@spinnaker.de>
-dnl 
+dnl
 dnl This program is free software; you can redistribute it and/or modify
 dnl it under the terms of the GNU General Public License as published by
 dnl the Free Software Foundation; either version 2 of the License, or
 dnl (at your option) any later version.
-dnl 
+dnl
 dnl This program is distributed in the hope that it will be useful,
 dnl but WITHOUT ANY WARRANTY; without even the implied warranty of
 dnl MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 dnl GNU General Public License for more details.
-dnl 
+dnl
 dnl You should have received a copy of the GNU General Public License
 dnl along with this program; if not, write to the Free Software Foundation,
 dnl Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -93,7 +93,7 @@ fi
 if test "x$MAWK" != "xNONE" ; then
 	AWK="$MAWK"
 fi
-		
+
 AC_SUBST(AWK)
 
 AC_PATH_PROG(TAC, tac, NONE)
@@ -101,13 +101,13 @@ if test "x$TAC" = "xNONE"; then
 	TACTARGET="tac"
 	AC_SUBST(TACTARGET)
 	TACAWK="tac.awk"
-	TAC="$libdir/tac"
-fi	
+	TAC="$libexecdir/tac"
+fi
 AC_SUBST(TAC)
 
-AC_ARG_ENABLE(lbdb_dotlock, 
-	      AS_HELP_STRING ([--enable-lbdb-dotlock], 
-		 	      [Force use of lbdb_dotlock program]), 
+AC_ARG_ENABLE(lbdb_dotlock,
+	      AS_HELP_STRING ([--enable-lbdb-dotlock],
+		 	      [Force use of lbdb_dotlock program]),
               [lbdb_cv_lbdb_dotlock="$enableval"])
 
 AC_PATH_PROG(DOTLOCK_OLD, mutt.dotlock, no)
@@ -129,14 +129,14 @@ AC_SUBST(DOTLOCK)
 DOTLOCKBASE=`basename $DOTLOCK`
 AC_SUBST(DOTLOCKBASE)
 
-path_fetchaddr="$libdir/fetchaddr"
+path_fetchaddr="$libexecdir/fetchaddr"
 AC_SUBST(path_fetchaddr)
 
 #
 # LBDB_ARG_WITH(FOO, foo, m_foo, [with foo support])
 #
 # several cases:
-# --with-foo        - search for foo in PATH. error if not found 
+# --with-foo        - search for foo in PATH. error if not found
 # --with-foo=/foo   - use /foo
 # --without-foo     - completely disable this
 # none of the above - search for foo in PATH. disable if not found
@@ -152,13 +152,13 @@ AC_DEFUN([LBDB_ARG_WITH], [
     	    MODULES="$MODULES $3"
 	    AC_SUBST($1)
         fi
-    elif test x$withval = x; then 
+    elif test x$withval = x; then
         AC_PATH_PROG($1, $2, "no")
         if test x$$1 != xno; then
       	    MODULES="$MODULES $3"
     	    AC_SUBST($1)
         fi
-    elif test x$withval != xno; then      
+    elif test x$withval != xno; then
         $1=$withval
         MODULES="$MODULES $3"
         AC_SUBST($1)

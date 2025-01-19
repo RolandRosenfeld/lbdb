@@ -2,7 +2,7 @@
 #
 # -*-sh-*-
 #     Copyright (C) 1998-2000  Thomas Roessler <roessler@guug.de>
-#                   1999-2023  Roland Rosenfeld <roland@spinnaker.de>
+#                   1999-2025  Roland Rosenfeld <roland@spinnaker.de>
 #
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ prefix=@prefix@
 exec_prefix=@exec_prefix@
 dotlock=@DOTLOCK@
 [ -n "$USE_LOCAL_LIB" ] && [ -x $USE_LOCAL_LIB/lbdb_dotlock ] && dotlock=$USE_LOCAL_LIB/lbdb_dotlock
-fetchaddr=${USE_LOCAL_LIB:-@libdir@}/fetchaddr
+fetchaddr=${USE_LOCAL_LIB:-@libexecdir@}/fetchaddr
 
 db=${XDG_DATA_HOME:-$HOME/.local/share}/lbdb/m_inmail.db
 [ -f $HOME/.lbdb/m_inmail.utf-8 ] && db=$HOME/.lbdb/m_inmail.utf-8

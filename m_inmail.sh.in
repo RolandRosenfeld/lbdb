@@ -1,7 +1,7 @@
 #! @SH@
 #
 #     Copyright (C) 1998-2000  Thomas Roessler <roessler@guug.de>
-#                   1999-2022  Roland Rosenfeld <roland@spinnaker.de>
+#                   1999-2025  Roland Rosenfeld <roland@spinnaker.de>
 #
 #     This program is free software; you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 
 prefix=@prefix@
 exec_prefix=@exec_prefix@
-libdir=@libdir@
+libexecdir=@libexecdir@
 
 fallbackdb=${XDG_DATA_HOME:-$HOME/.local/share}/lbdb/m_inmail.db
 [ -f $HOME/.lbdb/m_inmail.utf-8 ] && fallbackdb=$HOME/.lbdb/m_inmail.utf-8
@@ -33,7 +33,7 @@ m_inmail_query()
 	MUNGE_LIMITCOUNT=${OVERRIDE_MUNGE_LIMITCOUNT:-$MUNGE_LIMITCOUNT}
 	SORT_OUTPUT=${OVERRIDE_SORT_OUTPUT:-$SORT_OUTPUT}
 	export SORT_OUTPUT MUNGE_LIMITDATE MUNGE_LIMITCOUNT M_INMAIL_DB
-	${USE_LOCAL_LIB:-$libdir}/lbdb-munge
+	${USE_LOCAL_LIB:-$libexecdir}/lbdb-munge
 	test -f "$M_INMAIL_DB" || return
 	grep -ia "$@." $M_INMAIL_DB || :
 }

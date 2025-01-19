@@ -9,7 +9,7 @@
 # ~/.lbdb/rc
 # (evaluated with ascending priority!)
 #
-# (c) 1999-2024 Roland Rosenfeld <roland@spinnaker.de>
+# (c) 1999-2025 Roland Rosenfeld <roland@spinnaker.de>
 #
 
 #
@@ -174,7 +174,7 @@ METHODS="m_inmail m_passwd m_finger"
 # If you want to use private modules set the MODULES_PATH to find them:
 # (a space separated list):
 #
-#MODULES_PATH="/usr/lib/lbdb $HOME/.lbdb/modules"
+#MODULES_PATH="@libexecdir@ $HOME/.lbdb/modules"
 
 
 #

@@ -1,5 +1,5 @@
 .\" -*- nroff -*-
-.\" Copyright (c) 1998-2024  Roland Rosenfeld <roland@spinnaker.de>
+.\" Copyright (c) 1998-2025  Roland Rosenfeld <roland@spinnaker.de>
 .\"
 .\" This program is free software; you can redistribute it and/or modify
 .\" it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 .\" along with this program; if not, write to the Free Software Foundation,
 .\" Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
 .\"
-.TH LBDBQ 1 "July 2024" "Unix" "User Manuals"
+.TH LBDBQ 1 "January 2025" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -372,7 +372,7 @@ Print short help of lbdbq.
 .br
 .I $HOME/.lbdb/rc
 .br
-.I @libdir@/*
+.I @libexecdir@/*
 .br
 .I $XDG_DATA_HOME/lbdb/m_inmail.db
 .br
