@@ -1,5 +1,11 @@
 # Changelog
 
+## [x.xx] - xxxx-xx-xx
+
+### Changed
+
+- Update aclocal.m4 using automake 1.16.5.
+
 ## [0.55.1] - 2025-01-02
 
 ### Fixed
