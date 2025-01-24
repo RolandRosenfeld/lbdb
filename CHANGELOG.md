@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.56] - xxxx-xx-xx
+## [0.56] - 2025-01-24
 
 ### Changed
 
