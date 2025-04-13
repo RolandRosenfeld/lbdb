@@ -610,23 +610,25 @@ at_color=auto
 # numerical order.
 at_format='??'
 # Description of all the test groups.
-at_help_all="1;m_muttalias.at:19;m_muttalias;;
-2;m_abook.at:19;m_abook;;
-3;m_inmail.at:19;lbdb-fetchmail;;
-4;m_inmail.at:28;m_inmail;;
-5;m_inmail.at:41;m_inmail SORT=address;;
-6;m_inmail.at:52;m_inmail SORT=name;;
-7;m_inmail.at:63;m_inmail SORT=comment;;
-8;m_inmail.at:75;m_inmail SORT=reverse_comment;;
-9;m_vcf.at:19;m_vcf;;
-10;m_vcf.at:27;m_vcf nickname;;
-11;m_vcf.at:35;m_vcf name components;;
-12;m_vcf.at:43;m_vcf no realname;;
-13;m_vcf.at:51;m_vcf crlf lineending;;
-14;m_mu.at:19;m_mu;;
-15;m_mu.at:35;m_mu personal;;
-16;m_mu.at:61;m_mu after;;
-17;m_mu.at:87;m_mu ignore missingname;;
+at_help_all="1;m_muttalias.at:18;m_muttalias;;
+2;m_abook.at:18;m_abook;;
+3;m_inmail.at:18;lbdb-fetchmail;;
+4;m_inmail.at:27;m_inmail;;
+5;m_inmail.at:40;m_inmail SORT=address;;
+6;m_inmail.at:51;m_inmail SORT=name;;
+7;m_inmail.at:62;m_inmail SORT=comment;;
+8;m_inmail.at:73;m_inmail SORT=reverse_comment;;
+9;m_inmail.at:84;m_inmail whitespace;;
+10;m_inmail.at:95;m_inmail whitespace quote;;
+11;m_vcf.at:18;m_vcf;;
+12;m_vcf.at:26;m_vcf nickname;;
+13;m_vcf.at:34;m_vcf name components;;
+14;m_vcf.at:42;m_vcf no realname;;
+15;m_vcf.at:50;m_vcf crlf lineending;;
+16;m_mu.at:18;m_mu;;
+17;m_mu.at:34;m_mu personal;;
+18;m_mu.at:60;m_mu after;;
+19;m_mu.at:86;m_mu ignore missingname;;
 "
 # List of the all the test groups.
 at_groups_all=`printf "%s\n" "$at_help_all" | sed 's/;.*//'`
@@ -640,7 +642,7 @@ at_fn_validate_ranges ()
   for at_grp
   do
     eval at_value=\$$at_grp
-    if test $at_value -lt 1 || test $at_value -gt 17; then
+    if test $at_value -lt 1 || test $at_value -gt 19; then
       printf "%s\n" "invalid test group: $at_value" >&2
       exit 1
     fi
@@ -998,20 +1000,20 @@ case $at_groups in #(
   * ) at_print_banners=false ;;
 esac
 # Text for banner N, set to a single space once printed.
-# Banner 1. m_muttalias.at:17
+# Banner 1. m_muttalias.at:16
 # Category starts at test group 1.
 at_banner_text_1="Test m_muttalias"
-# Banner 2. m_abook.at:17
+# Banner 2. m_abook.at:16
 # Category starts at test group 2.
 at_banner_text_2="Test m_abook"
-# Banner 3. m_inmail.at:17
+# Banner 3. m_inmail.at:16
 # Category starts at test group 3.
 at_banner_text_3="Test m_inmail/fetchmail"
-# Banner 4. m_vcf.at:17
-# Category starts at test group 9.
+# Banner 4. m_vcf.at:16
+# Category starts at test group 11.
 at_banner_text_4="Test m_vcf"
-# Banner 5. m_mu.at:17
-# Category starts at test group 14.
+# Banner 5. m_mu.at:16
+# Category starts at test group 16.
 at_banner_text_5="Test m_mu"
 
 # Take any -C into account.
@@ -1441,7 +1443,7 @@ esac
 
   if test -f "$at_program_"; then
     {
-      printf "%s\n" "$at_srcdir/testsuite.at:17: $at_program_ --version"
+      printf "%s\n" "$at_srcdir/testsuite.at:16: $at_program_ --version"
       "$at_program_" --version </dev/null
       echo
     } >&5 2>&1
@@ -2060,7 +2062,7 @@ exit 0
 ## Actual tests. ##
 ## ------------- ##
 #AT_START_1
-at_fn_group_banner 1 'm_muttalias.at:19' \
+at_fn_group_banner 1 'm_muttalias.at:18' \
   "m_muttalias" "                                    " 1
 at_xfail=no
 (
@@ -2069,23 +2071,23 @@ at_xfail=no
 
 
 { set +x
-printf "%s\n" "$at_srcdir/m_muttalias.at:21: cat \$abs_srcdir/data/m_muttalias.expected > expout"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_muttalias.expected > expout" "m_muttalias.at:21"
+printf "%s\n" "$at_srcdir/m_muttalias.at:20: cat \$abs_srcdir/data/m_muttalias.expected > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_muttalias.expected > expout" "m_muttalias.at:20"
 ( $at_check_trace; cat $abs_srcdir/data/m_muttalias.expected > expout
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_muttalias.at:21"
+at_fn_check_status 0 $at_status "$at_srcdir/m_muttalias.at:20"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_muttalias.at:22: env LBDB_OVERRIDE_METHODS=m_muttalias \\
+printf "%s\n" "$at_srcdir/m_muttalias.at:21: env LBDB_OVERRIDE_METHODS=m_muttalias \\
 	      OVERRIDE_MUTTALIAS_FILES=\$abs_srcdir/data/muttaliasfile \\
 	  lbdbq test"
-at_fn_check_prepare_notrace 'an embedded newline' "m_muttalias.at:22"
+at_fn_check_prepare_notrace 'an embedded newline' "m_muttalias.at:21"
 ( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_muttalias \
 	      OVERRIDE_MUTTALIAS_FILES=$abs_srcdir/data/muttaliasfile \
 	  lbdbq test
@@ -2094,7 +2096,7 @@ at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 $at_diff expout "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_muttalias.at:22"
+at_fn_check_status 0 $at_status "$at_srcdir/m_muttalias.at:21"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -2105,7 +2107,7 @@ $at_traceon; }
 read at_status <"$at_status_file"
 #AT_STOP_1
 #AT_START_2
-at_fn_group_banner 2 'm_abook.at:19' \
+at_fn_group_banner 2 'm_abook.at:18' \
   "m_abook" "                                        " 2
 at_xfail=no
 (
@@ -2113,27 +2115,27 @@ at_xfail=no
   $at_traceon
 
 
-printf "%s\n" "m_abook.at:21" >"$at_check_line_file"
+printf "%s\n" "m_abook.at:20" >"$at_check_line_file"
 (! which abook) \
-  && at_fn_check_skip 77 "$at_srcdir/m_abook.at:21"
+  && at_fn_check_skip 77 "$at_srcdir/m_abook.at:20"
 { set +x
-printf "%s\n" "$at_srcdir/m_abook.at:22: cat \$abs_srcdir/data/m_abook.expected > expout"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_abook.expected > expout" "m_abook.at:22"
+printf "%s\n" "$at_srcdir/m_abook.at:21: cat \$abs_srcdir/data/m_abook.expected > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_abook.expected > expout" "m_abook.at:21"
 ( $at_check_trace; cat $abs_srcdir/data/m_abook.expected > expout
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_abook.at:22"
+at_fn_check_status 0 $at_status "$at_srcdir/m_abook.at:21"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_abook.at:23: env LBDB_OVERRIDE_METHODS=m_abook \\
+printf "%s\n" "$at_srcdir/m_abook.at:22: env LBDB_OVERRIDE_METHODS=m_abook \\
 	      OVERRIDE_ABOOK_FILES=\$abs_srcdir/data/abook.addressbook \\
 	  lbdbq First1"
-at_fn_check_prepare_notrace 'an embedded newline' "m_abook.at:23"
+at_fn_check_prepare_notrace 'an embedded newline' "m_abook.at:22"
 ( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_abook \
 	      OVERRIDE_ABOOK_FILES=$abs_srcdir/data/abook.addressbook \
 	  lbdbq First1
@@ -2142,7 +2144,7 @@ at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 $at_diff expout "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_abook.at:23"
+at_fn_check_status 0 $at_status "$at_srcdir/m_abook.at:22"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -2153,7 +2155,7 @@ $at_traceon; }
 read at_status <"$at_status_file"
 #AT_STOP_2
 #AT_START_3
-at_fn_group_banner 3 'm_inmail.at:19' \
+at_fn_group_banner 3 'm_inmail.at:18' \
   "lbdb-fetchmail" "                                 " 3
 at_xfail=no
 (
@@ -2161,9 +2163,22 @@ at_xfail=no
   $at_traceon
 
 { set +x
-printf "%s\n" "$at_srcdir/m_inmail.at:20: cat \$abs_srcdir/data/m_inmail.utf8.expected1 > expout"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.utf8.expected1 > expout" "m_inmail.at:20"
+printf "%s\n" "$at_srcdir/m_inmail.at:19: cat \$abs_srcdir/data/m_inmail.utf8.expected1 > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.utf8.expected1 > expout" "m_inmail.at:19"
 ( $at_check_trace; cat $abs_srcdir/data/m_inmail.utf8.expected1 > expout
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:19"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_inmail.at:20: cat \$abs_srcdir/data/testmail1 > testmail1"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/testmail1 > testmail1" "m_inmail.at:20"
+( $at_check_trace; cat $abs_srcdir/data/testmail1 > testmail1
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -2174,24 +2189,11 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_inmail.at:21: cat \$abs_srcdir/data/testmail1 > testmail1"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/testmail1 > testmail1" "m_inmail.at:21"
-( $at_check_trace; cat $abs_srcdir/data/testmail1 > testmail1
-) >>"$at_stdout" 2>>"$at_stderr" 5>&-
-at_status=$? at_failed=false
-$at_check_filter
-at_fn_diff_devnull "$at_stderr" || at_failed=:
-at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:21"
-$at_failed && at_fn_log_failure
-$at_traceon; }
-
-{ set +x
-printf "%s\n" "$at_srcdir/m_inmail.at:22: lbdb-fetchaddr -f m_inmail.utf8 -d \"NO DATE\" < testmail1 && \\
+printf "%s\n" "$at_srcdir/m_inmail.at:21: lbdb-fetchaddr -f m_inmail.utf8 -d \"NO DATE\" < testmail1 && \\
  	  lbdb-fetchaddr -f m_inmail.utf8 -d \"NO DATE\" \\
 			 -x x-header1:x-header2:x-header3:x-header4 < testmail1 && \\
 	  cat m_inmail.utf8"
-at_fn_check_prepare_notrace 'an embedded newline' "m_inmail.at:22"
+at_fn_check_prepare_notrace 'an embedded newline' "m_inmail.at:21"
 ( $at_check_trace; lbdb-fetchaddr -f m_inmail.utf8 -d "NO DATE" < testmail1 && \
  	  lbdb-fetchaddr -f m_inmail.utf8 -d "NO DATE" \
 			 -x x-header1:x-header2:x-header3:x-header4 < testmail1 && \
@@ -2201,7 +2203,7 @@ at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 $at_diff expout "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:22"
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:21"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -2211,7 +2213,7 @@ $at_traceon; }
 read at_status <"$at_status_file"
 #AT_STOP_3
 #AT_START_4
-at_fn_group_banner 4 'm_inmail.at:28' \
+at_fn_group_banner 4 'm_inmail.at:27' \
   "m_inmail" "                                       " 3
 at_xfail=no
 (
@@ -2219,9 +2221,22 @@ at_xfail=no
   $at_traceon
 
 { set +x
-printf "%s\n" "$at_srcdir/m_inmail.at:29: cat \$abs_srcdir/data/m_inmail.utf8.expected2 > expout"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.utf8.expected2 > expout" "m_inmail.at:29"
+printf "%s\n" "$at_srcdir/m_inmail.at:28: cat \$abs_srcdir/data/m_inmail.utf8.expected2 > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.utf8.expected2 > expout" "m_inmail.at:28"
 ( $at_check_trace; cat $abs_srcdir/data/m_inmail.utf8.expected2 > expout
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:28"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_inmail.at:29: cat \$abs_srcdir/data/testmail1 > testmail1"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/testmail1 > testmail1" "m_inmail.at:29"
+( $at_check_trace; cat $abs_srcdir/data/testmail1 > testmail1
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -2232,9 +2247,11 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_inmail.at:30: cat \$abs_srcdir/data/testmail1 > testmail1"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/testmail1 > testmail1" "m_inmail.at:30"
-( $at_check_trace; cat $abs_srcdir/data/testmail1 > testmail1
+printf "%s\n" "$at_srcdir/m_inmail.at:30: lbdb-fetchaddr -f m_inmail.utf8 -d \"NO DATE\" < testmail1 && \\
+ 	  lbdb-fetchaddr -f m_inmail.utf8 -d \"NO DATE\" < testmail1"
+at_fn_check_prepare_notrace 'an embedded newline' "m_inmail.at:30"
+( $at_check_trace; lbdb-fetchaddr -f m_inmail.utf8 -d "NO DATE" < testmail1 && \
+ 	  lbdb-fetchaddr -f m_inmail.utf8 -d "NO DATE" < testmail1
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -2245,28 +2262,13 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_inmail.at:31: lbdb-fetchaddr -f m_inmail.utf8 -d \"NO DATE\" < testmail1 && \\
- 	  lbdb-fetchaddr -f m_inmail.utf8 -d \"NO DATE\" < testmail1"
-at_fn_check_prepare_notrace 'an embedded newline' "m_inmail.at:31"
-( $at_check_trace; lbdb-fetchaddr -f m_inmail.utf8 -d "NO DATE" < testmail1 && \
- 	  lbdb-fetchaddr -f m_inmail.utf8 -d "NO DATE" < testmail1
-) >>"$at_stdout" 2>>"$at_stderr" 5>&-
-at_status=$? at_failed=false
-$at_check_filter
-at_fn_diff_devnull "$at_stderr" || at_failed=:
-at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:31"
-$at_failed && at_fn_log_failure
-$at_traceon; }
-
-{ set +x
-printf "%s\n" "$at_srcdir/m_inmail.at:33: env LBDB_OVERRIDE_METHODS=m_inmail \\
+printf "%s\n" "$at_srcdir/m_inmail.at:32: env LBDB_OVERRIDE_METHODS=m_inmail \\
 	      OVERRIDE_M_INMAIL_DB=m_inmail.utf8 \\
 	      OVERRIDE_LIMITDATE=\"0000-00-00_00:00\" \\
 	      OVERRIDE_LIMITCOUNT=0 \\
 	      OVERRIDE_SORT_OUTPUT=no \\
           lbdbq Günther"
-at_fn_check_prepare_notrace 'an embedded newline' "m_inmail.at:33"
+at_fn_check_prepare_notrace 'an embedded newline' "m_inmail.at:32"
 ( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_inmail \
 	      OVERRIDE_M_INMAIL_DB=m_inmail.utf8 \
 	      OVERRIDE_LIMITDATE="0000-00-00_00:00" \
@@ -2278,7 +2280,7 @@ at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 $at_diff expout "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:33"
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:32"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -2288,7 +2290,7 @@ $at_traceon; }
 read at_status <"$at_status_file"
 #AT_STOP_4
 #AT_START_5
-at_fn_group_banner 5 'm_inmail.at:41' \
+at_fn_group_banner 5 'm_inmail.at:40' \
   "m_inmail SORT=address" "                          " 3
 at_xfail=no
 (
@@ -2296,9 +2298,22 @@ at_xfail=no
   $at_traceon
 
 { set +x
-printf "%s\n" "$at_srcdir/m_inmail.at:42: cat \$abs_srcdir/data/m_inmail.example > m_inmail.utf-8"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.example > m_inmail.utf-8" "m_inmail.at:42"
+printf "%s\n" "$at_srcdir/m_inmail.at:41: cat \$abs_srcdir/data/m_inmail.example > m_inmail.utf-8"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.example > m_inmail.utf-8" "m_inmail.at:41"
 ( $at_check_trace; cat $abs_srcdir/data/m_inmail.example > m_inmail.utf-8
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:41"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_inmail.at:42: cat \$abs_srcdir/data/m_inmail.sortaddress.expected > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.sortaddress.expected > expout" "m_inmail.at:42"
+( $at_check_trace; cat $abs_srcdir/data/m_inmail.sortaddress.expected > expout
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -2309,26 +2324,13 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_inmail.at:43: cat \$abs_srcdir/data/m_inmail.sortaddress.expected > expout"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.sortaddress.expected > expout" "m_inmail.at:43"
-( $at_check_trace; cat $abs_srcdir/data/m_inmail.sortaddress.expected > expout
-) >>"$at_stdout" 2>>"$at_stderr" 5>&-
-at_status=$? at_failed=false
-$at_check_filter
-at_fn_diff_devnull "$at_stderr" || at_failed=:
-at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:43"
-$at_failed && at_fn_log_failure
-$at_traceon; }
-
-{ set +x
-printf "%s\n" "$at_srcdir/m_inmail.at:44: env LBDB_OVERRIDE_METHODS=m_inmail \\
+printf "%s\n" "$at_srcdir/m_inmail.at:43: env LBDB_OVERRIDE_METHODS=m_inmail \\
 	      OVERRIDE_M_INMAIL_DB=m_inmail.utf-8 \\
 	      OVERRIDE_LIMITDATE=\"0000-00-00_00:00\" \\
 	      OVERRIDE_LIMITCOUNT=0 \\
 	      OVERRIDE_SORT_OUTPUT=address \\
           lbdbq example.com"
-at_fn_check_prepare_notrace 'an embedded newline' "m_inmail.at:44"
+at_fn_check_prepare_notrace 'an embedded newline' "m_inmail.at:43"
 ( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_inmail \
 	      OVERRIDE_M_INMAIL_DB=m_inmail.utf-8 \
 	      OVERRIDE_LIMITDATE="0000-00-00_00:00" \
@@ -2340,7 +2342,7 @@ at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 $at_diff expout "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:44"
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:43"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -2350,7 +2352,7 @@ $at_traceon; }
 read at_status <"$at_status_file"
 #AT_STOP_5
 #AT_START_6
-at_fn_group_banner 6 'm_inmail.at:52' \
+at_fn_group_banner 6 'm_inmail.at:51' \
   "m_inmail SORT=name" "                             " 3
 at_xfail=no
 (
@@ -2358,9 +2360,22 @@ at_xfail=no
   $at_traceon
 
 { set +x
-printf "%s\n" "$at_srcdir/m_inmail.at:53: cat \$abs_srcdir/data/m_inmail.example > m_inmail.utf-8"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.example > m_inmail.utf-8" "m_inmail.at:53"
+printf "%s\n" "$at_srcdir/m_inmail.at:52: cat \$abs_srcdir/data/m_inmail.example > m_inmail.utf-8"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.example > m_inmail.utf-8" "m_inmail.at:52"
 ( $at_check_trace; cat $abs_srcdir/data/m_inmail.example > m_inmail.utf-8
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:52"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_inmail.at:53: cat \$abs_srcdir/data/m_inmail.sortname.expected > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.sortname.expected > expout" "m_inmail.at:53"
+( $at_check_trace; cat $abs_srcdir/data/m_inmail.sortname.expected > expout
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -2371,26 +2386,13 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_inmail.at:54: cat \$abs_srcdir/data/m_inmail.sortname.expected > expout"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.sortname.expected > expout" "m_inmail.at:54"
-( $at_check_trace; cat $abs_srcdir/data/m_inmail.sortname.expected > expout
-) >>"$at_stdout" 2>>"$at_stderr" 5>&-
-at_status=$? at_failed=false
-$at_check_filter
-at_fn_diff_devnull "$at_stderr" || at_failed=:
-at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:54"
-$at_failed && at_fn_log_failure
-$at_traceon; }
-
-{ set +x
-printf "%s\n" "$at_srcdir/m_inmail.at:55: env LBDB_OVERRIDE_METHODS=m_inmail \\
+printf "%s\n" "$at_srcdir/m_inmail.at:54: env LBDB_OVERRIDE_METHODS=m_inmail \\
 	      OVERRIDE_M_INMAIL_DB=m_inmail.utf-8 \\
 	      OVERRIDE_LIMITDATE=\"0000-00-00_00:00\" \\
 	      OVERRIDE_LIMITCOUNT=0 \\
 	      OVERRIDE_SORT_OUTPUT=name \\
           lbdbq example.com"
-at_fn_check_prepare_notrace 'an embedded newline' "m_inmail.at:55"
+at_fn_check_prepare_notrace 'an embedded newline' "m_inmail.at:54"
 ( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_inmail \
 	      OVERRIDE_M_INMAIL_DB=m_inmail.utf-8 \
 	      OVERRIDE_LIMITDATE="0000-00-00_00:00" \
@@ -2402,7 +2404,7 @@ at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 $at_diff expout "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:55"
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:54"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -2412,7 +2414,7 @@ $at_traceon; }
 read at_status <"$at_status_file"
 #AT_STOP_6
 #AT_START_7
-at_fn_group_banner 7 'm_inmail.at:63' \
+at_fn_group_banner 7 'm_inmail.at:62' \
   "m_inmail SORT=comment" "                          " 3
 at_xfail=no
 (
@@ -2420,9 +2422,22 @@ at_xfail=no
   $at_traceon
 
 { set +x
-printf "%s\n" "$at_srcdir/m_inmail.at:64: cat \$abs_srcdir/data/m_inmail.example > m_inmail.utf-8"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.example > m_inmail.utf-8" "m_inmail.at:64"
+printf "%s\n" "$at_srcdir/m_inmail.at:63: cat \$abs_srcdir/data/m_inmail.example > m_inmail.utf-8"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.example > m_inmail.utf-8" "m_inmail.at:63"
 ( $at_check_trace; cat $abs_srcdir/data/m_inmail.example > m_inmail.utf-8
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:63"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_inmail.at:64: cat \$abs_srcdir/data/m_inmail.sortcomment.expected > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.sortcomment.expected > expout" "m_inmail.at:64"
+( $at_check_trace; cat $abs_srcdir/data/m_inmail.sortcomment.expected > expout
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -2433,26 +2448,13 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_inmail.at:65: cat \$abs_srcdir/data/m_inmail.sortcomment.expected > expout"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.sortcomment.expected > expout" "m_inmail.at:65"
-( $at_check_trace; cat $abs_srcdir/data/m_inmail.sortcomment.expected > expout
-) >>"$at_stdout" 2>>"$at_stderr" 5>&-
-at_status=$? at_failed=false
-$at_check_filter
-at_fn_diff_devnull "$at_stderr" || at_failed=:
-at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:65"
-$at_failed && at_fn_log_failure
-$at_traceon; }
-
-{ set +x
-printf "%s\n" "$at_srcdir/m_inmail.at:66: env LBDB_OVERRIDE_METHODS=m_inmail \\
+printf "%s\n" "$at_srcdir/m_inmail.at:65: env LBDB_OVERRIDE_METHODS=m_inmail \\
 	      OVERRIDE_M_INMAIL_DB=m_inmail.utf-8 \\
 	      OVERRIDE_LIMITDATE=\"0000-00-00_00:00\" \\
 	      OVERRIDE_LIMITCOUNT=0 \\
 	      OVERRIDE_SORT_OUTPUT=comment \\
           lbdbq example.com"
-at_fn_check_prepare_notrace 'an embedded newline' "m_inmail.at:66"
+at_fn_check_prepare_notrace 'an embedded newline' "m_inmail.at:65"
 ( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_inmail \
 	      OVERRIDE_M_INMAIL_DB=m_inmail.utf-8 \
 	      OVERRIDE_LIMITDATE="0000-00-00_00:00" \
@@ -2464,7 +2466,7 @@ at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 $at_diff expout "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:66"
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:65"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -2474,7 +2476,7 @@ $at_traceon; }
 read at_status <"$at_status_file"
 #AT_STOP_7
 #AT_START_8
-at_fn_group_banner 8 'm_inmail.at:75' \
+at_fn_group_banner 8 'm_inmail.at:73' \
   "m_inmail SORT=reverse_comment" "                  " 3
 at_xfail=no
 (
@@ -2482,39 +2484,39 @@ at_xfail=no
   $at_traceon
 
 { set +x
-printf "%s\n" "$at_srcdir/m_inmail.at:76: cat \$abs_srcdir/data/m_inmail.example > m_inmail.utf-8"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.example > m_inmail.utf-8" "m_inmail.at:76"
+printf "%s\n" "$at_srcdir/m_inmail.at:74: cat \$abs_srcdir/data/m_inmail.example > m_inmail.utf-8"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.example > m_inmail.utf-8" "m_inmail.at:74"
 ( $at_check_trace; cat $abs_srcdir/data/m_inmail.example > m_inmail.utf-8
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:76"
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:74"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_inmail.at:77: cat \$abs_srcdir/data/m_inmail.sortreverse_comment.expected > expout"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.sortreverse_comment.expected > expout" "m_inmail.at:77"
+printf "%s\n" "$at_srcdir/m_inmail.at:75: cat \$abs_srcdir/data/m_inmail.sortreverse_comment.expected > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.sortreverse_comment.expected > expout" "m_inmail.at:75"
 ( $at_check_trace; cat $abs_srcdir/data/m_inmail.sortreverse_comment.expected > expout
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:77"
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:75"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_inmail.at:78: env LBDB_OVERRIDE_METHODS=m_inmail \\
+printf "%s\n" "$at_srcdir/m_inmail.at:76: env LBDB_OVERRIDE_METHODS=m_inmail \\
 	      OVERRIDE_M_INMAIL_DB=m_inmail.utf-8 \\
 	      OVERRIDE_LIMITDATE=\"0000-00-00_00:00\" \\
 	      OVERRIDE_LIMITCOUNT=0 \\
 	      OVERRIDE_SORT_OUTPUT=reverse_comment \\
           lbdbq example.com"
-at_fn_check_prepare_notrace 'an embedded newline' "m_inmail.at:78"
+at_fn_check_prepare_notrace 'an embedded newline' "m_inmail.at:76"
 ( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_inmail \
 	      OVERRIDE_M_INMAIL_DB=m_inmail.utf-8 \
 	      OVERRIDE_LIMITDATE="0000-00-00_00:00" \
@@ -2526,7 +2528,7 @@ at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 $at_diff expout "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:78"
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:76"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -2536,17 +2538,154 @@ $at_traceon; }
 read at_status <"$at_status_file"
 #AT_STOP_8
 #AT_START_9
-at_fn_group_banner 9 'm_vcf.at:19' \
-  "m_vcf" "                                          " 4
+at_fn_group_banner 9 'm_inmail.at:84' \
+  "m_inmail whitespace" "                            " 3
 at_xfail=no
 (
   printf "%s\n" "9. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 { set +x
-printf "%s\n" "$at_srcdir/m_vcf.at:20: cat \$abs_srcdir/data/m_vcf.expected > expout"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_vcf.expected > expout" "m_vcf.at:20"
+printf "%s\n" "$at_srcdir/m_inmail.at:85: cat \$abs_srcdir/data/m_inmail.example > m_inmail.utf-8"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.example > m_inmail.utf-8" "m_inmail.at:85"
+( $at_check_trace; cat $abs_srcdir/data/m_inmail.example > m_inmail.utf-8
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:85"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_inmail.at:86: cat \$abs_srcdir/data/m_inmail.whitespace.expected > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.whitespace.expected > expout" "m_inmail.at:86"
+( $at_check_trace; cat $abs_srcdir/data/m_inmail.whitespace.expected > expout
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:86"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_inmail.at:87: env LBDB_OVERRIDE_METHODS=m_inmail \\
+	      OVERRIDE_M_INMAIL_DB=m_inmail.utf-8 \\
+	      OVERRIDE_LIMITDATE=\"0000-00-00_00:00\" \\
+	      OVERRIDE_LIMITCOUNT=0 \\
+	      OVERRIDE_SORT_OUTPUT=no \\
+	lbdbq first last1"
+at_fn_check_prepare_notrace 'an embedded newline' "m_inmail.at:87"
+( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_inmail \
+	      OVERRIDE_M_INMAIL_DB=m_inmail.utf-8 \
+	      OVERRIDE_LIMITDATE="0000-00-00_00:00" \
+	      OVERRIDE_LIMITCOUNT=0 \
+	      OVERRIDE_SORT_OUTPUT=no \
+	lbdbq first last1
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+$at_diff expout "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:87"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+  set +x
+  $at_times_p && times >"$at_times_file"
+) 5>&1 2>&1 7>&- | eval $at_tee_pipe
+read at_status <"$at_status_file"
+#AT_STOP_9
+#AT_START_10
+at_fn_group_banner 10 'm_inmail.at:95' \
+  "m_inmail whitespace quote" "                      " 3
+at_xfail=no
+(
+  printf "%s\n" "10. $at_setup_line: testing $at_desc ..."
+  $at_traceon
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_inmail.at:96: cat \$abs_srcdir/data/m_inmail.example > m_inmail.utf-8"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.example > m_inmail.utf-8" "m_inmail.at:96"
+( $at_check_trace; cat $abs_srcdir/data/m_inmail.example > m_inmail.utf-8
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:96"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_inmail.at:97: cat \$abs_srcdir/data/m_inmail.whitespace.expected > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_inmail.whitespace.expected > expout" "m_inmail.at:97"
+( $at_check_trace; cat $abs_srcdir/data/m_inmail.whitespace.expected > expout
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:97"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_inmail.at:98: env LBDB_OVERRIDE_METHODS=m_inmail \\
+	      OVERRIDE_M_INMAIL_DB=m_inmail.utf-8 \\
+	      OVERRIDE_LIMITDATE=\"0000-00-00_00:00\" \\
+	      OVERRIDE_LIMITCOUNT=0 \\
+	      OVERRIDE_SORT_OUTPUT=no \\
+	lbdbq \"first last1\""
+at_fn_check_prepare_notrace 'an embedded newline' "m_inmail.at:98"
+( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_inmail \
+	      OVERRIDE_M_INMAIL_DB=m_inmail.utf-8 \
+	      OVERRIDE_LIMITDATE="0000-00-00_00:00" \
+	      OVERRIDE_LIMITCOUNT=0 \
+	      OVERRIDE_SORT_OUTPUT=no \
+	lbdbq "first last1"
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+$at_diff expout "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_inmail.at:98"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+  set +x
+  $at_times_p && times >"$at_times_file"
+) 5>&1 2>&1 7>&- | eval $at_tee_pipe
+read at_status <"$at_status_file"
+#AT_STOP_10
+#AT_START_11
+at_fn_group_banner 11 'm_vcf.at:18' \
+  "m_vcf" "                                          " 4
+at_xfail=no
+(
+  printf "%s\n" "11. $at_setup_line: testing $at_desc ..."
+  $at_traceon
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_vcf.at:19: cat \$abs_srcdir/data/m_vcf.expected > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_vcf.expected > expout" "m_vcf.at:19"
 ( $at_check_trace; cat $abs_srcdir/data/m_vcf.expected > expout
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_vcf.at:19"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_vcf.at:20: cat \$abs_srcdir/data/example.vcf > example.vcf"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/example.vcf > example.vcf" "m_vcf.at:20"
+( $at_check_trace; cat $abs_srcdir/data/example.vcf > example.vcf
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -2557,23 +2696,10 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_vcf.at:21: cat \$abs_srcdir/data/example.vcf > example.vcf"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/example.vcf > example.vcf" "m_vcf.at:21"
-( $at_check_trace; cat $abs_srcdir/data/example.vcf > example.vcf
-) >>"$at_stdout" 2>>"$at_stderr" 5>&-
-at_status=$? at_failed=false
-$at_check_filter
-at_fn_diff_devnull "$at_stderr" || at_failed=:
-at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_vcf.at:21"
-$at_failed && at_fn_log_failure
-$at_traceon; }
-
-{ set +x
-printf "%s\n" "$at_srcdir/m_vcf.at:22: env LBDB_OVERRIDE_METHODS=m_vcf \\
+printf "%s\n" "$at_srcdir/m_vcf.at:21: env LBDB_OVERRIDE_METHODS=m_vcf \\
               OVERRIDE_VCF_FILES=example.vcf \\
           lbdbq muster"
-at_fn_check_prepare_notrace 'an embedded newline' "m_vcf.at:22"
+at_fn_check_prepare_notrace 'an embedded newline' "m_vcf.at:21"
 ( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_vcf \
               OVERRIDE_VCF_FILES=example.vcf \
           lbdbq muster
@@ -2582,7 +2708,7 @@ at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 $at_diff expout "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_vcf.at:22"
+at_fn_check_status 0 $at_status "$at_srcdir/m_vcf.at:21"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -2590,19 +2716,32 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_9
-#AT_START_10
-at_fn_group_banner 10 'm_vcf.at:27' \
+#AT_STOP_11
+#AT_START_12
+at_fn_group_banner 12 'm_vcf.at:26' \
   "m_vcf nickname" "                                 " 4
 at_xfail=no
 (
-  printf "%s\n" "10. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "12. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 { set +x
-printf "%s\n" "$at_srcdir/m_vcf.at:28: cat \$abs_srcdir/data/m_vcf.expected.nickname > expout"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_vcf.expected.nickname > expout" "m_vcf.at:28"
+printf "%s\n" "$at_srcdir/m_vcf.at:27: cat \$abs_srcdir/data/m_vcf.expected.nickname > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_vcf.expected.nickname > expout" "m_vcf.at:27"
 ( $at_check_trace; cat $abs_srcdir/data/m_vcf.expected.nickname > expout
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_vcf.at:27"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_vcf.at:28: cat \$abs_srcdir/data/example.vcf > example.vcf"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/example.vcf > example.vcf" "m_vcf.at:28"
+( $at_check_trace; cat $abs_srcdir/data/example.vcf > example.vcf
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -2613,23 +2752,10 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_vcf.at:29: cat \$abs_srcdir/data/example.vcf > example.vcf"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/example.vcf > example.vcf" "m_vcf.at:29"
-( $at_check_trace; cat $abs_srcdir/data/example.vcf > example.vcf
-) >>"$at_stdout" 2>>"$at_stderr" 5>&-
-at_status=$? at_failed=false
-$at_check_filter
-at_fn_diff_devnull "$at_stderr" || at_failed=:
-at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_vcf.at:29"
-$at_failed && at_fn_log_failure
-$at_traceon; }
-
-{ set +x
-printf "%s\n" "$at_srcdir/m_vcf.at:30: env LBDB_OVERRIDE_METHODS=m_vcf \\
+printf "%s\n" "$at_srcdir/m_vcf.at:29: env LBDB_OVERRIDE_METHODS=m_vcf \\
               OVERRIDE_VCF_FILES=example.vcf \\
           lbdbq maxinick"
-at_fn_check_prepare_notrace 'an embedded newline' "m_vcf.at:30"
+at_fn_check_prepare_notrace 'an embedded newline' "m_vcf.at:29"
 ( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_vcf \
               OVERRIDE_VCF_FILES=example.vcf \
           lbdbq maxinick
@@ -2638,7 +2764,7 @@ at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 $at_diff expout "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_vcf.at:30"
+at_fn_check_status 0 $at_status "$at_srcdir/m_vcf.at:29"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -2646,19 +2772,32 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_10
-#AT_START_11
-at_fn_group_banner 11 'm_vcf.at:35' \
+#AT_STOP_12
+#AT_START_13
+at_fn_group_banner 13 'm_vcf.at:34' \
   "m_vcf name components" "                          " 4
 at_xfail=no
 (
-  printf "%s\n" "11. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "13. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 { set +x
-printf "%s\n" "$at_srcdir/m_vcf.at:36: cat \$abs_srcdir/data/m_vcf.expected.namecomponents > expout"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_vcf.expected.namecomponents > expout" "m_vcf.at:36"
+printf "%s\n" "$at_srcdir/m_vcf.at:35: cat \$abs_srcdir/data/m_vcf.expected.namecomponents > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_vcf.expected.namecomponents > expout" "m_vcf.at:35"
 ( $at_check_trace; cat $abs_srcdir/data/m_vcf.expected.namecomponents > expout
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_vcf.at:35"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_vcf.at:36: cat \$abs_srcdir/data/example.vcf > example.vcf"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/example.vcf > example.vcf" "m_vcf.at:36"
+( $at_check_trace; cat $abs_srcdir/data/example.vcf > example.vcf
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -2669,23 +2808,10 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_vcf.at:37: cat \$abs_srcdir/data/example.vcf > example.vcf"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/example.vcf > example.vcf" "m_vcf.at:37"
-( $at_check_trace; cat $abs_srcdir/data/example.vcf > example.vcf
-) >>"$at_stdout" 2>>"$at_stderr" 5>&-
-at_status=$? at_failed=false
-$at_check_filter
-at_fn_diff_devnull "$at_stderr" || at_failed=:
-at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_vcf.at:37"
-$at_failed && at_fn_log_failure
-$at_traceon; }
-
-{ set +x
-printf "%s\n" "$at_srcdir/m_vcf.at:38: env LBDB_OVERRIDE_METHODS=m_vcf \\
+printf "%s\n" "$at_srcdir/m_vcf.at:37: env LBDB_OVERRIDE_METHODS=m_vcf \\
               OVERRIDE_VCF_FILES=example.vcf \\
           lbdbq complexname"
-at_fn_check_prepare_notrace 'an embedded newline' "m_vcf.at:38"
+at_fn_check_prepare_notrace 'an embedded newline' "m_vcf.at:37"
 ( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_vcf \
               OVERRIDE_VCF_FILES=example.vcf \
           lbdbq complexname
@@ -2694,7 +2820,7 @@ at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 $at_diff expout "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_vcf.at:38"
+at_fn_check_status 0 $at_status "$at_srcdir/m_vcf.at:37"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -2702,19 +2828,32 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_11
-#AT_START_12
-at_fn_group_banner 12 'm_vcf.at:43' \
+#AT_STOP_13
+#AT_START_14
+at_fn_group_banner 14 'm_vcf.at:42' \
   "m_vcf no realname" "                              " 4
 at_xfail=no
 (
-  printf "%s\n" "12. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "14. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 { set +x
-printf "%s\n" "$at_srcdir/m_vcf.at:44: cat \$abs_srcdir/data/m_vcf.expected.norealname > expout"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_vcf.expected.norealname > expout" "m_vcf.at:44"
+printf "%s\n" "$at_srcdir/m_vcf.at:43: cat \$abs_srcdir/data/m_vcf.expected.norealname > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_vcf.expected.norealname > expout" "m_vcf.at:43"
 ( $at_check_trace; cat $abs_srcdir/data/m_vcf.expected.norealname > expout
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_vcf.at:43"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_vcf.at:44: cat \$abs_srcdir/data/example.vcf > example.vcf"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/example.vcf > example.vcf" "m_vcf.at:44"
+( $at_check_trace; cat $abs_srcdir/data/example.vcf > example.vcf
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -2725,23 +2864,10 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_vcf.at:45: cat \$abs_srcdir/data/example.vcf > example.vcf"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/example.vcf > example.vcf" "m_vcf.at:45"
-( $at_check_trace; cat $abs_srcdir/data/example.vcf > example.vcf
-) >>"$at_stdout" 2>>"$at_stderr" 5>&-
-at_status=$? at_failed=false
-$at_check_filter
-at_fn_diff_devnull "$at_stderr" || at_failed=:
-at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_vcf.at:45"
-$at_failed && at_fn_log_failure
-$at_traceon; }
-
-{ set +x
-printf "%s\n" "$at_srcdir/m_vcf.at:46: env LBDB_OVERRIDE_METHODS=m_vcf \\
+printf "%s\n" "$at_srcdir/m_vcf.at:45: env LBDB_OVERRIDE_METHODS=m_vcf \\
               OVERRIDE_VCF_FILES=example.vcf \\
           lbdbq norealname"
-at_fn_check_prepare_notrace 'an embedded newline' "m_vcf.at:46"
+at_fn_check_prepare_notrace 'an embedded newline' "m_vcf.at:45"
 ( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_vcf \
               OVERRIDE_VCF_FILES=example.vcf \
           lbdbq norealname
@@ -2750,7 +2876,7 @@ at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 $at_diff expout "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_vcf.at:46"
+at_fn_check_status 0 $at_status "$at_srcdir/m_vcf.at:45"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -2758,19 +2884,32 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_12
-#AT_START_13
-at_fn_group_banner 13 'm_vcf.at:51' \
+#AT_STOP_14
+#AT_START_15
+at_fn_group_banner 15 'm_vcf.at:50' \
   "m_vcf crlf lineending" "                          " 4
 at_xfail=no
 (
-  printf "%s\n" "13. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "15. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 { set +x
-printf "%s\n" "$at_srcdir/m_vcf.at:52: cat \$abs_srcdir/data/m_vcf.expected > expout"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_vcf.expected > expout" "m_vcf.at:52"
+printf "%s\n" "$at_srcdir/m_vcf.at:51: cat \$abs_srcdir/data/m_vcf.expected > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_vcf.expected > expout" "m_vcf.at:51"
 ( $at_check_trace; cat $abs_srcdir/data/m_vcf.expected > expout
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_vcf.at:51"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_vcf.at:52: sed 's/\$/\\r/' < \$abs_srcdir/data/example.vcf > example.vcf"
+at_fn_check_prepare_dynamic "sed 's/$/\\r/' < $abs_srcdir/data/example.vcf > example.vcf" "m_vcf.at:52"
+( $at_check_trace; sed 's/$/\r/' < $abs_srcdir/data/example.vcf > example.vcf
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -2781,23 +2920,10 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_vcf.at:53: sed 's/\$/\\r/' < \$abs_srcdir/data/example.vcf > example.vcf"
-at_fn_check_prepare_dynamic "sed 's/$/\\r/' < $abs_srcdir/data/example.vcf > example.vcf" "m_vcf.at:53"
-( $at_check_trace; sed 's/$/\r/' < $abs_srcdir/data/example.vcf > example.vcf
-) >>"$at_stdout" 2>>"$at_stderr" 5>&-
-at_status=$? at_failed=false
-$at_check_filter
-at_fn_diff_devnull "$at_stderr" || at_failed=:
-at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_vcf.at:53"
-$at_failed && at_fn_log_failure
-$at_traceon; }
-
-{ set +x
-printf "%s\n" "$at_srcdir/m_vcf.at:54: env LBDB_OVERRIDE_METHODS=m_vcf \\
+printf "%s\n" "$at_srcdir/m_vcf.at:53: env LBDB_OVERRIDE_METHODS=m_vcf \\
               OVERRIDE_VCF_FILES=example.vcf \\
           lbdbq muster"
-at_fn_check_prepare_notrace 'an embedded newline' "m_vcf.at:54"
+at_fn_check_prepare_notrace 'an embedded newline' "m_vcf.at:53"
 ( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_vcf \
               OVERRIDE_VCF_FILES=example.vcf \
           lbdbq muster
@@ -2806,7 +2932,7 @@ at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 $at_diff expout "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_vcf.at:54"
+at_fn_check_status 0 $at_status "$at_srcdir/m_vcf.at:53"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -2814,22 +2940,37 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_13
-#AT_START_14
-at_fn_group_banner 14 'm_mu.at:19' \
+#AT_STOP_15
+#AT_START_16
+at_fn_group_banner 16 'm_mu.at:18' \
   "m_mu" "                                           " 5
 at_xfail=no
 (
-  printf "%s\n" "14. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "16. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
-printf "%s\n" "m_mu.at:20" >"$at_check_line_file"
+printf "%s\n" "m_mu.at:19" >"$at_check_line_file"
 (! which mu) \
-  && at_fn_check_skip 77 "$at_srcdir/m_mu.at:20"
+  && at_fn_check_skip 77 "$at_srcdir/m_mu.at:19"
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:21: perl \$abs_srcdir/gen-maildir \$abs_srcdir/data"
-at_fn_check_prepare_dynamic "perl $abs_srcdir/gen-maildir $abs_srcdir/data" "m_mu.at:21"
+printf "%s\n" "$at_srcdir/m_mu.at:20: perl \$abs_srcdir/gen-maildir \$abs_srcdir/data"
+at_fn_check_prepare_dynamic "perl $abs_srcdir/gen-maildir $abs_srcdir/data" "m_mu.at:20"
 ( $at_check_trace; perl $abs_srcdir/gen-maildir $abs_srcdir/data
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:20"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_mu.at:21: mu init --maildir=\$(pwd)/maildir --muhome=\$(pwd)/muhome \\
+                  --my-address=me@example.org >/dev/null"
+at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:21"
+( $at_check_trace; mu init --maildir=$(pwd)/maildir --muhome=$(pwd)/muhome \
+                  --my-address=me@example.org >/dev/null
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -2840,24 +2981,22 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:22: mu init --maildir=\$(pwd)/maildir --muhome=\$(pwd)/muhome \\
-                  --my-address=me@example.org >/dev/null"
-at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:22"
-( $at_check_trace; mu init --maildir=$(pwd)/maildir --muhome=$(pwd)/muhome \
-                  --my-address=me@example.org >/dev/null
+printf "%s\n" "$at_srcdir/m_mu.at:23: mu index --muhome=\$(pwd)/muhome >/dev/null"
+at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:23"
+( $at_check_trace; mu index --muhome=$(pwd)/muhome >/dev/null
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:22"
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:23"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:24: mu index --muhome=\$(pwd)/muhome >/dev/null"
-at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:24"
-( $at_check_trace; mu index --muhome=$(pwd)/muhome >/dev/null
+printf "%s\n" "$at_srcdir/m_mu.at:24: cat \$abs_srcdir/data/m_mu.expected > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_mu.expected > expout" "m_mu.at:24"
+( $at_check_trace; cat $abs_srcdir/data/m_mu.expected > expout
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -2868,26 +3007,13 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:25: cat \$abs_srcdir/data/m_mu.expected > expout"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_mu.expected > expout" "m_mu.at:25"
-( $at_check_trace; cat $abs_srcdir/data/m_mu.expected > expout
-) >>"$at_stdout" 2>>"$at_stderr" 5>&-
-at_status=$? at_failed=false
-$at_check_filter
-at_fn_diff_devnull "$at_stderr" || at_failed=:
-at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:25"
-$at_failed && at_fn_log_failure
-$at_traceon; }
-
-{ set +x
-printf "%s\n" "$at_srcdir/m_mu.at:26: env LBDB_OVERRIDE_METHODS=m_mu \\
+printf "%s\n" "$at_srcdir/m_mu.at:25: env LBDB_OVERRIDE_METHODS=m_mu \\
               OVERRIDE_MU_HOME=muhome \\
               OVERRIDE_MU_PERSONAL='' \\
               OVERRIDE_MU_AFTER='' \\
               OVERRIDE_MU_IGNORE_MISSINGNAME='' \\
           lbdbq example"
-at_fn_check_prepare_notrace 'an embedded newline' "m_mu.at:26"
+at_fn_check_prepare_notrace 'an embedded newline' "m_mu.at:25"
 ( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_mu \
               OVERRIDE_MU_HOME=muhome \
               OVERRIDE_MU_PERSONAL='' \
@@ -2899,7 +3025,7 @@ at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 $at_diff expout "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:26"
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:25"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -2907,18 +3033,18 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_14
-#AT_START_15
-at_fn_group_banner 15 'm_mu.at:35' \
+#AT_STOP_16
+#AT_START_17
+at_fn_group_banner 17 'm_mu.at:34' \
   "m_mu personal" "                                  " 5
 at_xfail=no
 (
-  printf "%s\n" "15. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "17. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
-printf "%s\n" "m_mu.at:36" >"$at_check_line_file"
+printf "%s\n" "m_mu.at:35" >"$at_check_line_file"
 (! which mu) \
-  && at_fn_check_skip 77 "$at_srcdir/m_mu.at:36"
+  && at_fn_check_skip 77 "$at_srcdir/m_mu.at:35"
 # mu before 1.8 has broken --personal switch, so skip this test
 muversion=`mu --version | head -n 1 \
            | sed -n 's/.* \([0-9]\+\.[0-9]\+\).*/\1/p'`
@@ -2927,14 +3053,29 @@ case "$muversion" in
      1.[0-7]) muversionstate=0;;
      2-9.*) muversionstate=0;;
 esac
-printf "%s\n" "m_mu.at:45" >"$at_check_line_file"
+printf "%s\n" "m_mu.at:44" >"$at_check_line_file"
 (exit $muversionstate) \
-  && at_fn_check_skip 77 "$at_srcdir/m_mu.at:45"
+  && at_fn_check_skip 77 "$at_srcdir/m_mu.at:44"
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:47: perl \$abs_srcdir/gen-maildir \$abs_srcdir/data"
-at_fn_check_prepare_dynamic "perl $abs_srcdir/gen-maildir $abs_srcdir/data" "m_mu.at:47"
+printf "%s\n" "$at_srcdir/m_mu.at:46: perl \$abs_srcdir/gen-maildir \$abs_srcdir/data"
+at_fn_check_prepare_dynamic "perl $abs_srcdir/gen-maildir $abs_srcdir/data" "m_mu.at:46"
 ( $at_check_trace; perl $abs_srcdir/gen-maildir $abs_srcdir/data
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:46"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_mu.at:47: mu init --maildir=\$(pwd)/maildir --muhome=\$(pwd)/muhome \\
+                  --my-address=me@example.org >/dev/null"
+at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:47"
+( $at_check_trace; mu init --maildir=$(pwd)/maildir --muhome=$(pwd)/muhome \
+                  --my-address=me@example.org >/dev/null
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -2945,24 +3086,22 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:48: mu init --maildir=\$(pwd)/maildir --muhome=\$(pwd)/muhome \\
-                  --my-address=me@example.org >/dev/null"
-at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:48"
-( $at_check_trace; mu init --maildir=$(pwd)/maildir --muhome=$(pwd)/muhome \
-                  --my-address=me@example.org >/dev/null
+printf "%s\n" "$at_srcdir/m_mu.at:49: mu index --muhome=\$(pwd)/muhome >/dev/null"
+at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:49"
+( $at_check_trace; mu index --muhome=$(pwd)/muhome >/dev/null
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:48"
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:49"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:50: mu index --muhome=\$(pwd)/muhome >/dev/null"
-at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:50"
-( $at_check_trace; mu index --muhome=$(pwd)/muhome >/dev/null
+printf "%s\n" "$at_srcdir/m_mu.at:50: cat \$abs_srcdir/data/m_mu-personal.expected > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_mu-personal.expected > expout" "m_mu.at:50"
+( $at_check_trace; cat $abs_srcdir/data/m_mu-personal.expected > expout
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -2973,26 +3112,13 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:51: cat \$abs_srcdir/data/m_mu-personal.expected > expout"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_mu-personal.expected > expout" "m_mu.at:51"
-( $at_check_trace; cat $abs_srcdir/data/m_mu-personal.expected > expout
-) >>"$at_stdout" 2>>"$at_stderr" 5>&-
-at_status=$? at_failed=false
-$at_check_filter
-at_fn_diff_devnull "$at_stderr" || at_failed=:
-at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:51"
-$at_failed && at_fn_log_failure
-$at_traceon; }
-
-{ set +x
-printf "%s\n" "$at_srcdir/m_mu.at:52: env LBDB_OVERRIDE_METHODS=m_mu \\
+printf "%s\n" "$at_srcdir/m_mu.at:51: env LBDB_OVERRIDE_METHODS=m_mu \\
               OVERRIDE_MU_HOME=muhome \\
               OVERRIDE_MU_PERSONAL=true \\
               OVERRIDE_MU_AFTER='' \\
               OVERRIDE_MU_IGNORE_MISSINGNAME='' \\
           lbdbq example"
-at_fn_check_prepare_notrace 'an embedded newline' "m_mu.at:52"
+at_fn_check_prepare_notrace 'an embedded newline' "m_mu.at:51"
 ( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_mu \
               OVERRIDE_MU_HOME=muhome \
               OVERRIDE_MU_PERSONAL=true \
@@ -3004,7 +3130,7 @@ at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 $at_diff expout "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:52"
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:51"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -3012,18 +3138,18 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_15
-#AT_START_16
-at_fn_group_banner 16 'm_mu.at:61' \
+#AT_STOP_17
+#AT_START_18
+at_fn_group_banner 18 'm_mu.at:60' \
   "m_mu after" "                                     " 5
 at_xfail=no
 (
-  printf "%s\n" "16. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "18. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
-printf "%s\n" "m_mu.at:62" >"$at_check_line_file"
+printf "%s\n" "m_mu.at:61" >"$at_check_line_file"
 (! which mu) \
-  && at_fn_check_skip 77 "$at_srcdir/m_mu.at:62"
+  && at_fn_check_skip 77 "$at_srcdir/m_mu.at:61"
 # mu before 1.8 seems to have broken --after switch, so skip this test
 muversion=`mu --version | head -n 1 \
            | sed -n 's/.* \([0-9]\+\.[0-9]\+\).*/\1/p'`
@@ -3032,14 +3158,29 @@ case "$muversion" in
      1.[0-7]) muversionstate=0;;
      2-9.*) muversionstate=0;;
 esac
-printf "%s\n" "m_mu.at:71" >"$at_check_line_file"
+printf "%s\n" "m_mu.at:70" >"$at_check_line_file"
 (exit $muversionstate) \
-  && at_fn_check_skip 77 "$at_srcdir/m_mu.at:71"
+  && at_fn_check_skip 77 "$at_srcdir/m_mu.at:70"
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:73: perl \$abs_srcdir/gen-maildir \$abs_srcdir/data"
-at_fn_check_prepare_dynamic "perl $abs_srcdir/gen-maildir $abs_srcdir/data" "m_mu.at:73"
+printf "%s\n" "$at_srcdir/m_mu.at:72: perl \$abs_srcdir/gen-maildir \$abs_srcdir/data"
+at_fn_check_prepare_dynamic "perl $abs_srcdir/gen-maildir $abs_srcdir/data" "m_mu.at:72"
 ( $at_check_trace; perl $abs_srcdir/gen-maildir $abs_srcdir/data
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:72"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_mu.at:73: mu init --maildir=\$(pwd)/maildir --muhome=\$(pwd)/muhome \\
+                  --my-address=me@example.org >/dev/null"
+at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:73"
+( $at_check_trace; mu init --maildir=$(pwd)/maildir --muhome=$(pwd)/muhome \
+                  --my-address=me@example.org >/dev/null
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -3050,24 +3191,22 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:74: mu init --maildir=\$(pwd)/maildir --muhome=\$(pwd)/muhome \\
-                  --my-address=me@example.org >/dev/null"
-at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:74"
-( $at_check_trace; mu init --maildir=$(pwd)/maildir --muhome=$(pwd)/muhome \
-                  --my-address=me@example.org >/dev/null
+printf "%s\n" "$at_srcdir/m_mu.at:75: mu index --muhome=\$(pwd)/muhome >/dev/null"
+at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:75"
+( $at_check_trace; mu index --muhome=$(pwd)/muhome >/dev/null
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:74"
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:75"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:76: mu index --muhome=\$(pwd)/muhome >/dev/null"
-at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:76"
-( $at_check_trace; mu index --muhome=$(pwd)/muhome >/dev/null
+printf "%s\n" "$at_srcdir/m_mu.at:76: cat \$abs_srcdir/data/m_mu-after.expected > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_mu-after.expected > expout" "m_mu.at:76"
+( $at_check_trace; cat $abs_srcdir/data/m_mu-after.expected > expout
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -3078,26 +3217,13 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:77: cat \$abs_srcdir/data/m_mu-after.expected > expout"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_mu-after.expected > expout" "m_mu.at:77"
-( $at_check_trace; cat $abs_srcdir/data/m_mu-after.expected > expout
-) >>"$at_stdout" 2>>"$at_stderr" 5>&-
-at_status=$? at_failed=false
-$at_check_filter
-at_fn_diff_devnull "$at_stderr" || at_failed=:
-at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:77"
-$at_failed && at_fn_log_failure
-$at_traceon; }
-
-{ set +x
-printf "%s\n" "$at_srcdir/m_mu.at:78: env LBDB_OVERRIDE_METHODS=m_mu \\
+printf "%s\n" "$at_srcdir/m_mu.at:77: env LBDB_OVERRIDE_METHODS=m_mu \\
               OVERRIDE_MU_HOME=muhome \\
               OVERRIDE_MU_PERSONAL='' \\
               OVERRIDE_MU_AFTER='1684195200' \\
               OVERRIDE_MU_IGNORE_MISSINGNAME='' \\
           lbdbq example"
-at_fn_check_prepare_notrace 'an embedded newline' "m_mu.at:78"
+at_fn_check_prepare_notrace 'an embedded newline' "m_mu.at:77"
 ( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_mu \
               OVERRIDE_MU_HOME=muhome \
               OVERRIDE_MU_PERSONAL='' \
@@ -3109,7 +3235,7 @@ at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 $at_diff expout "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:78"
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:77"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -3117,22 +3243,37 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_16
-#AT_START_17
-at_fn_group_banner 17 'm_mu.at:87' \
+#AT_STOP_18
+#AT_START_19
+at_fn_group_banner 19 'm_mu.at:86' \
   "m_mu ignore missingname" "                        " 5
 at_xfail=no
 (
-  printf "%s\n" "17. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "19. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
-printf "%s\n" "m_mu.at:88" >"$at_check_line_file"
+printf "%s\n" "m_mu.at:87" >"$at_check_line_file"
 (! which mu) \
-  && at_fn_check_skip 77 "$at_srcdir/m_mu.at:88"
+  && at_fn_check_skip 77 "$at_srcdir/m_mu.at:87"
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:89: perl \$abs_srcdir/gen-maildir \$abs_srcdir/data"
-at_fn_check_prepare_dynamic "perl $abs_srcdir/gen-maildir $abs_srcdir/data" "m_mu.at:89"
+printf "%s\n" "$at_srcdir/m_mu.at:88: perl \$abs_srcdir/gen-maildir \$abs_srcdir/data"
+at_fn_check_prepare_dynamic "perl $abs_srcdir/gen-maildir $abs_srcdir/data" "m_mu.at:88"
 ( $at_check_trace; perl $abs_srcdir/gen-maildir $abs_srcdir/data
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:88"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/m_mu.at:89: mu init --maildir=\$(pwd)/maildir --muhome=\$(pwd)/muhome \\
+                  --my-address=me@example.org >/dev/null"
+at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:89"
+( $at_check_trace; mu init --maildir=$(pwd)/maildir --muhome=$(pwd)/muhome \
+                  --my-address=me@example.org >/dev/null
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -3143,24 +3284,22 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:90: mu init --maildir=\$(pwd)/maildir --muhome=\$(pwd)/muhome \\
-                  --my-address=me@example.org >/dev/null"
-at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:90"
-( $at_check_trace; mu init --maildir=$(pwd)/maildir --muhome=$(pwd)/muhome \
-                  --my-address=me@example.org >/dev/null
+printf "%s\n" "$at_srcdir/m_mu.at:91: mu index --muhome=\$(pwd)/muhome >/dev/null"
+at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:91"
+( $at_check_trace; mu index --muhome=$(pwd)/muhome >/dev/null
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:90"
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:91"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:92: mu index --muhome=\$(pwd)/muhome >/dev/null"
-at_fn_check_prepare_notrace 'a $(...) command substitution' "m_mu.at:92"
-( $at_check_trace; mu index --muhome=$(pwd)/muhome >/dev/null
+printf "%s\n" "$at_srcdir/m_mu.at:92: cat \$abs_srcdir/data/m_mu-ignoremissingname.expected > expout"
+at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_mu-ignoremissingname.expected > expout" "m_mu.at:92"
+( $at_check_trace; cat $abs_srcdir/data/m_mu-ignoremissingname.expected > expout
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
@@ -3171,26 +3310,13 @@ $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/m_mu.at:93: cat \$abs_srcdir/data/m_mu-ignoremissingname.expected > expout"
-at_fn_check_prepare_dynamic "cat $abs_srcdir/data/m_mu-ignoremissingname.expected > expout" "m_mu.at:93"
-( $at_check_trace; cat $abs_srcdir/data/m_mu-ignoremissingname.expected > expout
-) >>"$at_stdout" 2>>"$at_stderr" 5>&-
-at_status=$? at_failed=false
-$at_check_filter
-at_fn_diff_devnull "$at_stderr" || at_failed=:
-at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:93"
-$at_failed && at_fn_log_failure
-$at_traceon; }
-
-{ set +x
-printf "%s\n" "$at_srcdir/m_mu.at:94: env LBDB_OVERRIDE_METHODS=m_mu \\
+printf "%s\n" "$at_srcdir/m_mu.at:93: env LBDB_OVERRIDE_METHODS=m_mu \\
               OVERRIDE_MU_HOME=muhome \\
               OVERRIDE_MU_PERSONAL='' \\
               OVERRIDE_MU_AFTER='' \\
               OVERRIDE_MU_IGNORE_MISSINGNAME='true' \\
           lbdbq example"
-at_fn_check_prepare_notrace 'an embedded newline' "m_mu.at:94"
+at_fn_check_prepare_notrace 'an embedded newline' "m_mu.at:93"
 ( $at_check_trace; env LBDB_OVERRIDE_METHODS=m_mu \
               OVERRIDE_MU_HOME=muhome \
               OVERRIDE_MU_PERSONAL='' \
@@ -3202,7 +3328,7 @@ at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 $at_diff expout "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:94"
+at_fn_check_status 0 $at_status "$at_srcdir/m_mu.at:93"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -3210,4 +3336,4 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_17
+#AT_STOP_19

@@ -6,6 +6,10 @@
 
 - Update GPL 2 (refers to URL instead of postal address now).
 
+### Added
+
+- Add test for m_imail to search for "Firstname Lastname".
+
 ## [0.56] - 2025-01-24
 
 ### Changed

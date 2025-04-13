@@ -70,7 +70,6 @@ AT_CHECK([env LBDB_OVERRIDE_METHODS=m_inmail \
           lbdbq example.com], [], [expout])
 AT_CLEANUP
 
-
 AT_SETUP(m_inmail SORT=reverse_comment)
 AT_CHECK([cat $abs_srcdir/data/m_inmail.example > m_inmail.utf-8])
 AT_CHECK([cat $abs_srcdir/data/m_inmail.sortreverse_comment.expected > expout])
@@ -82,3 +81,24 @@ AT_CHECK([env LBDB_OVERRIDE_METHODS=m_inmail \
           lbdbq example.com], [], [expout])
 AT_CLEANUP
 
+AT_SETUP(m_inmail whitespace)
+AT_CHECK([cat $abs_srcdir/data/m_inmail.example > m_inmail.utf-8])
+AT_CHECK([cat $abs_srcdir/data/m_inmail.whitespace.expected > expout])
+AT_CHECK([env LBDB_OVERRIDE_METHODS=m_inmail \
+	      OVERRIDE_M_INMAIL_DB=m_inmail.utf-8 \
+	      OVERRIDE_LIMITDATE="0000-00-00_00:00" \
+	      OVERRIDE_LIMITCOUNT=0 \
+	      OVERRIDE_SORT_OUTPUT=no \
+	lbdbq first last1], [], [expout])
+AT_CLEANUP
+
+AT_SETUP(m_inmail whitespace quote)
+AT_CHECK([cat $abs_srcdir/data/m_inmail.example > m_inmail.utf-8])
+AT_CHECK([cat $abs_srcdir/data/m_inmail.whitespace.expected > expout])
+AT_CHECK([env LBDB_OVERRIDE_METHODS=m_inmail \
+	      OVERRIDE_M_INMAIL_DB=m_inmail.utf-8 \
+	      OVERRIDE_LIMITDATE="0000-00-00_00:00" \
+	      OVERRIDE_LIMITCOUNT=0 \
+	      OVERRIDE_SORT_OUTPUT=no \
+	lbdbq "first last1"], [], [expout])
+AT_CLEANUP
