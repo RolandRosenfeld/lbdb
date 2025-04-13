@@ -10,9 +10,8 @@ dnl but WITHOUT ANY WARRANTY; without even the implied warranty of
 dnl MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 dnl GNU General Public License for more details.
 dnl
-dnl You should have received a copy of the GNU General Public License
-dnl along with this program; if not, write to the Free Software Foundation,
-dnl Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+dnl You should have received a copy of the GNU General Public License along
+dnl with this program; if not, see <https://www.gnu.org/licenses/>.
 
 AC_INIT([lbdb],
 	0.56,

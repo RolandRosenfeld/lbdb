@@ -3,7 +3,7 @@
 # -*-sh-mode-*-
 #
 #     Copyright (C) 2000      Ross Campbell <rcampbel@us.oracle.com>
-#     Copyright (C) 2000-2018 Roland Rosenfeld <roland@spinnaker.de>
+#     Copyright (C) 2000-2025 Roland Rosenfeld <roland@spinnaker.de>
 #     Copyright (C) 2012      Alfredo Finelli <0x4146@gmail.com>
 #     Copyright (C) 2016      François Charlier <fcharlier@ploup.net>
 #
@@ -17,9 +17,8 @@
 #     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #     GNU General Public License for more details.
 #
-#     You should have received a copy of the GNU General Public License
-#     along with this program; if not, write to the Free Software Foundation,
-#     Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
+#     You should have received a copy of the GNU General Public License along
+#     with this program; if not, see <https://www.gnu.org/licenses/>.
 
 m_goobook_query()
 {

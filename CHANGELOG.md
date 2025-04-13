@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.57] - UNRELEASED
+
+### Changed
+
+- Update GPL 2 (refers to URL instead of postal address now).
+
 ## [0.56] - 2025-01-24
 
 ### Changed
