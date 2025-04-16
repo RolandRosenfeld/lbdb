@@ -10,6 +10,10 @@
 
 - Add test for m_imail to search for "Firstname Lastname".
 
+### Fixed
+
+- Replace eval call in lbdbq (https://bugs.debian.org/1102545).
+
 ## [0.56] - 2025-01-24
 
 ### Changed

@@ -73,7 +73,7 @@ for method in $METHODS ; do
 done
 
 for method in $METHODS ; do
-  eval ${method}_query \""$@"\" >> "$collection" || true
+  ${method}_query "$*" >> "$collection" || true
 done
 
 case "${KEEP_DUPES:-}" in
