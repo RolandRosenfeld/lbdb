@@ -444,15 +444,20 @@ site configuration.  A file example is provided below:
     #                   'LDAP_RESULT_COMMENT'],
 
     # a practical illustrating example being:
-    #  debian	=> ['db.debian.org',
+    #  debian	=> ['ldaps://db.debian.org',
     #               'ou=users,dc=debian,dc=org',
-    #               'uid cn sn ircnick',
+    #               'uid cn sn ircnick gecos',
     #               'uid cn sn ircnick',
     #               '${uid}@debian.org',
     #               '${cn} ${sn}',
-    #               '${ircnick}'],
+    #               '${ircnick}',
+    #               1],
     # the output of the query will be then: 
     # ${uid}@debian.org\t${cn} ${sn}\t${ircnick} (i.e.: email name comment)
+    # (Note, that db.debian.org stores the firstname (instead of the common
+    # name) in cn, while the common name is only in gecos field (as a prefix),
+    # so we have to search gecos and enable ignorant flag to support wildcard
+    # search)
 
     # warning this database will erase default script builtin
     %ldap_server_db = (

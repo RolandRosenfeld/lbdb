@@ -22,11 +22,14 @@
 # (LDAP_SASL_MECH is optional, set it to '' to disable)
 # (LDAP_SCOPE is optional, set it to undef to use default scope)
 # A practical illustrating example being:
-#  debian	=> ['db.debian.org', 'ou=users,dc=debian,dc=org',
-#                   'uid cn sn ircnick', 'uid cn sn ircnick',
-#                   '${uid}@debian.org', '${cn} ${sn}', '${ircnick}'],
+#  debian	=> ['ldaps://db.debian.org', 'ou=users,dc=debian,dc=org',
+#                   'uid cn sn ircnick gecos', 'uid cn sn ircnick',
+#                   '${uid}@debian.org', '${cn} ${sn}', '${ircnick}', 1],
 # the output of the query will be then:
 #   ${uid}@debian.org\t${cn} ${sn}\t${ircnick} (i.e.: email name comment)
+# (Note, that db.debian.org stores the firstname (instead of the common name)
+# in cn, while the common name is only in gecos field (as a prefix), so we
+# have to search gecos and enable ignorant flag to support wildcard search)
 
 # warning this database will erase default script builtin
 %ldap_server_db = (
@@ -48,9 +51,9 @@
   'infospacebiz'   => ['ldapbiz.infospace.com', 'c=US',
 		       'givenname sn cn mail', 'givenname cn sn mail o',
 		       '${mail}', '${givenname} ${sn}', '${o}' ],
-  'debian'         => ['db.debian.org', 'ou=users,dc=debian,dc=org',
-		       'uid cn sn ircnick', 'uid cn sn ircnick',
-		       '${uid}@debian.org', '${cn} ${sn}', '${ircnick}' ],
+  'debian'         => ['ldaps://db.debian.org', 'ou=users,dc=debian,dc=org',
+		       'uid cn sn ircnick gecos', 'uid cn sn ircnick',
+		       '${uid}@debian.org', '${cn} ${sn}', '${ircnick}', 1],
   'crm'            => ['ldap.crm.mot.com', 'o=Motorola,c=US',
 		       'cn mail sn fn uid',
 		       'cn fn sn mail business_group telephonenumber',
@@ -64,11 +67,11 @@
 );
 
 # hostname of your ldap server
-$ldap_server = 'db.debian.org';
+$ldap_server = 'ldaps://db.debian.org';
 # ldap base search
 $search_base = 'ou=users,dc=debian,dc=org';
 # list of the fields that will be used for the query
-$ldap_search_fields = 'uid cn sn ircnick';
+$ldap_search_fields = 'uid cn sn ircnick gecos';
 # list of the fields that will be used for composing the answer
 $ldap_expected_answers = 'uid cn sn ircnick';
 # format of the email result based on the expected answers of the ldap query
@@ -77,8 +80,8 @@ $ldap_result_email = '${uid}@debian.org';
 $ldap_result_realname = '${cn} ${sn}';
 # format of the comment result based on the expected answers of the ldap query
 $ldap_result_comment = '(${ircnick})';
-# Don't use wildchars on searching
-$ignorant = 0;
+# Do use wildchars on searching (ignorant=0 disables this)
+$ignorant = 1;
 # Do an anonymous bind to the LDAP server:
 $ldap_bind_dn = '';
 $ldap_bind_password = '';
