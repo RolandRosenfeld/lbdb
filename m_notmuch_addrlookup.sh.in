@@ -23,10 +23,10 @@ m_notmuch_addrlookup_query() {
     if [ -x "$NM" ]; then
         # 1d: remove first line (number of matches)
         # s/["<>]//g: remove all ", <, >
-        # s/s/$/	/notmuch/: append TAB(notmuch) as 3rd column:
+        # s/ *$/	/notmuch/: append TAB(notmuch) as 3rd column:
         $NM $FORMAT "$@" \
             | sed -e 1d \
                   -e 's/["<>]//g' \
-                  -e 's/$/	notmuch/'
+                  -e 's/ *$/	notmuch/'
     fi
 }
