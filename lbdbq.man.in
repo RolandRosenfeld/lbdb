@@ -407,6 +407,8 @@ Print short help of lbdbq.
 .BR Palm::PDB (3pm),
 .BR Palm::Address (3pm),
 .BR Net::LDAP (3pm),
+.BR khard (1),
+.BR mu-cfind (1),
 .BR notmuch-addrlookup (1)
 .SH CREDITS
 Most of the really interesting code of this program (namely, the RFC
