@@ -18,7 +18,8 @@ top_srcdir = @top_srcdir@
 abs_top_srcdir = @abs_top_srcdir@
 AUTOM4TE = @AUTOM4TE@
 
-TESTSUITE_AT = m_muttalias.at m_abook.at m_inmail.at m_vcf.at m_mu.at
+TESTSUITE_AT = m_muttalias.at m_abook.at m_inmail.at m_vcf.at m_mu.at \
+               m_notmuch_addrlookup.at
 EXTRA_DIST = testsuite.at testsuite $(TESTSUITE_AT)
 TESTSUITE = $(srcdir)/testsuite
 

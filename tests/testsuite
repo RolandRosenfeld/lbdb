@@ -629,6 +629,7 @@ at_help_all="1;m_muttalias.at:18;m_muttalias;;
 17;m_mu.at:34;m_mu personal;;
 18;m_mu.at:60;m_mu after;;
 19;m_mu.at:86;m_mu ignore missingname;;
+20;m_notmuch_addrlookup.at:18;m_notmuch_addrlookup;;
 "
 # List of the all the test groups.
 at_groups_all=`printf "%s\n" "$at_help_all" | sed 's/;.*//'`
@@ -642,7 +643,7 @@ at_fn_validate_ranges ()
   for at_grp
   do
     eval at_value=\$$at_grp
-    if test $at_value -lt 1 || test $at_value -gt 19; then
+    if test $at_value -lt 1 || test $at_value -gt 20; then
       printf "%s\n" "invalid test group: $at_value" >&2
       exit 1
     fi
@@ -1015,6 +1016,9 @@ at_banner_text_4="Test m_vcf"
 # Banner 5. m_mu.at:16
 # Category starts at test group 16.
 at_banner_text_5="Test m_mu"
+# Banner 6. m_notmuch_addrlookup.at:16
+# Category starts at test group 20.
+at_banner_text_6="Test m_notmuch_addrlookup"
 
 # Take any -C into account.
 if $at_change_dir ; then
@@ -3337,3 +3341,53 @@ $at_traceon; }
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
 #AT_STOP_19
+#AT_START_20
+at_fn_group_banner 20 'm_notmuch_addrlookup.at:18' \
+  "m_notmuch_addrlookup" "                           " 6
+at_xfail=no
+(
+  printf "%s\n" "20. $at_setup_line: testing $at_desc ..."
+  $at_traceon
+
+printf "%s\n" "m_notmuch_addrlookup.at:19" >"$at_check_line_file"
+(! which notmuch-addrlookup) \
+  && at_fn_check_skip 77 "$at_srcdir/m_notmuch_addrlookup.at:19"
+printf "%s\n" "m_notmuch_addrlookup.at:20" >"$at_check_line_file"
+(! which notmuch) \
+  && at_fn_check_skip 77 "$at_srcdir/m_notmuch_addrlookup.at:20"
+{ set +x
+printf "%s\n" "$at_srcdir/m_notmuch_addrlookup.at:21: perl \$abs_srcdir/gen-maildir \$abs_srcdir/data
+          echo \"[database]\" > notmuch.config
+          echo \"path=\$(pwd)/maildir\" >> notmuch.config
+          echo \"[user]\" >> notmuch.config
+          echo \"primary_email=me@example.org\" >> notmuch.config
+          env NOTMUCH_CONFIG=notmuch.config notmuch new > /dev/null
+          cat \$abs_srcdir/data/m_notmuch_addrlookup.expected > expout
+          env LBDB_OVERRIDE_METHODS=m_notmuch_addrlookup \\
+              NOTMUCH_CONFIG=notmuch.config \\
+          lbdbq example"
+at_fn_check_prepare_notrace 'a $(...) command substitution' "m_notmuch_addrlookup.at:21"
+( $at_check_trace; perl $abs_srcdir/gen-maildir $abs_srcdir/data
+          echo "[database]" > notmuch.config
+          echo "path=$(pwd)/maildir" >> notmuch.config
+          echo "[user]" >> notmuch.config
+          echo "primary_email=me@example.org" >> notmuch.config
+          env NOTMUCH_CONFIG=notmuch.config notmuch new > /dev/null
+          cat $abs_srcdir/data/m_notmuch_addrlookup.expected > expout
+          env LBDB_OVERRIDE_METHODS=m_notmuch_addrlookup \
+              NOTMUCH_CONFIG=notmuch.config \
+          lbdbq example
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+$at_diff expout "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/m_notmuch_addrlookup.at:21"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+  set +x
+  $at_times_p && times >"$at_times_file"
+) 5>&1 2>&1 7>&- | eval $at_tee_pipe
+read at_status <"$at_status_file"
+#AT_STOP_20

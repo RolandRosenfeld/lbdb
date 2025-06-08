@@ -1,0 +1,31 @@
+dnl Copyright (c) 2024-2025 Roland Rosenfeld <roland@spinnaker.de>
+dnl
+dnl This program is free software; you can redistribute it and/or modify
+dnl it under the terms of the GNU General Public License as published by
+dnl the Free Software Foundation; either version 2 of the License, or
+dnl (at your option) any later version.
+dnl
+dnl This program is distributed in the hope that it will be useful,
+dnl but WITHOUT ANY WARRANTY; without even the implied warranty of
+dnl MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+dnl GNU General Public License for more details.
+dnl
+dnl You should have received a copy of the GNU General Public License along
+dnl with this program; if not, see <https://www.gnu.org/licenses/>.
+
+AT_BANNER([Test m_notmuch_addrlookup])
+
+AT_SETUP(m_notmuch_addrlookup)
+AT_SKIP_IF([! which notmuch-addrlookup])
+AT_SKIP_IF([! which notmuch])
+AT_CHECK([perl $abs_srcdir/gen-maildir $abs_srcdir/data
+          echo "[[database]]" > notmuch.config
+          echo "path=$(pwd)/maildir" >> notmuch.config
+          echo "[[user]]" >> notmuch.config
+          echo "primary_email=me@example.org" >> notmuch.config
+          env NOTMUCH_CONFIG=notmuch.config notmuch new > /dev/null
+          cat $abs_srcdir/data/m_notmuch_addrlookup.expected > expout
+          env LBDB_OVERRIDE_METHODS=m_notmuch_addrlookup \
+              NOTMUCH_CONFIG=notmuch.config \
+          lbdbq example], [], [expout])
+AT_CLEANUP

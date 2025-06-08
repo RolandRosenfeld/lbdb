@@ -1,0 +1,17 @@
+lbdbq: 16 matches
+foo10@example.com		notmuch
+foo11@example.com	Short11	notmuch
+foo12@example.com	Short12	notmuch
+foo13@example.com	foo13@example.com	notmuch
+foo14@example.com	foo14@example.com	notmuch
+foo15@example.com	Last15, First15	notmuch
+foo1@example.com	First1 Family1	notmuch
+foo2@example.com	foo2@example.com	notmuch
+foo3@example.com	foo3@example.com	notmuch
+foo4@example.com	First4 Family4	notmuch
+foo5@example.com	foo5@example.com	notmuch
+foo6@example.com	foo6@example.com	notmuch
+foo7@example.com	foo7@example.com	notmuch
+foo8@example.com	foo8@example.com	notmuch
+foo9@example.com	foo9@example.com	notmuch
+other@example.net	Other Other	notmuch
