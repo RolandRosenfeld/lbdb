@@ -228,6 +228,13 @@ If you do not want to see addresses without real name set
 `MU_IGNORE_MISSINGNAME` to "yes" or "true.
 You can override the MU homedir using `MU_HOME`.
 
+### m_notmuch_addrlookup
+
+This module uses the program
+[notmuch-addrlooup](https://github.com/aperezdc/notmuch-addrlookup-c),
+an lookup tool for [notmuch](https://notmuchmail.org/) to search for
+addresses in your notmuch mail system.
+
 -----
 
 Feel free to create your own modules to query other kind of databases.
@@ -275,3 +282,4 @@ Many thanks to the authors of the several modules and extensions:
 - François Charlier <fcharlier@ploup.net>          (m_goobook)
 - Colin Watson <cjwatson@debian.org>               (m_khard)
 - Timothy Bourke <tim@tbrk.org>                    (m_mu)
+- gregor herrmann <gregoa@debian.org>              (m_notmuch_addrlookup)
