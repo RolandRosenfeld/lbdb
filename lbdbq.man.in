@@ -14,7 +14,7 @@
 .\" You should have received a copy of the GNU General Public License along
 .\" with this program; if not, see <https://www.gnu.org/licenses/>.
 .\"
-.TH LBDBQ 1 "April 2025" "Unix" "User Manuals"
+.TH LBDBQ 1 "June 2025" "Unix" "User Manuals"
 .SH NAME
 lbdbq \- query program for the little brother's database
 .SH SYNOPSIS
@@ -338,6 +338,13 @@ remember to invoke
 .BR mu-index (1)
 with
 .IR --my-address )
+.TP
+.B m_notmuch_addrlookup
+This module uses the program
+.BR notmuch-addrlookup (1),
+which searches the
+.BR notmuch (1)
+index for mail addresses.
 .PP
 Feel free to create your own modules to query other database resources,
 YP maps, and the like.
@@ -399,7 +406,8 @@ Print short help of lbdbq.
 .BR xemacs (1),
 .BR Palm::PDB (3pm),
 .BR Palm::Address (3pm),
-.BR Net::LDAP (3pm).
+.BR Net::LDAP (3pm),
+.BR notmuch-addrlookup (1)
 .SH CREDITS
 Most of the really interesting code of this program (namely, the RFC
 822 address parser used by lbdb-fetchaddr) was stolen from Michael
@@ -418,8 +426,9 @@ Adrian Likins <alikins@redhat.com> (m_getent),
 Gergely Nagy <algernon@debian.org> (m_wanderlust),
 Dave Pearson <davep@davep.org> (m_palm, lbdb.el),
 Brian Salter-Duke <b_duke@bigpond.net.au> (m_muttalias),
-François Charlier <fcharlier@ploup.net> (m_goobook), and
-Colin Watson <cjwatson@debian.org> (m_khard)
+François Charlier <fcharlier@ploup.net> (m_goobook),
+Colin Watson <cjwatson@debian.org> (m_khard), and
+gregor herrmann <gregoa@debian.org> (m_notmuch_addrlookup)
 .SH AUTHOR
 The lbdb package was initially written by Thomas Roessler
 <roessler@guug.de> and is now maintained and heavily extended by
