@@ -11,6 +11,9 @@
 ### Added
 
 - Add test for m_imail to search for "Firstname Lastname".
+- Add m_notmuch_addrlookup module (https://bugs.debian.org/1101372)
+  using https://github.com/aperezdc/notmuch-addrlookup-c
+  Thanks to gregor herrmann <gregoa@debian.org>.
 
 ### Fixed
 

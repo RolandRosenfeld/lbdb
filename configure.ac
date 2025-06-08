@@ -180,6 +180,7 @@ LBDB_ARG_WITH(EVOLUTION_ADDRESSBOOK_EXPORT, evolution-addressbook-export,
               m_evolution, [with Evolution support ('auto' searchs at runtime)])
 LBDB_ARG_WITH(KHARD, khard, m_khard, [with khard support])
 LBDB_ARG_WITH(MU, mu, m_mu, [with mu (maildir-utils) support])
+LBDB_ARG_WITH(NOTMUCH_ADDRLOOKUP, notmuch-addrlookup, m_notmuch_addrlookup, [with notmuch-addrlookup support])
 
 AC_PATH_PROG(PERL, perl, "no")
 if test "x$PERL" != xno ; then
@@ -203,6 +204,19 @@ else
 		AC_SUBST(PBXBUILD)
 	fi
 fi
+
+# notmuch-addrlookup uses --mutt (<= 0.9) or --format=mutt (>= 0.10)
+AS_IF([test -n "$NOTMUCH_ADDRLOOKUP"], [
+   AC_MSG_CHECKING([whether notmuch-addrlookup supports --format])
+   if "$NOTMUCH_ADDRLOOKUP" --help 2>&1 | grep -q -- '--format'; then
+      AC_MSG_RESULT([yes])
+      NOTMUCH_ADDRLOOKUP_FORMAT="--format=mutt"
+   else
+      AC_MSG_RESULT([no])
+      NOTMUCH_ADDRLOOKUP_FORMAT="--mutt"
+   fi
+   AC_SUBST(NOTMUCH_ADDRLOOKUP_FORMAT)
+])
 
 MODULES_SH=""
 for i in $MODULES ; do

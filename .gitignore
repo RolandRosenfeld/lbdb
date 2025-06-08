@@ -36,6 +36,7 @@ m_ldap
 m_mu
 m_muttalias
 m_nispasswd
+m_notmuch_addrlookup
 m_osx_addressbook
 m_palm
 m_passwd
@@ -57,5 +58,3 @@ tests/atconfig
 tests/atlocal
 tests/testsuite.dir
 tests/testsuite.log
-
-
