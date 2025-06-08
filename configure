@@ -656,9 +656,11 @@ MODULES
 LBDB_ELPA_VERSION
 LBDB_VERSION
 SYSCONF_DIR
+NOTMUCH_ADDRLOOKUP_FORMAT
 PBXBUILD
 XCODEBUILD
 PERL
+NOTMUCH_ADDRLOOKUP
 MU
 KHARD
 EVOLUTION_ADDRESSBOOK_EXPORT
@@ -769,6 +771,7 @@ with_pgp
 with_evolution_addressbook_export
 with_khard
 with_mu
+with_notmuch_addrlookup
 '
       ac_precious_vars='build_alias
 host_alias
@@ -1425,6 +1428,8 @@ Optional Packages:
                           with Evolution support ('auto' searchs at runtime)
   --with-khard            with khard support
   --with-mu               with mu (maildir-utils) support
+  --with-notmuch-addrlookup
+                          with notmuch-addrlookup support
 
 Some influential environment variables:
   CC          C compiler command
@@ -7579,6 +7584,125 @@ fi
     fi
 
 
+    withval=""
+
+# Check whether --with-notmuch-addrlookup was given.
+if test ${with_notmuch_addrlookup+y}
+then :
+  withval=$with_notmuch_addrlookup;
+fi
+
+    if test x$withval = xyes; then
+        # Extract the first word of "notmuch-addrlookup", so it can be a program name with args.
+set dummy notmuch-addrlookup; ac_word=$2
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+printf %s "checking for $ac_word... " >&6; }
+if test ${ac_cv_path_NOTMUCH_ADDRLOOKUP+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  case $NOTMUCH_ADDRLOOKUP in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_NOTMUCH_ADDRLOOKUP="$NOTMUCH_ADDRLOOKUP" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  case $as_dir in #(((
+    '') as_dir=./ ;;
+    */) ;;
+    *) as_dir=$as_dir/ ;;
+  esac
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
+    ac_cv_path_NOTMUCH_ADDRLOOKUP="$as_dir$ac_word$ac_exec_ext"
+    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  test -z "$ac_cv_path_NOTMUCH_ADDRLOOKUP" && ac_cv_path_NOTMUCH_ADDRLOOKUP=""no""
+  ;;
+esac
+fi
+NOTMUCH_ADDRLOOKUP=$ac_cv_path_NOTMUCH_ADDRLOOKUP
+if test -n "$NOTMUCH_ADDRLOOKUP"; then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $NOTMUCH_ADDRLOOKUP" >&5
+printf "%s\n" "$NOTMUCH_ADDRLOOKUP" >&6; }
+else
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+fi
+
+
+        if test x$NOTMUCH_ADDRLOOKUP = xno; then
+	    as_fn_error $? "notmuch-addrlookup not in PATH" "$LINENO" 5
+        else
+    	    MODULES="$MODULES m_notmuch_addrlookup"
+
+        fi
+    elif test x$withval = x; then
+        # Extract the first word of "notmuch-addrlookup", so it can be a program name with args.
+set dummy notmuch-addrlookup; ac_word=$2
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+printf %s "checking for $ac_word... " >&6; }
+if test ${ac_cv_path_NOTMUCH_ADDRLOOKUP+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  case $NOTMUCH_ADDRLOOKUP in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_NOTMUCH_ADDRLOOKUP="$NOTMUCH_ADDRLOOKUP" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  case $as_dir in #(((
+    '') as_dir=./ ;;
+    */) ;;
+    *) as_dir=$as_dir/ ;;
+  esac
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
+    ac_cv_path_NOTMUCH_ADDRLOOKUP="$as_dir$ac_word$ac_exec_ext"
+    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  test -z "$ac_cv_path_NOTMUCH_ADDRLOOKUP" && ac_cv_path_NOTMUCH_ADDRLOOKUP=""no""
+  ;;
+esac
+fi
+NOTMUCH_ADDRLOOKUP=$ac_cv_path_NOTMUCH_ADDRLOOKUP
+if test -n "$NOTMUCH_ADDRLOOKUP"; then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $NOTMUCH_ADDRLOOKUP" >&5
+printf "%s\n" "$NOTMUCH_ADDRLOOKUP" >&6; }
+else
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+fi
+
+
+        if test x$NOTMUCH_ADDRLOOKUP != xno; then
+      	    MODULES="$MODULES m_notmuch_addrlookup"
+
+        fi
+    elif test x$withval != xno; then
+        NOTMUCH_ADDRLOOKUP=$withval
+        MODULES="$MODULES m_notmuch_addrlookup"
+
+    fi
+
+
 # Extract the first word of "perl", so it can be a program name with args.
 set dummy perl; ac_word=$2
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
@@ -7735,6 +7859,25 @@ fi
 		MODULES="$MODULES m_osx_addressbook"
 
 	fi
+fi
+
+# notmuch-addrlookup uses --mutt (<= 0.9) or --format=mutt (>= 0.10)
+if test -n "$NOTMUCH_ADDRLOOKUP"
+then :
+
+   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether notmuch-addrlookup supports --format" >&5
+printf %s "checking whether notmuch-addrlookup supports --format... " >&6; }
+   if "$NOTMUCH_ADDRLOOKUP" --help 2>&1 | grep -q -- '--format'; then
+      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+printf "%s\n" "yes" >&6; }
+      NOTMUCH_ADDRLOOKUP_FORMAT="--format=mutt"
+   else
+      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+      NOTMUCH_ADDRLOOKUP_FORMAT="--mutt"
+   fi
+
+
 fi
 
 MODULES_SH=""
