@@ -1,4 +1,4 @@
-dnl Copyright (c) 1998-2025 Roland Rosenfeld <roland@spinnaker.de>
+dnl Copyright (c) 1998-2026 Roland Rosenfeld <roland@spinnaker.de>
 dnl
 dnl This program is free software; you can redistribute it and/or modify
 dnl it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ dnl You should have received a copy of the GNU General Public License along
 dnl with this program; if not, see <https://www.gnu.org/licenses/>.
 
 AC_INIT([lbdb],
-	0.56,
+	0.57,
 	[roland@spinnaker.de],
 	[],
 	[https://www.spinnaker.de/lbdb/])
