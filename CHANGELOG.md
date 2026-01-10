@@ -12,6 +12,7 @@
 - Update aclocal.m4 using automake 1.17.
 - Update configure using autoconf 2.71.
 - Update config.guess, config.sub using autotools-dev 20240727.
+- Update mkinstalldirs, install-sh from automake 1.17.
 
 ### Added
 
