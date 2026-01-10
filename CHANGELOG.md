@@ -9,6 +9,7 @@
   field (the only one really containing the common name in
   db.debian.org).
 - Rename primary branch to main.
+- Update aclocal.m4 using automake 1.17.
 
 ### Added
 
