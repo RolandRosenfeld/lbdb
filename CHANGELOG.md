@@ -6,7 +6,9 @@
 
 - Update GPL 2 (refers to URL instead of postal address now).
 - Change db.debian.org in mutt_ldap_query to wildcard-search gecos
-  field (the only one really containing the common name in db.debian.org).
+  field (the only one really containing the common name in
+  db.debian.org).
+- Rename primary branch to main.
 
 ### Added
 
