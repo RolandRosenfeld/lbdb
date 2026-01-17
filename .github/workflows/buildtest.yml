@@ -1,15 +1,32 @@
 name: buildtest
-on: [push]
+on:
+  push:
+  pull_request:
 jobs:
   buildandtest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: sudo apt install libauthen-sasl-perl libnet-ldap-perl libpalm-perl abook maildir-utils notmuch-addrlookup notmuch
-      - run: ./configure
-      - run: make
-      - run: make test
-      - uses: actions/upload-artifact@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y \
+            libauthen-sasl-perl \
+            libnet-ldap-perl \
+            libpalm-perl \
+            abook \
+            maildir-utils \
+            notmuch-addrlookup \
+            notmuch
+      - name: Configure
+        run: ./configure
+      - name: Build
+        run: make
+      - name: Test
+        run: make test
+      - name: Upload testsuite artifacts (on failure)
+        uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: testsuite

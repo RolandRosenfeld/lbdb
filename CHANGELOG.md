@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.58] - UNRELEASED
+
+### Changed
+
+- Update github build and test pipeline.
+
 ## [0.57] - 2026-01-10
 
 ### Changed
